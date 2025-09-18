@@ -1,0 +1,82 @@
+Create a personal and interactive portfolio website for Rezwan Islam that highlights his multidisciplinary background in Product Management, Engineering, and MBA Projects. The site should be visually engaging, modern, and easy to navigate, serving as both a resume and a project showcase hub.
+
+✨ KEY OBJECTIVES
+Highlight Rezwan’s experience in digital product management, mechanical/nuclear engineering, and data-driven MBA projects
+
+Allow for ongoing content updates such as new projects, blog posts, and professional updates
+
+Embed external profiles: LinkedIn, GitHub, Tableau
+
+Include a photo upload option for Rezwan’s headshot and visual branding
+
+Enable file uploads for project documentation (PDFs, dashboards, etc.)
+
+🏗 WEBSITE STRUCTURE & CONTENT
+1. Home
+Hero section with name, title, short bio, and a professional image upload option
+
+Buttons linking to LinkedIn, GitHub, Tableau, and Resume
+
+2. About Me
+Summary of education (MBA at Baruch, B.E. in Mechanical Engineering)
+
+Skills list (technical tools, data analytics, engineering software)
+
+Embed LinkedIn: https://www.linkedin.com/in/rezwan-islam33
+
+3. Product Management
+Timeline or card view of experiences:
+
+Rocket Mortgage internship (Plaid CTA, chatbot, app redesign)
+
+MegaPlants (market research, sustainable product launches)
+
+Business Development at SBDC
+
+Screenshots, mockups, or case studies
+
+4. Engineering Projects
+Experiences at Dual Fuel and Zachry Nuclear Engineering
+
+HVAC system design, turbine upgrades, regulatory compliance
+
+Upload section for CAD drawings, ASME-compliant docs, and design files
+
+5. MBA Projects
+Case competitions (e.g., Cornell EMI)
+
+Data analytics projects (e.g., customer churn model with Python/Tableau)
+
+Include embedded Tableau dashboards or link to Tableau Public
+
+6. Current Work
+Section titled “Currently Working On”
+
+Role: Product Analyst at Odin/OA’s
+
+Learning to code (can link to GitHub progress)
+
+Regularly updatable by Rezwan for blogging or status updates
+
+7. Portfolio
+Gallery-style project viewer
+
+Each card includes title, domain, tools used, brief description, and link to view/download
+
+Upload form for Rezwan to easily add new projects
+
+8. Contact
+Clean contact form (name, email, message)
+
+Footer with quick links to LinkedIn, GitHub, Tableau, Email (rezwan99@gmail.com)
+
+🌐 TECHNICAL & INTERACTIVE FEATURES
+Fully responsive design for mobile/desktop
+
+Light/Dark mode toggle
+
+Option to embed PDF viewers and Tableau visualizations
+
+CMS or dashboard Rezwan can use to manage updates
+
+SEO and performance optimized
