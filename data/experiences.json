@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "title": "Product Analyst Intern",
+    "company": "Odynn",
+    "description": "Tested and validated 50+ Awayz features across 3 release cycles, uncovering 30+ cross-platform bugs and resolving 85% of mobile responsiveness issues, which cut booking flow errors by 20% and improved customer satisfaction scores in client demos. Designed Amplitude dashboards across 10+ client environments (e.g., Monkey Miles, Executive Traveler), mapping 150+ user events and closing 40+ instrumentation gaps, enabling product teams to track funnel retention and boosting demo conversion requests by 15%. Led competitor and loyalty program analysis covering 25+ airlines and 4 rival platforms, identifying 12% more coverage gaps and highlighting one-way vs. round-trip pricing inefficiencies, insights that shaped roadmap priorities and improved B2B client win rates by 10%.",
+    "type": "product",
+    "startDate": "June 2025",
+    "endDate": "Present",
+    "achievements": [
+      "50+ Awayz features tested across 3 release cycles",
+      "85% reduction in mobile responsiveness issues",
+      "20% reduction in booking flow errors",
+      "15% boost in demo conversion requests",
+      "10% improvement in B2B client win rates"
+    ],
+    "tags": ["Product Analytics", "User Journey Mapping", "Figma", "Amplitude", "Jira", "Cross-functional Collaboration", "Data Analysis", "User Experience"],
+    "metrics": {}
+  },
+  {
+    "id": 2,
+    "title": "Product Management Intern",
+    "company": "Rocket Mortgage",
+    "description": "Partnered with engineering and design teams to integrate a Plaid CTA feature into the Rocket Mortgage Mobile App, optimizing backend processes and increasing account creation speed by 400%. Defined integration requirements for an AI-driven chatbot to streamline onboarding for the Rocket Mortgage Mobile App, reducing banker queries by 40% through seamless functionality and system compatibility. Led the design and implementation of a Rocket Homes app feature for a side-by-side house comparisons, increasing user engagement by 20% and earning the Tech Demo Award for June 2024.",
+    "type": "product",
+    "startDate": "May 2024",
+    "endDate": "December 2024",
+    "achievements": [
+      "400% Increase in Account Creation Speed",
+      "40% Reduction in Banker Queries", 
+      "20% Increase in User Engagement",
+      "Tech Demo Award Winner - June 2024"
+    ],
+    "tags": ["Product Management", "Mobile App Development", "AI Integration", "Figma", "Azure DevOps", "Cross-functional Collaboration", "Feature Design"],
+    "metrics": {}
+  },
+  {
+    "id": 3,
+    "title": "Business Development Intern",
+    "company": "Small Business Development Center",
+    "description": "Led market research and customer discovery for 10+ entrepreneurs across 15 client engagements, implementing systematic validation frameworks that improved pitch success rates by 25% during advisor reviews. Developed comprehensive business plans and financial models for startups in retail, food & beverage, and fitness sectors, delivering structured frameworks that increased client readiness for investor meetings and SBA loan applications by 40%. Built and deployed a centralized CRM system for tracking client interactions and portfolio metrics across 15+ startups, reducing strategic planning cycle time by 50% while improving data accuracy for performance analysis.",
+    "type": "product",
+    "startDate": "September 2024",
+    "endDate": "December 2024",
+    "achievements": [
+      "25% improvement in client pitch success rates",
+      "40% increase in client readiness for investor meetings",
+      "50% reduction in strategic planning cycle time"
+    ],
+    "tags": ["Business Development", "Financial Modeling", "Customer Discovery", "Market Research", "Competitive Analysis", "Data Analytics", "CRM Systems"],
+    "metrics": {}
+  },
+  {
+    "id": 4,
+    "title": "Product Development Intern",
+    "company": "MegaPlants LLC/Kosha Botanica",
+    "description": "Executed comprehensive market analysis using Keepa and Jungle Scout across 300+ SKUs in the sustainable wellness space, identifying 2 high-potential products that aligned with company sustainability goals and market demand trends. Collaborated directly with executive leadership to evaluate ingredient formulations and strategic positioning, delivering recommendations for 3 high-opportunity tincture products from 200+ options based on market viability and brand alignment. Developed and executed integrated digital marketing campaigns across social platforms for two eco-friendly product lines, achieving 15% engagement increase while strengthening brand positioning in the sustainable wellness market.",
+    "type": "product",
+    "startDate": "February 2024",
+    "endDate": "May 2024",
+    "achievements": [
+      "300+ SKUs analyzed for market intelligence",
+      "2 high-potential products identified",
+      "15% engagement increase in digital campaigns"
+    ],
+    "tags": ["Product Strategy", "Market Research", "Competitive Intelligence", "Sustainability", "Cross-functional Collaboration", "CEO Partnership", "Cost Optimization"],
+    "metrics": {}
+  },
+  {
+    "id": 5,
+    "title": "Mechanical Engineer I",
+    "company": "Zachry Nuclear Engineering",
+    "description": "Conducted comprehensive heat transfer analysis for Arkansas Nuclear One Plant design modification, ensuring HDPE pipe temperatures remained below 120°F over 10 hours, validating safety and regulatory compliance standards. Evaluated the addition of 10 electrical equipment units in a 5,000 sq. ft. Control Room, determining a <2% increase in heat load using advanced assessment techniques, ensuring system integrity and efficiency. Led a jib crane modification project, increasing cleaning process speed by 400% for strainer maintenance while ensuring compliance with ASME NOG-1 standards for nuclear crane operations.",
+    "type": "engineering",
+    "startDate": "May 2021",
+    "endDate": "January 2023",
+    "achievements": [
+      "400% increase in cleaning process speed",
+      "<2% heat load increase in Control Room",
+      "ASME NOG-1 compliance maintained"
+    ],
+    "tags": ["Nuclear", "ASME", "Safety", "Turbine Systems"],
+    "metrics": {}
+  },
+  {
+    "id": 6,
+    "title": "Project Manager",
+    "company": "Dual Fuel",
+    "description": "Oversaw removal and installation of 8 critical system components at Edenwald Houses, managed 3 major NYCHA installation projects, and engineered HVAC system design enhancements for energy efficiency improvements.",
+    "type": "engineering",
+    "startDate": "August 2023",
+    "endDate": "November 2023",
+    "achievements": [
+      "NYCHA Project Management",
+      "OSHA Compliance",
+      "Energy Efficiency Optimization",
+      "Cost-Effectiveness Improvement"
+    ],
+    "tags": ["HVAC", "Project Management", "OSHA", "Energy Efficiency"],
+    "metrics": {}
+  }
+]
