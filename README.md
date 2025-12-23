@@ -1,6 +1,6 @@
-# Rezwan Islam - Portfolio Website
+# Rezwan - Portfolio Website
 
-A modern, interactive portfolio website showcasing Rezwan Islam's multidisciplinary background in Product Management, Engineering, and MBA projects.
+A modern, interactive portfolio website showcasing Rezwan's multidisciplinary background in Product Management, Engineering, and MBA projects.
 
 🌐 **Live Site:** [www.buildwithrez.com](https://www.buildwithrez.com)
 
@@ -107,5 +107,5 @@ This is a personal portfolio website. All rights reserved.
 
 ---
 
-Built with ❤️ by Rezwan Islam
+Built with ❤️ by Rezwan
 
