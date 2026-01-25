@@ -1,0 +1,67 @@
+[
+  {
+    "id": 1,
+    "title": "Data Driven Marketing Final Project",
+    "description": "Marketing strategy analysis focusing on data-driven decision making, consumer behavior insights, and campaign effectiveness measurement across multiple channels and demographics.",
+    "category": "analytics",
+    "domain": "Marketing Analytics",
+    "tools": ["Excel", "Tableau", "Statistical Analysis", "Market Research"],
+    "fileUrl": "/attached_assets/Data Driven Marketing Final Project_1750549244369.pdf",
+    "imageUrl": null,
+    "externalUrl": null,
+    "isVisible": true,
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "title": "Financial Statement Analysis - Group B FSA",
+    "description": "Comprehensive financial analysis project for ACC 9110 covering financial statement interpretation, ratio analysis, valuation methods, and investment decision frameworks.",
+    "category": "analytics",
+    "domain": "Financial Analysis",
+    "tools": ["Excel", "Financial Modeling", "Ratio Analysis", "Valuation"],
+    "fileUrl": "/attached_assets/Group B FSA, ACC 9110, Spring 2025_1750549343051.pdf",
+    "imageUrl": null,
+    "externalUrl": null,
+    "isVisible": true,
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": 3,
+    "title": "AIAA RC Aircraft Design & Manufacturing",
+    "description": "Senior design capstone project involving complete radio-controlled aircraft design, aerodynamic optimization, structural analysis, manufacturing processes, and flight testing validation.",
+    "category": "engineering",
+    "domain": "Aerospace Engineering",
+    "tools": ["SolidWorks", "CFD Analysis", "Manufacturing", "Flight Testing"],
+    "fileUrl": "/attached_assets/Final Report_AIAA_SeniorDesign_2_1750549365432.pdf",
+    "imageUrl": null,
+    "externalUrl": null,
+    "isVisible": true,
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": 4,
+    "title": "Finite Element Analysis of Endmill Cutting Tools",
+    "description": "Advanced FEM analysis investigating stress distribution, thermal behavior, and performance optimization of endmill cutting tools under various operating conditions.",
+    "category": "engineering",
+    "domain": "Mechanical Engineering",
+    "tools": ["ANSYS", "FEM Analysis", "Material Science", "Tool Design"],
+    "fileUrl": "/attached_assets/FINAL_FEM_ENDMILL_1750549438828.pdf",
+    "imageUrl": null,
+    "externalUrl": null,
+    "isVisible": true,
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  },
+  {
+    "id": 5,
+    "title": "Manufacturing Systems Analysis",
+    "description": "ME 462 comprehensive study of manufacturing processes, quality control systems, production optimization strategies, and industrial engineering principles.",
+    "category": "engineering",
+    "domain": "Manufacturing Engineering",
+    "tools": ["Process Analysis", "Quality Control", "Lean Manufacturing", "Statistical Methods"],
+    "fileUrl": "/attached_assets/ME 462_ Manufacturing Final Report_1750549518530.docx",
+    "imageUrl": null,
+    "externalUrl": null,
+    "isVisible": true,
+    "createdAt": "2024-01-01T00:00:00.000Z"
+  }
+]
