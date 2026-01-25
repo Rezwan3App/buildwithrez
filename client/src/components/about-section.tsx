@@ -47,11 +47,11 @@ export function AboutSection() {
   }, {} as Record<string, Skill[]>);
 
   const categoryConfig: Record<string, { label: string; color: string; bg: string }> = {
-    product: { label: "Product & Project Management", color: "text-gray-200", bg: "bg-gray-700/40 text-gray-300 border-gray-600/50" },
-    design: { label: "Design & Prototyping", color: "text-gray-200", bg: "bg-gray-700/40 text-gray-300 border-gray-600/50" },
-    analytics: { label: "Analytics & Data", color: "text-gray-200", bg: "bg-gray-700/40 text-gray-300 border-gray-600/50" },
-    technical: { label: "Technical Tools", color: "text-gray-200", bg: "bg-gray-700/40 text-gray-300 border-gray-600/50" },
-    soft: { label: "Core Competencies", color: "text-gray-200", bg: "bg-gray-700/40 text-gray-300 border-gray-600/50" }
+    product: { label: "Product & Project Management", color: "text-teal-400", bg: "bg-teal-500/10 text-teal-300 border-teal-500/20 hover:border-teal-500/40" },
+    design: { label: "Design & Prototyping", color: "text-violet-400", bg: "bg-violet-500/10 text-violet-300 border-violet-500/20 hover:border-violet-500/40" },
+    analytics: { label: "Analytics & Data", color: "text-cyan-400", bg: "bg-cyan-500/10 text-cyan-300 border-cyan-500/20 hover:border-cyan-500/40" },
+    technical: { label: "Technical Tools", color: "text-emerald-400", bg: "bg-emerald-500/10 text-emerald-300 border-emerald-500/20 hover:border-emerald-500/40" },
+    soft: { label: "Core Competencies", color: "text-pink-400", bg: "bg-pink-500/10 text-pink-300 border-pink-500/20 hover:border-pink-500/40" }
   };
 
   const resources = [
@@ -103,14 +103,14 @@ export function AboutSection() {
               <div className="text-center mb-8">
                 <h2 className="text-3xl sm:text-4xl font-bold text-white inline-block relative">
                   Education
-                  <span className="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-violet-500 to-transparent"></span>
+                  <span className="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-teal-500 to-transparent"></span>
                 </h2>
               </div>
               
               <div className="grid gap-4">
-                <div className="group bg-[#161b22] border border-gray-800 rounded-xl p-5 hover:border-blue-500/50 transition-all duration-300 hover-lift">
+                <div className="group bg-[#0f1219]/80 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-5 hover:border-teal-500/30 transition-all duration-500 hover-lift">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-violet-500 to-indigo-600 rounded-xl flex items-center justify-center shrink-0">
+                    <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-xl flex items-center justify-center shrink-0 shadow-lg shadow-teal-500/20">
                       <GraduationCap className="h-6 w-6 text-white" />
                     </div>
                     <div>
@@ -120,16 +120,16 @@ export function AboutSection() {
                       <p className="text-gray-400 text-sm mb-2">
                         Baruch College, Zicklin School of Business
                       </p>
-                      <span className="inline-block px-3 py-1 bg-violet-500/20 text-violet-300 rounded-full text-sm font-medium">
+                      <span className="inline-block px-3 py-1 bg-teal-500/15 text-teal-300 rounded-full text-sm font-medium border border-teal-500/20">
                         GPA: 4.0
                       </span>
                     </div>
                   </div>
                 </div>
 
-                <div className="group bg-[#161b22] border border-gray-800 rounded-xl p-5 hover:border-emerald-500/50 transition-all duration-300 hover-lift">
+                <div className="group bg-[#0f1219]/80 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-5 hover:border-violet-500/30 transition-all duration-500 hover-lift">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center shrink-0">
+                    <div className="w-12 h-12 bg-gradient-to-br from-violet-500 to-purple-600 rounded-xl flex items-center justify-center shrink-0 shadow-lg shadow-violet-500/20">
                       <Settings className="h-6 w-6 text-white" />
                     </div>
                     <div>
@@ -139,7 +139,7 @@ export function AboutSection() {
                       <p className="text-gray-400 text-sm mb-2">
                         City College of New York
                       </p>
-                      <span className="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-300 rounded-full text-sm font-medium">
+                      <span className="inline-block px-3 py-1 bg-violet-500/15 text-violet-300 rounded-full text-sm font-medium border border-violet-500/20">
                         GPA: 3.83
                       </span>
                     </div>
@@ -153,11 +153,11 @@ export function AboutSection() {
               <div className="text-center mb-8">
                 <h2 className="text-3xl sm:text-4xl font-bold text-white inline-block relative">
                   Skills
-                  <span className="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-pink-500 to-transparent"></span>
+                  <span className="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-cyan-500 to-transparent"></span>
                 </h2>
               </div>
               
-              <div className="bg-[#161b22] border border-gray-800 rounded-xl p-5">
+              <div className="bg-[#0f1219]/80 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-5">
                 <div className="space-y-5">
                   {Object.entries(skillsByCategory).map(([category, categorySkills]) => (
                     <div key={category}>
@@ -184,9 +184,9 @@ export function AboutSection() {
           {/* Resources */}
           <div>
             <div className="text-center mb-8">
-              <h2 className="text-3xl sm:text-4xl font-bold text-white inline-block relative">
+                <h2 className="text-3xl sm:text-4xl font-bold text-white inline-block relative">
                 Resources
-                <span className="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-blue-500 to-transparent"></span>
+                <span className="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-violet-500 to-transparent"></span>
               </h2>
             </div>
             <div className="space-y-3">
@@ -199,16 +199,16 @@ export function AboutSection() {
                   download={resource.download ? "Rezwan_Islam_Resume.pdf" : undefined}
                   className="group block"
                 >
-                  <div className="bg-[#161b22] border border-gray-800 rounded-lg p-4 hover:border-gray-600 transition-all duration-300 hover-lift">
+                  <div className="bg-[#0f1219]/80 backdrop-blur-sm border border-gray-800/50 rounded-xl p-4 hover:border-teal-500/30 transition-all duration-500 hover-lift">
                     <div className="flex items-center gap-3">
-                      <div className="w-11 h-11 bg-gray-800/50 rounded-lg flex items-center justify-center group-hover:bg-gray-700/50 transition-colors">
+                      <div className="w-11 h-11 bg-gray-800/30 rounded-xl flex items-center justify-center group-hover:bg-teal-500/10 transition-all duration-300">
                         <resource.icon className={`h-5 w-5 ${resource.iconColor}`} />
                       </div>
                       <div className="flex-1">
                         <h4 className="text-white font-semibold text-base">{resource.title}</h4>
                         <p className="text-gray-500 text-sm">{resource.description}</p>
                       </div>
-                      <ExternalLink className="h-4 w-4 text-gray-600 group-hover:text-gray-400 transition-colors" />
+                      <ExternalLink className="h-4 w-4 text-gray-600 group-hover:text-teal-400 transition-colors" />
                     </div>
                   </div>
                 </a>
@@ -220,16 +220,16 @@ export function AboutSection() {
                 download="Rezwan_Islam_Unofficial_Transcript.pdf"
                 className="group block"
               >
-                <div className="bg-[#161b22] border border-gray-800 rounded-lg p-4 hover:border-gray-600 transition-all duration-300">
+                <div className="bg-[#0f1219]/80 backdrop-blur-sm border border-gray-800/50 rounded-xl p-4 hover:border-violet-500/30 transition-all duration-500 hover-lift">
                   <div className="flex items-center gap-3">
-                    <div className="w-11 h-11 bg-gray-800/50 rounded-lg flex items-center justify-center group-hover:bg-gray-700/50 transition-colors">
+                    <div className="w-11 h-11 bg-gray-800/30 rounded-xl flex items-center justify-center group-hover:bg-violet-500/10 transition-all duration-300">
                       <FileText className="h-5 w-5 text-violet-400" />
                     </div>
                     <div className="flex-1">
                       <h4 className="text-white font-semibold text-base">Unofficial Transcript</h4>
                       <p className="text-gray-500 text-sm">4.0 GPA - Download PDF</p>
                     </div>
-                    <Download className="h-4 w-4 text-gray-600 group-hover:text-gray-400 transition-colors" />
+                    <Download className="h-4 w-4 text-gray-600 group-hover:text-violet-400 transition-colors" />
                   </div>
                 </div>
               </a>

@@ -56,7 +56,7 @@ export default function Home() {
       title: "Vice President",
       organization: "Data Science and Analytics Society (DSAS)",
       description: "Leading strategic communications and member engagement initiatives for the premier data science student organization.",
-      color: "coral"
+      color: "teal"
     },
     {
       title: "MBA Student Ambassador",
@@ -74,7 +74,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0d1117]">
+    <div className="min-h-screen bg-[#0a0a0f]">
       <Navigation />
       <main>
         <HeroSection />

@@ -67,7 +67,7 @@ export function PersonalProjectsSection() {
           {projects.map((project, index) => (
             <div 
               key={index}
-              className="group bg-[#161b22] border border-gray-800 rounded-xl p-5 sm:p-6 hover:border-blue-500/30 transition-all duration-300 hover-lift"
+              className="group bg-[#0f1219] border border-gray-800 rounded-xl p-5 sm:p-6 hover:border-blue-500/30 transition-all duration-300 hover-lift"
             >
               <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-3">
                 <div className="flex items-start gap-3 sm:gap-4">

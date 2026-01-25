@@ -91,7 +91,7 @@ export default function Experience() {
 
 
   return (
-    <div className="min-h-screen bg-[#0d1117]">
+    <div className="min-h-screen bg-[#0a0a0f]">
       <Navigation />
       
       <section className="pt-28 pb-20 relative overflow-hidden bg-professional">
@@ -109,7 +109,7 @@ export default function Experience() {
             {experiences.map((exp, index) => (
               <div 
                 key={index}
-                className="group bg-[#161b22]/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 sm:p-8 hover:border-coral-500/30 hover:shadow-lg hover:shadow-coral-500/5 transition-all duration-300"
+                className="group bg-[#0f1219]/80 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-6 sm:p-8 hover:border-teal-500/30 hover:shadow-lg hover:shadow-teal-500/5 transition-all duration-500"
               >
                 <div className="flex flex-col lg:flex-row gap-6">
                   <div className="flex-1">
@@ -122,7 +122,7 @@ export default function Experience() {
                           <h3 className="text-xl sm:text-2xl font-bold text-white mb-1">
                             {exp.title}
                           </h3>
-                          <p className="text-lg font-medium text-coral-500">
+                          <p className="text-lg font-medium bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
                             {exp.company}
                           </p>
                           <p className="text-sm text-gray-500">{exp.location}</p>
@@ -137,7 +137,7 @@ export default function Experience() {
                     <ul className="space-y-3 mb-6">
                       {exp.highlights.map((highlight, idx) => (
                         <li key={idx} className="text-base text-gray-300 flex items-start">
-                          <span className="w-2 h-2 rounded-full bg-coral-500 mt-2 mr-3 shrink-0"></span>
+                          <span className="w-2 h-2 rounded-full bg-teal-500 mt-2 mr-3 shrink-0"></span>
                           {highlight}
                         </li>
                       ))}
@@ -148,7 +148,7 @@ export default function Experience() {
                         <Badge 
                           key={idx} 
                           variant="secondary"
-                          className="bg-gray-800 text-gray-400 px-3 py-1 font-medium border-0"
+                          className="bg-teal-500/10 text-teal-300 px-3 py-1 font-medium border border-teal-500/20"
                         >
                           {tag}
                         </Badge>
@@ -158,7 +158,7 @@ export default function Experience() {
 
                   {exp.image && (
                     <div className="lg:w-72 shrink-0">
-                      <div className="rounded-xl overflow-hidden border border-gray-700 shadow-sm">
+                      <div className="rounded-xl overflow-hidden border border-gray-700/50 shadow-lg">
                         <img 
                           src={exp.image}
                           alt={`${exp.company} experience`}

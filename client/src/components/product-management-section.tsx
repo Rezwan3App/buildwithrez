@@ -108,7 +108,7 @@ export function ProductManagementSection() {
           {experiences.map((exp) => (
             <div 
               key={exp.id} 
-              className="group bg-[#161b22] border border-gray-800 rounded-xl p-5 sm:p-6 hover:border-blue-500/30 transition-all duration-300 hover-lift"
+              className="group bg-[#0f1219] border border-gray-800 rounded-xl p-5 sm:p-6 hover:border-blue-500/30 transition-all duration-300 hover-lift"
             >
               {/* Accent line */}
               <div className={`absolute left-0 top-5 bottom-5 w-1 ${exp.accentColor} rounded-full opacity-0 group-hover:opacity-100 transition-opacity`}></div>

@@ -17,7 +17,7 @@ export default function ProductManagement() {
   const [nexusPayModalImage, setNexusPayModalImage] = useState(nexuspay1);
 
   return (
-    <div className="min-h-screen bg-[#0d1117]">
+    <div className="min-h-screen bg-[#0a0a0f]">
       <Navigation />
       
       <section className="pt-28 pb-20 relative overflow-hidden bg-professional">
@@ -31,20 +31,20 @@ export default function ProductManagement() {
             </p>
           </div>
 
-          <div className="bg-[#161b22]/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 mb-12">
+          <div className="bg-[#0f1219]/80 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-6 mb-12">
             <h3 className="text-lg font-semibold text-white mb-3">Methodology</h3>
             <p className="text-gray-400 leading-relaxed">
-              I leverage <span className="text-coral-500 font-semibold">RICE</span> (Reach, Impact, Confidence, Effort) for feature prioritization and <span className="text-coral-500 font-semibold">Agile</span> methodologies for iterative product development. This combination ensures data-driven decisions while maintaining flexibility to adapt based on user feedback and market conditions.
+              I leverage <span className="text-teal-400 font-semibold">RICE</span> (Reach, Impact, Confidence, Effort) for feature prioritization and <span className="text-teal-400 font-semibold">Agile</span> methodologies for iterative product development. This combination ensures data-driven decisions while maintaining flexibility to adapt based on user feedback and market conditions.
             </p>
           </div>
 
           <div className="mb-12">
             <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-              <Sparkles className="h-6 w-6 text-coral-500" />
+              <Sparkles className="h-6 w-6 text-teal-400" />
               Personal Projects
             </h2>
             <div className="space-y-6">
-              <div className="bg-[#161b22]/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-emerald-500/30 transition-all duration-300">
+              <div className="bg-[#0f1219]/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-emerald-500/30 transition-all duration-300">
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center shrink-0">
@@ -130,7 +130,7 @@ export default function ProductManagement() {
                 </div>
               </div>
 
-              <div className="bg-[#161b22]/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-blue-500/30 transition-all duration-300">
+              <div className="bg-[#0f1219]/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-blue-500/30 transition-all duration-300">
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-xl overflow-hidden shrink-0">
@@ -138,7 +138,7 @@ export default function ProductManagement() {
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-white">TrackFlow</h3>
-                      <p className="text-coral-500 font-medium">Private, Local-First Job Application Tracker</p>
+                      <p className="text-teal-400 font-medium">Private, Local-First Job Application Tracker</p>
                     </div>
                   </div>
                   <div className="flex flex-wrap gap-3">
@@ -156,7 +156,7 @@ export default function ProductManagement() {
                       href="https://youtu.be/Iz-j6F19p0s"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center px-4 py-2 bg-coral-500 hover:bg-coral-600 text-white rounded-lg text-sm font-semibold transition-all"
+                      className="inline-flex items-center px-4 py-2 bg-teal-500 hover:bg-teal-600 text-white rounded-lg text-sm font-semibold transition-all"
                       data-testid="button-watch-demo"
                     >
                       <Play className="mr-2 h-4 w-4" />
@@ -192,19 +192,19 @@ export default function ProductManagement() {
                     <h4 className="text-sm font-semibold text-white mb-2">Key Features</h4>
                     <ul className="text-gray-400 text-sm space-y-1">
                       <li className="flex items-start">
-                        <span className="w-1.5 h-1.5 rounded-full bg-coral-500 mt-2 mr-2 shrink-0"></span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-teal-500 mt-2 mr-2 shrink-0"></span>
                         <span><span className="text-white font-medium">Smart Salary Detector:</span> Automatically parses and highlights salary ranges from job descriptions.</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="w-1.5 h-1.5 rounded-full bg-coral-500 mt-2 mr-2 shrink-0"></span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-teal-500 mt-2 mr-2 shrink-0"></span>
                         <span><span className="text-white font-medium">Description Vault:</span> Instantly scrapes and saves full job descriptions locally to prevent data loss.</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="w-1.5 h-1.5 rounded-full bg-coral-500 mt-2 mr-2 shrink-0"></span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-teal-500 mt-2 mr-2 shrink-0"></span>
                         <span><span className="text-white font-medium">1-Click Capture:</span> Works on any job board (Indeed, Greenhouse, etc.) with automatic duplicate detection.</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="w-1.5 h-1.5 rounded-full bg-coral-500 mt-2 mr-2 shrink-0"></span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-teal-500 mt-2 mr-2 shrink-0"></span>
                         <span><span className="text-white font-medium">Visual Kanban:</span> Drag-and-drop status tracking with a clean, distraction-free UI.</span>
                       </li>
                     </ul>
@@ -264,7 +264,7 @@ export default function ProductManagement() {
           <div className="mb-12">
             <h2 className="text-2xl font-bold text-white mb-6">Case Studies</h2>
             <div className="space-y-6">
-              <div className="bg-[#161b22]/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-blue-500/30 transition-all duration-300">
+              <div className="bg-[#0f1219]/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-blue-500/30 transition-all duration-300">
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                   <div className="flex items-start gap-4">
                     <div className="w-14 h-14 rounded-xl overflow-hidden shrink-0">
@@ -272,13 +272,13 @@ export default function ProductManagement() {
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-white">LinkedIn</h3>
-                      <p className="text-coral-500 font-medium">The Location Transparency Gap</p>
+                      <p className="text-teal-400 font-medium">The Location Transparency Gap</p>
                     </div>
                   </div>
                   <a 
                     href="/attached_assets/LinkedIn_Case_Study_1768252732588.pdf"
                     download="LinkedIn_Case_Study.pdf"
-                    className="inline-flex items-center px-4 py-2 bg-coral-500 hover:bg-coral-600 text-white rounded-lg text-sm font-semibold transition-all"
+                    className="inline-flex items-center px-4 py-2 bg-teal-500 hover:bg-teal-600 text-white rounded-lg text-sm font-semibold transition-all"
                     data-testid="button-download-linkedin-case-study"
                   >
                     <Download className="mr-2 h-4 w-4" />
@@ -291,7 +291,7 @@ export default function ProductManagement() {
                 </p>
               </div>
 
-              <div className="group bg-[#161b22]/50 border border-gray-800/50 rounded-2xl p-6 opacity-60">
+              <div className="group bg-[#0f1219]/50 border border-gray-800/50 rounded-2xl p-6 opacity-60">
                 <div className="flex items-center gap-4">
                   <div className="w-14 h-14 bg-gradient-to-br from-gray-600 to-gray-700 rounded-xl flex items-center justify-center shrink-0">
                     <Clock className="h-7 w-7 text-gray-400" />
@@ -312,7 +312,7 @@ export default function ProductManagement() {
           <div>
             <h2 className="text-2xl font-bold text-white mb-6">Sample PRDs</h2>
             <div className="space-y-6">
-              <div className="bg-[#161b22]/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-emerald-500/30 transition-all duration-300">
+              <div className="bg-[#0f1219]/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-emerald-500/30 transition-all duration-300">
                 <div className="flex flex-col lg:flex-row gap-6">
                   <div className="flex-1">
                     <div className="flex items-start gap-4 mb-4">
@@ -323,7 +323,7 @@ export default function ProductManagement() {
                         <h3 className="text-xl font-bold text-white mb-1">
                           AllTrails "Journeys"
                         </h3>
-                        <p className="text-coral-500 font-medium">
+                        <p className="text-teal-400 font-medium">
                           Curated Hiking Itineraries Feature
                         </p>
                       </div>
@@ -337,7 +337,7 @@ export default function ProductManagement() {
                       href="/attached_assets/AllTrails_Journeys_Curated_Hiking_Itineraries_1768253125440.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center px-5 py-2.5 bg-coral-500 hover:bg-coral-600 text-white rounded-lg text-sm font-semibold transition-all"
+                      className="inline-flex items-center px-5 py-2.5 bg-teal-500 hover:bg-teal-600 text-white rounded-lg text-sm font-semibold transition-all"
                       data-testid="button-view-alltrails-prd"
                     >
                       <FileText className="mr-2 h-4 w-4" />
@@ -375,7 +375,7 @@ export default function ProductManagement() {
         >
           <button
             onClick={() => setIsImageModalOpen(false)}
-            className="absolute top-4 right-4 p-2 text-white hover:text-coral-500 transition-colors"
+            className="absolute top-4 right-4 p-2 text-white hover:text-teal-400 transition-colors"
             data-testid="button-close-modal"
           >
             <X className="h-8 w-8" />
@@ -396,7 +396,7 @@ export default function ProductManagement() {
         >
           <button
             onClick={() => setIsTrackflowModalOpen(false)}
-            className="absolute top-4 right-4 p-2 text-white hover:text-coral-500 transition-colors"
+            className="absolute top-4 right-4 p-2 text-white hover:text-teal-400 transition-colors"
           >
             <X className="h-8 w-8" />
           </button>

@@ -91,8 +91,8 @@ export default function ProductWorkflow() {
     {
       title: "6. Execution & Delivery",
       icon: Rocket,
-      color: "text-coral-500",
-      bg: "bg-coral-500/10",
+      color: "text-teal-400",
+      bg: "bg-teal-500/10",
       items: [
         { name: "Linear", icon: SiLinear, desc: "For high-velocity, streamlined issue tracking and modern project management." },
         { name: "Jira", icon: SiJira, desc: "For enterprise-grade Agile management and cross-functional sprint planning." },
@@ -102,7 +102,7 @@ export default function ProductWorkflow() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0d1117]">
+    <div className="min-h-screen bg-[#0a0a0f]">
       <Navigation />
       
       <section className="pt-28 pb-20 relative overflow-hidden bg-professional">
@@ -120,7 +120,7 @@ export default function ProductWorkflow() {
             {workflowSections.map((section, idx) => (
               <div 
                 key={idx}
-                className="bg-[#161b22]/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-coral-500/20 transition-all duration-300"
+                className="bg-[#0f1219]/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-teal-500/20 transition-all duration-300"
               >
                 <div className="flex items-center gap-4 mb-6">
                   <div className={`p-3 rounded-xl ${section.bg}`}>
@@ -133,8 +133,8 @@ export default function ProductWorkflow() {
                   {section.items.map((item, i) => (
                     <div key={i} className="group">
                       <div className="flex items-center gap-2 mb-1">
-                        {item.icon && <item.icon className="h-4 w-4 text-coral-500" />}
-                        <h3 className="text-coral-500 font-semibold text-sm group-hover:text-coral-400 transition-colors">
+                        {item.icon && <item.icon className="h-4 w-4 text-teal-400" />}
+                        <h3 className="text-teal-400 font-semibold text-sm group-hover:text-teal-300 transition-colors">
                           {item.name}
                         </h3>
                       </div>
@@ -148,7 +148,7 @@ export default function ProductWorkflow() {
             ))}
           </div>
 
-          <div className="mt-16 bg-gradient-to-br from-coral-500/10 to-blue-500/10 border border-coral-500/20 rounded-2xl p-8 text-center">
+          <div className="mt-16 bg-gradient-to-br from-teal-500/10 to-blue-500/10 border border-teal-500/20 rounded-2xl p-8 text-center">
             <p className="text-gray-300 italic">
               "To be continued... constantly iterating my workflow with the latest AI and product infrastructure."
             </p>
