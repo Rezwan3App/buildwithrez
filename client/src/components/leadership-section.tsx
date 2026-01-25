@@ -5,21 +5,21 @@ export function LeadershipSection() {
       organization: "Data Science and Analytics Society (DSAS)",
       description: "Leading strategic communications and member engagement initiatives for the premier data science student organization.",
       logo: "/attached_assets/image_1766520551280.png",
-      orgColor: "text-orange-400"
+      orgColor: "text-teal-400"
     },
     {
       title: "MBA Student Ambassador",
       organization: "Baruch College",
       description: "Representing the MBA program and supporting prospective students through admissions and orientation processes.",
       logo: "/attached_assets/image_1766520608918.png",
-      orgColor: "text-blue-400"
+      orgColor: "text-cyan-400"
     },
     {
       title: "City Tutor Mentor",
       organization: "The City Tutors",
       description: "Providing academic mentorship and tutoring support to students in STEM subjects and career development.",
       logo: "/attached_assets/image_1766520593513.png",
-      orgColor: "text-purple-400"
+      orgColor: "text-violet-400"
     }
   ];
 
@@ -29,7 +29,7 @@ export function LeadershipSection() {
         <div className="text-center mb-10">
           <h2 className="text-3xl sm:text-4xl font-bold text-white inline-block relative">
             Leadership & Community
-            <span className="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-orange-500 to-transparent"></span>
+            <span className="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-teal-500 to-transparent"></span>
           </h2>
         </div>
 
@@ -37,7 +37,7 @@ export function LeadershipSection() {
           {leadershipRoles.map((role, index) => (
             <div
               key={index}
-              className="group bg-[#161b22] border border-gray-800 rounded-xl p-6 hover:border-gray-600 transition-all duration-300 hover-lift"
+              className="group bg-[#0f1219]/80 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-6 hover:border-teal-500/30 transition-all duration-500 hover-lift"
             >
               <div className="flex items-start gap-4 mb-4">
                 <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center shrink-0 p-2 shadow-lg">

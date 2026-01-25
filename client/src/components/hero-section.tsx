@@ -10,19 +10,19 @@ export function HeroSection() {
       href: "https://www.linkedin.com/in/rezwan-islam33",
       icon: FaLinkedin,
       label: "LinkedIn",
-      color: "hover:bg-blue-500 hover:border-blue-500"
+      color: "hover:bg-blue-500/20 hover:border-blue-400/50 hover:text-blue-400 hover:shadow-lg hover:shadow-blue-500/10"
     },
     {
       href: "https://public.tableau.com/app/profile/rezwan.islam4698/vizzes",
       icon: SiTableau,
       label: "Tableau",
-      color: "hover:bg-orange-500 hover:border-orange-500"
+      color: "hover:bg-orange-500/20 hover:border-orange-400/50 hover:text-orange-400 hover:shadow-lg hover:shadow-orange-500/10"
     },
     {
       href: "https://github.com/Rezwan3App",
       icon: FaGithub,
       label: "GitHub",
-      color: "hover:bg-gray-600 hover:border-gray-600"
+      color: "hover:bg-violet-500/20 hover:border-violet-400/50 hover:text-violet-400 hover:shadow-lg hover:shadow-violet-500/10"
     },
   ];
 
@@ -33,10 +33,11 @@ export function HeroSection() {
     >
       
       <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 text-center py-20">
-        {/* Profile Image - simplified */}
+        {/* Profile Image - modern glow effect */}
         <div className="mb-10 animate-fade-in-up">
           <div className="relative w-44 h-44 sm:w-52 sm:h-52 mx-auto group">
-            <div className="w-full h-full rounded-full overflow-hidden ring-1 ring-gray-700 transition-all duration-500 group-hover:ring-blue-500/50 group-hover:shadow-lg group-hover:shadow-blue-500/20">
+            <div className="absolute -inset-1 bg-gradient-to-r from-teal-500 via-cyan-500 to-violet-500 rounded-full opacity-0 group-hover:opacity-50 blur-xl transition-all duration-700"></div>
+            <div className="relative w-full h-full rounded-full overflow-hidden ring-2 ring-gray-800 transition-all duration-500 group-hover:ring-teal-500/50">
               <img 
                 src="/attached_assets/profile-image.jpg" 
                 alt="Rezwan Islam" 
@@ -51,7 +52,7 @@ export function HeroSection() {
             Rezwan Islam
           </h1>
           
-          <p className="text-xl sm:text-2xl font-medium text-blue-400 animate-fade-in-up opacity-0" style={{animationDelay: '0.2s', animationFillMode: 'forwards'}}>
+          <p className="text-xl sm:text-2xl font-medium bg-gradient-to-r from-teal-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent animate-fade-in-up opacity-0" style={{animationDelay: '0.2s', animationFillMode: 'forwards'}}>
             Product Analyst | MBA Candidate
           </p>
           
@@ -71,7 +72,7 @@ export function HeroSection() {
               variant="outline"
               size="lg"
               asChild
-              className={`bg-transparent border-gray-700 text-gray-300 hover:text-white transition-all duration-300 text-base px-5 py-2.5 font-medium ${link.color}`}
+              className={`bg-transparent border-gray-700/50 text-gray-400 transition-all duration-300 text-base px-5 py-2.5 font-medium rounded-xl ${link.color}`}
             >
               <a href={link.href} target="_blank" rel="noopener noreferrer">
                 <link.icon className="mr-2 h-4 w-4" />
@@ -83,7 +84,7 @@ export function HeroSection() {
           <Button
             size="lg"
             asChild
-            className="bg-blue-600 hover:bg-blue-500 text-white text-base px-5 py-2.5 font-medium border-0"
+            className="bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-gray-900 text-base px-6 py-2.5 font-semibold border-0 rounded-xl shadow-lg shadow-teal-500/20 hover:shadow-teal-500/30 transition-all duration-300"
           >
             <a 
               href="/attached_assets/Rezwan_Islam_Zicklin_1766511999891.pdf" 
@@ -97,7 +98,8 @@ export function HeroSection() {
 
         <button
           onClick={() => scrollToSection("about")}
-          className="text-gray-500 hover:text-blue-400 transition-colors"
+          className="text-gray-600 hover:text-teal-400 transition-all duration-300"
+          aria-label="Scroll to about section"
         >
           <ChevronDown className="h-6 w-6 animate-bounce" />
         </button>

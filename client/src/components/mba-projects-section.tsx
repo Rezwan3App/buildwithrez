@@ -76,7 +76,7 @@ export function MBAProjectsSection() {
           {projects.map((project, index) => (
             <div 
               key={index}
-              className="group bg-[#161b22] border border-gray-800 rounded-xl p-5 hover:border-blue-500/30 transition-all duration-300 hover-lift"
+              className="group bg-[#0f1219] border border-gray-800 rounded-xl p-5 hover:border-blue-500/30 transition-all duration-300 hover-lift"
             >
               <div className="text-center mb-4">
                 <div className={`w-10 h-10 bg-gradient-to-br ${project.iconBg} rounded-lg flex items-center justify-center mx-auto mb-3`}>
@@ -129,7 +129,7 @@ export function MBAProjectsSection() {
         </div>
 
         {/* Tableau Section */}
-        <div className="bg-[#161b22] border border-gray-800 rounded-xl p-6">
+        <div className="bg-[#0f1219] border border-gray-800 rounded-xl p-6">
           <div className="text-center mb-6">
             <h3 className="text-2xl sm:text-3xl font-bold text-white inline-flex items-center gap-3">
               <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
@@ -193,7 +193,7 @@ export function MBAProjectsSection() {
             </h2>
           </div>
           <div className="grid md:grid-cols-2 gap-5">
-            <div className="group bg-[#161b22] border border-gray-800 rounded-xl p-5 hover:border-orange-500/50 transition-all duration-300">
+            <div className="group bg-[#0f1219] border border-gray-800 rounded-xl p-5 hover:border-orange-500/50 transition-all duration-300">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex items-center justify-center shrink-0">
                   <Award className="h-6 w-6 text-white" />
@@ -204,7 +204,7 @@ export function MBAProjectsSection() {
                 </div>
               </div>
             </div>
-            <div className="group bg-[#161b22] border border-gray-800 rounded-xl p-5 hover:border-gray-500/50 transition-all duration-300">
+            <div className="group bg-[#0f1219] border border-gray-800 rounded-xl p-5 hover:border-gray-500/50 transition-all duration-300">
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 bg-gradient-to-br from-gray-700 to-gray-900 rounded-xl flex items-center justify-center shrink-0">
                   <Award className="h-6 w-6 text-white" />
@@ -226,7 +226,7 @@ export function MBAProjectsSection() {
               <span className="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-cyan-500 to-transparent"></span>
             </h2>
           </div>
-          <div className="bg-[#161b22] border border-gray-800 rounded-xl p-12 text-center">
+          <div className="bg-[#0f1219] border border-gray-800 rounded-xl p-12 text-center">
             <div className="w-16 h-16 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
               <FileText className="h-8 w-8 text-cyan-400" />
             </div>

@@ -77,7 +77,7 @@ export default function MBA() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0d1117]">
+    <div className="min-h-screen bg-[#0a0a0f]">
       <Navigation />
       
       <section className="pt-28 pb-20 relative overflow-hidden bg-professional">
@@ -93,7 +93,7 @@ export default function MBA() {
 
           <div className="mb-16">
             <div className="flex items-center gap-3 mb-8">
-              <div className="h-8 w-1 bg-coral-500 rounded-full"></div>
+              <div className="h-8 w-1 bg-gradient-to-b from-teal-500 to-cyan-500 rounded-full"></div>
               <h2 className="text-2xl font-bold text-white">MBA Projects</h2>
             </div>
             
@@ -101,7 +101,7 @@ export default function MBA() {
               {mbaProjects.map((project, index) => (
                 <div 
                   key={index}
-                  className="bg-[#161b22]/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-gray-700 transition-all duration-300"
+                  className="bg-[#0f1219]/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-gray-700 transition-all duration-300"
                 >
                   <div className="flex flex-col lg:flex-row gap-6">
                     <div className="flex-1">
@@ -138,7 +138,7 @@ export default function MBA() {
                           href={project.pdf}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center px-4 py-2 bg-coral-500 hover:bg-coral-600 text-white rounded-lg text-sm font-semibold transition-all"
+                          className="inline-flex items-center px-4 py-2 bg-teal-500 hover:bg-teal-600 text-white rounded-lg text-sm font-semibold transition-all"
                         >
                           <Download className="mr-2 h-4 w-4" />
                           Download Slide Deck
@@ -150,7 +150,7 @@ export default function MBA() {
                       <div className="lg:w-72 shrink-0">
                         <button
                           onClick={() => setModalImage(project.image!)}
-                          className="rounded-xl overflow-hidden border border-gray-700 hover:border-coral-500/50 hover:shadow-lg hover:shadow-coral-500/10 transition-all cursor-zoom-in w-full"
+                          className="rounded-xl overflow-hidden border border-gray-700 hover:border-teal-500/50 hover:shadow-lg hover:shadow-coral-500/10 transition-all cursor-zoom-in w-full"
                         >
                           <img 
                             src={project.image}
@@ -177,7 +177,7 @@ export default function MBA() {
               {dataProjects.map((project, index) => (
                 <div 
                   key={index}
-                  className="bg-[#161b22]/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-gray-700 transition-all duration-300"
+                  className="bg-[#0f1219]/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-gray-700 transition-all duration-300"
                 >
                   <div className="text-center mb-4">
                     <div className={`w-14 h-14 bg-gradient-to-br ${project.iconBg} rounded-xl flex items-center justify-center mx-auto mb-3`}>
@@ -228,7 +228,7 @@ export default function MBA() {
             </div>
           </div>
 
-          <div className="bg-[#161b22]/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-8">
+          <div className="bg-[#0f1219]/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-8">
             <div className="text-center mb-8">
               <h3 className="text-2xl font-bold text-white inline-flex items-center gap-3">
                 <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center">
@@ -295,7 +295,7 @@ export default function MBA() {
         >
           <button
             onClick={() => setModalImage(null)}
-            className="absolute top-4 right-4 p-2 text-white hover:text-coral-500 transition-colors"
+            className="absolute top-4 right-4 p-2 text-white hover:text-teal-400 transition-colors"
           >
             <X className="h-8 w-8" />
           </button>

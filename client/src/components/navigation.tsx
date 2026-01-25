@@ -28,15 +28,15 @@ export function Navigation() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-[#0d1117]/95 backdrop-blur-md border-b border-gray-800"
+          ? "bg-[#0a0a0f]/90 backdrop-blur-xl border-b border-teal-500/10 shadow-lg shadow-black/20"
           : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <Link href="/" className="text-2xl font-bold text-white hover:text-coral-500 transition-colors" data-testid="link-home-logo">
+          <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent hover:from-teal-300 hover:to-cyan-300 transition-all duration-300" data-testid="link-home-logo">
             RI
           </Link>
 
@@ -45,10 +45,10 @@ export function Navigation() {
               <Link
                 key={item.path}
                 href={item.path}
-                className={`px-5 py-3 rounded-lg text-base font-semibold transition-all duration-200 ${
+                className={`px-5 py-3 rounded-xl text-base font-medium transition-all duration-300 ${
                   location === item.path
-                    ? "text-white bg-coral-500/20 border border-coral-500/50"
-                    : "text-gray-300 hover:text-white hover:bg-gray-800"
+                    ? "text-teal-300 bg-teal-500/10 border border-teal-500/30 shadow-lg shadow-teal-500/5"
+                    : "text-gray-400 hover:text-white hover:bg-white/5 border border-transparent"
                 }`}
                 data-testid={`nav-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
               >
@@ -69,17 +69,17 @@ export function Navigation() {
                   <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[280px] bg-[#0d1117] border-gray-800">
+              <SheetContent side="right" className="w-[280px] bg-[#0a0a0f]/95 backdrop-blur-xl border-l border-teal-500/10">
                 <div className="flex flex-col space-y-2 mt-8">
                   {navItems.map((item) => (
                     <Link
                       key={item.path}
                       href={item.path}
                       onClick={() => setIsOpen(false)}
-                      className={`px-4 py-3 rounded-lg text-base font-medium transition-all ${
+                      className={`px-4 py-3 rounded-xl text-base font-medium transition-all duration-300 ${
                         location === item.path
-                          ? "text-white bg-coral-500/20 border border-coral-500/50"
-                          : "text-gray-400 hover:text-white hover:bg-gray-800"
+                          ? "text-teal-300 bg-teal-500/10 border border-teal-500/30"
+                          : "text-gray-400 hover:text-white hover:bg-white/5 border border-transparent"
                       }`}
                       data-testid={`nav-mobile-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
                     >
