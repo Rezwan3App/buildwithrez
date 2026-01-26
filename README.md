@@ -28,6 +28,27 @@ Output goes to `dist/public` (HTML, JS, CSS, and assets).
 
 ## Deployment (GitHub Pages)
 
+### Update local → GitHub immediately
+
+Run this to push all local changes and update the live site:
+
+```powershell
+.\push-to-github.ps1
+```
+
+Or manually:
+
+```powershell
+cd c:\Users\Rezwan\website\buildwithrez
+git add -A
+git commit -m "Sync local to GitHub"
+git push origin main
+```
+
+Then check **Actions** → **Build and Deploy to GitHub Pages** (must be green). Refresh **www.buildwithrez.com** with `Ctrl+Shift+R`.
+
+---
+
 The site is deployed via **GitHub Actions**. On every push to `main`:
 
 1. The workflow runs `npx vite build`

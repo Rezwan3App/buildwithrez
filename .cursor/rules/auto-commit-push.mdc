@@ -1,0 +1,16 @@
+---
+description: Automatically commit and push after making code changes
+alwaysApply: true
+---
+
+# Auto Commit & Push
+
+After making any code or config changes to this project:
+
+1. **Stage** all changes: `git add -A`
+2. **Commit** with a clear message describing the changes
+3. **Push** to the remote: `git push`
+
+Use PowerShell-friendly commands (semicolons, not `&&`). Request `git_write` and `network` permissions when running git commands.
+
+If git operations fail (e.g. permission denied, lock files), report the error and suggest the user run the commands manually in their terminal.
