@@ -40,12 +40,29 @@ The site is deployed via **GitHub Actions**. On every push to `main`:
 2. Under **Build and deployment**, set **Source** to **GitHub Actions**.
 3. Push to `main`; the workflow will build and deploy.
 
+### Sync dev server → live (build locally and push)
+
+To make the live site match what you see at **http://localhost:5173/**:
+
+1. **Build and copy** deploy files into the repo root:
+   ```bash
+   npm run deploy:pages
+   ```
+2. **Commit and push** the updated `index.html`, `404.html`, `assets/`, and `attached_assets/`:
+   ```bash
+   git add index.html 404.html assets attached_assets CNAME
+   git commit -m "Deploy: sync live site with dev"
+   git push
+   ```
+
+Use this if you use **Deploy from a branch** (root or `gh-pages`). If you use **GitHub Actions**, pushing source to `main` triggers the workflow and deploys; you don’t need to run `deploy:pages` or commit built files.
+
 ### Why “local vs live” can differ
 
 - **Locally:** You run `npx vite --host`, which serves the **source** in `client/src/` with hot reload.
-- **Live:** GitHub Pages serves the **built** output from the `deploy` workflow.
+- **Live:** GitHub Pages serves either the **built** output from the `deploy` workflow (Actions) or the built files you committed (branch deploy).
 
-So you always see the latest code locally, but the live site only updates after a successful **build and deploy** from the `deploy` workflow. Pushing source changes is enough; the workflow rebuilds and redeploys.
+So you always see the latest code locally, but the live site only updates after a successful **build and deploy** (workflow or `deploy:pages` + push).
 
 ## Project Structure
 
