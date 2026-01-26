@@ -25,19 +25,11 @@ jobs:
           node-version: "20"
           cache: "npm"
 
-      - name: Verify environment
-        run: |
-          node -v
-          npm -v
-          ls -la attached_assets | head -5
-
       - name: Install dependencies
         run: npm ci
 
       - name: Build
-        run: npx vite build
-        env:
-          NODE_ENV: production
+        run: npx vite build --config vite.pages.config.ts
 
       - name: Add CNAME for custom domain
         run: echo "www.buildwithrez.com" > dist/public/CNAME
