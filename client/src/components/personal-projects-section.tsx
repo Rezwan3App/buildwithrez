@@ -18,7 +18,7 @@ export function PersonalProjectsSection() {
         github: "https://github.com/Rezwan3App"
       },
       icon: Chrome,
-      iconBg: "from-emerald-500 to-teal-600",
+      iconBg: "from-emerald-500 to-emerald-600",
       accentColor: "bg-emerald-500"
     },
     {
