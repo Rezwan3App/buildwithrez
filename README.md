@@ -64,6 +64,13 @@ Use this if you use **Deploy from a branch** (root or `gh-pages`). If you use **
 
 So you always see the latest code locally, but the live site only updates after a successful **build and deploy** (workflow or `deploy:pages` + push).
 
+### Local doesn’t match live?
+
+1. **Check Actions:** Repo → **Actions** → **Build and Deploy to GitHub Pages**. Ensure the latest run is **green**. If it’s red, the live site is still the last successful deploy (often older).
+2. **Re-run the workflow:** Open the workflow, click **Run workflow** → **Run workflow**. Wait for it to finish, then reload **www.buildwithrez.com**.
+3. **Hard refresh the live site:** `Ctrl+Shift+R` (or `Cmd+Shift+R` on Mac) to bypass cache.
+4. **Confirm Pages source:** **Settings** → **Pages** → **Build and deployment** → **Source** must be **GitHub Actions**. If it’s “Deploy from a branch”, the site is built from repo root, not the workflow.
+
 ## Project Structure
 
 ```
