@@ -77,31 +77,31 @@ export default function MBA() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0a0a0f]">
+    <div className="min-h-screen bg-[#0f172a]">
       <Navigation />
       
-      <section className="pt-28 pb-20 relative overflow-hidden bg-professional">
+      <section className="pt-24 pb-20 relative overflow-hidden">
         <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="text-center mb-16">
+          <div className="mb-12">
             <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
               MBA & Data Analytics
             </h1>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-400 max-w-2xl">
               Academic projects from Baruch College's Zicklin School of Business demonstrating analytical and strategic capabilities.
             </p>
           </div>
 
-          <div className="mb-16">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="h-8 w-1 bg-gradient-to-b from-teal-500 to-cyan-500 rounded-full"></div>
-              <h2 className="text-2xl font-bold text-white">MBA Projects</h2>
-            </div>
+          <div className="mb-12">
+            <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+              <span className="w-8 h-[2px] bg-emerald-500"></span>
+              MBA Projects
+            </h2>
             
             <div className="space-y-6">
               {mbaProjects.map((project, index) => (
                 <div 
                   key={index}
-                  className="bg-[#0f1219]/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-gray-700 transition-all duration-300"
+                  className="bg-[#12161c] border border-transparent rounded-2xl p-6 hover:border-emerald-500/20 card-glow transition-all duration-300"
                 >
                   <div className="flex flex-col lg:flex-row gap-6">
                     <div className="flex-1">
@@ -138,7 +138,7 @@ export default function MBA() {
                           href={project.pdf}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center px-4 py-2 bg-teal-500 hover:bg-teal-600 text-white rounded-lg text-sm font-semibold transition-all"
+                          className="inline-flex items-center px-4 py-2 btn-gradient btn-shine text-white rounded-lg text-sm font-semibold border-0"
                         >
                           <Download className="mr-2 h-4 w-4" />
                           Download Slide Deck
@@ -150,7 +150,7 @@ export default function MBA() {
                       <div className="lg:w-72 shrink-0">
                         <button
                           onClick={() => setModalImage(project.image!)}
-                          className="rounded-xl overflow-hidden border border-gray-700 hover:border-teal-500/50 hover:shadow-lg hover:shadow-coral-500/10 transition-all cursor-zoom-in w-full"
+                          className="rounded-xl overflow-hidden border border-gray-700 hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/10 transition-all cursor-zoom-in w-full"
                         >
                           <img 
                             src={project.image}
@@ -177,7 +177,7 @@ export default function MBA() {
               {dataProjects.map((project, index) => (
                 <div 
                   key={index}
-                  className="bg-[#0f1219]/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-gray-700 transition-all duration-300"
+                  className="bg-[#12161c] border border-transparent rounded-2xl p-6 hover:border-emerald-500/20 card-glow transition-all duration-300"
                 >
                   <div className="text-center mb-4">
                     <div className={`w-14 h-14 bg-gradient-to-br ${project.iconBg} rounded-xl flex items-center justify-center mx-auto mb-3`}>
@@ -228,7 +228,7 @@ export default function MBA() {
             </div>
           </div>
 
-          <div className="bg-[#0f1219]/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-8">
+          <div className="bg-[#12161c] border border-transparent rounded-2xl p-8">
             <div className="text-center mb-8">
               <h3 className="text-2xl font-bold text-white inline-flex items-center gap-3">
                 <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center">
@@ -295,7 +295,7 @@ export default function MBA() {
         >
           <button
             onClick={() => setModalImage(null)}
-            className="absolute top-4 right-4 p-2 text-white hover:text-teal-400 transition-colors"
+            className="absolute top-4 right-4 p-2 text-white hover:text-emerald-400 transition-colors"
           >
             <X className="h-8 w-8" />
           </button>

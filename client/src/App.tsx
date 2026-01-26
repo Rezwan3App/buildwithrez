@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/theme-provider";
+import { BackToTop } from "@/components/back-to-top";
 import Home from "@/pages/home";
 import Experience from "@/pages/experience";
 import ProductManagement from "@/pages/product-management";
@@ -42,6 +43,7 @@ function App() {
       <TooltipProvider>
         <Toaster />
         <Router />
+        <BackToTop />
       </TooltipProvider>
     </ThemeProvider>
   );

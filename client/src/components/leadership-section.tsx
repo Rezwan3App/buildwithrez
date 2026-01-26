@@ -5,53 +5,48 @@ export function LeadershipSection() {
       organization: "Data Science and Analytics Society (DSAS)",
       description: "Leading strategic communications and member engagement initiatives for the premier data science student organization.",
       logo: "/attached_assets/image_1766520551280.png",
-      orgColor: "text-teal-400"
     },
     {
       title: "MBA Student Ambassador",
       organization: "Baruch College",
       description: "Representing the MBA program and supporting prospective students through admissions and orientation processes.",
       logo: "/attached_assets/image_1766520608918.png",
-      orgColor: "text-cyan-400"
     },
     {
       title: "City Tutor Mentor",
       organization: "The City Tutors",
       description: "Providing academic mentorship and tutoring support to students in STEM subjects and career development.",
       logo: "/attached_assets/image_1766520593513.png",
-      orgColor: "text-violet-400"
     }
   ];
 
   return (
-    <section id="leadership" className="py-16 relative overflow-hidden bg-professional-alt">
+    <section id="leadership" className="py-16 relative overflow-hidden bg-[#0f172a]">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white inline-block relative">
-            Leadership & Community
-            <span className="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-teal-500 to-transparent"></span>
-          </h2>
-        </div>
+        <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+          <span className="w-8 h-[2px] bg-emerald-500"></span>
+          Leadership & Community
+        </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {leadershipRoles.map((role, index) => (
             <div
               key={index}
-              className="group bg-[#0f1219]/80 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-6 hover:border-teal-500/30 transition-all duration-500 hover-lift"
+              className="group p-5 rounded-xl bg-[#12161c] border border-transparent hover:border-emerald-500/20 card-glow transition-all duration-200"
             >
               <div className="flex items-start gap-4 mb-4">
-                <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center shrink-0 p-2 shadow-lg">
+                <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center shrink-0 p-2">
                   <img 
                     src={role.logo} 
                     alt={role.organization}
                     className="w-full h-full object-contain"
                   />
                 </div>
-                <div>
-                  <h3 className="text-lg font-bold text-white mb-1">
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-base font-semibold text-white">
                     {role.title}
                   </h3>
-                  <p className={`text-sm font-medium ${role.orgColor}`}>
+                  <p className="text-emerald-400 text-sm font-medium truncate">
                     {role.organization}
                   </p>
                 </div>

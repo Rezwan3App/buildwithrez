@@ -91,38 +91,38 @@ export default function Experience() {
 
 
   return (
-    <div className="min-h-screen bg-[#0a0a0f]">
+    <div className="min-h-screen bg-[#0f172a]">
       <Navigation />
       
-      <section className="pt-28 pb-20 relative overflow-hidden bg-professional">
+      <section className="pt-24 pb-20 relative overflow-hidden">
         <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="text-center mb-16">
+          <div className="mb-12">
             <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
               Product Experience
             </h1>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-400 max-w-2xl">
               Product internships in fintech, travel tech, and e-commerce.
             </p>
           </div>
 
-          <div className="space-y-8">
+          <div className="space-y-6">
             {experiences.map((exp, index) => (
               <div 
                 key={index}
-                className="group bg-[#0f1219]/80 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-6 sm:p-8 hover:border-teal-500/30 hover:shadow-lg hover:shadow-teal-500/5 transition-all duration-500"
+                className="group accent-line p-6 sm:p-8 rounded-xl bg-[#12161c] border border-transparent hover:border-emerald-500/20 card-glow transition-all duration-200"
               >
                 <div className="flex flex-col lg:flex-row gap-6">
                   <div className="flex-1">
-                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-5">
                       <div className="flex items-start gap-4">
-                        <div className={`w-14 h-14 ${exp.logoBg} rounded-xl flex items-center justify-center shrink-0 border border-gray-700`}>
+                        <div className={`w-12 h-12 ${exp.logoBg} rounded-lg flex items-center justify-center shrink-0 border border-gray-800`}>
                           {renderLogo(exp.logo)}
                         </div>
                         <div>
-                          <h3 className="text-xl sm:text-2xl font-bold text-white mb-1">
+                          <h3 className="text-xl font-semibold text-white mb-1">
                             {exp.title}
                           </h3>
-                          <p className="text-lg font-medium bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
+                          <p className="text-emerald-400 font-medium">
                             {exp.company}
                           </p>
                           <p className="text-sm text-gray-500">{exp.location}</p>
@@ -130,25 +130,25 @@ export default function Experience() {
                       </div>
                       <div className="flex items-center gap-2 text-gray-500 mt-3 sm:mt-0">
                         <Calendar className="h-4 w-4" />
-                        <span className="text-sm font-medium">{exp.period}</span>
+                        <span className="text-sm">{exp.period}</span>
                       </div>
                     </div>
 
-                    <ul className="space-y-3 mb-6">
+                    <ul className="space-y-3 mb-5">
                       {exp.highlights.map((highlight, idx) => (
-                        <li key={idx} className="text-base text-gray-300 flex items-start">
-                          <span className="w-2 h-2 rounded-full bg-teal-500 mt-2 mr-3 shrink-0"></span>
+                        <li key={idx} className="text-gray-400 text-sm flex items-start leading-relaxed">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2 mr-3 shrink-0"></span>
                           {highlight}
                         </li>
                       ))}
                     </ul>
 
-                    <div className="flex flex-wrap gap-2 pt-4 border-t border-gray-800">
+                    <div className="flex flex-wrap gap-2 pt-4 border-t border-gray-800/50">
                       {exp.tags.map((tag, idx) => (
                         <Badge 
                           key={idx} 
                           variant="secondary"
-                          className="bg-teal-500/10 text-teal-300 px-3 py-1 font-medium border border-teal-500/20"
+                          className="bg-gray-800/50 text-gray-400 px-2.5 py-0.5 text-xs font-medium border-0"
                         >
                           {tag}
                         </Badge>
@@ -157,8 +157,8 @@ export default function Experience() {
                   </div>
 
                   {exp.image && (
-                    <div className="lg:w-72 shrink-0">
-                      <div className="rounded-xl overflow-hidden border border-gray-700/50 shadow-lg">
+                    <div className="lg:w-64 shrink-0">
+                      <div className="rounded-lg overflow-hidden border border-gray-800">
                         <img 
                           src={exp.image}
                           alt={`${exp.company} experience`}
@@ -166,7 +166,7 @@ export default function Experience() {
                         />
                       </div>
                       {exp.imageCaption && (
-                        <p className="text-base text-gray-300 mt-3 text-center font-semibold">{exp.imageCaption}</p>
+                        <p className="text-gray-500 text-xs mt-2 text-center">{exp.imageCaption}</p>
                       )}
                     </div>
                   )}

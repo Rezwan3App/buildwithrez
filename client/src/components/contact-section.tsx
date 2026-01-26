@@ -22,7 +22,7 @@ export function ContactSection() {
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-white inline-block relative mb-4">
             Get In Touch
-            <span className="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-teal-500 to-transparent"></span>
+            <span className="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-coral-500 to-transparent"></span>
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto">
             Open to discussing product opportunities, collaborations, and innovative projects.
@@ -35,11 +35,11 @@ export function ContactSection() {
             <div className="space-y-4">
               {contactInfo.map((item, index) => (
                 <div key={index} className="flex items-center group">
-                  <div className="w-10 h-10 bg-gray-800/50 rounded-xl flex items-center justify-center mr-3 group-hover:bg-teal-500/20 transition-all duration-300">
-                    <item.icon className="h-4 w-4 text-gray-400 group-hover:text-teal-400 transition-colors" />
+                  <div className="w-10 h-10 bg-gray-800/50 rounded-xl flex items-center justify-center mr-3 group-hover:bg-coral-500/20 transition-all duration-300">
+                    <item.icon className="h-4 w-4 text-gray-400 group-hover:text-coral-400 transition-colors" />
                   </div>
                   {item.href ? (
-                    <a href={item.href} className="text-base text-gray-300 hover:text-teal-400 transition-colors">
+                    <a href={item.href} className="text-base text-gray-300 hover:text-coral-400 transition-colors">
                       {item.label}
                     </a>
                   ) : (
@@ -70,10 +70,10 @@ export function ContactSection() {
             <Button
               size="lg"
               asChild
-              className="w-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-gray-900 text-base py-5 font-semibold border-0 rounded-xl shadow-lg shadow-teal-500/20"
+              className="w-full bg-gradient-to-r from-coral-500 to-cyan-500 hover:from-coral-400 hover:to-cyan-400 text-gray-900 text-base py-5 font-semibold border-0 rounded-xl shadow-lg shadow-coral-500/20"
             >
               <a 
-                href="/attached_assets/Rezwan_Islam_Zicklin_1766511999891.pdf" 
+                href="/attached_assets/Rezwan_Islam_Zicklin_Latest.pdf" 
                 download="Rezwan_Islam_Resume.pdf"
               >
                 <Download className="mr-2 h-4 w-4" />

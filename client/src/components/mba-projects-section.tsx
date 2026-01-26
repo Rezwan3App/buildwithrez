@@ -30,7 +30,7 @@ export function MBAProjectsSection() {
       tags: ["Go-to-Market", "Consumer Research", "Strategy"],
       accentColor: "text-emerald-400",
       icon: Rocket,
-      iconBg: "from-emerald-500 to-teal-600"
+      iconBg: "from-emerald-500 to-emerald-600"
     },
     {
       title: "McDonald's Financial Analysis",
