@@ -17,37 +17,36 @@ export default function ProductManagement() {
   const [nexusPayModalImage, setNexusPayModalImage] = useState(nexuspay1);
 
   return (
-    <div className="min-h-screen bg-[#0a0a0f]">
+    <div className="min-h-screen bg-[#0f172a]">
       <Navigation />
       
-      <section className="pt-28 pb-20 relative overflow-hidden bg-professional">
+      <section className="pt-24 pb-20 relative overflow-hidden">
         <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="text-center mb-12">
+          <div className="mb-12">
             <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
               Projects
             </h1>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            <p className="text-lg text-gray-400 max-w-3xl">
               Case studies and PRDs showcasing product strategy, user research, and data-driven decision making.
             </p>
           </div>
 
-          <div className="bg-[#0f1219]/80 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-6 mb-12">
-            <h3 className="text-lg font-semibold text-white mb-3">Methodology</h3>
-            <p className="text-gray-400 leading-relaxed">
-              I leverage <span className="text-teal-400 font-semibold">RICE</span> (Reach, Impact, Confidence, Effort) for feature prioritization and <span className="text-teal-400 font-semibold">Agile</span> methodologies for iterative product development. This combination ensures data-driven decisions while maintaining flexibility to adapt based on user feedback and market conditions.
+          <div className="p-5 rounded-xl bg-[#12161c] border border-transparent mb-10">
+            <p className="text-gray-400 text-sm leading-relaxed">
+              I leverage <span className="text-emerald-400 font-medium">RICE</span> for feature prioritization and <span className="text-emerald-400 font-medium">Agile</span> methodologies for iterative product development.
             </p>
           </div>
 
-          <div className="mb-12">
-            <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-              <Sparkles className="h-6 w-6 text-teal-400" />
+          <div className="mb-10">
+            <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
+              <span className="w-8 h-[2px] bg-emerald-500"></span>
               Personal Projects
             </h2>
-            <div className="space-y-6">
-              <div className="bg-[#0f1219]/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-emerald-500/30 transition-all duration-300">
+            <div className="space-y-4">
+              <div className="bg-[#12161c] border border-transparent rounded-2xl p-6 hover:border-emerald-500/30 card-glow transition-all duration-300">
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center shrink-0">
+                    <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center shrink-0">
                       <Shield className="h-6 w-6 text-white" />
                     </div>
                     <div>
@@ -60,7 +59,7 @@ export default function ProductManagement() {
                       href="https://payment-project-gasuz8xx6f7ve9evjxrgxz.streamlit.app/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-sm font-semibold transition-all"
+                      className="inline-flex items-center px-4 py-2 btn-gradient btn-shine text-white rounded-lg text-sm font-semibold border-0"
                     >
                       <Play className="mr-2 h-4 w-4" />
                       Live Demo
@@ -130,7 +129,7 @@ export default function ProductManagement() {
                 </div>
               </div>
 
-              <div className="bg-[#0f1219]/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-blue-500/30 transition-all duration-300">
+              <div className="bg-[#12161c] border border-transparent rounded-2xl p-6 hover:border-emerald-500/30 card-glow transition-all duration-300">
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-xl overflow-hidden shrink-0">
@@ -138,7 +137,7 @@ export default function ProductManagement() {
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-white">TrackFlow</h3>
-                      <p className="text-teal-400 font-medium">Private, Local-First Job Application Tracker</p>
+                      <p className="text-emerald-400 font-medium">Private, Local-First Job Application Tracker</p>
                     </div>
                   </div>
                   <div className="flex flex-wrap gap-3">
@@ -156,7 +155,7 @@ export default function ProductManagement() {
                       href="https://youtu.be/Iz-j6F19p0s"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center px-4 py-2 bg-teal-500 hover:bg-teal-600 text-white rounded-lg text-sm font-semibold transition-all"
+                      className="inline-flex items-center px-4 py-2 btn-gradient btn-shine text-white rounded-lg text-sm font-semibold border-0"
                       data-testid="button-watch-demo"
                     >
                       <Play className="mr-2 h-4 w-4" />
@@ -192,19 +191,19 @@ export default function ProductManagement() {
                     <h4 className="text-sm font-semibold text-white mb-2">Key Features</h4>
                     <ul className="text-gray-400 text-sm space-y-1">
                       <li className="flex items-start">
-                        <span className="w-1.5 h-1.5 rounded-full bg-teal-500 mt-2 mr-2 shrink-0"></span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2 mr-2 shrink-0"></span>
                         <span><span className="text-white font-medium">Smart Salary Detector:</span> Automatically parses and highlights salary ranges from job descriptions.</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="w-1.5 h-1.5 rounded-full bg-teal-500 mt-2 mr-2 shrink-0"></span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2 mr-2 shrink-0"></span>
                         <span><span className="text-white font-medium">Description Vault:</span> Instantly scrapes and saves full job descriptions locally to prevent data loss.</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="w-1.5 h-1.5 rounded-full bg-teal-500 mt-2 mr-2 shrink-0"></span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2 mr-2 shrink-0"></span>
                         <span><span className="text-white font-medium">1-Click Capture:</span> Works on any job board (Indeed, Greenhouse, etc.) with automatic duplicate detection.</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="w-1.5 h-1.5 rounded-full bg-teal-500 mt-2 mr-2 shrink-0"></span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2 mr-2 shrink-0"></span>
                         <span><span className="text-white font-medium">Visual Kanban:</span> Drag-and-drop status tracking with a clean, distraction-free UI.</span>
                       </li>
                     </ul>
@@ -264,7 +263,7 @@ export default function ProductManagement() {
           <div className="mb-12">
             <h2 className="text-2xl font-bold text-white mb-6">Case Studies</h2>
             <div className="space-y-6">
-              <div className="bg-[#0f1219]/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-blue-500/30 transition-all duration-300">
+              <div className="bg-[#12161c] border border-transparent rounded-2xl p-6 hover:border-emerald-500/30 card-glow transition-all duration-300">
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                   <div className="flex items-start gap-4">
                     <div className="w-14 h-14 rounded-xl overflow-hidden shrink-0">
@@ -272,17 +271,18 @@ export default function ProductManagement() {
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-white">LinkedIn</h3>
-                      <p className="text-teal-400 font-medium">The Location Transparency Gap</p>
+                      <p className="text-emerald-400 font-medium">The Location Transparency Gap</p>
                     </div>
                   </div>
                   <a 
                     href="/attached_assets/LinkedIn_Case_Study_1768252732588.pdf"
-                    download="LinkedIn_Case_Study.pdf"
-                    className="inline-flex items-center px-4 py-2 bg-teal-500 hover:bg-teal-600 text-white rounded-lg text-sm font-semibold transition-all"
-                    data-testid="button-download-linkedin-case-study"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-4 py-2 btn-gradient btn-shine text-white rounded-lg text-sm font-semibold border-0"
+                    data-testid="button-view-linkedin-case-study"
                   >
-                    <Download className="mr-2 h-4 w-4" />
-                    Download Case Study
+                    <ExternalLink className="mr-2 h-4 w-4" />
+                    View Case Study
                   </a>
                 </div>
 
@@ -312,7 +312,7 @@ export default function ProductManagement() {
           <div>
             <h2 className="text-2xl font-bold text-white mb-6">Sample PRDs</h2>
             <div className="space-y-6">
-              <div className="bg-[#0f1219]/80 backdrop-blur-sm border border-gray-800 rounded-2xl p-6 hover:border-emerald-500/30 transition-all duration-300">
+              <div className="bg-[#12161c] border border-transparent rounded-2xl p-6 hover:border-emerald-500/30 card-glow transition-all duration-300">
                 <div className="flex flex-col lg:flex-row gap-6">
                   <div className="flex-1">
                     <div className="flex items-start gap-4 mb-4">
@@ -323,7 +323,7 @@ export default function ProductManagement() {
                         <h3 className="text-xl font-bold text-white mb-1">
                           AllTrails "Journeys"
                         </h3>
-                        <p className="text-teal-400 font-medium">
+                        <p className="text-emerald-400 font-medium">
                           Curated Hiking Itineraries Feature
                         </p>
                       </div>
@@ -337,7 +337,7 @@ export default function ProductManagement() {
                       href="/attached_assets/AllTrails_Journeys_Curated_Hiking_Itineraries_1768253125440.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center px-5 py-2.5 bg-teal-500 hover:bg-teal-600 text-white rounded-lg text-sm font-semibold transition-all"
+                      className="inline-flex items-center px-5 py-2.5 btn-gradient btn-shine text-white rounded-lg text-sm font-semibold border-0"
                       data-testid="button-view-alltrails-prd"
                     >
                       <FileText className="mr-2 h-4 w-4" />
@@ -349,7 +349,7 @@ export default function ProductManagement() {
                   <div className="lg:w-80 shrink-0">
                     <button
                       onClick={() => setIsImageModalOpen(true)}
-                      className="rounded-xl overflow-hidden border border-gray-700 hover:border-coral-500/50 hover:shadow-lg hover:shadow-coral-500/10 transition-all cursor-zoom-in w-full"
+                      className="rounded-xl overflow-hidden border border-gray-700 hover:border-emerald-500/50 hover:shadow-lg hover:shadow-emerald-500/10 transition-all cursor-zoom-in w-full"
                       data-testid="button-enlarge-wireframe"
                     >
                       <img 
@@ -375,7 +375,7 @@ export default function ProductManagement() {
         >
           <button
             onClick={() => setIsImageModalOpen(false)}
-            className="absolute top-4 right-4 p-2 text-white hover:text-teal-400 transition-colors"
+            className="absolute top-4 right-4 p-2 text-white hover:text-emerald-400 transition-colors"
             data-testid="button-close-modal"
           >
             <X className="h-8 w-8" />
@@ -396,7 +396,7 @@ export default function ProductManagement() {
         >
           <button
             onClick={() => setIsTrackflowModalOpen(false)}
-            className="absolute top-4 right-4 p-2 text-white hover:text-teal-400 transition-colors"
+            className="absolute top-4 right-4 p-2 text-white hover:text-emerald-400 transition-colors"
           >
             <X className="h-8 w-8" />
           </button>

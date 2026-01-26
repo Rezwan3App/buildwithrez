@@ -6,10 +6,10 @@ import { Link, useLocation } from "wouter";
 
 const navItems = [
   { path: "/", label: "Home" },
-  { path: "/experience", label: "Product Experience" },
+  { path: "/experience", label: "Experience" },
   { path: "/product-management", label: "Projects" },
-  { path: "/mba", label: "MBA & Data Analytics" },
-  { path: "/workflow", label: "Product Workflow" },
+  { path: "/mba", label: "MBA" },
+  { path: "/workflow", label: "Workflow" },
 ];
 
 export function Navigation() {
@@ -19,7 +19,7 @@ export function Navigation() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 20);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -28,27 +28,27 @@ export function Navigation() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? "bg-[#0a0a0f]/90 backdrop-blur-xl border-b border-teal-500/10 shadow-lg shadow-black/20"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled
+          ? "bg-[#0f172a]/80 backdrop-blur-xl border-b border-white/5"
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent hover:from-teal-300 hover:to-cyan-300 transition-all duration-300" data-testid="link-home-logo">
-            RI
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="flex items-center justify-between h-16">
+          <Link href="/" className="text-xl font-bold text-white hover:text-emerald-400 transition-colors" data-testid="link-home-logo">
+            RI<span className="text-emerald-500">.</span>
           </Link>
 
-          <div className="hidden md:flex items-center space-x-2">
+          <div className="hidden md:flex items-center gap-1">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 href={item.path}
-                className={`px-5 py-3 rounded-xl text-base font-medium transition-all duration-300 ${
+                className={`px-4 py-2 rounded-lg text-base font-semibold transition-all duration-200 ${
                   location === item.path
-                    ? "text-teal-300 bg-teal-500/10 border border-teal-500/30 shadow-lg shadow-teal-500/5"
-                    : "text-gray-400 hover:text-white hover:bg-white/5 border border-transparent"
+                    ? "text-emerald-400 bg-emerald-500/10"
+                    : "text-gray-400 hover:text-white hover:bg-white/5"
                 }`}
                 data-testid={`nav-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
               >
@@ -63,23 +63,23 @@ export function Navigation() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 h-10 w-10"
+                  className="rounded-lg text-gray-400 hover:text-white hover:bg-white/5 h-9 w-9"
                   data-testid="button-mobile-menu"
                 >
                   <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[280px] bg-[#0a0a0f]/95 backdrop-blur-xl border-l border-teal-500/10">
-                <div className="flex flex-col space-y-2 mt-8">
+              <SheetContent side="right" className="w-[280px] bg-[#0f172a]/95 backdrop-blur-xl border-white/5 p-0">
+                <div className="flex flex-col gap-1 mt-16 px-6">
                   {navItems.map((item) => (
                     <Link
                       key={item.path}
                       href={item.path}
                       onClick={() => setIsOpen(false)}
-                      className={`px-4 py-3 rounded-xl text-base font-medium transition-all duration-300 ${
+                      className={`px-4 py-4 rounded-xl text-base font-semibold transition-all ${
                         location === item.path
-                          ? "text-teal-300 bg-teal-500/10 border border-teal-500/30"
-                          : "text-gray-400 hover:text-white hover:bg-white/5 border border-transparent"
+                          ? "text-emerald-400 bg-emerald-500/10 border border-emerald-500/20"
+                          : "text-gray-400 hover:text-white hover:bg-white/5"
                       }`}
                       data-testid={`nav-mobile-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
                     >

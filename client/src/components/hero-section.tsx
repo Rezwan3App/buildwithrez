@@ -1,108 +1,104 @@
 import { Button } from "@/components/ui/button";
-import { ChevronDown, Download } from "lucide-react";
-import { FaLinkedin, FaGithub } from "react-icons/fa";
-import { SiTableau } from "react-icons/si";
-import { scrollToSection } from "@/lib/utils";
+import { Download } from "lucide-react";
+import { FaLinkedin } from "react-icons/fa";
 
 export function HeroSection() {
-  const socialLinks = [
-    {
-      href: "https://www.linkedin.com/in/rezwan-islam33",
-      icon: FaLinkedin,
-      label: "LinkedIn",
-      color: "hover:bg-blue-500/20 hover:border-blue-400/50 hover:text-blue-400 hover:shadow-lg hover:shadow-blue-500/10"
-    },
-    {
-      href: "https://public.tableau.com/app/profile/rezwan.islam4698/vizzes",
-      icon: SiTableau,
-      label: "Tableau",
-      color: "hover:bg-orange-500/20 hover:border-orange-400/50 hover:text-orange-400 hover:shadow-lg hover:shadow-orange-500/10"
-    },
-    {
-      href: "https://github.com/Rezwan3App",
-      icon: FaGithub,
-      label: "GitHub",
-      color: "hover:bg-violet-500/20 hover:border-violet-400/50 hover:text-violet-400 hover:shadow-lg hover:shadow-violet-500/10"
-    },
-  ];
-
   return (
     <section 
       id="home" 
-      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-professional"
+      className="min-h-screen flex items-center relative overflow-hidden bg-[#0f172a]"
     >
+      {/* Animated gradient orbs */}
+      <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none float-animation"></div>
+      <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-blue-500/8 rounded-full blur-[100px] pointer-events-none float-animation-delayed"></div>
+      <div className="absolute top-1/2 right-1/3 w-[300px] h-[300px] bg-teal-500/5 rounded-full blur-[80px] pointer-events-none float-animation" style={{animationDelay: '-5s'}}></div>
       
-      <div className="relative z-10 max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 text-center py-20">
-        {/* Profile Image - modern glow effect */}
-        <div className="mb-10 animate-fade-in-up">
-          <div className="relative w-44 h-44 sm:w-52 sm:h-52 mx-auto group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-teal-500 via-cyan-500 to-violet-500 rounded-full opacity-0 group-hover:opacity-50 blur-xl transition-all duration-700"></div>
-            <div className="relative w-full h-full rounded-full overflow-hidden ring-2 ring-gray-800 transition-all duration-500 group-hover:ring-teal-500/50">
-              <img 
-                src="/attached_assets/profile-image.jpg" 
-                alt="Rezwan Islam" 
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
+      <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 pt-20 pb-8 w-full">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Left Column - Text Content */}
+          <div className="space-y-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full">
+              <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+              <span className="text-emerald-400 font-medium text-sm tracking-wide">
+                Aspiring Product Manager
+              </span>
+            </div>
+            
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white tracking-tight leading-[1.1]">
+              I'm <span className="gradient-text">Rezwan</span> Islam
+            </h1>
+            
+            <p className="text-lg text-gray-400 leading-relaxed max-w-xl">
+              Former mechanical engineer with an MBA background, aligning business strategy, data, and user-centric design to build scalable products.
+            </p>
+
+            {/* Testimonial Box */}
+            <div className="relative animated-border p-5 max-w-xl">
+              <div className="absolute -top-3 left-6">
+                <span className="text-4xl text-emerald-500/30">"</span>
+              </div>
+              <p className="text-gray-400 text-sm leading-relaxed pl-2">
+                I think Rez is naturally curious which is perhaps his greatest trait, and one of the most critical for product management as he furthers his career.
+              </p>
+              <div className="flex items-center gap-3 mt-4 pt-4 border-t border-gray-800/50">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white text-xs font-bold">
+                  CC
+                </div>
+                <div>
+                  <p className="text-white text-sm font-medium">Cody Chin</p>
+                  <p className="text-gray-500 text-xs">Director of Digital PM, Rocket Mortgage</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex flex-wrap gap-4 pt-2">
+              <Button
+                size="lg"
+                asChild
+                className="btn-gradient btn-shine text-white px-6 py-3 font-semibold rounded-xl border-0"
+              >
+                <a 
+                  href="/attached_assets/Rezwan_Islam_Zicklin_Latest.pdf" 
+                  download="Rezwan_Islam_Resume.pdf"
+                >
+                  <Download className="mr-2 h-4 w-4" />
+                  Download Resume
+                </a>
+              </Button>
+              
+              <Button
+                variant="outline"
+                size="lg"
+                asChild
+                className="bg-transparent border-gray-700 text-white hover:bg-white/5 hover:border-gray-600 px-6 py-3 font-semibold rounded-xl transition-all"
+              >
+                <a href="https://www.linkedin.com/in/rezwan-islam33" target="_blank" rel="noopener noreferrer">
+                  <FaLinkedin className="mr-2 h-4 w-4" />
+                  LinkedIn
+                </a>
+              </Button>
+            </div>
+          </div>
+
+          {/* Right Column - Image */}
+          <div className="flex justify-center lg:justify-end">
+            <div className="relative group">
+              {/* Glow effect behind image */}
+              <div className="absolute -inset-4 bg-gradient-to-br from-emerald-500/20 to-teal-500/10 rounded-2xl blur-2xl opacity-50 group-hover:opacity-80 transition-opacity duration-500"></div>
+              
+              <div className="profile-ring relative w-80 h-[420px] sm:w-[340px] sm:h-[460px] rounded-2xl overflow-hidden shadow-2xl">
+                <img 
+                  src="/attached_assets/profile-headshot.png" 
+                  alt="Rezwan Islam" 
+                  className="w-full h-full object-cover object-top"
+                />
+                {/* Subtle overlay gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a]/40 via-transparent to-transparent"></div>
+              </div>
             </div>
           </div>
         </div>
-
-        <div className="space-y-5 mb-12">
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-white tracking-tight animate-fade-in-up opacity-0" style={{animationDelay: '0.1s', animationFillMode: 'forwards'}}>
-            Rezwan Islam
-          </h1>
-          
-          <p className="text-xl sm:text-2xl font-medium bg-gradient-to-r from-teal-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent animate-fade-in-up opacity-0" style={{animationDelay: '0.2s', animationFillMode: 'forwards'}}>
-            Product Analyst | MBA Candidate
-          </p>
-          
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed animate-fade-in-up opacity-0" style={{animationDelay: '0.3s', animationFillMode: 'forwards'}}>
-            Building user-first products that scale. API integrations, A/B testing, and data-driven decisions.
-          </p>
-          
-          <p className="text-lg sm:text-xl italic text-gray-400 max-w-xl mx-auto mt-6 animate-fade-in-up opacity-0" style={{animationDelay: '0.4s', animationFillMode: 'forwards'}}>
-            "The greatest product you will ever work on is yourself."
-          </p>
-        </div>
-
-        <div className="flex flex-col sm:flex-row justify-center gap-3 mb-16 animate-fade-in-up opacity-0" style={{animationDelay: '0.5s', animationFillMode: 'forwards'}}>
-          {socialLinks.map((link, index) => (
-            <Button
-              key={index}
-              variant="outline"
-              size="lg"
-              asChild
-              className={`bg-transparent border-gray-700/50 text-gray-400 transition-all duration-300 text-base px-5 py-2.5 font-medium rounded-xl ${link.color}`}
-            >
-              <a href={link.href} target="_blank" rel="noopener noreferrer">
-                <link.icon className="mr-2 h-4 w-4" />
-                {link.label}
-              </a>
-            </Button>
-          ))}
-          
-          <Button
-            size="lg"
-            asChild
-            className="bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-gray-900 text-base px-6 py-2.5 font-semibold border-0 rounded-xl shadow-lg shadow-teal-500/20 hover:shadow-teal-500/30 transition-all duration-300"
-          >
-            <a 
-              href="/attached_assets/Rezwan_Islam_Zicklin_1766511999891.pdf" 
-              download="Rezwan_Islam_Resume.pdf"
-            >
-              <Download className="mr-2 h-4 w-4" />
-              Resume
-            </a>
-          </Button>
-        </div>
-
-        <button
-          onClick={() => scrollToSection("about")}
-          className="text-gray-600 hover:text-teal-400 transition-all duration-300"
-          aria-label="Scroll to about section"
-        >
-          <ChevronDown className="h-6 w-6 animate-bounce" />
-        </button>
       </div>
     </section>
   );
