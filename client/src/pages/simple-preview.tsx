@@ -1,40 +1,33 @@
 import { Link } from "wouter";
 
-const workItems = [
+const productProjects = [
   {
     number: "01",
-    label: "Product Analytics",
-    title: "Odynn — Improving booking flow quality across Awayz",
+    label: "GTM Strategy",
+    title: "HapticNav — B2B product one-pagers and partner pipeline",
     description:
-      "Validated features, mapped product events, and surfaced funnel issues so teams could ship cleaner travel booking experiences.",
+      "A lightweight product story around positioning haptic navigation for partners like mobility, mapping, and autonomous vehicle teams.",
   },
   {
     number: "02",
-    label: "Product Management",
-    title: "Rocket Mortgage — Mobile app account creation",
+    label: "Product Analytics",
+    title: "Odynn — Booking flow QA and product instrumentation",
     description:
-      "Defined mobile feature requirements with design and engineering to make onboarding faster and simpler.",
+      "A simple case study showing how feature validation, event tracking, and competitor analysis improved product clarity.",
   },
   {
     number: "03",
-    label: "Business Strategy",
-    title: "SBDC — Customer discovery and startup planning",
+    label: "Mobile Product",
+    title: "Rocket Mortgage — Faster account creation and onboarding",
     description:
-      "Built research, CRM, and financial planning workflows for early-stage businesses preparing to grow.",
+      "A product breakdown of mobile onboarding, Plaid integration, and AI-assisted support requirements.",
   },
   {
     number: "04",
-    label: "Engineering",
-    title: "Zachry Nuclear — Technical systems and safety analysis",
+    label: "Product Strategy",
+    title: "MegaPlants — Market research for new wellness products",
     description:
-      "Applied mechanical engineering judgment to regulated plant modifications, heat transfer, and equipment changes.",
-  },
-  {
-    number: "05",
-    label: "MBA Projects",
-    title: "Analytics, finance, and market research case work",
-    description:
-      "Turned class projects into concise proof points across data-driven marketing, financial analysis, and operations.",
+      "A concise view of how SKU research, customer signals, and category analysis shaped product direction.",
   },
 ];
 
@@ -55,14 +48,14 @@ export default function SimplePreview() {
           Rezwan Islam
         </Link>
         <nav className="hidden items-center gap-6 text-sm text-neutral-600 sm:flex">
-          <a href="#work" className="hover:text-black">
-            Work
+          <a href="#projects" className="hover:text-black">
+            Projects
           </a>
           <a href="#about" className="hover:text-black">
             About
           </a>
-          <a href="#contact" className="hover:text-black">
-            Contact
+          <a href="#resume" className="hover:text-black">
+            Resume
           </a>
           <Link href="/" className="hover:text-black">
             Current site
@@ -77,26 +70,26 @@ export default function SimplePreview() {
               Product Manager · Builder
             </p>
             <h1 className="max-w-5xl text-6xl font-semibold leading-[0.95] tracking-[-0.08em] sm:text-7xl md:text-8xl lg:text-9xl">
-              My work begins before the first roadmap.
+              Simple products. Clear stories.
             </h1>
           </div>
 
           <div className="mt-14 grid gap-8 border-t border-black/15 pt-8 sm:grid-cols-[1.4fr_1fr_1fr_1fr]">
             <p className="max-w-xl text-xl leading-snug tracking-[-0.03em] text-neutral-800 sm:text-2xl">
-              I turn ambiguous ideas into useful products through research,
-              analytics, clear execution, and simple customer experiences.
+              A light portfolio for product projects, a short about me, and a
+              resume people can quickly scan.
             </p>
-            <div>
-              <p className="text-xs uppercase tracking-[0.2em] text-neutral-500">
-                Based in
-              </p>
-              <p className="mt-2 text-sm">New York</p>
-            </div>
             <div>
               <p className="text-xs uppercase tracking-[0.2em] text-neutral-500">
                 Focus
               </p>
-              <p className="mt-2 text-sm">Product & Analytics</p>
+              <p className="mt-2 text-sm">Product Management</p>
+            </div>
+            <div>
+              <p className="text-xs uppercase tracking-[0.2em] text-neutral-500">
+                Projects
+              </p>
+              <p className="mt-2 text-sm">Mobile, B2B, Analytics</p>
             </div>
             <div>
               <p className="text-xs uppercase tracking-[0.2em] text-neutral-500">
@@ -107,18 +100,18 @@ export default function SimplePreview() {
           </div>
         </section>
 
-        <section id="work" className="border-t border-black/15 py-16">
+        <section id="projects" className="border-t border-black/15 py-16">
           <div className="mb-10 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
             <p className="text-sm uppercase tracking-[0.25em] text-neutral-500">
-              Selected work
+              Product projects
             </p>
             <h2 className="max-w-xl text-4xl font-semibold leading-none tracking-[-0.06em] sm:text-5xl">
-              Projects I want people to remember.
+              Four quick case-study slots.
             </h2>
           </div>
 
           <div className="divide-y divide-black/15 border-y border-black/15">
-            {workItems.map((item) => (
+            {productProjects.map((item) => (
               <article
                 key={item.number}
                 className="grid gap-5 py-7 transition-colors hover:bg-black/[0.03] sm:grid-cols-[64px_180px_1fr]"
@@ -147,13 +140,12 @@ export default function SimplePreview() {
           </p>
           <div>
             <h2 className="text-4xl font-semibold leading-none tracking-[-0.06em] sm:text-5xl">
-              I build from the messy middle.
+              Product-minded, technical, and practical.
             </h2>
             <p className="mt-6 max-w-3xl text-xl leading-relaxed tracking-[-0.03em] text-neutral-700">
-              My background connects product management, mechanical engineering,
-              and business strategy. I like the early part of product work:
-              understanding the problem, finding the signal, and shaping the
-              simplest next step.
+              I like turning unclear problems into simple next steps. My work
+              usually starts with the user, the data, and the business goal,
+              then becomes a roadmap, prototype, requirement, or launch plan.
             </p>
             <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {capabilities.map((capability) => (
@@ -169,21 +161,33 @@ export default function SimplePreview() {
         </section>
 
         <section
-          id="contact"
-          className="border-t border-black/15 py-16 text-center"
+          id="resume"
+          className="grid gap-10 border-t border-black/15 py-16 lg:grid-cols-[1fr_1.4fr]"
         >
           <p className="text-sm uppercase tracking-[0.25em] text-neutral-500">
-            Contact
+            Resume
           </p>
-          <h2 className="mx-auto mt-6 max-w-4xl text-5xl font-semibold leading-none tracking-[-0.08em] sm:text-7xl">
-            Let&apos;s build something useful.
-          </h2>
-          <a
-            href="mailto:hello@buildwithrez.com"
-            className="mt-10 inline-flex rounded-full bg-[#111111] px-6 py-3 text-sm font-medium text-white transition hover:bg-neutral-700"
-          >
-            Get in touch ↗
-          </a>
+          <div className="rounded-3xl border border-black/15 bg-white/35 p-6 sm:p-8">
+            <h2 className="text-4xl font-semibold leading-none tracking-[-0.06em] sm:text-5xl">
+              Keep the resume easy to find.
+            </h2>
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-neutral-700">
+              This section can hold a one-line summary, a PDF download, and a
+              few quick links. Once the resume file is added, this button can
+              point straight to the PDF.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <span className="rounded-full bg-[#111111] px-5 py-3 text-sm font-medium text-white">
+                Resume PDF placeholder
+              </span>
+              <a
+                href="mailto:hello@buildwithrez.com"
+                className="rounded-full border border-black/15 px-5 py-3 text-sm font-medium transition hover:bg-black/[0.04]"
+              >
+                Email ↗
+              </a>
+            </div>
+          </div>
         </section>
       </main>
     </div>
