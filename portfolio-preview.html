@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Rezwan Islam - Portfolio Preview</title>
+    <style>
+      :root {
+        color: #111111;
+        background: #f4f0e8;
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: #f4f0e8;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        width: min(1120px, calc(100% - 48px));
+        margin: 0 auto;
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 24px 0;
+        font-size: 14px;
+      }
+
+      .brand {
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .links {
+        display: flex;
+        gap: 24px;
+        color: #666666;
+      }
+
+      .links a:hover {
+        color: #111111;
+      }
+
+      section {
+        border-top: 1px solid rgb(17 17 17 / 15%);
+      }
+
+      .hero {
+        min-height: 72vh;
+        display: grid;
+        align-content: space-between;
+        padding: 56px 0 40px;
+      }
+
+      .eyebrow {
+        margin: 0 0 32px;
+        color: #737373;
+        font-size: 13px;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        max-width: 980px;
+        font-size: clamp(64px, 11vw, 132px);
+        line-height: 0.94;
+        letter-spacing: -0.085em;
+      }
+
+      .meta {
+        display: grid;
+        grid-template-columns: 1.4fr repeat(3, 1fr);
+        gap: 32px;
+        border-top: 1px solid rgb(17 17 17 / 15%);
+        padding-top: 32px;
+      }
+
+      .intro {
+        max-width: 560px;
+        color: #333333;
+        font-size: clamp(22px, 3vw, 30px);
+        line-height: 1.15;
+        letter-spacing: -0.04em;
+      }
+
+      .meta-label {
+        margin-bottom: 8px;
+        color: #737373;
+        font-size: 12px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .meta-value {
+        color: #222222;
+        font-size: 14px;
+      }
+
+      .section-grid {
+        display: grid;
+        grid-template-columns: 0.7fr 1.4fr;
+        gap: 56px;
+        padding: 72px 0;
+      }
+
+      .section-title {
+        color: #737373;
+        font-size: 13px;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        max-width: 620px;
+        font-size: clamp(42px, 6vw, 64px);
+        line-height: 0.96;
+        letter-spacing: -0.07em;
+      }
+
+      .project-list {
+        margin-top: 40px;
+        border-top: 1px solid rgb(17 17 17 / 15%);
+        border-bottom: 1px solid rgb(17 17 17 / 15%);
+      }
+
+      .project {
+        display: grid;
+        grid-template-columns: 64px 180px 1fr;
+        gap: 24px;
+        padding: 28px 0;
+        border-top: 1px solid rgb(17 17 17 / 15%);
+      }
+
+      .project:first-child {
+        border-top: 0;
+      }
+
+      .number,
+      .label {
+        color: #737373;
+        font-size: 14px;
+      }
+
+      h3 {
+        font-size: clamp(24px, 3vw, 32px);
+        line-height: 1.05;
+        letter-spacing: -0.045em;
+      }
+
+      .description {
+        max-width: 720px;
+        margin-top: 12px;
+        color: #606060;
+        font-size: 16px;
+        line-height: 1.65;
+      }
+
+      .about-copy {
+        max-width: 760px;
+        margin-top: 24px;
+        color: #4a4a4a;
+        font-size: clamp(20px, 2.5vw, 26px);
+        line-height: 1.45;
+        letter-spacing: -0.035em;
+      }
+
+      .chips {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 40px;
+      }
+
+      .chip {
+        border: 1px solid rgb(17 17 17 / 15%);
+        border-radius: 999px;
+        padding: 13px 16px;
+        font-size: 14px;
+      }
+
+      .resume-card {
+        border: 1px solid rgb(17 17 17 / 15%);
+        border-radius: 28px;
+        background: rgb(255 255 255 / 35%);
+        padding: 32px;
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 32px;
+      }
+
+      .button {
+        display: inline-flex;
+        border-radius: 999px;
+        padding: 13px 20px;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .button-primary {
+        background: #111111;
+        color: #ffffff;
+      }
+
+      .button-secondary {
+        border: 1px solid rgb(17 17 17 / 15%);
+      }
+
+      @media (max-width: 760px) {
+        .page {
+          width: min(100% - 32px, 1120px);
+        }
+
+        .links {
+          display: none;
+        }
+
+        .hero {
+          min-height: auto;
+          gap: 72px;
+        }
+
+        .meta,
+        .section-grid,
+        .project,
+        .chips {
+          grid-template-columns: 1fr;
+        }
+
+        .project {
+          gap: 8px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="nav">
+        <a class="brand" href="#">Rezwan Islam</a>
+        <nav class="links" aria-label="Preview navigation">
+          <a href="#projects">Projects</a>
+          <a href="#about">About</a>
+          <a href="#resume">Resume</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div>
+            <p class="eyebrow">Product Manager &middot; Builder</p>
+            <h1>Simple products. Clear stories.</h1>
+          </div>
+
+          <div class="meta">
+            <p class="intro">
+              A light portfolio for product projects, a short about me, and a
+              resume people can quickly scan.
+            </p>
+            <div>
+              <p class="meta-label">Focus</p>
+              <p class="meta-value">Product Management</p>
+            </div>
+            <div>
+              <p class="meta-label">Projects</p>
+              <p class="meta-value">Mobile, B2B, Analytics</p>
+            </div>
+            <div>
+              <p class="meta-label">Tools</p>
+              <p class="meta-value">Figma, Jira, Amplitude, SQL</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="projects" class="section-grid">
+          <p class="section-title">Product projects</p>
+          <div>
+            <h2>Four quick case-study slots.</h2>
+            <div class="project-list">
+              <article class="project">
+                <p class="number">01</p>
+                <p class="label">GTM Strategy</p>
+                <div>
+                  <h3>HapticNav - B2B product one-pagers and partner pipeline</h3>
+                  <p class="description">
+                    A lightweight product story around positioning haptic
+                    navigation for partners like mobility, mapping, and
+                    autonomous vehicle teams.
+                  </p>
+                </div>
+              </article>
+
+              <article class="project">
+                <p class="number">02</p>
+                <p class="label">Product Analytics</p>
+                <div>
+                  <h3>Odynn - Booking flow QA and product instrumentation</h3>
+                  <p class="description">
+                    A simple case study showing how feature validation, event
+                    tracking, and competitor analysis improved product clarity.
+                  </p>
+                </div>
+              </article>
+
+              <article class="project">
+                <p class="number">03</p>
+                <p class="label">Mobile Product</p>
+                <div>
+                  <h3>Rocket Mortgage - Faster account creation and onboarding</h3>
+                  <p class="description">
+                    A product breakdown of mobile onboarding, Plaid integration,
+                    and AI-assisted support requirements.
+                  </p>
+                </div>
+              </article>
+
+              <article class="project">
+                <p class="number">04</p>
+                <p class="label">Product Strategy</p>
+                <div>
+                  <h3>MegaPlants - Market research for new wellness products</h3>
+                  <p class="description">
+                    A concise view of how SKU research, customer signals, and
+                    category analysis shaped product direction.
+                  </p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="about" class="section-grid">
+          <p class="section-title">About</p>
+          <div>
+            <h2>Product-minded, technical, and practical.</h2>
+            <p class="about-copy">
+              I like turning unclear problems into simple next steps. My work
+              usually starts with the user, the data, and the business goal,
+              then becomes a roadmap, prototype, requirement, or launch plan.
+            </p>
+            <div class="chips">
+              <span class="chip">Product Thinking</span>
+              <span class="chip">User Research</span>
+              <span class="chip">Analytics</span>
+              <span class="chip">Roadmapping</span>
+              <span class="chip">Technical Systems</span>
+              <span class="chip">Cross-functional Work</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="resume" class="section-grid">
+          <p class="section-title">Resume</p>
+          <div class="resume-card">
+            <h2>Keep the resume easy to find.</h2>
+            <p class="description">
+              This section can hold a one-line summary, a PDF download, and a
+              few quick links. Once the resume file is added, this button can
+              point straight to the PDF.
+            </p>
+            <div class="actions">
+              <span class="button button-primary">Resume PDF placeholder</span>
+              <a class="button button-secondary" href="mailto:hello@buildwithrez.com">
+                Email &rarr;
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
