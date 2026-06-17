@@ -10,9 +10,9 @@ interface Project {
   category: string;
   domain: string;
   tools: string[];
-  imageUrl?: string;
-  fileUrl?: string;
-  externalUrl?: string;
+  imageUrl?: string | null;
+  fileUrl?: string | null;
+  externalUrl?: string | null;
   isVisible: boolean;
   createdAt: string;
 }
@@ -208,7 +208,7 @@ export function PortfolioSection() {
           </div>
         )}
 
-        {filteredProjects.length === 0 && !isLoading && (
+        {filteredProjects.length === 0 && (
           <div className="text-center py-12">
             <p className="text-gray-500 dark:text-gray-400 text-lg">
               No projects found for the selected category.

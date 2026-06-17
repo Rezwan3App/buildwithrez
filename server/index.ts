@@ -31,13 +31,24 @@ async function startServer() {
       }
     });
 
+    app.get('/portfolio-preview.html', (_req, res, next) => {
+      const previewPath = path.join(process.cwd(), 'portfolio-preview.html');
+
+      if (fs.existsSync(previewPath) && fs.statSync(previewPath).isFile()) {
+        res.setHeader('Content-Type', 'text/html; charset=utf-8');
+        res.sendFile(previewPath);
+      } else {
+        next();
+      }
+    });
+
     // Create Vite server in middleware mode with explicit config override
     const vite = await createServer({
       configFile: false, // Don't use vite.config.ts
       server: { 
         middlewareMode: true,
         host: '0.0.0.0',
-        allowedHosts: ['localhost', '.replit.dev', '.replit.co', 'all']
+        allowedHosts: ['localhost', '.replit.dev', '.replit.co', '.loca.lt']
       },
       root: path.resolve(process.cwd(), 'client'),
       publicDir: path.resolve(process.cwd(), 'client/public'),
