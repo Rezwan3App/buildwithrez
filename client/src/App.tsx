@@ -9,6 +9,7 @@ import Experience from "@/pages/experience";
 import ProductManagement from "@/pages/product-management";
 import MBA from "@/pages/mba";
 import ProductWorkflow from "@/pages/product-workflow";
+import SimplePreview from "@/pages/simple-preview";
 import NotFound from "@/pages/not-found";
 
 function ScrollToTop() {
@@ -31,6 +32,7 @@ function Router() {
         <Route path="/product-management" component={ProductManagement} />
         <Route path="/mba" component={MBA} />
         <Route path="/workflow" component={ProductWorkflow} />
+        <Route path="/preview" component={SimplePreview} />
         <Route component={NotFound} />
       </Switch>
     </>
