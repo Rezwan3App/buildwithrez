@@ -44,7 +44,7 @@ export default function SimplePreview() {
   return (
     <div className="min-h-screen bg-[#f4f0e8] text-[#111111]">
       <header className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6 sm:px-8 lg:px-10">
-        <Link href="/" className="text-sm font-semibold tracking-tight">
+        <Link href="/preview" className="text-sm font-semibold tracking-tight">
           Rezwan Islam
         </Link>
         <nav className="hidden items-center gap-6 text-sm text-neutral-600 sm:flex">

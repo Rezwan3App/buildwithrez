@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/theme-provider";
 import { BackToTop } from "@/components/back-to-top";
+import Home from "@/pages/home";
 import Experience from "@/pages/experience";
 import ProductManagement from "@/pages/product-management";
 import MBA from "@/pages/mba";
@@ -26,7 +27,7 @@ function Router() {
     <>
       <ScrollToTop />
       <Switch>
-        <Route path="/" component={SimplePreview} />
+        <Route path="/" component={Home} />
         <Route path="/experience" component={Experience} />
         <Route path="/product-management" component={ProductManagement} />
         <Route path="/mba" component={MBA} />
