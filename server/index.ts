@@ -37,7 +37,7 @@ async function startServer() {
       server: { 
         middlewareMode: true,
         host: '0.0.0.0',
-        allowedHosts: ['localhost', '.replit.dev', '.replit.co', 'all']
+        allowedHosts: ['localhost', '.replit.dev', '.replit.co', '.loca.lt']
       },
       root: path.resolve(process.cwd(), 'client'),
       publicDir: path.resolve(process.cwd(), 'client/public'),
