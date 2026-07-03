@@ -8,7 +8,6 @@ import Home from "@/pages/home";
 import Experience from "@/pages/experience";
 import ProductManagement from "@/pages/product-management";
 import MBA from "@/pages/mba";
-import ProductWorkflow from "@/pages/product-workflow";
 import NotFound from "@/pages/not-found";
 
 function ScrollToTop() {
@@ -28,9 +27,10 @@ function Router() {
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/experience" component={Experience} />
+        <Route path="/projects" component={ProductManagement} />
+        {/* old URL kept alive for anyone holding a shared link */}
         <Route path="/product-management" component={ProductManagement} />
         <Route path="/mba" component={MBA} />
-        <Route path="/workflow" component={ProductWorkflow} />
         <Route component={NotFound} />
       </Switch>
     </>
