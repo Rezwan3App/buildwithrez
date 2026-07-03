@@ -25,15 +25,7 @@ export default function ProductManagement() {
                 Projects
               </h1>
               <p className="text-lg text-slate-600 max-w-3xl">
-                Case studies and PRDs showcasing product strategy, user research, and data-driven decision making.
-              </p>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.05}>
-            <div className="p-5 rounded-xl bg-slate-50 border border-slate-200 mb-10">
-              <p className="text-slate-600 text-sm leading-relaxed">
-                I leverage <span className="text-blue-800 font-medium">RICE</span> for feature prioritization and <span className="text-blue-800 font-medium">Agile</span> methodologies for iterative product development.
+                Things I've built and product thinking I've put on paper — case studies, PRDs, and two shipped side projects.
               </p>
             </div>
           </Reveal>
@@ -70,77 +62,65 @@ export default function ProductManagement() {
                 </div>
 
                 <p className="text-slate-600 mb-6">
-                  Promo codes and sponsor deals are buried inside long YouTube videos — viewers either scrub through sponsor reads or miss the discount entirely. Snag scans a video's transcript and surfaces every promo code, sponsor offer, and limited-time deal with the exact timestamp, so you get the deal in seconds instead of twenty minutes.
+                  Promo codes and sponsor deals are buried inside long YouTube videos — viewers either scrub through sponsor reads or miss the discount entirely. I built Snag to scan a video's transcript and surface every promo code, sponsor offer, and limited-time deal with its exact timestamp.
                 </p>
 
                 <div className="flex-1">
-                  <h4 className="text-sm font-semibold text-slate-900 mb-2">Key Features</h4>
+                  <h4 className="text-sm font-semibold text-slate-900 mb-2">What it does</h4>
                   <ul className="text-slate-600 text-sm space-y-1">
                     <li className="flex items-start">
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-700 mt-2 mr-2 shrink-0"></span>
-                      <span><span className="text-slate-900 font-medium">Scan Any Video:</span> Paste a YouTube URL and get every deal extracted from the transcript in seconds.</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-2 mr-2 shrink-0"></span>
+                      <span>Paste a YouTube URL and get every deal extracted from the transcript in seconds.</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-700 mt-2 mr-2 shrink-0"></span>
-                      <span><span className="text-slate-900 font-medium">Watch Entire Channels:</span> Add a channel and Snag automatically scans its latest uploads for new offers.</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-2 mr-2 shrink-0"></span>
+                      <span>Add a channel and Snag automatically scans its latest uploads for new offers.</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-700 mt-2 mr-2 shrink-0"></span>
-                      <span><span className="text-slate-900 font-medium">Jump to Timestamp:</span> Every deal links to the exact moment it was mentioned, for instant verification.</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-2 mr-2 shrink-0"></span>
+                      <span>Every deal links to the exact moment it was mentioned, for instant verification.</span>
                     </li>
                     <li className="flex items-start">
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-700 mt-2 mr-2 shrink-0"></span>
-                      <span><span className="text-slate-900 font-medium">One-Click Copy:</span> Copy any promo code straight to the clipboard from the results list.</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-2 mr-2 shrink-0"></span>
+                      <span>Copies any promo code straight to the clipboard from the results list.</span>
                     </li>
                   </ul>
                 </div>
 
-                <div className="mt-6 p-4 bg-blue-50 border border-blue-100 rounded-xl">
-                  <h4 className="text-sm font-semibold text-slate-900 mb-4 flex items-center gap-2">
-                    <span className="text-blue-900">Product Journey</span>
-                    <span className="text-xs text-slate-500 font-normal">Development & Iteration</span>
-                  </h4>
+                <div className="mt-6 border-l-2 border-blue-800 pl-5">
+                  <p className="text-xs font-semibold tracking-widest uppercase text-blue-800 mb-4">Product Journey</p>
                   <div className="space-y-4 text-sm">
-                    <div>
-                      <p className="text-slate-700 mb-1">
-                        <span className="mr-2">🎯</span>
-                        <span className="text-slate-900 font-medium">Ruthless MVP Scoping</span>
-                      </p>
-                      <p className="text-slate-600 pl-6">
-                        Cut the first version down to one core job: paste a link, get the codes. No accounts, no database, no build step — a JSON file and a zero-dependency frontend were enough to validate the idea.
-                      </p>
+                    <div className="flex gap-3">
+                      <span className="text-blue-800 font-semibold text-xs mt-0.5 shrink-0">01</span>
+                      <div>
+                        <p className="text-slate-900 font-medium mb-1">Ruthless MVP scoping</p>
+                        <p className="text-slate-600">
+                          Cut the first version down to one core job: paste a link, get the codes. No accounts, no database, no build step — a JSON file and a zero-dependency frontend were enough to validate the idea.
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-slate-700 mb-1">
-                        <span className="mr-2">🔄</span>
-                        <span className="text-slate-900 font-medium">Designing Around a Platform Constraint</span>
-                      </p>
-                      <p className="text-slate-600 pl-6">
-                        YouTube blocks transcript requests from cloud servers. Instead of fighting it with proxies, I made local-first an explicit product decision — the app runs on the user's machine, fetching transcripts reliably with zero API keys or infrastructure cost.
-                      </p>
+                    <div className="flex gap-3">
+                      <span className="text-blue-800 font-semibold text-xs mt-0.5 shrink-0">02</span>
+                      <div>
+                        <p className="text-slate-900 font-medium mb-1">Designing around a platform constraint</p>
+                        <p className="text-slate-600">
+                          YouTube blocks transcript requests from cloud servers. Instead of fighting it with proxies, I made local-first an explicit product decision — the app runs on the user's machine, fetching transcripts reliably with zero API keys or infrastructure cost.
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-slate-700 mb-1">
-                        <span className="mr-2">🚀</span>
-                        <span className="text-slate-900 font-medium">Key Takeaway</span>
-                      </p>
-                      <p className="text-slate-600 pl-6">
-                        Platform constraints aren't blockers — they're forcing functions that shape better architecture. The same lesson from TrackFlow's pivot, learned from the opposite direction.
-                      </p>
+                    <div className="flex gap-3">
+                      <span className="text-blue-800 font-semibold text-xs mt-0.5 shrink-0">03</span>
+                      <div>
+                        <p className="text-slate-900 font-medium mb-1">Key takeaway</p>
+                        <p className="text-slate-600">
+                          Platform constraints aren't blockers — they're forcing functions that shape better architecture. The same lesson from TrackFlow's pivot, learned from the opposite direction.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-slate-200">
-                  <h4 className="text-sm font-semibold text-slate-900 mb-3">Technology Stack</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {["TypeScript", "Bun + Hono", "YouTube Transcript API", "Regex Extraction", "Local-First Architecture"].map((tech, idx) => (
-                      <span key={idx} className="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-full text-xs font-medium">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+                <p className="text-sm text-slate-400 mt-6">TypeScript · Bun + Hono · YouTube Transcript API · Local-first</p>
               </div>
               </Reveal>
 
@@ -191,7 +171,7 @@ export default function ProductManagement() {
                 </div>
 
                 <p className="text-slate-600 mb-6">
-                  A privacy-focused browser extension that helps professionals organize their job search without spreadsheets. Built with a local-first architecture to ensure user data never leaves the device.
+                  I built TrackFlow, a privacy-focused browser extension that helps professionals organize their job search without spreadsheets — local-first, so user data never leaves the device.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-6 mb-6">
@@ -204,74 +184,62 @@ export default function ProductManagement() {
                     />
                   </div>
                   <div className="flex-1">
-                    <h4 className="text-sm font-semibold text-slate-900 mb-2">Key Features</h4>
+                    <h4 className="text-sm font-semibold text-slate-900 mb-2">What it does</h4>
                     <ul className="text-slate-600 text-sm space-y-1">
                       <li className="flex items-start">
-                        <span className="w-1.5 h-1.5 rounded-full bg-blue-700 mt-2 mr-2 shrink-0"></span>
-                        <span><span className="text-slate-900 font-medium">Smart Salary Detector:</span> Automatically parses and highlights salary ranges from job descriptions.</span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-2 mr-2 shrink-0"></span>
+                        <span>Parses and highlights salary ranges straight from job descriptions.</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="w-1.5 h-1.5 rounded-full bg-blue-700 mt-2 mr-2 shrink-0"></span>
-                        <span><span className="text-slate-900 font-medium">Description Vault:</span> Instantly scrapes and saves full job descriptions locally to prevent data loss.</span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-2 mr-2 shrink-0"></span>
+                        <span>Scrapes and saves full job descriptions locally so postings aren't lost when they're taken down.</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="w-1.5 h-1.5 rounded-full bg-blue-700 mt-2 mr-2 shrink-0"></span>
-                        <span><span className="text-slate-900 font-medium">1-Click Capture:</span> Works on any job board (Indeed, Greenhouse, etc.) with automatic duplicate detection.</span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-2 mr-2 shrink-0"></span>
+                        <span>Captures from any job board — Indeed, Greenhouse, and more — with automatic duplicate detection.</span>
                       </li>
                       <li className="flex items-start">
-                        <span className="w-1.5 h-1.5 rounded-full bg-blue-700 mt-2 mr-2 shrink-0"></span>
-                        <span><span className="text-slate-900 font-medium">Visual Kanban:</span> Drag-and-drop status tracking with a clean, distraction-free UI.</span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-2 mr-2 shrink-0"></span>
+                        <span>Tracks application status on a drag-and-drop board with a clean, distraction-free UI.</span>
                       </li>
                     </ul>
                   </div>
                 </div>
 
-                <div className="mt-6 p-4 bg-blue-50 border border-blue-100 rounded-xl">
-                  <h4 className="text-sm font-semibold text-slate-900 mb-4 flex items-center gap-2">
-                    <span className="text-blue-900">Product Journey</span>
-                    <span className="text-xs text-slate-500 font-normal">Development & Iteration</span>
-                  </h4>
+                <div className="mt-6 border-l-2 border-blue-800 pl-5">
+                  <p className="text-xs font-semibold tracking-widest uppercase text-blue-800 mb-4">Product Journey</p>
                   <div className="space-y-4 text-sm">
-                    <div>
-                      <p className="text-slate-700 mb-1">
-                        <span className="mr-2">🛠</span>
-                        <span className="text-slate-900 font-medium">Built with AI-Velocity</span>
-                      </p>
-                      <p className="text-slate-600 pl-6">
-                        Leveraged Cursor (AI-assisted coding) to rapidly prototype and ship Version 1 in under 48 hours. Used the speed of AI to focus on high-level product architecture and user experience rather than boilerplate code.
-                      </p>
+                    <div className="flex gap-3">
+                      <span className="text-blue-800 font-semibold text-xs mt-0.5 shrink-0">01</span>
+                      <div>
+                        <p className="text-slate-900 font-medium mb-1">Built with AI velocity</p>
+                        <p className="text-slate-600">
+                          Leveraged Cursor (AI-assisted coding) to rapidly prototype and ship Version 1 in under 48 hours. Used the speed of AI to focus on high-level product architecture and user experience rather than boilerplate code.
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-slate-700 mb-1">
-                        <span className="mr-2">🔄</span>
-                        <span className="text-slate-900 font-medium">The Pivot (Solving Platform Risk)</span>
-                      </p>
-                      <p className="text-slate-600 pl-6">
-                        Version 1 was deprecated by LinkedIn due to platform policy changes around web scraping. Rather than patching, I treated this as an opportunity to re-architect the product - building a platform-agnostic solution with enhanced features and improved reliability.
-                      </p>
+                    <div className="flex gap-3">
+                      <span className="text-blue-800 font-semibold text-xs mt-0.5 shrink-0">02</span>
+                      <div>
+                        <p className="text-slate-900 font-medium mb-1">The pivot — solving platform risk</p>
+                        <p className="text-slate-600">
+                          Version 1 was deprecated by LinkedIn due to platform policy changes around web scraping. Rather than patching, I treated this as an opportunity to re-architect the product - building a platform-agnostic solution with enhanced features and improved reliability.
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-slate-700 mb-1">
-                        <span className="mr-2">🚀</span>
-                        <span className="text-slate-900 font-medium">Key Takeaway</span>
-                      </p>
-                      <p className="text-slate-600 pl-6">
-                        Learned that sustainable products require owning your data layer, not renting it from other platforms.
-                      </p>
+                    <div className="flex gap-3">
+                      <span className="text-blue-800 font-semibold text-xs mt-0.5 shrink-0">03</span>
+                      <div>
+                        <p className="text-slate-900 font-medium mb-1">Key takeaway</p>
+                        <p className="text-slate-600">
+                          Learned that sustainable products require owning your data layer, not renting it from other platforms.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-slate-200">
-                  <h4 className="text-sm font-semibold text-slate-900 mb-3">Technology Stack</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {["Chrome Extension API", "Local Storage", "Regex Parsing", "Data Export", "Advanced DOM Manipulation"].map((tech, idx) => (
-                      <span key={idx} className="px-3 py-1.5 bg-slate-100 text-slate-700 rounded-full text-xs font-medium">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+                <p className="text-sm text-slate-400 mt-6">Chrome Extension API · Local Storage · Regex Parsing · Data Export · Advanced DOM Manipulation</p>
               </div>
               </Reveal>
             </div>
@@ -305,7 +273,7 @@ export default function ProductManagement() {
                 </div>
 
                 <p className="text-slate-600">
-                  This case study identifies a critical friction point in LinkedIn's job search experience: candidates are forced to apply first and assess commute viability second. The study proposes "LinkedIn Location Intelligence" - a geospatial layer that visualizes job opportunities relative to the user's location, revealing commute clusters and transit access that are currently hidden by generic text labels.
+                  I identified a critical friction point in LinkedIn's job search experience: candidates are forced to apply first and assess commute viability second. I propose "LinkedIn Location Intelligence" — a geospatial layer that visualizes job opportunities relative to the user's location, revealing commute clusters and transit access that are currently hidden by generic text labels.
                 </p>
               </div>
               </Reveal>
@@ -334,7 +302,7 @@ export default function ProductManagement() {
                     </div>
                     
                     <p className="text-slate-600 mb-4">
-                      A comprehensive PRD for a new "Journeys" feature that enables users to plan multi-hike itineraries with driving directions, amenities, and rest periods, eliminating the need to app-hop between AllTrails, Google Maps, and travel blogs.
+                      I wrote a full PRD for a "Journeys" feature that lets users plan multi-hike itineraries with driving directions, amenities, and rest stops — killing the app-hop between AllTrails, Google Maps, and travel blogs.
                     </p>
 
                     <a 

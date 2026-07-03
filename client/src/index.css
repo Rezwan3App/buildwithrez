@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 /*
-  Design system: clean white background, deep navy accents.
-  Navy scale used throughout: #1e3a8a (primary), #1e40af (hover), #eff6ff (tint).
+  Design system: editorial light theme.
+  White background, deep navy (#1e3a8a) used sparingly, serif display type.
 */
 
 :root {
@@ -36,22 +36,23 @@
   }
 
   html {
-    font-size: 18px;
+    font-size: 17px;
     scroll-behavior: smooth;
   }
 
   body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     @apply antialiased;
-    line-height: 1.6;
+    line-height: 1.65;
     background-color: #ffffff;
     color: #334155;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Outfit', 'Inter', sans-serif;
-    @apply font-semibold tracking-tight;
-    line-height: 1.2;
+    font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+    @apply font-semibold;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
     color: #0f172a;
   }
 
@@ -60,100 +61,58 @@
   }
 }
 
-/* Gradient text effect — deep navy to blue */
-.gradient-text {
-  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 60%, #3b82f6 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+/* Small-caps eyebrow label used above headings */
+.eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #1e3a8a;
 }
 
-/* Card hover: subtle lift with navy-tinted shadow */
+/* Card hover: restrained lift, no glow */
 .card-glow {
-  transition: all 0.3s ease;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .card-glow:hover {
-  box-shadow: 0 8px 30px rgba(30, 58, 138, 0.10), 0 2px 8px rgba(30, 58, 138, 0.06);
-  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
 }
 
-/* Primary navy button */
+/* Primary navy button — solid, no gradients or shine */
 .btn-gradient {
-  background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
-  transition: all 0.3s ease;
+  background: #1e3a8a;
+  transition: background-color 0.2s ease;
 }
 
 .btn-gradient:hover {
-  background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
-  box-shadow: 0 10px 30px rgba(30, 58, 138, 0.25);
+  background: #1e40af;
 }
 
-/* Button shine effect */
+/* Kept as a no-op so existing markup doesn't break; shine effect removed */
 .btn-shine {
   position: relative;
-  overflow: hidden;
 }
 
-.btn-shine::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
-  transition: left 0.5s ease;
-}
-
-.btn-shine:hover::before {
-  left: 100%;
-}
-
-/* Quote / highlight card with a static navy edge */
+/* Quote / pull-out block: thin navy rule, no box */
 .animated-border {
-  position: relative;
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-left: 3px solid #1e3a8a;
-  border-radius: 0.75rem;
+  background: transparent;
+  border: none;
+  border-left: 2px solid #1e3a8a;
+  border-radius: 0;
+  padding-left: 1.25rem;
 }
 
-/* Profile image frame */
+/* Profile image frame: simple hairline, no animated ring */
 .profile-ring {
   position: relative;
-}
-
-.profile-ring::before {
-  content: '';
-  position: absolute;
-  inset: -4px;
-  border-radius: 1rem;
-  background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-  opacity: 0.9;
-  z-index: -1;
+  border: 1px solid #e2e8f0;
 }
 
 /* Section divider */
 .section-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(30, 58, 138, 0.25), transparent);
+  background: #e2e8f0;
   margin: 0 auto;
-  max-width: 600px;
-}
-
-/* Soft floating background shapes (used on hero) */
-@keyframes float-slow {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(30px, -30px) scale(1.05); }
-  66% { transform: translate(-20px, 20px) scale(0.95); }
-}
-
-.float-animation {
-  animation: float-slow 20s ease-in-out infinite;
-}
-
-.float-animation-delayed {
-  animation: float-slow 25s ease-in-out infinite;
-  animation-delay: -10s;
 }

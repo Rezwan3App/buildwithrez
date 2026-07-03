@@ -1,7 +1,6 @@
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { Reveal } from "@/components/reveal";
-import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Car, Rocket, TrendingUp, Database, Utensils, Moon, X, FileText, Download } from "lucide-react";
 import { SiTableau } from "react-icons/si";
 import { useState } from "react";
@@ -15,8 +14,8 @@ export default function MBA() {
   const mbaProjects = [
     {
       title: "EatTrack",
-      description: "A mobile app helping consumers identify ultra-processed foods and find healthier alternatives while grocery shopping. Surveyed 55+ NYC adults, achieving 80%+ interest in solution.",
-      stats: "95% user interest | $13.9M gross revenue projection",
+      description: "A mobile app concept helping consumers identify ultra-processed foods while grocery shopping. I surveyed 55+ NYC adults — over 80% wanted the solution.",
+      stats: "95% user interest · $13.9M gross revenue projection",
       tags: ["Product Development", "Consumer Research", "Go-to-Market"],
       accentColor: "text-blue-800",
       icon: Utensils,
@@ -25,8 +24,8 @@ export default function MBA() {
     },
     {
       title: "SleepWave GTM Strategy",
-      description: "Developed data-backed go-to-market strategy for Bose sleep tech product. Conducted primary research with 50+ consumer interviews and competitive analysis.",
-      stats: "$450K projected first-year revenue | 5% market share target",
+      description: "I developed a data-backed go-to-market strategy for a Bose sleep tech product, running primary research with 50+ consumer interviews alongside competitive analysis.",
+      stats: "$450K projected first-year revenue · 5% market share target",
       tags: ["Go-to-Market", "Consumer Research", "Strategy"],
       accentColor: "text-indigo-700",
       icon: Moon,
@@ -36,8 +35,8 @@ export default function MBA() {
     },
     {
       title: "McDonald's Financial Analysis",
-      description: "Performed comprehensive 10-K analysis benchmarked against Wendy's and Burger King. Built DCF model with sensitivity analysis and evaluated ESG initiatives.",
-      stats: "3 companies analyzed | Full ratio & DCF analysis",
+      description: "I performed a comprehensive 10-K analysis benchmarked against Wendy's and Burger King, built a DCF model with sensitivity analysis, and evaluated ESG initiatives.",
+      stats: "3 companies analyzed · Full ratio & DCF analysis",
       tags: ["DCF", "Ratio Analysis", "10-K Analysis"],
       accentColor: "text-amber-700",
       icon: TrendingUp,
@@ -51,11 +50,11 @@ export default function MBA() {
     {
       title: "Ford Vehicle Crash Risk Analysis",
       highlights: [
-        "Analyzed 64,000+ NYC motor vehicle collisions using logistic regression",
+        "I used logistic regression in R to analyze 64,000+ NYC motor vehicle collisions",
         "Found no significant link between Ford vehicles and fatal crash outcomes",
         "Identified human behavior (speeding, impairment) as primary fatality predictors"
       ],
-      stats: "64K+ collisions | p-value 0.203",
+      stats: "64K+ collisions · p-value 0.203",
       tags: ["Statistics", "Logistic Regression", "R"],
       accentColor: "text-blue-800",
       icon: Car,
@@ -65,11 +64,11 @@ export default function MBA() {
     {
       title: "Pet Adoption Database",
       highlights: [
-        "Designed relational database with 12+ normalized tables",
-        "Created ER diagrams and normalized schema to BCNF",
+        "I designed a relational database with 12+ normalized tables",
+        "Created ER diagrams and normalized the schema to BCNF",
         "Implemented complex SQL queries for adoption matching"
       ],
-      stats: "12+ tables | BCNF normalized",
+      stats: "12+ tables · BCNF normalized",
       tags: ["SQL", "ER Modeling", "Database Design"],
       accentColor: "text-violet-700",
       icon: Database,
@@ -89,7 +88,7 @@ export default function MBA() {
                 MBA & Data Analytics
               </h1>
               <p className="text-lg text-slate-600 max-w-2xl">
-                Academic projects from Baruch College's Zicklin School of Business demonstrating analytical and strategic capabilities.
+                Coursework from Baruch's Zicklin School of Business where I got to stress-test product ideas with real analysis — surveys, financial models, SQL, and R.
               </p>
             </div>
           </Reveal>
@@ -126,24 +125,14 @@ export default function MBA() {
 
                       <p className="text-slate-600 mb-4">{project.description}</p>
 
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {project.tags.map((tag, idx) => (
-                          <Badge 
-                            key={idx} 
-                            variant="secondary"
-                            className="bg-slate-100 text-slate-700 text-xs px-2 py-0.5 font-medium border-0"
-                          >
-                            {tag}
-                          </Badge>
-                        ))}
-                      </div>
+                      <p className="text-sm text-slate-400 mt-4">{project.tags.join(" · ")}</p>
 
                       {project.pdf && (
-                        <a 
+                        <a
                           href={project.pdf}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center px-4 py-2 btn-gradient btn-shine text-white rounded-lg text-sm font-semibold border-0"
+                          className="inline-flex items-center mt-4 px-4 py-2 border border-slate-300 text-slate-800 hover:border-blue-800 hover:text-blue-900 rounded-lg text-sm font-semibold transition-all bg-white"
                         >
                           <Download className="mr-2 h-4 w-4" />
                           Download Slide Deck
@@ -208,24 +197,14 @@ export default function MBA() {
                     ))}
                   </ul>
 
-                  <div className="flex flex-wrap gap-1.5 pt-4 border-t border-slate-200">
-                    {project.tags.map((tag, idx) => (
-                      <Badge
-                        key={idx}
-                        variant="secondary"
-                        className="bg-slate-100 text-slate-700 text-xs px-2 py-0.5 font-medium border-0"
-                      >
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
+                  <p className="text-sm text-slate-400 mt-4">{project.tags.join(" · ")}</p>
 
                   {project.pdf && (
-                    <a 
+                    <a
                       href={project.pdf}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-semibold transition-all"
+                      className="inline-flex items-center mt-4 px-4 py-2 border border-slate-300 text-slate-800 hover:border-blue-800 hover:text-blue-900 rounded-lg text-sm font-semibold transition-all bg-white"
                     >
                       <Download className="mr-2 h-4 w-4" />
                       Download Report

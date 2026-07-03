@@ -5,60 +5,53 @@ import { motion } from "framer-motion";
 
 export function HeroSection() {
   return (
-    <section
-      id="home"
-      className="min-h-screen flex items-center relative overflow-hidden bg-white"
-    >
-      {/* Soft background shapes */}
-      <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-blue-100/60 rounded-full blur-[120px] pointer-events-none float-animation"></div>
-      <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-slate-100 rounded-full blur-[100px] pointer-events-none float-animation-delayed"></div>
-
-      <div className="relative z-10 max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 pt-20 pb-8 w-full">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+    <section id="home" className="relative bg-white">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 pt-36 pb-20 w-full">
+        <div className="grid lg:grid-cols-[1.4fr_1fr] gap-16 items-center">
           {/* Left Column - Text Content */}
           <motion.div
             className="space-y-8"
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 border border-blue-100 rounded-full">
-              <span className="w-2 h-2 bg-blue-700 rounded-full animate-pulse"></span>
-              <span className="text-blue-900 font-medium text-sm tracking-wide">
-                Product Manager
-              </span>
-            </div>
+            <p className="eyebrow">Rezwan Islam &middot; Product Manager &middot; New York</p>
 
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-slate-900 tracking-tight leading-[1.1]">
-              I'm <span className="gradient-text">Rezwan</span> Islam
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-slate-900">
+              From mechanical systems to digital products.
             </h1>
 
-            <p className="text-lg text-slate-600 leading-relaxed max-w-xl">
-              Former mechanical engineer with an MBA background, aligning business strategy, data, and user-centric design to build scalable products.
-            </p>
-
-            {/* Testimonial Box */}
-            <div className="relative animated-border p-5 max-w-xl">
-              <p className="text-slate-600 text-sm leading-relaxed">
-                "I think Rez is naturally curious which is perhaps his greatest trait, and one of the most critical for product management as he furthers his career."
+            <div className="space-y-4 text-lg text-slate-600 leading-relaxed max-w-2xl">
+              <p>
+                I started out as a mechanical engineer, went back for an MBA at Baruch's
+                Zicklin School of Business, and found my way to product — where engineering
+                rigor, business strategy, and user empathy finally pull in the same direction.
               </p>
-              <div className="flex items-center gap-3 mt-4 pt-4 border-t border-slate-200">
-                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-800 to-blue-600 flex items-center justify-center text-white text-xs font-bold">
-                  CC
-                </div>
-                <div>
-                  <p className="text-slate-900 text-sm font-medium">Cody Chin</p>
-                  <p className="text-slate-500 text-xs">Director of Digital PM, Rocket Mortgage</p>
-                </div>
-              </div>
+              <p>
+                I've shipped product work at Rocket Mortgage and Odynn, and right now I'm
+                helping launch New York State's first AI training program for small
+                businesses at Welcome to Chinatown.
+              </p>
             </div>
+
+            {/* Testimonial */}
+            <blockquote className="animated-border max-w-2xl">
+              <p className="text-slate-600 leading-relaxed">
+                "I think Rez is naturally curious which is perhaps his greatest trait, and
+                one of the most critical for product management as he furthers his career."
+              </p>
+              <footer className="mt-3 text-sm">
+                <span className="text-slate-900 font-medium">Cody Chin</span>
+                <span className="text-slate-500"> — Director of Digital PM, Rocket Mortgage</span>
+              </footer>
+            </blockquote>
 
             {/* Action Buttons */}
             <div className="flex flex-wrap gap-4 pt-2">
               <Button
                 size="lg"
                 asChild
-                className="btn-gradient btn-shine text-white px-6 py-3 font-semibold rounded-xl border-0"
+                className="btn-gradient text-white px-6 py-3 font-semibold rounded-lg border-0"
               >
                 <a
                   href="/attached_assets/Rezwan_Islam_Zicklin_Latest.pdf"
@@ -73,7 +66,7 @@ export function HeroSection() {
                 variant="outline"
                 size="lg"
                 asChild
-                className="bg-white border-slate-300 text-slate-900 hover:bg-slate-50 hover:border-slate-400 px-6 py-3 font-semibold rounded-xl transition-all"
+                className="bg-white border-slate-300 text-slate-900 hover:bg-slate-50 hover:border-slate-400 px-6 py-3 font-semibold rounded-lg transition-all"
               >
                 <a href="https://www.linkedin.com/in/rezwan-islam33" target="_blank" rel="noopener noreferrer">
                   <FaLinkedin className="mr-2 h-4 w-4" />
@@ -86,21 +79,16 @@ export function HeroSection() {
           {/* Right Column - Image */}
           <motion.div
             className="flex justify-center lg:justify-end"
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
+            transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
           >
-            <div className="relative group">
-              {/* Soft glow behind image */}
-              <div className="absolute -inset-4 bg-gradient-to-br from-blue-200/50 to-slate-200/40 rounded-2xl blur-2xl opacity-60 group-hover:opacity-90 transition-opacity duration-500"></div>
-
-              <div className="profile-ring relative w-80 h-[420px] sm:w-[340px] sm:h-[460px] rounded-2xl overflow-hidden shadow-2xl">
-                <img
-                  src="/attached_assets/profile-headshot.png"
-                  alt="Rezwan Islam"
-                  className="w-full h-full object-cover object-top"
-                />
-              </div>
+            <div className="profile-ring relative w-72 h-[380px] sm:w-80 sm:h-[420px] rounded-xl overflow-hidden shadow-lg">
+              <img
+                src="/attached_assets/profile-headshot.png"
+                alt="Rezwan Islam"
+                className="w-full h-full object-cover object-top"
+              />
             </div>
           </motion.div>
         </div>
