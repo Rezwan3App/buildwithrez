@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 
 interface RevealProps {
@@ -7,8 +7,17 @@ interface RevealProps {
   className?: string;
 }
 
-/** Fades content up into view the first time it scrolls into the viewport. */
+/**
+ * Fades content up into view the first time it scrolls into the viewport.
+ * Renders static when the visitor prefers reduced motion.
+ */
 export function Reveal({ children, delay = 0, className }: RevealProps) {
+  const prefersReducedMotion = useReducedMotion();
+
+  if (prefersReducedMotion) {
+    return <div className={className}>{children}</div>;
+  }
+
   return (
     <motion.div
       className={className}

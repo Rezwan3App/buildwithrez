@@ -78,11 +78,7 @@ export default function ProductManagement() {
                     </li>
                     <li className="flex items-start">
                       <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-2 mr-2 shrink-0"></span>
-                      <span>Every deal links to the exact moment it was mentioned, for instant verification.</span>
-                    </li>
-                    <li className="flex items-start">
-                      <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-2 mr-2 shrink-0"></span>
-                      <span>Copies any promo code straight to the clipboard from the results list.</span>
+                      <span>Every deal links to the exact moment it was mentioned, with one-click code copying.</span>
                     </li>
                   </ul>
                 </div>
@@ -188,19 +184,15 @@ export default function ProductManagement() {
                     <ul className="text-slate-600 text-sm space-y-1">
                       <li className="flex items-start">
                         <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-2 mr-2 shrink-0"></span>
-                        <span>Parses and highlights salary ranges straight from job descriptions.</span>
+                        <span>Captures jobs from any board (Indeed, Greenhouse, and more) with automatic duplicate detection.</span>
                       </li>
                       <li className="flex items-start">
                         <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-2 mr-2 shrink-0"></span>
-                        <span>Scrapes and saves full job descriptions locally so postings aren't lost when they're taken down.</span>
+                        <span>Saves full job descriptions locally so postings aren't lost when they're taken down.</span>
                       </li>
                       <li className="flex items-start">
                         <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-2 mr-2 shrink-0"></span>
-                        <span>Captures from any job board (Indeed, Greenhouse, and more) with automatic duplicate detection.</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-2 mr-2 shrink-0"></span>
-                        <span>Tracks application status on a drag-and-drop board with a clean, distraction-free UI.</span>
+                        <span>Tracks application status on a drag-and-drop board, with salary ranges parsed and highlighted automatically.</span>
                       </li>
                     </ul>
                   </div>

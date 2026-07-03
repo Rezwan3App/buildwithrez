@@ -1,20 +1,25 @@
 import { Button } from "@/components/ui/button";
 import { Download } from "lucide-react";
 import { FaLinkedin } from "react-icons/fa";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 export function HeroSection() {
+  const prefersReducedMotion = useReducedMotion();
+  const entrance = (delay: number) =>
+    prefersReducedMotion
+      ? {}
+      : {
+          initial: { opacity: 0, y: 16 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0.5, delay, ease: "easeOut" as const },
+        };
+
   return (
     <section id="home" className="relative bg-white">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 pt-36 pb-20 w-full">
         <div className="grid lg:grid-cols-[1.4fr_1fr] gap-16 items-center">
           {/* Left Column - Text Content */}
-          <motion.div
-            className="space-y-8"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-          >
+          <motion.div className="space-y-8" {...entrance(0)}>
             <p className="eyebrow">Rezwan Islam &middot; Product Manager &middot; New York</p>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-slate-900">
@@ -87,12 +92,7 @@ export function HeroSection() {
           </motion.div>
 
           {/* Right Column - Image */}
-          <motion.div
-            className="flex justify-center lg:justify-end"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-          >
+          <motion.div className="flex justify-center lg:justify-end" {...entrance(0.1)}>
             <div className="profile-ring relative w-72 h-[380px] sm:w-80 sm:h-[420px] rounded-xl overflow-hidden shadow-lg">
               <img
                 src="/attached_assets/profile-headshot.png"
