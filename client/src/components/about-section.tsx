@@ -61,7 +61,7 @@ export function AboutSection() {
                 <FileText className="h-5 w-5 text-slate-400 group-hover:text-blue-800 transition-colors shrink-0" />
                 <div className="flex-1 min-w-0">
                   <h4 className="text-slate-900 font-medium group-hover:text-blue-900 transition-colors">Unofficial Transcript</h4>
-                  <p className="text-slate-500 text-sm">4.0 GPA — PDF</p>
+                  <p className="text-slate-500 text-sm">4.0 GPA · PDF</p>
                 </div>
                 <Download className="h-4 w-4 text-slate-300 group-hover:text-blue-800 transition-all" />
               </a>

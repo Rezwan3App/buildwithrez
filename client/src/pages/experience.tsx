@@ -30,9 +30,9 @@ export default function Experience() {
       location: "New York, NY",
       period: "Jun 2026 - Present",
       highlights: [
-        "I'm helping launch BuiltSmall's Train-the-Trainer bootcamp — New York State's first AI training program for the counselors who advise small businesses at its 26 Entrepreneur Assistance Centers.",
+        "I'm helping launch BuiltSmall's Train-the-Trainer bootcamp, New York State's first AI training program for the counselors who advise small businesses at its 26 Entrepreneur Assistance Centers.",
         "I support our direct-to-business programming: monthly AI Foundations webinars, the AI on Main Street event series, and weekly office hours with small business owners.",
-        "Day to day, I help run Chinatown's first Small Business Innovation Hub — programs built for immigrant-owned, multilingual businesses."
+        "Day to day, I help run Chinatown's first Small Business Innovation Hub, with programs built for immigrant-owned, multilingual businesses."
       ],
       tags: ["Program Operations", "Event Programming", "AI Training", "Community Engagement"],
       logo: "wtc",
@@ -133,7 +133,7 @@ export default function Experience() {
                 Product Experience
               </h1>
               <p className="text-lg text-slate-600 max-w-2xl">
-                Internships across fintech, travel tech, e-commerce, and economic development — here's what I actually did at each.
+                Internships across fintech, travel tech, e-commerce, and economic development. Here's what I actually did at each.
               </p>
             </div>
           </Reveal>
@@ -142,7 +142,7 @@ export default function Experience() {
             {experiences.map((exp, index) => (
               <Reveal key={index} delay={index * 0.08}>
                 <div
-                  className="group accent-line p-6 sm:p-8 rounded-xl bg-white border border-slate-200 hover:border-blue-300 card-glow transition-all duration-200"
+                  className="group p-6 sm:p-8 rounded-xl bg-white border border-slate-200 hover:border-blue-300 card-glow transition-all duration-200"
                 >
                   <div className="flex flex-col lg:flex-row gap-6">
                     <div className="flex-1">

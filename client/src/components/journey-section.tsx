@@ -5,13 +5,13 @@ const steps = [
     period: "2014 – 2018",
     title: "Engineering foundations",
     description:
-      "I trained as a mechanical engineer at the City College of New York. Systems thinking, constraints, and root-cause habits — the parts of engineering I never left behind.",
+      "I trained as a mechanical engineer at the City College of New York. Systems thinking, constraints, and root-cause habits: the parts of engineering I never left behind.",
   },
   {
     period: "2024",
     title: "Back to school",
     description:
-      "I returned for an MBA at Baruch's Zicklin School of Business (4.0 GPA), leaning hard into data — SQL, R, Tableau — and serving as VP of the Data Science & Analytics Society.",
+      "I returned for an MBA at Baruch's Zicklin School of Business (4.0 GPA), leaning hard into data with SQL, R, and Tableau, and serving as VP of the Data Science & Analytics Society.",
   },
   {
     period: "2024 – 2025",
@@ -23,7 +23,7 @@ const steps = [
     period: "Now",
     title: "AI for Main Street",
     description:
-      "At Welcome to Chinatown I'm helping launch New York State's first AI training program for small businesses — bringing AI to immigrant-owned storefronts, not just startups.",
+      "At Welcome to Chinatown I'm helping launch New York State's first AI training program for small businesses, bringing AI to immigrant-owned storefronts, not just startups.",
   },
 ];
 
