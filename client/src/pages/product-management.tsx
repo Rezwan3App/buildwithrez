@@ -1,20 +1,16 @@
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
-import { ExternalLink, Clock, FileText, X, Play, Sparkles, Download, Shield } from "lucide-react";
+import { ExternalLink, FileText, X, Play, Youtube } from "lucide-react";
 import { useState } from "react";
 import { SiGithub } from "react-icons/si";
 import alltrailsIcon from "@assets/image_1768252840170.png";
 import linkedinIcon from "@assets/image_1768252917340.png";
 import trackflowIcon from "@assets/newicon_1768433941445.png";
 import trackflowScreenshot from "@assets/image_1768437718677.png";
-import nexuspay1 from "@assets/nexuspay1_1769150384520.png";
-import nexuspay2 from "@assets/nexuspay2_1769150384520.png";
 
 export default function ProductManagement() {
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const [isTrackflowModalOpen, setIsTrackflowModalOpen] = useState(false);
-  const [isNexusPayModalOpen, setIsNexusPayModalOpen] = useState(false);
-  const [nexusPayModalImage, setNexusPayModalImage] = useState(nexuspay1);
 
   return (
     <div className="min-h-screen bg-[#0f172a]">
@@ -47,25 +43,16 @@ export default function ProductManagement() {
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center shrink-0">
-                      <Shield className="h-6 w-6 text-white" />
+                      <Youtube className="h-6 w-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-white">NexusPay</h3>
-                      <p className="text-emerald-400 font-medium">High-Performance Tokenization Engine</p>
+                      <h3 className="text-xl font-bold text-white">Snag</h3>
+                      <p className="text-emerald-400 font-medium">Promo Codes from YouTube Videos, Without the Watching</p>
                     </div>
                   </div>
                   <div className="flex flex-wrap gap-3">
-                    <a 
-                      href="https://payment-project-gasuz8xx6f7ve9evjxrgxz.streamlit.app/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center px-4 py-2 btn-gradient btn-shine text-white rounded-lg text-sm font-semibold border-0"
-                    >
-                      <Play className="mr-2 h-4 w-4" />
-                      Live Demo
-                    </a>
-                    <a 
-                      href="https://github.com/Rezwan3App/NexusPay"
+                    <a
+                      href="https://github.com/Rezwan3App/snag"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-lg text-sm font-semibold transition-all"
@@ -77,50 +64,71 @@ export default function ProductManagement() {
                 </div>
 
                 <p className="text-gray-400 mb-6">
-                  A technical demonstration of a "de-scoped" payment gateway architecture. This project focuses on the Raw Core Engine - the cryptographic plumbing required to process financial data without ever exposing sensitive card information.
+                  Promo codes and sponsor deals are buried inside long YouTube videos — viewers either scrub through sponsor reads or miss the discount entirely. Snag scans a video's transcript and surfaces every promo code, sponsor offer, and limited-time deal with the exact timestamp, so you get the deal in seconds instead of twenty minutes.
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-4 mb-6">
-                  <img 
-                    src={nexuspay1} 
-                    alt="NexusPay Tokenization Vault" 
-                    className="rounded-xl border border-gray-700 shadow-lg w-48 cursor-pointer hover:opacity-80 transition-opacity"
-                    onClick={() => { setNexusPayModalImage(nexuspay1); setIsNexusPayModalOpen(true); }}
-                  />
-                  <img 
-                    src={nexuspay2} 
-                    alt="NexusPay Payment Processor" 
-                    className="rounded-xl border border-gray-700 shadow-lg w-48 cursor-pointer hover:opacity-80 transition-opacity"
-                    onClick={() => { setNexusPayModalImage(nexuspay2); setIsNexusPayModalOpen(true); }}
-                  />
-                </div>
-
                 <div className="flex-1">
-                  <h4 className="text-sm font-semibold text-white mb-2">Core Features</h4>
+                  <h4 className="text-sm font-semibold text-white mb-2">Key Features</h4>
                   <ul className="text-gray-400 text-sm space-y-1">
                     <li className="flex items-start">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2 mr-2 shrink-0"></span>
-                      <span><span className="text-white font-medium">Secure Vaulting Layer:</span> Implements AES-256 (Fernet) encryption to secure Primary Account Numbers (PAN) at rest.</span>
+                      <span><span className="text-white font-medium">Scan Any Video:</span> Paste a YouTube URL and get every deal extracted from the transcript in seconds.</span>
                     </li>
                     <li className="flex items-start">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2 mr-2 shrink-0"></span>
-                      <span><span className="text-white font-medium">Blind Indexing:</span> Utilizes SHA-256 hashing to create searchable card "fingerprints," allowing merchants to recognize returning customers without decrypting the original data.</span>
+                      <span><span className="text-white font-medium">Watch Entire Channels:</span> Add a channel and Snag automatically scans its latest uploads for new offers.</span>
                     </li>
                     <li className="flex items-start">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2 mr-2 shrink-0"></span>
-                      <span><span className="text-white font-medium">PCI-DSS v4.0 Simulation:</span> Built to demonstrate compliance standards by ensuring the "Merchant" (the UI) never touches raw, unencrypted financial data.</span>
+                      <span><span className="text-white font-medium">Jump to Timestamp:</span> Every deal links to the exact moment it was mentioned, for instant verification.</span>
                     </li>
                     <li className="flex items-start">
                       <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2 mr-2 shrink-0"></span>
-                      <span><span className="text-white font-medium">Real-Time Execution Log:</span> Features a live system console that reveals the backend handshakes, including Luhn algorithm validation, risk scoring, and ACID-compliant database writes.</span>
+                      <span><span className="text-white font-medium">One-Click Copy:</span> Copy any promo code straight to the clipboard from the results list.</span>
                     </li>
                   </ul>
+                </div>
+
+                <div className="mt-6 p-4 bg-gradient-to-br from-blue-900/20 to-indigo-900/20 border border-blue-800/30 rounded-xl">
+                  <h4 className="text-sm font-semibold text-white mb-4 flex items-center gap-2">
+                    <span className="text-blue-400">Product Journey</span>
+                    <span className="text-xs text-gray-500 font-normal">Development & Iteration</span>
+                  </h4>
+                  <div className="space-y-4 text-sm">
+                    <div>
+                      <p className="text-gray-300 mb-1">
+                        <span className="mr-2">🎯</span>
+                        <span className="text-white font-medium">Ruthless MVP Scoping</span>
+                      </p>
+                      <p className="text-gray-400 pl-6">
+                        Cut the first version down to one core job: paste a link, get the codes. No accounts, no database, no build step — a JSON file and a zero-dependency frontend were enough to validate the idea.
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-gray-300 mb-1">
+                        <span className="mr-2">🔄</span>
+                        <span className="text-white font-medium">Designing Around a Platform Constraint</span>
+                      </p>
+                      <p className="text-gray-400 pl-6">
+                        YouTube blocks transcript requests from cloud servers. Instead of fighting it with proxies, I made local-first an explicit product decision — the app runs on the user's machine, fetching transcripts reliably with zero API keys or infrastructure cost.
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-gray-300 mb-1">
+                        <span className="mr-2">🚀</span>
+                        <span className="text-white font-medium">Key Takeaway</span>
+                      </p>
+                      <p className="text-gray-400 pl-6">
+                        Platform constraints aren't blockers — they're forcing functions that shape better architecture. The same lesson from TrackFlow's pivot, learned from the opposite direction.
+                      </p>
+                    </div>
+                  </div>
                 </div>
 
                 <div className="mt-6 pt-4 border-t border-gray-800">
                   <h4 className="text-sm font-semibold text-white mb-3">Technology Stack</h4>
                   <div className="flex flex-wrap gap-2">
-                    {["Python", "SQLite (WAL Mode)", "AES-256 Encryption", "SHA-256 Hashing", "Streamlit", "Luhn Validation"].map((tech, idx) => (
+                    {["TypeScript", "Bun + Hono", "YouTube Transcript API", "Regex Extraction", "Local-First Architecture"].map((tech, idx) => (
                       <span key={idx} className="px-3 py-1.5 bg-gray-800 text-gray-300 rounded-full text-xs font-medium">
                         {tech}
                       </span>
@@ -290,22 +298,6 @@ export default function ProductManagement() {
                   This case study identifies a critical friction point in LinkedIn's job search experience: candidates are forced to apply first and assess commute viability second. The study proposes "LinkedIn Location Intelligence" - a geospatial layer that visualizes job opportunities relative to the user's location, revealing commute clusters and transit access that are currently hidden by generic text labels.
                 </p>
               </div>
-
-              <div className="group bg-[#0f1219]/50 border border-gray-800/50 rounded-2xl p-6 opacity-60">
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 bg-gradient-to-br from-gray-600 to-gray-700 rounded-xl flex items-center justify-center shrink-0">
-                    <Clock className="h-7 w-7 text-gray-400" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-500">
-                      GTM Case Study
-                    </h3>
-                    <p className="text-gray-600">
-                      Coming Soon
-                    </p>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
 
@@ -403,26 +395,6 @@ export default function ProductManagement() {
           <img 
             src={trackflowScreenshot} 
             alt="TrackFlow Extension Interface - Full Size"
-            className="max-w-full max-h-[90vh] object-contain rounded-lg"
-            onClick={(e) => e.stopPropagation()}
-          />
-        </div>
-      )}
-
-      {isNexusPayModalOpen && (
-        <div 
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
-          onClick={() => setIsNexusPayModalOpen(false)}
-        >
-          <button
-            onClick={() => setIsNexusPayModalOpen(false)}
-            className="absolute top-4 right-4 p-2 text-white hover:text-emerald-500 transition-colors"
-          >
-            <X className="h-8 w-8" />
-          </button>
-          <img 
-            src={nexusPayModalImage} 
-            alt="NexusPay Screenshot - Full Size"
             className="max-w-full max-h-[90vh] object-contain rounded-lg"
             onClick={(e) => e.stopPropagation()}
           />

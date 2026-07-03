@@ -1,4 +1,4 @@
-import { GraduationCap, Settings, ExternalLink, Download, Linkedin, FileText, ArrowUpRight } from "lucide-react";
+import { GraduationCap, Settings, Download, FileText, ArrowUpRight } from "lucide-react";
 import { SiTableau, SiSubstack, SiSpotify } from "react-icons/si";
 
 export function AboutSection() {
@@ -10,23 +10,10 @@ export function AboutSection() {
       icon: SiTableau,
     },
     {
-      title: "Resume",
-      description: "Download PDF",
-      href: "/attached_assets/Rezwan_Islam_Zicklin_Latest.pdf",
-      icon: Download,
-      download: true
-    },
-    {
       title: "Substack",
       description: "Writing & insights",
       href: "https://substack.com/inbox/post/169076551",
       icon: SiSubstack,
-    },
-    {
-      title: "LinkedIn",
-      description: "Connect with me",
-      href: "https://www.linkedin.com/in/rezwan-islam33",
-      icon: Linkedin,
     },
     {
       title: "Podcast",
@@ -51,9 +38,8 @@ export function AboutSection() {
                 <a
                   key={index}
                   href={resource.href}
-                  target={resource.download ? undefined : "_blank"}
-                  rel={resource.download ? undefined : "noopener noreferrer"}
-                  download={resource.download ? "Rezwan_Islam_Resume.pdf" : undefined}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="group flex items-center gap-4 p-4 rounded-xl bg-[#12161c] border border-transparent hover:border-emerald-500/20 card-glow transition-all duration-200"
                 >
                   <div className="w-10 h-10 rounded-lg bg-gray-800/50 flex items-center justify-center group-hover:bg-emerald-500/10 transition-colors">

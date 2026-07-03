@@ -7,9 +7,8 @@ import { Link, useLocation } from "wouter";
 const navItems = [
   { path: "/", label: "Home" },
   { path: "/experience", label: "Experience" },
-  { path: "/product-management", label: "Projects" },
+  { path: "/projects", label: "Projects" },
   { path: "/mba", label: "MBA" },
-  { path: "/workflow", label: "Workflow" },
 ];
 
 export function Navigation() {
