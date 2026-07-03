@@ -1,9 +1,10 @@
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { Reveal } from "@/components/reveal";
+import { usePageTitle } from "@/hooks/use-page-title";
 import { Calendar } from "lucide-react";
-import odynnImage from "@assets/image_1767746624854.png";
-import rocketImage from "@assets/image_1767746681686.png";
+import odynnImage from "@assets/image_1767746624854.webp";
+import rocketImage from "@assets/image_1767746681686.webp";
 import odynnLogo from "@assets/image_1767747315335.png";
 import rocketLogo from "@assets/image_1767747337636.png";
 import megaplantsLogo from "@assets/image_1767747435421.png";
@@ -23,6 +24,7 @@ interface Experience {
 }
 
 export default function Experience() {
+  usePageTitle("Experience");
   const experiences: Experience[] = [
     {
       title: "Operations Intern",
@@ -89,7 +91,7 @@ export default function Experience() {
     if (exp.logo === "wtc") {
       return (
         <div className="h-12 flex items-center shrink-0">
-          <img src={wtcLogo} alt="Welcome to Chinatown" className="h-10 w-auto object-contain" />
+          <img loading="lazy" decoding="async" src={wtcLogo} alt="Welcome to Chinatown" className="h-10 w-auto object-contain" />
         </div>
       );
     }
@@ -98,15 +100,15 @@ export default function Experience() {
       switch (exp.logo) {
         case "rocket":
           return (
-            <img src={rocketLogo} alt="Rocket Mortgage" className="w-12 h-12 object-contain" />
+            <img loading="lazy" decoding="async" src={rocketLogo} alt="Rocket Mortgage" className="w-12 h-12 object-contain" />
           );
         case "odynn":
           return (
-            <img src={odynnLogo} alt="Odynn" className="w-10 h-10 object-contain" />
+            <img loading="lazy" decoding="async" src={odynnLogo} alt="Odynn" className="w-10 h-10 object-contain" />
           );
         case "megaplants":
           return (
-            <img src={megaplantsLogo} alt="MegaPlants" className="w-12 h-8 object-contain" />
+            <img loading="lazy" decoding="async" src={megaplantsLogo} alt="MegaPlants" className="w-12 h-8 object-contain" />
           );
         default:
           return null;
@@ -182,7 +184,7 @@ export default function Experience() {
                     {exp.image && (
                       <div className="lg:w-64 shrink-0">
                         <div className="rounded-lg overflow-hidden border border-slate-200">
-                          <img
+                          <img loading="lazy" decoding="async"
                             src={exp.image}
                             alt={`${exp.company} experience`}
                             className="w-full h-auto object-cover"

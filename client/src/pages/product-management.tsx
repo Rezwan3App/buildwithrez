@@ -1,5 +1,6 @@
 import { Navigation } from "@/components/navigation";
 import { Reveal } from "@/components/reveal";
+import { usePageTitle } from "@/hooks/use-page-title";
 import { Footer } from "@/components/footer";
 import { ExternalLink, FileText, X, Play, Youtube } from "lucide-react";
 import { useState } from "react";
@@ -10,6 +11,7 @@ import trackflowIcon from "@assets/newicon_1768433941445.png";
 import trackflowScreenshot from "@assets/image_1768437718677.png";
 
 export default function ProductManagement() {
+  usePageTitle("Projects");
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const [isTrackflowModalOpen, setIsTrackflowModalOpen] = useState(false);
 
@@ -125,7 +127,7 @@ export default function ProductManagement() {
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-xl overflow-hidden shrink-0">
-                      <img src={trackflowIcon} alt="TrackFlow" className="w-full h-full object-cover" />
+                      <img loading="lazy" decoding="async" src={trackflowIcon} alt="TrackFlow" className="w-full h-full object-cover" />
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-slate-900">TrackFlow</h3>
@@ -172,7 +174,7 @@ export default function ProductManagement() {
 
                 <div className="flex flex-col sm:flex-row gap-6 mb-6">
                   <div className="shrink-0">
-                    <img 
+                    <img loading="lazy" decoding="async" 
                       src={trackflowScreenshot} 
                       alt="TrackFlow Extension Interface" 
                       className="rounded-xl border border-slate-200 shadow-lg w-44 cursor-pointer hover:opacity-80 transition-opacity"
@@ -245,7 +247,7 @@ export default function ProductManagement() {
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                   <div className="flex items-start gap-4">
                     <div className="w-14 h-14 rounded-xl overflow-hidden shrink-0">
-                      <img src={linkedinIcon} alt="LinkedIn" className="w-full h-full object-cover" />
+                      <img loading="lazy" decoding="async" src={linkedinIcon} alt="LinkedIn" className="w-full h-full object-cover" />
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-slate-900">LinkedIn</h3>
@@ -281,7 +283,7 @@ export default function ProductManagement() {
                   <div className="flex-1">
                     <div className="flex items-start gap-4 mb-4">
                       <div className="w-14 h-14 rounded-xl overflow-hidden shrink-0">
-                        <img src={alltrailsIcon} alt="AllTrails" className="w-full h-full object-cover" />
+                        <img loading="lazy" decoding="async" src={alltrailsIcon} alt="AllTrails" className="w-full h-full object-cover" />
                       </div>
                       <div>
                         <h3 className="text-xl font-bold text-slate-900 mb-1">
@@ -316,8 +318,8 @@ export default function ProductManagement() {
                       className="rounded-xl overflow-hidden border border-slate-200 hover:border-blue-400 hover:shadow-lg hover:shadow-blue-500/10 transition-all cursor-zoom-in w-full"
                       data-testid="button-enlarge-wireframe"
                     >
-                      <img 
-                        src="/attached_assets/image_1768253142355.png" 
+                      <img loading="lazy" decoding="async" 
+                        src="/attached_assets/image_1768253142355.webp" 
                         alt="AllTrails Journeys Figma Wireframe"
                         className="w-full h-auto hover:scale-105 transition-transform duration-300"
                       />
@@ -345,8 +347,8 @@ export default function ProductManagement() {
           >
             <X className="h-8 w-8" />
           </button>
-          <img 
-            src="/attached_assets/image_1768253142355.png" 
+          <img loading="lazy" decoding="async" 
+            src="/attached_assets/image_1768253142355.webp" 
             alt="AllTrails Journeys Figma Wireframe - Full Size"
             className="max-w-full max-h-[90vh] object-contain rounded-lg"
             onClick={(e) => e.stopPropagation()}
@@ -365,7 +367,7 @@ export default function ProductManagement() {
           >
             <X className="h-8 w-8" />
           </button>
-          <img 
+          <img loading="lazy" decoding="async" 
             src={trackflowScreenshot} 
             alt="TrackFlow Extension Interface - Full Size"
             className="max-w-full max-h-[90vh] object-contain rounded-lg"

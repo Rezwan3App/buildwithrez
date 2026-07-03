@@ -1,14 +1,16 @@
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { Reveal } from "@/components/reveal";
+import { usePageTitle } from "@/hooks/use-page-title";
 import { ExternalLink, Car, Rocket, TrendingUp, Database, Utensils, Moon, X, FileText, Download } from "lucide-react";
 import { SiTableau } from "react-icons/si";
 import { useState } from "react";
-import eatTrackImage from "@assets/Team_5_EatTrak_Presentation_WIP_1767748204830.png";
+import eatTrackImage from "@assets/Team_5_EatTrak_Presentation_WIP_1767748204830.webp";
 import sleepWaveImage from "@assets/BOSE_SLEEPWAVE_PRESENTATION_GROUP_7_1767748368521.jpg";
 import mcdonaldsImage from "@assets/Group_B_FSA,_ACC_9110,_Spring_2025_1767748480441.jpg";
 
 export default function MBA() {
+  usePageTitle("MBA & Data Analytics");
   const [modalImage, setModalImage] = useState<string | null>(null);
 
   const mbaProjects = [
@@ -146,7 +148,7 @@ export default function MBA() {
                           onClick={() => setModalImage(project.image!)}
                           className="rounded-xl overflow-hidden border border-slate-200 hover:border-blue-300 hover:shadow-lg hover:shadow-blue-500/10 transition-all cursor-zoom-in w-full"
                         >
-                          <img 
+                          <img loading="lazy" decoding="async" 
                             src={project.image}
                             alt={project.title}
                             className="w-full h-auto hover:scale-105 transition-transform duration-300"
@@ -248,8 +250,8 @@ export default function MBA() {
                 data-testid="link-tableau-churn"
               >
                 <div className="relative overflow-hidden rounded-xl border border-slate-200 group-hover/img:border-blue-300 transition-all">
-                  <img 
-                    src="/attached_assets/image_1756834020456.png" 
+                  <img loading="lazy" decoding="async" 
+                    src="/attached_assets/image_1756834020456.webp" 
                     alt="Customer Churn Dashboard"
                     className="w-full group-hover/img:scale-105 transition-transform duration-500"
                   />
@@ -264,8 +266,8 @@ export default function MBA() {
                 data-testid="link-tableau-fire"
               >
                 <div className="relative overflow-hidden rounded-xl border border-slate-200 group-hover/img:border-blue-300 transition-all">
-                  <img 
-                    src="/attached_assets/image_1756834044327.png" 
+                  <img loading="lazy" decoding="async" 
+                    src="/attached_assets/image_1756834044327.webp" 
                     alt="NYC Fire Safety Dashboard"
                     className="w-full group-hover/img:scale-105 transition-transform duration-500"
                   />
@@ -289,7 +291,7 @@ export default function MBA() {
           >
             <X className="h-8 w-8" />
           </button>
-          <img 
+          <img loading="lazy" decoding="async" 
             src={modalImage}
             alt="Project Image - Full Size"
             className="max-w-full max-h-[90vh] object-contain rounded-lg"

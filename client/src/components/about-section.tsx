@@ -11,9 +11,9 @@ export function AboutSection() {
       icon: SiTableau,
     },
     {
-      title: "Substack",
-      description: "Writing & insights",
-      href: "https://substack.com/inbox/post/169076551",
+      title: "Substack Feature",
+      description: "From Dashboards to DMs: my path to product",
+      href: "https://nycstartupinternshipprogram.substack.com/p/from-dashboards-to-dms-rezwan-islams",
       icon: SiSubstack,
     },
     {

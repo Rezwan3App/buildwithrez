@@ -36,7 +36,7 @@ export function LeadershipSection() {
           {leadershipRoles.map((role, index) => (
             <Reveal key={index} delay={index * 0.08}>
               <div className="flex items-center gap-3 mb-3">
-                <img
+                <img loading="lazy" decoding="async"
                   src={role.logo}
                   alt={role.organization}
                   className="w-9 h-9 object-contain"
