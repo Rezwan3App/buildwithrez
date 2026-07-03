@@ -24,7 +24,7 @@ export function HeroSection() {
             <div className="space-y-4 text-lg text-slate-600 leading-relaxed max-w-2xl">
               <p>
                 I started out as a mechanical engineer, went back for an MBA at Baruch's
-                Zicklin School of Business, and found my way to product — where engineering
+                Zicklin School of Business, and found my way to product, where engineering
                 rigor, business strategy, and user empathy finally pull in the same direction.
               </p>
               <p>
@@ -34,17 +34,27 @@ export function HeroSection() {
               </p>
             </div>
 
-            {/* Testimonial */}
-            <blockquote className="animated-border max-w-2xl">
+            {/* Recommendation letter */}
+            <div className="animated-border max-w-2xl">
+              <p className="eyebrow mb-2">Recommendation</p>
               <p className="text-slate-600 leading-relaxed">
-                "I think Rez is naturally curious which is perhaps his greatest trait, and
-                one of the most critical for product management as he furthers his career."
+                "His curiosity and comfort with ambiguity are the exact sort of intangible,
+                table stakes qualities that will continue to make him a great asset to any team."
               </p>
               <footer className="mt-3 text-sm">
-                <span className="text-slate-900 font-medium">Cody Chin</span>
-                <span className="text-slate-500"> — Director of Digital PM, Rocket Mortgage</span>
+                <span className="text-slate-900 font-medium">Barry Biggs</span>
+                <span className="text-slate-500">, my mentor at Rocket Mortgage</span>
+                <span className="text-slate-400"> · </span>
+                <a
+                  href="/attached_assets/Rezwan_Islam_Recommendation_Letter.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-800 font-medium hover:text-blue-600 transition-colors"
+                >
+                  Read the full letter
+                </a>
               </footer>
-            </blockquote>
+            </div>
 
             {/* Action Buttons */}
             <div className="flex flex-wrap gap-4 pt-2">

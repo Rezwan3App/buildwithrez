@@ -14,7 +14,7 @@ export default function MBA() {
   const mbaProjects = [
     {
       title: "EatTrack",
-      description: "A mobile app concept helping consumers identify ultra-processed foods while grocery shopping. I surveyed 55+ NYC adults — over 80% wanted the solution.",
+      description: "A mobile app concept helping consumers identify ultra-processed foods while grocery shopping. I surveyed 55+ NYC adults, and over 80% wanted the solution.",
       stats: "95% user interest · $13.9M gross revenue projection",
       tags: ["Product Development", "Consumer Research", "Go-to-Market"],
       accentColor: "text-blue-800",
@@ -88,7 +88,7 @@ export default function MBA() {
                 MBA & Data Analytics
               </h1>
               <p className="text-lg text-slate-600 max-w-2xl">
-                Coursework from Baruch's Zicklin School of Business where I got to stress-test product ideas with real analysis — surveys, financial models, SQL, and R.
+                Coursework from Baruch's Zicklin School of Business where I got to stress-test product ideas with real analysis: surveys, financial models, SQL, and R.
               </p>
             </div>
           </Reveal>

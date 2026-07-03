@@ -80,7 +80,7 @@
   box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
 }
 
-/* Primary navy button — solid, no gradients or shine */
+/* Primary navy button: solid, no gradients or shine */
 .btn-gradient {
   background: #1e3a8a;
   transition: background-color 0.2s ease;
@@ -88,11 +88,6 @@
 
 .btn-gradient:hover {
   background: #1e40af;
-}
-
-/* Kept as a no-op so existing markup doesn't break; shine effect removed */
-.btn-shine {
-  position: relative;
 }
 
 /* Quote / pull-out block: thin navy rule, no box */

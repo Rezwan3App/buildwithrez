@@ -25,7 +25,7 @@ export default function ProductManagement() {
                 Projects
               </h1>
               <p className="text-lg text-slate-600 max-w-3xl">
-                Things I've built and product thinking I've put on paper — case studies, PRDs, and two shipped side projects.
+                Things I've built and product thinking I've put on paper: case studies, PRDs, and two shipped side projects.
               </p>
             </div>
           </Reveal>
@@ -62,7 +62,7 @@ export default function ProductManagement() {
                 </div>
 
                 <p className="text-slate-600 mb-6">
-                  Promo codes and sponsor deals are buried inside long YouTube videos — viewers either scrub through sponsor reads or miss the discount entirely. I built Snag to scan a video's transcript and surface every promo code, sponsor offer, and limited-time deal with its exact timestamp.
+                  Promo codes and sponsor deals are buried inside long YouTube videos. Viewers either scrub through sponsor reads or miss the discount entirely. I built Snag to scan a video's transcript and surface every promo code, sponsor offer, and limited-time deal with its exact timestamp.
                 </p>
 
                 <div className="flex-1">
@@ -95,7 +95,7 @@ export default function ProductManagement() {
                       <div>
                         <p className="text-slate-900 font-medium mb-1">Ruthless MVP scoping</p>
                         <p className="text-slate-600">
-                          Cut the first version down to one core job: paste a link, get the codes. No accounts, no database, no build step — a JSON file and a zero-dependency frontend were enough to validate the idea.
+                          Cut the first version down to one core job: paste a link, get the codes. No accounts, no database, no build step. A JSON file and a zero-dependency frontend were enough to validate the idea.
                         </p>
                       </div>
                     </div>
@@ -104,7 +104,7 @@ export default function ProductManagement() {
                       <div>
                         <p className="text-slate-900 font-medium mb-1">Designing around a platform constraint</p>
                         <p className="text-slate-600">
-                          YouTube blocks transcript requests from cloud servers. Instead of fighting it with proxies, I made local-first an explicit product decision — the app runs on the user's machine, fetching transcripts reliably with zero API keys or infrastructure cost.
+                          YouTube blocks transcript requests from cloud servers. Instead of fighting it with proxies, I made local-first an explicit product decision. The app runs on the user's machine, fetching transcripts reliably with zero API keys or infrastructure cost.
                         </p>
                       </div>
                     </div>
@@ -113,7 +113,7 @@ export default function ProductManagement() {
                       <div>
                         <p className="text-slate-900 font-medium mb-1">Key takeaway</p>
                         <p className="text-slate-600">
-                          Platform constraints aren't blockers — they're forcing functions that shape better architecture. The same lesson from TrackFlow's pivot, learned from the opposite direction.
+                          Platform constraints aren't blockers. They're forcing functions that shape better architecture. The same lesson from TrackFlow's pivot, learned from the opposite direction.
                         </p>
                       </div>
                     </div>
@@ -151,7 +151,7 @@ export default function ProductManagement() {
                       href="https://youtu.be/Iz-j6F19p0s"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center px-4 py-2 btn-gradient btn-shine text-white rounded-lg text-sm font-semibold border-0"
+                      className="inline-flex items-center px-4 py-2 btn-gradient text-white rounded-lg text-sm font-semibold border-0"
                       data-testid="button-watch-demo"
                     >
                       <Play className="mr-2 h-4 w-4" />
@@ -171,7 +171,7 @@ export default function ProductManagement() {
                 </div>
 
                 <p className="text-slate-600 mb-6">
-                  I built TrackFlow, a privacy-focused browser extension that helps professionals organize their job search without spreadsheets — local-first, so user data never leaves the device.
+                  I built TrackFlow, a privacy-focused browser extension that helps professionals organize their job search without spreadsheets. It's local-first, so user data never leaves the device.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-6 mb-6">
@@ -196,7 +196,7 @@ export default function ProductManagement() {
                       </li>
                       <li className="flex items-start">
                         <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-2 mr-2 shrink-0"></span>
-                        <span>Captures from any job board — Indeed, Greenhouse, and more — with automatic duplicate detection.</span>
+                        <span>Captures from any job board (Indeed, Greenhouse, and more) with automatic duplicate detection.</span>
                       </li>
                       <li className="flex items-start">
                         <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-2 mr-2 shrink-0"></span>
@@ -221,7 +221,7 @@ export default function ProductManagement() {
                     <div className="flex gap-3">
                       <span className="text-blue-800 font-semibold text-xs mt-0.5 shrink-0">02</span>
                       <div>
-                        <p className="text-slate-900 font-medium mb-1">The pivot — solving platform risk</p>
+                        <p className="text-slate-900 font-medium mb-1">The pivot: solving platform risk</p>
                         <p className="text-slate-600">
                           Version 1 was deprecated by LinkedIn due to platform policy changes around web scraping. Rather than patching, I treated this as an opportunity to re-architect the product - building a platform-agnostic solution with enhanced features and improved reliability.
                         </p>
@@ -264,7 +264,7 @@ export default function ProductManagement() {
                     href="/attached_assets/LinkedIn_Case_Study_1768252732588.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-4 py-2 btn-gradient btn-shine text-white rounded-lg text-sm font-semibold border-0"
+                    className="inline-flex items-center px-4 py-2 btn-gradient text-white rounded-lg text-sm font-semibold border-0"
                     data-testid="button-view-linkedin-case-study"
                   >
                     <ExternalLink className="mr-2 h-4 w-4" />
@@ -273,7 +273,7 @@ export default function ProductManagement() {
                 </div>
 
                 <p className="text-slate-600">
-                  I identified a critical friction point in LinkedIn's job search experience: candidates are forced to apply first and assess commute viability second. I propose "LinkedIn Location Intelligence" — a geospatial layer that visualizes job opportunities relative to the user's location, revealing commute clusters and transit access that are currently hidden by generic text labels.
+                  I identified a critical friction point in LinkedIn's job search experience: candidates are forced to apply first and assess commute viability second. I propose "LinkedIn Location Intelligence," a geospatial layer that visualizes job opportunities relative to the user's location, revealing commute clusters and transit access that are currently hidden by generic text labels.
                 </p>
               </div>
               </Reveal>
@@ -302,14 +302,14 @@ export default function ProductManagement() {
                     </div>
                     
                     <p className="text-slate-600 mb-4">
-                      I wrote a full PRD for a "Journeys" feature that lets users plan multi-hike itineraries with driving directions, amenities, and rest stops — killing the app-hop between AllTrails, Google Maps, and travel blogs.
+                      I wrote a full PRD for a "Journeys" feature that lets users plan multi-hike itineraries with driving directions, amenities, and rest stops, killing the app-hop between AllTrails, Google Maps, and travel blogs.
                     </p>
 
                     <a 
                       href="/attached_assets/AllTrails_Journeys_Curated_Hiking_Itineraries_1768253125440.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center px-5 py-2.5 btn-gradient btn-shine text-white rounded-lg text-sm font-semibold border-0"
+                      className="inline-flex items-center px-5 py-2.5 btn-gradient text-white rounded-lg text-sm font-semibold border-0"
                       data-testid="button-view-alltrails-prd"
                     >
                       <FileText className="mr-2 h-4 w-4" />
