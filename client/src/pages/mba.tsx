@@ -19,6 +19,7 @@ export default function MBA() {
       description: "A mobile app concept helping consumers identify ultra-processed foods while grocery shopping. I surveyed 55+ NYC adults, and over 80% wanted the solution.",
       stats: "95% user interest · $13.9M gross revenue projection",
       tags: ["Product Development", "Consumer Research", "Go-to-Market"],
+      methods: ["Consumer surveys (55+ respondents)", "Concept & prototype testing", "Go-to-market revenue modeling"],
       accentColor: "text-blue-800",
       icon: Utensils,
       iconBg: "from-blue-800 to-blue-600",
@@ -29,6 +30,7 @@ export default function MBA() {
       description: "I developed a data-backed go-to-market strategy for a Bose sleep tech product, running primary research with 50+ consumer interviews alongside competitive analysis.",
       stats: "$450K projected first-year revenue · 5% market share target",
       tags: ["Go-to-Market", "Consumer Research", "Strategy"],
+      methods: ["50+ consumer interviews", "Competitive analysis", "Pricing & first-year revenue modeling"],
       accentColor: "text-indigo-700",
       icon: Moon,
       iconBg: "from-indigo-500 to-purple-600",
@@ -40,6 +42,7 @@ export default function MBA() {
       description: "I performed a comprehensive 10-K analysis benchmarked against Wendy's and Burger King, built a DCF model with sensitivity analysis, and evaluated ESG initiatives.",
       stats: "3 companies analyzed · Full ratio & DCF analysis",
       tags: ["DCF", "Ratio Analysis", "10-K Analysis"],
+      methods: ["10-K financial statement analysis", "Excel DCF with sensitivity tables", "Ratio benchmarking & ESG review"],
       accentColor: "text-amber-700",
       icon: TrendingUp,
       iconBg: "from-yellow-500 to-orange-600",
@@ -52,12 +55,12 @@ export default function MBA() {
     {
       title: "Ford Vehicle Crash Risk Analysis",
       highlights: [
-        "I used logistic regression in R to analyze 64,000+ NYC motor vehicle collisions",
+        "I used logistic regression in Python to analyze 64,000+ NYC motor vehicle collisions",
         "Found no significant link between Ford vehicles and fatal crash outcomes",
         "Identified human behavior (speeding, impairment) as primary fatality predictors"
       ],
       stats: "64K+ collisions · p-value 0.203",
-      tags: ["Statistics", "Logistic Regression", "R"],
+      tags: ["Statistics", "Logistic Regression", "Python"],
       accentColor: "text-blue-800",
       icon: Car,
       iconBg: "from-blue-500 to-indigo-600",
@@ -127,7 +130,14 @@ export default function MBA() {
 
                       <p className="text-slate-600 mb-4">{project.description}</p>
 
-                      <p className="text-sm text-slate-400 mt-4">{project.tags.join(" · ")}</p>
+                      <div className="mt-4 border-l-2 border-slate-200 pl-4">
+                        <p className="text-xs font-semibold tracking-widest uppercase text-slate-400 mb-2">How I built it</p>
+                        <ul className="space-y-1">
+                          {project.methods.map((m, i) => (
+                            <li key={i} className="text-sm text-slate-600">{m}</li>
+                          ))}
+                        </ul>
+                      </div>
 
                       {project.pdf && (
                         <a
@@ -256,7 +266,8 @@ export default function MBA() {
                     className="w-full group-hover/img:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <p className="text-sm text-slate-600 mt-3 font-medium group-hover/img:text-blue-800 transition-colors">Customer Churn Analysis</p>
+                <p className="text-sm text-slate-900 mt-3 font-medium group-hover/img:text-blue-800 transition-colors">Customer Churn Analysis</p>
+                <p className="text-sm text-slate-500 mt-1">I analyzed bank customer churn to find which segments leave and why, breaking retention down by geography, product mix, and account activity.</p>
               </a>
               <a
                 href="https://public.tableau.com/app/profile/rezwan.islam4698/vizzes"
@@ -272,7 +283,8 @@ export default function MBA() {
                     className="w-full group-hover/img:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <p className="text-sm text-slate-600 mt-3 font-medium group-hover/img:text-blue-800 transition-colors">New York City Fire Safety Analysis</p>
+                <p className="text-sm text-slate-900 mt-3 font-medium group-hover/img:text-blue-800 transition-colors">New York City Fire Safety Analysis</p>
+                <p className="text-sm text-slate-500 mt-1">I mapped NYC fire-inspection outcomes across boroughs: pass and fail rates, the most common causes of failed inspections, and where risk concentrates.</p>
               </a>
             </div>
           </div>

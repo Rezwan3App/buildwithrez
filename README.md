@@ -1,6 +1,6 @@
 # Rezwan Islam – Portfolio
 
-Personal portfolio site for **Rezwan Islam** (Aspiring Product Manager).  
+Personal portfolio site for **Rezwan Islam** (Product Manager).  
 Live at **[www.buildwithrez.com](https://www.buildwithrez.com)**.
 
 ## Tech Stack
@@ -13,10 +13,10 @@ Live at **[www.buildwithrez.com](https://www.buildwithrez.com)**.
 
 ```bash
 npm install
-npx vite --host
+npm run dev
 ```
 
-Open **http://localhost:5173/**.
+Open **http://localhost:5000/**.
 
 ## Build
 
@@ -80,7 +80,7 @@ Use this if you use **Deploy from a branch** (root or `gh-pages`). If you use **
 
 ### Why “local vs live” can differ
 
-- **Locally:** You run `npx vite --host`, which serves the **source** in `client/src/` with hot reload.
+- **Locally:** You run `npm run dev`, which serves the **source** in `client/src/` with hot reload.
 - **Live:** GitHub Pages serves either the **built** output from the `deploy` workflow (Actions) or the built files you committed (branch deploy).
 
 So you always see the latest code locally, but the live site only updates after a successful **build and deploy** (workflow or `deploy:pages` + push).
