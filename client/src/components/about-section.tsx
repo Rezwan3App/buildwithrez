@@ -1,4 +1,4 @@
-import { GraduationCap, Settings, Download, FileText, ArrowUpRight } from "lucide-react";
+import { Download, FileText, ArrowUpRight } from "lucide-react";
 import { SiTableau, SiSubstack, SiSpotify } from "react-icons/si";
 import { Reveal } from "@/components/reveal";
 
@@ -30,7 +30,6 @@ export function AboutSection() {
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Resources */}
           <Reveal>
-            <p className="eyebrow mb-3">Elsewhere</p>
             <h2 className="text-2xl font-semibold text-slate-900 mb-8">
               Resources
             </h2>
@@ -70,14 +69,15 @@ export function AboutSection() {
 
           {/* Education */}
           <Reveal delay={0.1}>
-            <p className="eyebrow mb-3">Background</p>
             <h2 className="text-2xl font-semibold text-slate-900 mb-8">
               Education
             </h2>
 
             <div className="divide-y divide-slate-200">
               <div className="flex items-start gap-4 py-4">
-                <GraduationCap className="h-5 w-5 text-slate-400 mt-1 shrink-0" />
+                <div className="w-12 h-12 bg-white border border-slate-200 rounded-lg flex items-center justify-center shrink-0 p-1.5">
+                  <img loading="lazy" decoding="async" src="/attached_assets/image_1766520608918.png" alt="Baruch College" className="w-full h-full object-contain" />
+                </div>
                 <div className="flex-1">
                   <div className="flex items-baseline justify-between gap-4">
                     <h3 className="text-lg font-semibold text-slate-900">
@@ -92,7 +92,9 @@ export function AboutSection() {
               </div>
 
               <div className="flex items-start gap-4 py-4">
-                <Settings className="h-5 w-5 text-slate-400 mt-1 shrink-0" />
+                <div className="w-12 h-12 bg-white border border-slate-200 rounded-lg flex items-center justify-center shrink-0 p-1.5">
+                  <img loading="lazy" decoding="async" src="/attached_assets/ccny-seal.png" alt="City College of New York" className="w-full h-full object-contain" />
+                </div>
                 <div className="flex-1">
                   <div className="flex items-baseline justify-between gap-4">
                     <h3 className="text-lg font-semibold text-slate-900">

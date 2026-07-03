@@ -35,7 +35,7 @@ export function Navigation() {
     >
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="text-lg font-semibold text-slate-900 hover:text-blue-800 transition-colors" style={{ fontFamily: "'Fraunces', Georgia, serif" }} data-testid="link-home-logo">
+          <Link href="/" className="text-lg font-bold text-slate-900 hover:text-blue-800 transition-colors" style={{ fontFamily: "'Manrope', sans-serif" }} data-testid="link-home-logo">
             Rezwan Islam
           </Link>
 

@@ -20,7 +20,13 @@ export function HeroSection() {
         <div className="grid lg:grid-cols-[1.4fr_1fr] gap-16 items-center">
           {/* Left Column - Text Content */}
           <motion.div className="space-y-8" {...entrance(0)}>
-            <p className="eyebrow">Rezwan Islam &middot; Product Manager &middot; New York</p>
+            <div className="space-y-3">
+              <p className="eyebrow">Product Manager &middot; New York</p>
+              <p className="inline-flex items-center gap-2 text-sm text-slate-600">
+                <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                Open to APM/PM roles &middot; Graduating May 2027
+              </p>
+            </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-slate-900">
               From mechanical systems to digital products.
