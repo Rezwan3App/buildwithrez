@@ -1,6 +1,5 @@
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
-import { Badge } from "@/components/ui/badge";
 import { Reveal } from "@/components/reveal";
 import { Calendar } from "lucide-react";
 import odynnImage from "@assets/image_1767746624854.png";
@@ -8,6 +7,7 @@ import rocketImage from "@assets/image_1767746681686.png";
 import odynnLogo from "@assets/image_1767747315335.png";
 import rocketLogo from "@assets/image_1767747337636.png";
 import megaplantsLogo from "@assets/image_1767747435421.png";
+import wtcLogo from "@assets/wtc-logo.png";
 
 interface Experience {
   title: string;
@@ -30,13 +30,13 @@ export default function Experience() {
       location: "New York, NY",
       period: "Jun 2026 - Present",
       highlights: [
-        "Program Launch: Supporting the launch of BuiltSmall's Train-the-Trainer AI bootcamp for Entrepreneur Assistance Center counselors across New York State, funded by Empire State Development.",
-        "Training Operations: Helping deliver small-business AI programming — monthly AI Foundations webinars, the AI on Main Street event series, and weekly office hours with small business owners.",
-        "Innovation Hub: Supporting day-to-day operations at Chinatown's first Small Business Innovation Hub, serving immigrant-owned and multilingual businesses."
+        "I'm helping launch BuiltSmall's Train-the-Trainer bootcamp — New York State's first AI training program for the counselors who advise small businesses at its 26 Entrepreneur Assistance Centers.",
+        "I support our direct-to-business programming: monthly AI Foundations webinars, the AI on Main Street event series, and weekly office hours with small business owners.",
+        "Day to day, I help run Chinatown's first Small Business Innovation Hub — programs built for immigrant-owned, multilingual businesses."
       ],
       tags: ["Program Operations", "Event Programming", "AI Training", "Community Engagement"],
       logo: "wtc",
-      logoBg: "bg-gradient-to-br from-blue-800 to-blue-600"
+      logoBg: ""
     },
     {
       title: "Product/Data Analyst Intern",
@@ -44,9 +44,9 @@ export default function Experience() {
       location: "New York, NY",
       period: "May 2025 - Aug 2025",
       highlights: [
-        "Quality Engineering: Optimized booking flow reliability by 20% through rigorous QA and regression testing on 50+ core features.",
-        "Data Orchestration: Built comprehensive Amplitude dashboards for 150+ user events, utilizing SQL for data validation and integrity.",
-        "Market Intelligence: Conducted deep-dive competitive analysis across 25+ platforms to identify and prioritize high-impact feature gaps."
+        "I owned QA for the booking flow, regression-testing 50+ core features and improving reliability by 20%.",
+        "I built Amplitude dashboards covering 150+ user events, using SQL to validate the data behind them.",
+        "I ran competitive analysis across 25+ travel platforms to prioritize which feature gaps were worth closing."
       ],
       tags: ["Jira", "Confluence", "Amplitude", "SQL", "Agile"],
       logo: "odynn",
@@ -60,9 +60,9 @@ export default function Experience() {
       location: "Detroit, MI",
       period: "May 2024 - Dec 2024",
       highlights: [
-        "Fintech Integration: Spearheaded Plaid API integration, achieving 4x faster account creation and a 30% increase in verification success.",
-        "AI Optimization: Enhanced AI chatbot logic, resulting in a 40% reduction in human escalations and a 25% boost in form completion.",
-        "Award-Winning UX: Awarded \"Tech Demo Winner\" for designing a feature that drove a 20% increase in user engagement."
+        "I spearheaded a Plaid API integration that made account creation 4x faster and lifted verification success by 30%.",
+        "I reworked the AI chatbot's escalation logic, cutting human handoffs by 40% and boosting form completion by 25%.",
+        "A feature I designed won the internal 'Tech Demo' award and drove a 20% increase in user engagement."
       ],
       tags: ["Plaid API", "Azure DevOps", "Figma", "Jira", "A/B Testing"],
       logo: "rocket",
@@ -76,8 +76,8 @@ export default function Experience() {
       location: "New York, NY",
       period: "Feb 2024 - May 2024",
       highlights: [
-        "Data-Driven Prioritization: Filtered 200+ product concepts down to 3 high-potential tincture lines using quantitative trend analysis.",
-        "E-commerce Expansion: Analyzed 300+ Amazon SKUs to identify market white space, supporting a 25% expansion of the product portfolio."
+        "I filtered 200+ product concepts down to 3 high-potential tincture lines using quantitative trend analysis.",
+        "I analyzed 300+ Amazon SKUs to find market white space, supporting a 25% expansion of the product portfolio."
       ],
       tags: ["Google Analytics", "Google Trends", "Jungle Scout", "Market Research"],
       logo: "megaplants",
@@ -85,27 +85,39 @@ export default function Experience() {
     }
   ];
 
-  const renderLogo = (logo: string) => {
-    switch (logo) {
-      case "rocket":
-        return (
-          <img src={rocketLogo} alt="Rocket Mortgage" className="w-12 h-12 object-contain" />
-        );
-      case "odynn":
-        return (
-          <img src={odynnLogo} alt="Odynn" className="w-10 h-10 object-contain" />
-        );
-      case "megaplants":
-        return (
-          <img src={megaplantsLogo} alt="MegaPlants" className="w-12 h-8 object-contain" />
-        );
-      case "wtc":
-        return (
-          <span className="text-white text-sm font-bold">WC</span>
-        );
-      default:
-        return null;
+  const renderLogo = (exp: Experience) => {
+    if (exp.logo === "wtc") {
+      return (
+        <div className="h-12 flex items-center shrink-0">
+          <img src={wtcLogo} alt="Welcome to Chinatown" className="h-10 w-auto object-contain" />
+        </div>
+      );
     }
+
+    const inner = (() => {
+      switch (exp.logo) {
+        case "rocket":
+          return (
+            <img src={rocketLogo} alt="Rocket Mortgage" className="w-12 h-12 object-contain" />
+          );
+        case "odynn":
+          return (
+            <img src={odynnLogo} alt="Odynn" className="w-10 h-10 object-contain" />
+          );
+        case "megaplants":
+          return (
+            <img src={megaplantsLogo} alt="MegaPlants" className="w-12 h-8 object-contain" />
+          );
+        default:
+          return null;
+      }
+    })();
+
+    return (
+      <div className={`w-12 h-12 ${exp.logoBg} rounded-lg flex items-center justify-center shrink-0`}>
+        {inner}
+      </div>
+    );
   };
 
 
@@ -121,7 +133,7 @@ export default function Experience() {
                 Product Experience
               </h1>
               <p className="text-lg text-slate-600 max-w-2xl">
-                Product and operations internships across fintech, travel tech, e-commerce, and economic development.
+                Internships across fintech, travel tech, e-commerce, and economic development — here's what I actually did at each.
               </p>
             </div>
           </Reveal>
@@ -136,9 +148,7 @@ export default function Experience() {
                     <div className="flex-1">
                       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-5">
                         <div className="flex items-start gap-4">
-                          <div className={`w-12 h-12 ${exp.logoBg} rounded-lg flex items-center justify-center shrink-0`}>
-                            {renderLogo(exp.logo)}
-                          </div>
+                          {renderLogo(exp)}
                           <div>
                             <h3 className="text-xl font-semibold text-slate-900 mb-1">
                               {exp.title}
@@ -158,23 +168,15 @@ export default function Experience() {
                       <ul className="space-y-3 mb-5">
                         {exp.highlights.map((highlight, idx) => (
                           <li key={idx} className="text-slate-600 text-sm flex items-start leading-relaxed">
-                            <span className="w-1.5 h-1.5 rounded-full bg-blue-700 mt-2 mr-3 shrink-0"></span>
+                            <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-2 mr-3 shrink-0"></span>
                             {highlight}
                           </li>
                         ))}
                       </ul>
 
-                      <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-200">
-                        {exp.tags.map((tag, idx) => (
-                          <Badge
-                            key={idx}
-                            variant="secondary"
-                            className="bg-slate-100 text-slate-700 px-2.5 py-0.5 text-xs font-medium border-0"
-                          >
-                            {tag}
-                          </Badge>
-                        ))}
-                      </div>
+                      <p className="text-sm text-slate-400 mt-4">
+                        {exp.tags.join(" · ")}
+                      </p>
                     </div>
 
                     {exp.image && (
