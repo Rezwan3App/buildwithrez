@@ -29,14 +29,14 @@ export function Navigation() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-          ? "bg-[#0f172a]/80 backdrop-blur-xl border-b border-white/5"
+          ? "bg-white/85 backdrop-blur-xl border-b border-slate-200 shadow-sm"
           : "bg-transparent"
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="text-xl font-bold text-white hover:text-emerald-400 transition-colors" data-testid="link-home-logo">
-            RI<span className="text-emerald-500">.</span>
+          <Link href="/" className="text-xl font-bold text-slate-900 hover:text-blue-800 transition-colors" data-testid="link-home-logo">
+            RI<span className="text-blue-700">.</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-1">
@@ -46,8 +46,8 @@ export function Navigation() {
                 href={item.path}
                 className={`px-4 py-2 rounded-lg text-base font-semibold transition-all duration-200 ${
                   location === item.path
-                    ? "text-emerald-400 bg-emerald-500/10"
-                    : "text-gray-400 hover:text-white hover:bg-white/5"
+                    ? "text-blue-900 bg-blue-50"
+                    : "text-slate-500 hover:text-slate-900 hover:bg-slate-100"
                 }`}
                 data-testid={`nav-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
               >
@@ -62,13 +62,13 @@ export function Navigation() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="rounded-lg text-gray-400 hover:text-white hover:bg-white/5 h-9 w-9"
+                  className="rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 h-9 w-9"
                   data-testid="button-mobile-menu"
                 >
                   <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[280px] bg-[#0f172a]/95 backdrop-blur-xl border-white/5 p-0">
+              <SheetContent side="right" className="w-[280px] bg-white/95 backdrop-blur-xl border-slate-200 p-0">
                 <div className="flex flex-col gap-1 mt-16 px-6">
                   {navItems.map((item) => (
                     <Link
@@ -77,8 +77,8 @@ export function Navigation() {
                       onClick={() => setIsOpen(false)}
                       className={`px-4 py-4 rounded-xl text-base font-semibold transition-all ${
                         location === item.path
-                          ? "text-emerald-400 bg-emerald-500/10 border border-emerald-500/20"
-                          : "text-gray-400 hover:text-white hover:bg-white/5"
+                          ? "text-blue-900 bg-blue-50 border border-blue-100"
+                          : "text-slate-500 hover:text-slate-900 hover:bg-slate-100"
                       }`}
                       data-testid={`nav-mobile-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
                     >

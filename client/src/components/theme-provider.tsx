@@ -21,7 +21,7 @@ const ThemeProviderContext = createContext<ThemeProviderState>(initialState)
 
 export function ThemeProvider({
   children,
-  defaultTheme = "dark",
+  defaultTheme = "light",
   ...props
 }: ThemeProviderProps) {
   const [theme] = useState<Theme>(defaultTheme)
@@ -29,7 +29,7 @@ export function ThemeProvider({
   useEffect(() => {
     const root = window.document.documentElement
     root.classList.remove("light", "dark")
-    root.classList.add("dark")
+    root.classList.add("light")
   }, [])
 
   const value = {

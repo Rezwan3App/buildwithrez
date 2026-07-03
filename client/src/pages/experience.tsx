@@ -1,6 +1,7 @@
 import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { Badge } from "@/components/ui/badge";
+import { Reveal } from "@/components/reveal";
 import { Calendar } from "lucide-react";
 import odynnImage from "@assets/image_1767746624854.png";
 import rocketImage from "@assets/image_1767746681686.png";
@@ -24,6 +25,20 @@ interface Experience {
 export default function Experience() {
   const experiences: Experience[] = [
     {
+      title: "Operations Intern",
+      company: "Welcome to Chinatown",
+      location: "New York, NY",
+      period: "Jun 2026 - Present",
+      highlights: [
+        "Program Launch: Supporting the launch of BuiltSmall's Train-the-Trainer AI bootcamp for Entrepreneur Assistance Center counselors across New York State, funded by Empire State Development.",
+        "Training Operations: Helping deliver small-business AI programming — monthly AI Foundations webinars, the AI on Main Street event series, and weekly office hours with small business owners.",
+        "Innovation Hub: Supporting day-to-day operations at Chinatown's first Small Business Innovation Hub, serving immigrant-owned and multilingual businesses."
+      ],
+      tags: ["Program Operations", "Event Programming", "AI Training", "Community Engagement"],
+      logo: "wtc",
+      logoBg: "bg-gradient-to-br from-blue-800 to-blue-600"
+    },
+    {
       title: "Product/Data Analyst Intern",
       company: "Odynn",
       location: "New York, NY",
@@ -35,7 +50,7 @@ export default function Experience() {
       ],
       tags: ["Jira", "Confluence", "Amplitude", "SQL", "Agile"],
       logo: "odynn",
-      logoBg: "bg-black",
+      logoBg: "bg-slate-900",
       image: odynnImage,
       imageCaption: "Led a Tableau workshop for fellow interns"
     },
@@ -51,7 +66,7 @@ export default function Experience() {
       ],
       tags: ["Plaid API", "Azure DevOps", "Figma", "Jira", "A/B Testing"],
       logo: "rocket",
-      logoBg: "bg-black",
+      logoBg: "bg-slate-900",
       image: rocketImage,
       imageCaption: "Moderated a product roadmap panel for 200+ people"
     },
@@ -66,7 +81,7 @@ export default function Experience() {
       ],
       tags: ["Google Analytics", "Google Trends", "Jungle Scout", "Market Research"],
       logo: "megaplants",
-      logoBg: "bg-white"
+      logoBg: "bg-white border border-slate-200"
     }
   ];
 
@@ -84,6 +99,10 @@ export default function Experience() {
         return (
           <img src={megaplantsLogo} alt="MegaPlants" className="w-12 h-8 object-contain" />
         );
+      case "wtc":
+        return (
+          <span className="text-white text-sm font-bold">WC</span>
+        );
       default:
         return null;
     }
@@ -91,87 +110,90 @@ export default function Experience() {
 
 
   return (
-    <div className="min-h-screen bg-[#0f172a]">
+    <div className="min-h-screen bg-white">
       <Navigation />
-      
+
       <section className="pt-24 pb-20 relative overflow-hidden">
         <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="mb-12">
-            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-              Product Experience
-            </h1>
-            <p className="text-lg text-gray-400 max-w-2xl">
-              Product internships in fintech, travel tech, and e-commerce.
-            </p>
-          </div>
+          <Reveal>
+            <div className="mb-12">
+              <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-4">
+                Product Experience
+              </h1>
+              <p className="text-lg text-slate-600 max-w-2xl">
+                Product and operations internships across fintech, travel tech, e-commerce, and economic development.
+              </p>
+            </div>
+          </Reveal>
 
           <div className="space-y-6">
             {experiences.map((exp, index) => (
-              <div 
-                key={index}
-                className="group accent-line p-6 sm:p-8 rounded-xl bg-[#12161c] border border-transparent hover:border-emerald-500/20 card-glow transition-all duration-200"
-              >
-                <div className="flex flex-col lg:flex-row gap-6">
-                  <div className="flex-1">
-                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-5">
-                      <div className="flex items-start gap-4">
-                        <div className={`w-12 h-12 ${exp.logoBg} rounded-lg flex items-center justify-center shrink-0 border border-gray-800`}>
-                          {renderLogo(exp.logo)}
+              <Reveal key={index} delay={index * 0.08}>
+                <div
+                  className="group accent-line p-6 sm:p-8 rounded-xl bg-white border border-slate-200 hover:border-blue-300 card-glow transition-all duration-200"
+                >
+                  <div className="flex flex-col lg:flex-row gap-6">
+                    <div className="flex-1">
+                      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-5">
+                        <div className="flex items-start gap-4">
+                          <div className={`w-12 h-12 ${exp.logoBg} rounded-lg flex items-center justify-center shrink-0`}>
+                            {renderLogo(exp.logo)}
+                          </div>
+                          <div>
+                            <h3 className="text-xl font-semibold text-slate-900 mb-1">
+                              {exp.title}
+                            </h3>
+                            <p className="text-blue-800 font-medium">
+                              {exp.company}
+                            </p>
+                            <p className="text-sm text-slate-500">{exp.location}</p>
+                          </div>
                         </div>
-                        <div>
-                          <h3 className="text-xl font-semibold text-white mb-1">
-                            {exp.title}
-                          </h3>
-                          <p className="text-emerald-400 font-medium">
-                            {exp.company}
-                          </p>
-                          <p className="text-sm text-gray-500">{exp.location}</p>
+                        <div className="flex items-center gap-2 text-slate-500 mt-3 sm:mt-0">
+                          <Calendar className="h-4 w-4" />
+                          <span className="text-sm">{exp.period}</span>
                         </div>
                       </div>
-                      <div className="flex items-center gap-2 text-gray-500 mt-3 sm:mt-0">
-                        <Calendar className="h-4 w-4" />
-                        <span className="text-sm">{exp.period}</span>
+
+                      <ul className="space-y-3 mb-5">
+                        {exp.highlights.map((highlight, idx) => (
+                          <li key={idx} className="text-slate-600 text-sm flex items-start leading-relaxed">
+                            <span className="w-1.5 h-1.5 rounded-full bg-blue-700 mt-2 mr-3 shrink-0"></span>
+                            {highlight}
+                          </li>
+                        ))}
+                      </ul>
+
+                      <div className="flex flex-wrap gap-2 pt-4 border-t border-slate-200">
+                        {exp.tags.map((tag, idx) => (
+                          <Badge
+                            key={idx}
+                            variant="secondary"
+                            className="bg-slate-100 text-slate-700 px-2.5 py-0.5 text-xs font-medium border-0"
+                          >
+                            {tag}
+                          </Badge>
+                        ))}
                       </div>
                     </div>
 
-                    <ul className="space-y-3 mb-5">
-                      {exp.highlights.map((highlight, idx) => (
-                        <li key={idx} className="text-gray-400 text-sm flex items-start leading-relaxed">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-2 mr-3 shrink-0"></span>
-                          {highlight}
-                        </li>
-                      ))}
-                    </ul>
-
-                    <div className="flex flex-wrap gap-2 pt-4 border-t border-gray-800/50">
-                      {exp.tags.map((tag, idx) => (
-                        <Badge 
-                          key={idx} 
-                          variant="secondary"
-                          className="bg-gray-800/50 text-gray-400 px-2.5 py-0.5 text-xs font-medium border-0"
-                        >
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
+                    {exp.image && (
+                      <div className="lg:w-64 shrink-0">
+                        <div className="rounded-lg overflow-hidden border border-slate-200">
+                          <img
+                            src={exp.image}
+                            alt={`${exp.company} experience`}
+                            className="w-full h-auto object-cover"
+                          />
+                        </div>
+                        {exp.imageCaption && (
+                          <p className="text-slate-500 text-xs mt-2 text-center">{exp.imageCaption}</p>
+                        )}
+                      </div>
+                    )}
                   </div>
-
-                  {exp.image && (
-                    <div className="lg:w-64 shrink-0">
-                      <div className="rounded-lg overflow-hidden border border-gray-800">
-                        <img 
-                          src={exp.image}
-                          alt={`${exp.company} experience`}
-                          className="w-full h-auto object-cover"
-                        />
-                      </div>
-                      {exp.imageCaption && (
-                        <p className="text-gray-500 text-xs mt-2 text-center">{exp.imageCaption}</p>
-                      )}
-                    </div>
-                  )}
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
