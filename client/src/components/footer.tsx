@@ -5,9 +5,14 @@ export function Footer() {
     <footer className="py-10 border-t border-slate-200">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-slate-500 text-sm">
-            © 2026 Rezwan Islam · New York
-          </p>
+          <div className="text-center sm:text-left">
+            <p className="text-slate-500 text-sm">
+              © 2026 Rezwan Islam · New York
+            </p>
+            <p className="text-slate-400 text-xs mt-1">
+              Designed and built by me, no template. Last updated July 2026.
+            </p>
+          </div>
           <a
             href="https://www.linkedin.com/in/rezwan-islam33"
             target="_blank"
