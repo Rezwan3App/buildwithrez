@@ -44,7 +44,7 @@
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     @apply antialiased;
     line-height: 1.65;
-    background-color: #f6f4ef; /* warm paper */
+    background-color: #f4f6f9; /* cool paper */
     color: #334155;
   }
 
