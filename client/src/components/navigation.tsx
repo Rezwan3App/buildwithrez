@@ -8,7 +8,7 @@ const navItems = [
   { path: "/", label: "Home" },
   { path: "/experience", label: "Experience" },
   { path: "/projects", label: "Projects" },
-  { path: "/mba", label: "MBA" },
+  { path: "/mba", label: "Academics" },
 ];
 
 export function Navigation() {
