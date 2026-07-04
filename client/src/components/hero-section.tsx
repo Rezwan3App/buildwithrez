@@ -15,7 +15,7 @@ export function HeroSection() {
         };
 
   return (
-    <section id="home" className="relative bg-white">
+    <section id="home" className="relative hero-grid">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 pt-36 pb-20 w-full">
         <div className="grid lg:grid-cols-[1.4fr_1fr] gap-16 items-center">
           {/* Left Column - Text Content */}

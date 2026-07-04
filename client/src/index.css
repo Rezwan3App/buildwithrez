@@ -44,7 +44,7 @@
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     @apply antialiased;
     line-height: 1.65;
-    background-color: #ffffff;
+    background-color: #f6f4ef; /* warm paper */
     color: #334155;
   }
 
@@ -69,6 +69,28 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #1e3a8a;
+}
+
+/* Engineering dot-grid band, drawn on a background layer behind page headers
+   (pseudo-element so the fade never touches the section's actual content) */
+.hero-grid::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 560px;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(30, 58, 138, 0.22) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+  -webkit-mask-image: linear-gradient(to bottom, black 45%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 45%, transparent 100%);
+}
+
+.hero-grid > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* Card hover: restrained lift, no glow */

@@ -82,10 +82,10 @@ export default function MBA() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       <Navigation />
       
-      <section className="pt-24 pb-20 relative overflow-hidden">
+      <section className="pt-24 pb-20 relative overflow-hidden hero-grid">
         <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
           <Reveal>
             <div className="mb-12">
@@ -93,7 +93,7 @@ export default function MBA() {
                 MBA & Data Analytics
               </h1>
               <p className="text-lg text-slate-600 max-w-2xl">
-                Coursework from Baruch's Zicklin School of Business where I got to stress-test product ideas with real analysis: surveys, financial models, SQL, and R.
+                Coursework from Baruch's Zicklin School of Business where I got to stress-test product ideas with real analysis: surveys, financial models, SQL, and Python.
               </p>
             </div>
           </Reveal>
