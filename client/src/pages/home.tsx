@@ -9,7 +9,7 @@ import { usePageTitle } from "@/hooks/use-page-title";
 export default function Home() {
   usePageTitle();
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       <Navigation />
       <main>
         <HeroSection />

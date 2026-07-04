@@ -11,7 +11,7 @@ const steps = [
     period: "2024",
     title: "Back to school",
     description:
-      "I returned for an MBA at Baruch's Zicklin School of Business (4.0 GPA), leaning hard into data with SQL, R, and Tableau, and serving as VP of the Data Science & Analytics Society.",
+      "I returned for an MBA at Baruch's Zicklin School of Business (4.0 GPA), leaning hard into data with SQL, Python, and Tableau, and serving as VP of the Data Science & Analytics Society.",
   },
   {
     period: "2024 – 2025",
@@ -29,7 +29,7 @@ const steps = [
 
 export function JourneySection() {
   return (
-    <section id="journey" className="py-20 bg-white border-t border-slate-100">
+    <section id="journey" className="py-20 border-t border-slate-200/70">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
         <Reveal>
           <p className="eyebrow mb-3">My Path</p>

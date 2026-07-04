@@ -16,10 +16,10 @@ export default function ProductManagement() {
   const [isTrackflowModalOpen, setIsTrackflowModalOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       <Navigation />
       
-      <section className="pt-24 pb-20 relative overflow-hidden">
+      <section className="pt-24 pb-20 relative overflow-hidden hero-grid">
         <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
           <Reveal>
             <div className="mb-12">

@@ -23,7 +23,7 @@ export function LeadershipSection() {
   ];
 
   return (
-    <section id="leadership" className="py-20 bg-white border-t border-slate-100">
+    <section id="leadership" className="py-20 border-t border-slate-200/70">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
         <Reveal>
           <p className="eyebrow mb-3">Outside the classroom</p>
