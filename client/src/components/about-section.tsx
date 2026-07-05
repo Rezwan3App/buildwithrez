@@ -25,7 +25,7 @@ export function AboutSection() {
   ];
 
   return (
-    <section id="about" className="py-20 bg-[#e8ecf2] border-t border-slate-200/70">
+    <section id="about" className="py-20 bg-[var(--paper-deep)] border-t border-slate-200/70">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Resources */}

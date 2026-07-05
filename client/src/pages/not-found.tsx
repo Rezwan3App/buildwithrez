@@ -15,7 +15,7 @@ export default function NotFound() {
         </p>
         <Link
           href="/"
-          className="inline-flex items-center px-6 py-3 btn-gradient text-white rounded-lg font-semibold"
+          className="inline-flex items-center px-6 py-3 btn-primary text-white rounded-lg font-semibold"
         >
           Back to home
         </Link>

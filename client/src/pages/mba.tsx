@@ -22,7 +22,6 @@ export default function MBA() {
       methods: ["Consumer surveys (55+ respondents)", "Concept & prototype testing", "Go-to-market revenue modeling"],
       accentColor: "text-blue-800",
       icon: Utensils,
-      iconBg: "from-blue-800 to-blue-600",
       image: eatTrackImage
     },
     {
@@ -31,9 +30,8 @@ export default function MBA() {
       stats: "$450K projected first-year revenue · 5% market share target",
       tags: ["Go-to-Market", "Consumer Research", "Strategy"],
       methods: ["50+ consumer interviews", "Competitive analysis", "Pricing & first-year revenue modeling"],
-      accentColor: "text-indigo-700",
+      accentColor: "text-blue-800",
       icon: Moon,
-      iconBg: "from-indigo-500 to-purple-600",
       image: sleepWaveImage,
       pdf: "/attached_assets/BOSE_SLEEPWAVE_PRESENTATION_GROUP_7_1767748370531.pdf"
     },
@@ -43,9 +41,8 @@ export default function MBA() {
       stats: "3 companies analyzed · Full ratio & DCF analysis",
       tags: ["DCF", "Ratio Analysis", "10-K Analysis"],
       methods: ["10-K financial statement analysis", "Excel DCF with sensitivity tables", "Ratio benchmarking & ESG review"],
-      accentColor: "text-amber-700",
+      accentColor: "text-blue-800",
       icon: TrendingUp,
-      iconBg: "from-yellow-500 to-orange-600",
       image: mcdonaldsImage,
       pdf: "/attached_assets/Group_B_FSA,_ACC_9110,_Spring_2025_1767748486018.pdf"
     }
@@ -63,7 +60,6 @@ export default function MBA() {
       tags: ["Statistics", "Logistic Regression", "Python"],
       accentColor: "text-blue-800",
       icon: Car,
-      iconBg: "from-blue-500 to-indigo-600",
       pdf: "/attached_assets/Final_Report-1_1767807752880.pdf"
     },
     {
@@ -75,9 +71,8 @@ export default function MBA() {
       ],
       stats: "12+ tables · BCNF normalized",
       tags: ["SQL", "ER Modeling", "Database Design"],
-      accentColor: "text-violet-700",
+      accentColor: "text-blue-800",
       icon: Database,
-      iconBg: "from-violet-500 to-purple-600"
     }
   ];
 
@@ -115,8 +110,8 @@ export default function MBA() {
                   <div className="flex flex-col lg:flex-row gap-6">
                     <div className="flex-1">
                       <div className="flex items-start gap-4 mb-4">
-                        <div className={`w-14 h-14 bg-gradient-to-br ${project.iconBg} rounded-xl flex items-center justify-center shrink-0`}>
-                          <project.icon className="h-7 w-7 text-white" />
+                        <div className="w-14 h-14 bg-white border border-slate-200 rounded-xl flex items-center justify-center shrink-0">
+                          <project.icon className="h-7 w-7 text-blue-800" />
                         </div>
                         <div>
                           <h3 className="text-xl font-bold text-slate-900 mb-1">
@@ -156,7 +151,7 @@ export default function MBA() {
                       <div className="lg:w-72 shrink-0">
                         <button
                           onClick={() => setModalImage(project.image!)}
-                          className="rounded-xl overflow-hidden border border-slate-200 hover:border-blue-300 hover:shadow-lg hover:shadow-blue-500/10 transition-all cursor-zoom-in w-full"
+                          className="rounded-xl overflow-hidden border border-slate-200 hover:border-blue-300 hover:shadow-lg hover:shadow-blue-900/10 transition-all cursor-zoom-in w-full"
                         >
                           <img loading="lazy" decoding="async" 
                             src={project.image}
@@ -177,7 +172,7 @@ export default function MBA() {
           <div className="mb-16">
             <Reveal>
               <div className="flex items-center gap-3 mb-8">
-                <div className="h-8 w-1 bg-blue-700 rounded-full"></div>
+                <div className="h-8 w-1 bg-blue-900 rounded-full"></div>
                 <h2 className="text-2xl font-bold text-slate-900">Data Analytics Projects</h2>
               </div>
             </Reveal>
@@ -189,8 +184,8 @@ export default function MBA() {
                   className="bg-white border border-slate-200 rounded-2xl p-6 hover:border-blue-300 card-glow transition-all duration-300 h-full"
                 >
                   <div className="text-center mb-4">
-                    <div className={`w-14 h-14 bg-gradient-to-br ${project.iconBg} rounded-xl flex items-center justify-center mx-auto mb-3`}>
-                      <project.icon className="h-7 w-7 text-white" />
+                    <div className="w-14 h-14 bg-white border border-slate-200 rounded-xl flex items-center justify-center mx-auto mb-3">
+                      <project.icon className="h-7 w-7 text-blue-800" />
                     </div>
                     <h3 className="text-xl font-bold text-slate-900">
                       {project.title}
@@ -203,7 +198,7 @@ export default function MBA() {
                   <ul className="space-y-2 mb-4">
                     {project.highlights.map((highlight, idx) => (
                       <li key={idx} className="text-sm text-slate-600 flex items-start">
-                        <span className="w-1.5 h-1.5 rounded-full bg-blue-700 mt-1.5 mr-2.5 shrink-0"></span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-blue-900 mt-1.5 mr-2.5 shrink-0"></span>
                         {highlight}
                       </li>
                     ))}
@@ -232,7 +227,7 @@ export default function MBA() {
           <div className="bg-white border border-slate-200 hover:border-blue-300 card-glow transition-all duration-300 rounded-2xl p-8">
             <div className="text-center mb-8">
               <h3 className="text-2xl font-bold text-slate-900 inline-flex items-center gap-3">
-                <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-blue-900 rounded-xl flex items-center justify-center">
                   <SiTableau className="h-6 w-6 text-white" />
                 </div>
                 Featured Tableau Dashboards
@@ -242,7 +237,7 @@ export default function MBA() {
                   href="https://public.tableau.com/app/profile/rezwan.islam4698/vizzes"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center text-blue-800 hover:text-blue-600 transition-colors font-medium group"
+                  className="inline-flex items-center text-blue-800 hover:text-blue-900 transition-colors font-medium group"
                   data-testid="link-tableau-portfolio"
                 >
                   View All Dashboards

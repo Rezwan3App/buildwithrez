@@ -45,7 +45,7 @@ export function LeadershipSection() {
                   <h3 className="text-base font-semibold text-slate-900">
                     {role.title}
                   </h3>
-                  <p className="text-slate-500 text-sm truncate">
+                  <p className="text-slate-500 text-sm truncate" title={role.organization}>
                     {role.organization}
                   </p>
                 </div>

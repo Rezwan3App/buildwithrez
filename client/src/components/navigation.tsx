@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { Link, useLocation } from "wouter";
 
@@ -29,7 +29,7 @@ export function Navigation() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-          ? "bg-[#faf9f6]/85 backdrop-blur-xl border-b border-slate-200 shadow-sm"
+          ? "bg-[#f4f6f9]/85 backdrop-blur-xl border-b border-slate-200 shadow-sm"
           : "bg-transparent"
       }`}
     >
@@ -62,13 +62,14 @@ export function Navigation() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 h-9 w-9"
+                  className="rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 h-11 w-11"
                   data-testid="button-mobile-menu"
                 >
                   <Menu className="h-5 w-5" />
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[280px] bg-white/95 backdrop-blur-xl border-slate-200 p-0">
+                <SheetTitle className="sr-only">Navigation menu</SheetTitle>
                 <div className="flex flex-col gap-1 mt-16 px-6">
                   {navItems.map((item) => (
                     <Link

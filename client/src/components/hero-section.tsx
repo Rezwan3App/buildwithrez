@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { Download } from "lucide-react";
+import { Download, ArrowRight } from "lucide-react";
 import { FaLinkedin } from "react-icons/fa";
+import { Link } from "wouter";
 import { motion, useReducedMotion } from "framer-motion";
 
 export function HeroSection() {
@@ -22,9 +23,12 @@ export function HeroSection() {
           <motion.div className="space-y-8" {...entrance(0)}>
             <div className="space-y-3">
               <p className="eyebrow">Product Manager &middot; New York</p>
-              <p className="inline-flex items-center gap-2 text-sm text-slate-600">
-                <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-                Open to APM/PM roles &middot; Graduating May 2027
+              <p className="inline-flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-slate-600">
+                <span className="inline-flex items-center gap-2 whitespace-nowrap">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                  Open to APM/PM roles
+                </span>
+                <span className="whitespace-nowrap">&middot; Graduating May 2027</span>
               </p>
             </div>
 
@@ -46,7 +50,7 @@ export function HeroSection() {
             </div>
 
             {/* Recommendation letter */}
-            <div className="animated-border max-w-2xl">
+            <div className="pull-quote max-w-2xl">
               <p className="eyebrow mb-2">Recommendation</p>
               <p className="text-slate-600 leading-relaxed">
                 "His curiosity and comfort with ambiguity are the exact sort of intangible,
@@ -60,7 +64,7 @@ export function HeroSection() {
                   href="/attached_assets/Rezwan_Islam_Recommendation_Letter.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-800 font-medium hover:text-blue-600 transition-colors"
+                  className="text-blue-800 font-medium hover:text-blue-900 transition-colors"
                 >
                   Read the full letter
                 </a>
@@ -72,14 +76,14 @@ export function HeroSection() {
               <Button
                 size="lg"
                 asChild
-                className="btn-gradient text-white px-6 py-3 font-semibold rounded-lg border-0"
+                className="btn-primary text-white px-6 py-3 font-semibold rounded-lg border-0"
               >
                 <a
                   href="/attached_assets/Rezwan_Islam_Zicklin_Latest.pdf"
                   download="Rezwan_Islam_Resume.pdf"
                 >
                   <Download className="mr-2 h-4 w-4" />
-                  Download Resume
+                  Resume (PDF)
                 </a>
               </Button>
 
@@ -95,14 +99,23 @@ export function HeroSection() {
                 </a>
               </Button>
             </div>
+
+            <Link
+              href="/experience"
+              className="group inline-flex items-center gap-1.5 text-blue-800 font-semibold hover:text-blue-900 transition-colors"
+            >
+              See what I've shipped
+              <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
+            </Link>
           </motion.div>
 
           {/* Right Column - Image */}
-          <motion.div className="flex justify-center lg:justify-end" {...entrance(0.1)}>
-            <div className="profile-ring relative w-72 h-[380px] sm:w-80 sm:h-[420px] rounded-xl overflow-hidden shadow-lg">
+          <motion.div className="order-first lg:order-none flex justify-center lg:justify-end" {...entrance(0.1)}>
+            <div className="profile-ring relative w-56 h-72 sm:w-80 sm:h-[420px] rounded-xl overflow-hidden shadow-lg">
               <img
                 src="/attached_assets/profile-headshot.png"
                 alt="Rezwan Islam"
+                fetchPriority="high"
                 className="w-full h-full object-cover object-top"
               />
             </div>
