@@ -4,10 +4,17 @@
 
 /*
   Design system: editorial light theme.
-  White background, deep navy (#1e3a8a) used sparingly, serif display type.
+  Cool paper background, deep navy (#1e3a8a) as the single brand accent,
+  Manrope headings over Sora body. Green appears exactly once sitewide
+  (the availability dot in the hero) as a deliberate signal.
 */
 
 :root {
+  /* Brand tokens: the only background tints and accent allowed sitewide */
+  --paper: #f4f6f9;      /* body background */
+  --paper-deep: #e8ecf2; /* tinted section bands */
+  --navy: #1e3a8a;       /* brand accent (tailwind blue-900) */
+
   --background: hsl(0, 0%, 100%);
   --foreground: hsl(222, 47%, 11%);
   --muted: hsl(210, 40%, 96%);
@@ -41,15 +48,15 @@
   }
 
   body {
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Sora', system-ui, -apple-system, sans-serif;
     @apply antialiased;
     line-height: 1.65;
-    background-color: #f4f6f9; /* cool paper */
+    background-color: var(--paper);
     color: #334155;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Manrope', 'Inter', system-ui, sans-serif;
+    font-family: 'Manrope', 'Sora', system-ui, sans-serif;
     @apply font-bold;
     letter-spacing: -0.02em;
     line-height: 1.15;
@@ -63,7 +70,7 @@
 
 /* Small-caps eyebrow label used above headings */
 .eyebrow {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Sora', sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.14em;
@@ -82,7 +89,7 @@
   height: 560px;
   z-index: 0;
   pointer-events: none;
-  background-image: radial-gradient(circle, rgba(30, 58, 138, 0.22) 1.5px, transparent 1.5px);
+  background-image: radial-gradient(circle, rgba(30, 58, 138, 0.09) 1.5px, transparent 1.5px);
   background-size: 24px 24px;
   -webkit-mask-image: linear-gradient(to bottom, black 45%, transparent 100%);
   mask-image: linear-gradient(to bottom, black 45%, transparent 100%);
@@ -102,23 +109,34 @@
   box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
 }
 
-/* Primary navy button: solid, no gradients or shine */
-.btn-gradient {
-  background: #1e3a8a;
+/* Primary navy button */
+.btn-primary {
+  background: var(--navy);
   transition: background-color 0.2s ease;
 }
 
-.btn-gradient:hover {
+.btn-primary:hover {
   background: #1e40af;
 }
 
-/* Quote / pull-out block: thin navy rule, no box */
-.animated-border {
+/* Quote / pull-out block: oversized quote mark, no border accent */
+.pull-quote {
+  position: relative;
   background: transparent;
   border: none;
-  border-left: 2px solid #1e3a8a;
-  border-radius: 0;
-  padding-left: 1.25rem;
+  padding-left: 2.25rem;
+}
+
+.pull-quote::before {
+  content: '"';
+  position: absolute;
+  left: -0.25rem;
+  top: -0.75rem;
+  font-family: 'Manrope', serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #b6c4e8; /* light navy tint, same hue as the brand accent */
+  line-height: 1;
 }
 
 /* Profile image frame: simple hairline, no animated ring */

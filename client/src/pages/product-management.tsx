@@ -42,8 +42,8 @@ export default function ProductManagement() {
               <div className="bg-white border border-slate-200 rounded-2xl p-6 hover:border-blue-300 card-glow transition-all duration-300">
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-800 to-blue-600 rounded-xl flex items-center justify-center shrink-0">
-                      <Youtube className="h-6 w-6 text-white" />
+                    <div className="w-12 h-12 bg-white border border-slate-200 rounded-xl flex items-center justify-center shrink-0">
+                      <Youtube className="h-6 w-6 text-blue-800" />
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-slate-900">Snag</h3>
@@ -139,7 +139,7 @@ export default function ProductManagement() {
                       href="https://chromewebstore.google.com/detail/trackflow/ebgheidbnhlhnifaiggdbgiifkiklalh"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-sm font-semibold transition-all"
+                      className="inline-flex items-center px-4 py-2 bg-blue-900 hover:bg-blue-800 text-white rounded-lg text-sm font-semibold transition-all"
                       data-testid="button-chrome-store"
                     >
                       <ExternalLink className="mr-2 h-4 w-4" />
@@ -149,7 +149,7 @@ export default function ProductManagement() {
                       href="https://youtu.be/Iz-j6F19p0s"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center px-4 py-2 btn-gradient text-white rounded-lg text-sm font-semibold border-0"
+                      className="inline-flex items-center px-4 py-2 btn-primary text-white rounded-lg text-sm font-semibold border-0"
                       data-testid="button-watch-demo"
                     >
                       <Play className="mr-2 h-4 w-4" />
@@ -258,7 +258,7 @@ export default function ProductManagement() {
                     href="/attached_assets/LinkedIn_Case_Study_1768252732588.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-4 py-2 btn-gradient text-white rounded-lg text-sm font-semibold border-0"
+                    className="inline-flex items-center px-4 py-2 btn-primary text-white rounded-lg text-sm font-semibold border-0"
                     data-testid="button-view-linkedin-case-study"
                   >
                     <ExternalLink className="mr-2 h-4 w-4" />
@@ -303,7 +303,7 @@ export default function ProductManagement() {
                       href="/attached_assets/AllTrails_Journeys_Curated_Hiking_Itineraries_1768253125440.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center px-5 py-2.5 btn-gradient text-white rounded-lg text-sm font-semibold border-0"
+                      className="inline-flex items-center px-5 py-2.5 btn-primary text-white rounded-lg text-sm font-semibold border-0"
                       data-testid="button-view-alltrails-prd"
                     >
                       <FileText className="mr-2 h-4 w-4" />
@@ -315,7 +315,7 @@ export default function ProductManagement() {
                   <div className="lg:w-80 shrink-0">
                     <button
                       onClick={() => setIsImageModalOpen(true)}
-                      className="rounded-xl overflow-hidden border border-slate-200 hover:border-blue-400 hover:shadow-lg hover:shadow-blue-500/10 transition-all cursor-zoom-in w-full"
+                      className="rounded-xl overflow-hidden border border-slate-200 hover:border-blue-300 hover:shadow-lg hover:shadow-blue-900/10 transition-all cursor-zoom-in w-full"
                       data-testid="button-enlarge-wireframe"
                     >
                       <img loading="lazy" decoding="async" 
