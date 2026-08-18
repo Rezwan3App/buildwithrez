@@ -1,5 +1,5 @@
 import { Download, FileText, ArrowUpRight } from "lucide-react";
-import { SiTableau, SiSubstack, SiSpotify } from "react-icons/si";
+import { SiTableau, SiSubstack, SiSpotify, SiGithub } from "react-icons/si";
 import { Reveal } from "@/components/reveal";
 
 export function AboutSection() {
@@ -21,7 +21,13 @@ export function AboutSection() {
       description: "My PM journey & the Rocket internship",
       href: "https://open.spotify.com/episode/2pcqPSQeTCfmnsSgAyDvB8",
       icon: SiSpotify,
-    }
+    },
+    {
+      title: "GitHub",
+      description: "Personal projects and code",
+      href: "https://github.com/Rezwan3App",
+      icon: SiGithub,
+    },
   ];
 
   return (
