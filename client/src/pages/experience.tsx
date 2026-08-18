@@ -21,9 +21,9 @@ interface Experience {
   company: string;
   location: string;
   period: string;
-  warm: string;
+  scope: string;
   metrics: Metric[];
-  tags: string[];
+  tools: string[];
   logo: string;
   logoBg: string;
   image?: string;
@@ -93,13 +93,13 @@ export default function Experience() {
       company: "Welcome to Chinatown",
       location: "New York, NY",
       period: "Jun 2026 - Aug 2026",
-      warm: "I got to build things that helped real neighbors, not users in a funnel.",
+      scope: "Built and taught AI enablement for immigrant-owned small businesses, and shipped civic-tech tools, at a 501(c)(3) economic-development nonprofit.",
       metrics: [
-        { num: "26", cap: "Entrepreneur Assistance Centers my AI curriculum can scale to statewide" },
-        { num: "1,500+", cap: "daily jurors served by \"Justice is Served,\" the app I shipped" },
-        { num: "$0", cap: "to run the air-quality alert system I built and deployed" }
+        { num: "5", cap: "Pilot Entrepreneur Assistance Centers I trained to run the AI curriculum, ahead of a statewide rollout." },
+        { num: "1,500+", cap: "Daily jurors connected to 40+ local lunch spots by Justice is Served, the app I shipped." },
+        { num: "$0", cap: "Operating cost of the automated air-quality monitoring system I built in Python." }
       ],
-      tags: ["AI Curriculum", "Python", "Web Apps", "Accessibility"],
+      tools: ["Claude Code", "Python", "PurpleAir API", "Accessibility"],
       logo: "wtc",
       logoBg: ""
     },
@@ -107,14 +107,14 @@ export default function Experience() {
       title: "Product/Data Analyst Intern",
       company: "Odynn",
       location: "New York, NY",
-      period: "May 2025 - Aug 2025",
-      warm: "My first taste of owning the data a whole roadmap leans on.",
+      period: "June 2025 - Aug 2025",
+      scope: "Owned QA and analytics instrumentation for Awayz, a white-labeled travel and loyalty platform serving roughly 15 fintech and travel clients.",
       metrics: [
-        { num: "20%", cap: "more completed bookings after I prioritized the fixes that mattered" },
-        { num: "150+", cap: "user events I shaped into the platform's first event taxonomy" },
-        { num: "5", cap: "new clients supported by the data view I built from scratch" }
+        { num: "20%", cap: "More completed bookings after I prioritized defect fixes by client impact." },
+        { num: "150+", cap: "User events I instrumented into the platform's first event taxonomy, validated in SQL." },
+        { num: "5", cap: "New clients supported after I rebuilt the platform's client-data view from scratch." }
       ],
-      tags: ["Jira", "Confluence", "Amplitude", "SQL", "Agile"],
+      tools: ["Jira", "Amplitude", "SQL", "Postman", "Agile"],
       logo: "odynn",
       logoBg: "bg-slate-900",
       image: odynnImage,
@@ -125,13 +125,13 @@ export default function Experience() {
       company: "Rocket Mortgage",
       location: "Detroit, MI",
       period: "May 2024 - Dec 2024",
-      warm: "Where product stopped being a theory for me.",
+      scope: "Shipped product on the Rocket Mortgage app, used by roughly 1M clients a month, leading design and engineering from requirements to launch.",
       metrics: [
-        { num: "500%", cap: "growth in direct account connections after the Plaid integration I shipped" },
-        { num: "~1M", cap: "people a month on the Rocket Mortgage app I shipped features on" },
-        { num: "20%", cap: "engagement lift from the Rocket Homes feature that won the Tech Demo Award" }
+        { num: "500%", cap: "Growth in direct account connections from the Plaid integration I led." },
+        { num: "~1M", cap: "Clients a month on the Rocket Mortgage app I shipped features on." },
+        { num: "20%", cap: "Engagement lift from the Rocket Homes feature that won the June 2024 Tech Demo Award." }
       ],
-      tags: ["Plaid API", "Azure DevOps", "Figma", "Jira", "A/B Testing"],
+      tools: ["Plaid API", "Azure DevOps", "Adobe Analytics", "Figma", "A/B Testing"],
       logo: "rocket",
       logoBg: "bg-slate-900",
       image: rocketImage,
@@ -142,13 +142,13 @@ export default function Experience() {
       company: "MegaPlants LLC | Kosha Botanica",
       location: "New York, NY",
       period: "Feb 2024 - May 2024",
-      warm: "Early days: learning to turn messy market data into a shortlist.",
+      scope: "Ran market and trend analysis to shape an early-stage e-commerce wellness product portfolio.",
       metrics: [
-        { num: "200+", cap: "product concepts I screened with quantitative trend analysis" },
-        { num: "3", cap: "high-potential tincture lines I shortlisted from the field" },
-        { num: "25%", cap: "portfolio expansion from white space I found across 300+ SKUs" }
+        { num: "200+", cap: "Product concepts I screened through quantitative trend analysis." },
+        { num: "3", cap: "High-potential product lines shortlisted for development." },
+        { num: "25%", cap: "Portfolio expansion from white space I identified across 300+ SKUs." }
       ],
-      tags: ["Google Analytics", "Google Trends", "Jungle Scout", "Market Research"],
+      tools: ["Google Analytics", "Google Trends", "Jungle Scout", "Market Research"],
       logo: "megaplants",
       logoBg: "bg-white border border-slate-200"
     }
@@ -201,7 +201,7 @@ export default function Experience() {
                 Product Experience
               </h1>
               <p className="text-lg text-slate-600 max-w-2xl">
-                A quick look at what I actually moved at each internship. The detail lives in my resume; here, the impact reads at a glance.
+                A snapshot of what I delivered at each internship. The full detail is in my resume; here, the impact reads at a glance.
               </p>
             </div>
           </Reveal>
@@ -231,7 +231,18 @@ export default function Experience() {
                         </div>
                       </div>
 
-                      <p className="text-slate-600 mb-6 max-w-2xl">{exp.warm}</p>
+                      <p className="text-slate-600 mb-4 max-w-2xl">{exp.scope}</p>
+
+                      <div className="flex flex-wrap gap-2 mb-6">
+                        {exp.tools.map((tool, idx) => (
+                          <span
+                            key={idx}
+                            className="inline-flex items-center rounded-md border border-blue-100 bg-blue-50 px-2.5 py-1 text-xs font-semibold text-blue-800"
+                          >
+                            {tool}
+                          </span>
+                        ))}
+                      </div>
 
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6 pt-6 border-t border-slate-100">
                         {exp.metrics.map((m, idx) => (
@@ -246,10 +257,6 @@ export default function Experience() {
                           </div>
                         ))}
                       </div>
-
-                      <p className="text-sm text-slate-400 mt-6">
-                        {exp.tags.join(" · ")}
-                      </p>
                     </div>
 
                     {exp.image && (

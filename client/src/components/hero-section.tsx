@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Download, ArrowRight } from "lucide-react";
 import { FaLinkedin } from "react-icons/fa";
+import { SiGithub, SiSpotify } from "react-icons/si";
 import { Link } from "wouter";
 import { motion, useReducedMotion } from "framer-motion";
 
@@ -73,7 +74,7 @@ export function HeroSection() {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap gap-4 pt-2">
+            <div className="flex flex-wrap gap-3 pt-2">
               <Button
                 size="lg"
                 asChild
@@ -92,11 +93,35 @@ export function HeroSection() {
                 variant="outline"
                 size="lg"
                 asChild
-                className="bg-white border-slate-300 text-slate-900 hover:bg-slate-50 hover:border-slate-400 px-6 py-3 font-semibold rounded-lg transition-all"
+                className="bg-white border-slate-300 text-slate-900 hover:bg-slate-50 hover:border-slate-400 px-5 py-3 font-semibold rounded-lg transition-all"
               >
                 <a href="https://www.linkedin.com/in/rezwan-islam33" target="_blank" rel="noopener noreferrer">
                   <FaLinkedin className="mr-2 h-4 w-4" />
                   LinkedIn
+                </a>
+              </Button>
+
+              <Button
+                variant="outline"
+                size="lg"
+                asChild
+                className="bg-white border-slate-300 text-slate-900 hover:bg-slate-50 hover:border-slate-400 px-5 py-3 font-semibold rounded-lg transition-all"
+              >
+                <a href="https://github.com/Rezwan3App" target="_blank" rel="noopener noreferrer">
+                  <SiGithub aria-hidden="true" className="mr-2 h-4 w-4" />
+                  GitHub
+                </a>
+              </Button>
+
+              <Button
+                variant="outline"
+                size="lg"
+                asChild
+                className="bg-white border-slate-300 text-slate-900 hover:bg-slate-50 hover:border-slate-400 px-5 py-3 font-semibold rounded-lg transition-all"
+              >
+                <a href="https://open.spotify.com/episode/2pcqPSQeTCfmnsSgAyDvB8" target="_blank" rel="noopener noreferrer">
+                  <SiSpotify aria-hidden="true" className="mr-2 h-4 w-4" />
+                  Podcast
                 </a>
               </Button>
             </div>
