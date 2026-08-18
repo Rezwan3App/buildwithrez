@@ -23,7 +23,7 @@ const steps = [
     period: "2024 – 2025",
     title: "Product internships",
     description:
-      "At Rocket Mortgage I shipped an award-winning Plaid integration; at Odynn I owned QA and analytics for a travel-fintech booking flow. Product stopped being a theory.",
+      "At Rocket Mortgage I shipped a Plaid integration that grew direct account connections 500%; at Odynn I owned QA and analytics for a travel-fintech booking flow. Product stopped being a theory.",
   },
   {
     period: "2026",
