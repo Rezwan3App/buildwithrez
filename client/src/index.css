@@ -53,13 +53,7 @@
     line-height: 1.65;
     background-color: var(--paper);
     color: #334155;
-    /* Subtle site-wide dot grid with a soft cool color wash */
-    background-image:
-      radial-gradient(circle, rgba(30, 58, 138, 0.11) 1.4px, transparent 1.6px),
-      radial-gradient(820px 520px at 8% 0%, rgba(59, 130, 246, 0.10), transparent 60%),
-      radial-gradient(760px 520px at 100% 12%, rgba(45, 212, 191, 0.09), transparent 55%);
-    background-size: 24px 24px, 100% 100%, 100% 100%;
-    background-attachment: fixed;
+    background-image: none;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -85,8 +79,14 @@
   color: #1e3a8a;
 }
 
-/* The dot grid now lives site-wide on the body background;
-   this just keeps page-header content stacked above it. */
+/* Faint dot grid confined to the hero area only */
+.hero-grid {
+  position: relative;
+  background-image:
+    radial-gradient(circle, rgba(30, 58, 138, 0.07) 1.2px, transparent 1.4px);
+  background-size: 28px 28px;
+}
+
 .hero-grid > * {
   position: relative;
   z-index: 1;

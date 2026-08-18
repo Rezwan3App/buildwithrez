@@ -2,28 +2,16 @@ import { Reveal } from "@/components/reveal";
 
 const steps = [
   {
-    period: "2014 – 2018",
-    title: "Engineering foundations",
+    period: "2014 – 2023",
+    title: "Engineering first",
     description:
-      "I trained as a mechanical engineer at the City College of New York. Systems thinking, constraints, and root-cause habits: the parts of engineering I never left behind.",
-  },
-  {
-    period: "2021 – 2023",
-    title: "Engineering across fields",
-    description:
-      "I worked as a mechanical engineer at Zachry Nuclear Engineering, then as an assistant project manager in energy. Nuclear taught me how much rigor real systems demand before anything ships.",
-  },
-  {
-    period: "2024",
-    title: "Back to school",
-    description:
-      "I returned for an MBA at Baruch's Zicklin School of Business (4.0 GPA), leaning hard into data with SQL, Python, and Tableau, and serving as VP of the Data Science & Analytics Society.",
+      "I trained as a mechanical engineer at CCNY, then spent several years working in engineering and project management, including at Zachry Nuclear Engineering. Nuclear taught me how much rigor real systems demand before anything ships.",
   },
   {
     period: "2024 – 2025",
-    title: "Product internships",
+    title: "Business school, then product",
     description:
-      "At Rocket Mortgage I shipped a Plaid integration that grew direct account connections 500%; at Odynn I owned QA and analytics for a travel-fintech booking flow. Product stopped being a theory.",
+      "I went back for an MBA at Baruch's Zicklin School of Business and dove into product. At Rocket Mortgage I shipped a Plaid integration that grew direct account connections 500%; at Odynn I owned QA and analytics for a travel-fintech booking flow. Product stopped being a theory.",
   },
   {
     period: "2026",
@@ -35,7 +23,7 @@ const steps = [
     period: "Next",
     title: "Product at NBCUniversal",
     description:
-      "This fall I'm joining NBCUniversal as a product management intern, helping build the publishing tools behind their streaming apps.",
+      "This fall I'm joining NBCUniversal as a product management intern.",
   },
 ];
 
