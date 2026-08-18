@@ -1,7 +1,6 @@
 import { Switch, Route, useLocation } from "wouter";
 import { useEffect } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ThemeProvider } from "@/components/theme-provider";
 import { BackToTop } from "@/components/back-to-top";
 import Home from "@/pages/home";
 import Experience from "@/pages/experience";
@@ -20,6 +19,7 @@ function ScrollToTop() {
 function Router() {
   const [location] = useLocation();
   const prefersReducedMotion = useReducedMotion();
+  const animationKey = location === "/product-management" ? "/projects" : location;
 
   const variants = prefersReducedMotion
     ? { initial: {}, animate: {}, exit: {} }
@@ -31,9 +31,9 @@ function Router() {
 
   return (
     <>
-      <ScrollToTop />
       <AnimatePresence mode="wait" initial={false}>
-        <motion.div key={location} {...variants}>
+        <motion.div key={animationKey} {...variants}>
+          <ScrollToTop />
           <Switch location={location}>
             <Route path="/" component={Home} />
             <Route path="/experience" component={Experience} />
@@ -50,10 +50,10 @@ function Router() {
 
 function App() {
   return (
-    <ThemeProvider>
+    <>
       <Router />
       <BackToTop />
-    </ThemeProvider>
+    </>
   );
 }
 

@@ -54,6 +54,7 @@ function CountUp({ value }: { value: string }) {
       setText(fmt(target));
       return;
     }
+    done.current = false;
     setText(fmt(0));
     const el = ref.current;
     if (!el) {
