@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Download, Mail } from "lucide-react";
+import { Download } from "lucide-react";
 import { FaLinkedin } from "react-icons/fa";
 import { Reveal } from "@/components/reveal";
 
@@ -22,17 +22,6 @@ export function ContactSection() {
                 size="lg"
                 asChild
                 className="bg-white text-blue-900 hover:bg-blue-50 px-6 font-semibold rounded-lg border-0"
-              >
-                <a href="mailto:rezwan@welcometochinatown.com">
-                  <Mail className="mr-2 h-4 w-4" />
-                  Email me
-                </a>
-              </Button>
-              <Button
-                size="lg"
-                asChild
-                variant="outline"
-                className="bg-transparent border-blue-300 text-white hover:bg-blue-800 hover:border-blue-200 px-6 font-semibold rounded-lg"
               >
                 <a href="https://www.linkedin.com/in/rezwan-islam33" target="_blank" rel="noopener noreferrer">
                   <FaLinkedin className="mr-2 h-4 w-4" />

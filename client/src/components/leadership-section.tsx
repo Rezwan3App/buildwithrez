@@ -5,7 +5,7 @@ export function LeadershipSection() {
     {
       title: "Vice President",
       organization: "Data Science and Analytics Society",
-      description: "I lead communications and member engagement for Baruch's data science student organization.",
+      description: "I led communications and member engagement for Baruch's data science student organization from 2024 through late 2025.",
       logo: "/attached_assets/image_1766520551280.png",
     },
     {
@@ -45,7 +45,7 @@ export function LeadershipSection() {
                   <h3 className="text-base font-semibold text-slate-900">
                     {role.title}
                   </h3>
-                  <p className="text-slate-500 text-sm truncate" title={role.organization}>
+                  <p className="text-slate-600 text-sm truncate" title={role.organization}>
                     {role.organization}
                   </p>
                 </div>

@@ -2,23 +2,20 @@ import { Navigation } from "@/components/navigation";
 import { Reveal } from "@/components/reveal";
 import { usePageTitle } from "@/hooks/use-page-title";
 import { Footer } from "@/components/footer";
-import { ExternalLink, FileText, X, Play, Youtube } from "lucide-react";
+import { ExternalLink, FileText, X, Youtube, BatteryCharging } from "lucide-react";
 import { useState } from "react";
 import { SiGithub } from "react-icons/si";
 import alltrailsIcon from "@assets/image_1768252840170.png";
 import linkedinIcon from "@assets/image_1768252917340.png";
-import trackflowIcon from "@assets/newicon_1768433941445.png";
-import trackflowScreenshot from "@assets/image_1768437718677.png";
 
 export default function ProductManagement() {
   usePageTitle("Projects");
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
-  const [isTrackflowModalOpen, setIsTrackflowModalOpen] = useState(false);
 
   return (
     <div className="min-h-screen">
       <Navigation />
-      
+
       <section className="pt-24 pb-20 relative overflow-hidden hero-grid">
         <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
           <Reveal>
@@ -27,7 +24,7 @@ export default function ProductManagement() {
                 Projects
               </h1>
               <p className="text-lg text-slate-600 max-w-3xl">
-                Things I've built and product thinking I've put on paper: case studies, PRDs, and two shipped side projects.
+                Things I've built and product thinking I've put on paper: case studies, PRDs, and side projects I've shipped and I'm building.
               </p>
             </div>
           </Reveal>
@@ -47,7 +44,7 @@ export default function ProductManagement() {
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-slate-900">Snag</h3>
-                      <p className="text-blue-800 font-medium">Promo Codes from YouTube Videos, Without the Watching</p>
+                      <p className="text-blue-800 font-medium">Get Texted the Promo Codes Buried in YouTube Videos</p>
                     </div>
                   </div>
                   <div className="flex flex-wrap gap-3">
@@ -57,14 +54,14 @@ export default function ProductManagement() {
                       rel="noopener noreferrer"
                       className="inline-flex items-center px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-lg text-sm font-semibold transition-all"
                     >
-                      <SiGithub className="mr-2 h-4 w-4" />
+                      <SiGithub aria-hidden="true" className="mr-2 h-4 w-4" />
                       GitHub
                     </a>
                   </div>
                 </div>
 
                 <p className="text-slate-600 mb-6">
-                  Promo codes and sponsor deals are buried inside long YouTube videos. Viewers either scrub through sponsor reads or miss the discount entirely. I built Snag to scan a video's transcript and surface every promo code, sponsor offer, and limited-time deal with its exact timestamp.
+                  Promo codes and sponsor deals get buried inside YouTube videos and vanish from your feed within days. I built Snag to watch the channels you follow, read each new video's description through a set of promo-detection rules, and text you the code, sponsor link, and expiry the moment it drops.
                 </p>
 
                 <div className="flex-1">
@@ -72,15 +69,15 @@ export default function ProductManagement() {
                   <ul className="text-slate-600 text-sm space-y-1">
                     <li className="flex items-start">
                       <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-2 mr-2 shrink-0"></span>
-                      <span>Paste a YouTube URL and get every deal extracted from the transcript in seconds.</span>
+                      <span>Search for a YouTuber and add their channel to your watchlist.</span>
                     </li>
                     <li className="flex items-start">
                       <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-2 mr-2 shrink-0"></span>
-                      <span>Add a channel and Snag automatically scans its latest uploads for new offers.</span>
+                      <span>Snag pulls each channel's RSS feed, no YouTube API key needed, and scans every new upload's description for deals.</span>
                     </li>
                     <li className="flex items-start">
                       <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-2 mr-2 shrink-0"></span>
-                      <span>Every deal links to the exact moment it was mentioned, with one-click code copying.</span>
+                      <span>You get an SMS the moment a new code, sponsor link, or expiry date turns up.</span>
                     </li>
                   </ul>
                 </div>
@@ -93,16 +90,16 @@ export default function ProductManagement() {
                       <div>
                         <p className="text-slate-900 font-medium mb-1">Ruthless MVP scoping</p>
                         <p className="text-slate-600">
-                          Cut the first version down to one core job: paste a link, get the codes. No accounts, no database, no build step. A JSON file and a zero-dependency frontend were enough to validate the idea.
+                          I cut the first version to one loop: watch a channel, detect a deal, send a text. No accounts, no build step, just JSON files and a background job that re-scans every watched channel on an interval.
                         </p>
                       </div>
                     </div>
                     <div className="flex gap-3">
                       <span className="text-blue-800 font-semibold text-xs mt-0.5 shrink-0">02</span>
                       <div>
-                        <p className="text-slate-900 font-medium mb-1">Designing around a platform constraint</p>
+                        <p className="text-slate-900 font-medium mb-1">Skipping the official API</p>
                         <p className="text-slate-600">
-                          YouTube blocks transcript requests from cloud servers. Instead of fighting it with proxies, I made local-first an explicit product decision. The app runs on the user's machine, fetching transcripts reliably with zero API keys or infrastructure cost.
+                          YouTube's Data API means keys, quotas, and approval. I pulled new uploads straight from each channel's public RSS feed instead: zero keys, zero quota, and enough in the video description to find the deal.
                         </p>
                       </div>
                     </div>
@@ -111,14 +108,14 @@ export default function ProductManagement() {
                       <div>
                         <p className="text-slate-900 font-medium mb-1">Key takeaway</p>
                         <p className="text-slate-600">
-                          Platform constraints aren't blockers. They're forcing functions that shape better architecture. The same lesson from TrackFlow's pivot, learned from the opposite direction.
+                          Constraints are forcing functions. Avoiding the official API pushed me toward a simpler, cheaper build that I can keep running for next to nothing.
                         </p>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <p className="text-sm text-slate-400 mt-6">TypeScript · Bun + Hono · YouTube Transcript API · Local-first</p>
+                <p className="text-sm text-slate-400 mt-6">Bun · Hono · YouTube RSS · Twilio SMS · JSON storage</p>
               </div>
               </Reveal>
 
@@ -126,114 +123,36 @@ export default function ProductManagement() {
               <div className="bg-white border border-slate-200 rounded-2xl p-6 hover:border-blue-300 card-glow transition-all duration-300">
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-xl overflow-hidden shrink-0">
-                      <img loading="lazy" decoding="async" src={trackflowIcon} alt="TrackFlow" className="w-full h-full object-cover" />
+                    <div className="w-12 h-12 bg-white border border-slate-200 rounded-xl flex items-center justify-center shrink-0">
+                      <BatteryCharging className="h-6 w-6 text-blue-800" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-slate-900">TrackFlow</h3>
-                      <p className="text-blue-800 font-medium">Private, Local-First Job Application Tracker</p>
+                      <h3 className="text-xl font-bold text-slate-900">WattFinder</h3>
+                      <p className="text-blue-800 font-medium">Honest EV Charge-Time Predictions</p>
                     </div>
                   </div>
-                  <div className="flex flex-wrap gap-3">
-                    <a 
-                      href="https://chromewebstore.google.com/detail/trackflow/ebgheidbnhlhnifaiggdbgiifkiklalh"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center px-4 py-2 bg-blue-900 hover:bg-blue-800 text-white rounded-lg text-sm font-semibold transition-all"
-                      data-testid="button-chrome-store"
-                    >
-                      <ExternalLink className="mr-2 h-4 w-4" />
-                      Chrome Store
-                    </a>
-                    <a 
-                      href="https://youtu.be/Iz-j6F19p0s"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center px-4 py-2 btn-primary text-white rounded-lg text-sm font-semibold border-0"
-                      data-testid="button-watch-demo"
-                    >
-                      <Play className="mr-2 h-4 w-4" />
-                      Watch Demo
-                    </a>
-                    <a 
-                      href="https://github.com/Rezwan3App/tracktern-extension"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-lg text-sm font-semibold transition-all"
-                      data-testid="button-github"
-                    >
-                      <SiGithub className="mr-2 h-4 w-4" />
-                      GitHub
-                    </a>
-                  </div>
+                  <span className="inline-flex items-center h-8 px-3 rounded-lg text-xs font-semibold bg-slate-100 text-slate-600 border border-slate-200">In progress</span>
                 </div>
 
                 <p className="text-slate-600 mb-6">
-                  I built TrackFlow, a privacy-focused browser extension that helps professionals organize their job search without spreadsheets. It's local-first, so user data never leaves the device.
+                  Public chargers advertise a sticker kilowatt rating that almost no car ever hits. I'm building WattFinder to replace that number with physics-based charge-time predictions, modeling real charging curves so drivers see how long a stop will actually take.
                 </p>
 
-                <div className="flex flex-col sm:flex-row gap-6 mb-6">
-                  <div className="shrink-0">
-                    <img loading="lazy" decoding="async" 
-                      src={trackflowScreenshot} 
-                      alt="TrackFlow Extension Interface" 
-                      className="rounded-xl border border-slate-200 shadow-lg w-44 cursor-pointer hover:opacity-80 transition-opacity"
-                      onClick={() => setIsTrackflowModalOpen(true)}
-                    />
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-sm font-semibold text-slate-900 mb-2">What it does</h4>
-                    <ul className="text-slate-600 text-sm space-y-1">
-                      <li className="flex items-start">
-                        <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-2 mr-2 shrink-0"></span>
-                        <span>Captures jobs from any board (Indeed, Greenhouse, and more) with automatic duplicate detection.</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-2 mr-2 shrink-0"></span>
-                        <span>Saves full job descriptions locally so postings aren't lost when they're taken down.</span>
-                      </li>
-                      <li className="flex items-start">
-                        <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-2 mr-2 shrink-0"></span>
-                        <span>Tracks application status on a drag-and-drop board, with salary ranges parsed and highlighted automatically.</span>
-                      </li>
-                    </ul>
-                  </div>
+                <div className="flex-1">
+                  <h4 className="text-sm font-semibold text-slate-900 mb-2">What it does</h4>
+                  <ul className="text-slate-600 text-sm space-y-1">
+                    <li className="flex items-start">
+                      <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-2 mr-2 shrink-0"></span>
+                      <span>Predicts charge time from a battery's real charging curve, not the charger's peak kW.</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-2 mr-2 shrink-0"></span>
+                      <span>Models charging behavior across 3 EV platforms so estimates hold across different cars.</span>
+                    </li>
+                  </ul>
                 </div>
 
-                <div className="mt-6 border-l-2 border-blue-800 pl-5">
-                  <p className="text-xs font-semibold tracking-widest uppercase text-blue-800 mb-4">Product Journey</p>
-                  <div className="space-y-4 text-sm">
-                    <div className="flex gap-3">
-                      <span className="text-blue-800 font-semibold text-xs mt-0.5 shrink-0">01</span>
-                      <div>
-                        <p className="text-slate-900 font-medium mb-1">Built with AI velocity</p>
-                        <p className="text-slate-600">
-                          Leveraged Cursor (AI-assisted coding) to rapidly prototype and ship Version 1 in under 48 hours. Used the speed of AI to focus on high-level product architecture and user experience rather than boilerplate code.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex gap-3">
-                      <span className="text-blue-800 font-semibold text-xs mt-0.5 shrink-0">02</span>
-                      <div>
-                        <p className="text-slate-900 font-medium mb-1">The pivot: solving platform risk</p>
-                        <p className="text-slate-600">
-                          Version 1 was deprecated by LinkedIn due to platform policy changes around web scraping. Rather than patching, I treated this as an opportunity to re-architect the product - building a platform-agnostic solution with enhanced features and improved reliability.
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex gap-3">
-                      <span className="text-blue-800 font-semibold text-xs mt-0.5 shrink-0">03</span>
-                      <div>
-                        <p className="text-slate-900 font-medium mb-1">Key takeaway</p>
-                        <p className="text-slate-600">
-                          Learned that sustainable products require owning your data layer, not renting it from other platforms.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <p className="text-sm text-slate-400 mt-6">Chrome Extension API · Local Storage · Regex Parsing · Data Export · Advanced DOM Manipulation</p>
+                <p className="text-sm text-slate-400 mt-6">Next.js · TypeScript · Postgres</p>
               </div>
               </Reveal>
             </div>
@@ -254,7 +173,7 @@ export default function ProductManagement() {
                       <p className="text-blue-800 font-medium">The Location Transparency Gap</p>
                     </div>
                   </div>
-                  <a 
+                  <a
                     href="/attached_assets/LinkedIn_Case_Study_1768252732588.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -294,12 +213,12 @@ export default function ProductManagement() {
                         </p>
                       </div>
                     </div>
-                    
+
                     <p className="text-slate-600 mb-4">
                       I wrote a full PRD for a "Journeys" feature that lets users plan multi-hike itineraries with driving directions, amenities, and rest stops, killing the app-hop between AllTrails, Google Maps, and travel blogs.
                     </p>
 
-                    <a 
+                    <a
                       href="/attached_assets/AllTrails_Journeys_Curated_Hiking_Itineraries_1768253125440.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -311,15 +230,15 @@ export default function ProductManagement() {
                       <ExternalLink className="ml-2 h-3.5 w-3.5" />
                     </a>
                   </div>
-                  
+
                   <div className="lg:w-80 shrink-0">
                     <button
                       onClick={() => setIsImageModalOpen(true)}
-                      className="rounded-xl overflow-hidden border border-slate-200 hover:border-blue-300 hover:shadow-lg hover:shadow-blue-900/10 transition-all cursor-zoom-in w-full"
+                      className="rounded-xl overflow-hidden border border-slate-200 hover:border-blue-400 hover:shadow-lg hover:shadow-blue-900/10 transition-all cursor-zoom-in w-full"
                       data-testid="button-enlarge-wireframe"
                     >
-                      <img loading="lazy" decoding="async" 
-                        src="/attached_assets/image_1768253142355.webp" 
+                      <img loading="lazy" decoding="async"
+                        src="/attached_assets/image_1768253142355.webp"
                         alt="AllTrails Journeys Figma Wireframe"
                         className="w-full h-auto hover:scale-105 transition-transform duration-300"
                       />
@@ -336,7 +255,7 @@ export default function ProductManagement() {
       </section>
 
       {isImageModalOpen && (
-        <div 
+        <div
           className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
           onClick={() => setIsImageModalOpen(false)}
         >
@@ -347,29 +266,9 @@ export default function ProductManagement() {
           >
             <X className="h-8 w-8" />
           </button>
-          <img loading="lazy" decoding="async" 
-            src="/attached_assets/image_1768253142355.webp" 
+          <img loading="lazy" decoding="async"
+            src="/attached_assets/image_1768253142355.webp"
             alt="AllTrails Journeys Figma Wireframe - Full Size"
-            className="max-w-full max-h-[90vh] object-contain rounded-lg"
-            onClick={(e) => e.stopPropagation()}
-          />
-        </div>
-      )}
-
-      {isTrackflowModalOpen && (
-        <div 
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
-          onClick={() => setIsTrackflowModalOpen(false)}
-        >
-          <button
-            onClick={() => setIsTrackflowModalOpen(false)}
-            className="absolute top-4 right-4 p-2 text-white hover:text-blue-300 transition-colors"
-          >
-            <X className="h-8 w-8" />
-          </button>
-          <img loading="lazy" decoding="async" 
-            src={trackflowScreenshot} 
-            alt="TrackFlow Extension Interface - Full Size"
             className="max-w-full max-h-[90vh] object-contain rounded-lg"
             onClick={(e) => e.stopPropagation()}
           />

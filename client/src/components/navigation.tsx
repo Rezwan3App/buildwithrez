@@ -47,7 +47,7 @@ export function Navigation() {
                 className={`px-4 py-2 rounded-lg text-base font-semibold transition-all duration-200 ${
                   location === item.path
                     ? "text-blue-900 bg-blue-50"
-                    : "text-slate-500 hover:text-slate-900 hover:bg-slate-100"
+                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
                 }`}
                 data-testid={`nav-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
               >
@@ -62,7 +62,7 @@ export function Navigation() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="rounded-lg text-slate-500 hover:text-slate-900 hover:bg-slate-100 h-11 w-11"
+                  className="rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 h-11 w-11"
                   data-testid="button-mobile-menu"
                 >
                   <Menu className="h-5 w-5" />
@@ -79,7 +79,7 @@ export function Navigation() {
                       className={`px-4 py-4 rounded-xl text-base font-semibold transition-all ${
                         location === item.path
                           ? "text-blue-900 bg-blue-50 border border-blue-100"
-                          : "text-slate-500 hover:text-slate-900 hover:bg-slate-100"
+                          : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
                       }`}
                       data-testid={`nav-mobile-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
                     >
