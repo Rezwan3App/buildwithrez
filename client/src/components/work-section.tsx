@@ -1,6 +1,7 @@
 import { Reveal } from "@/components/reveal";
 import { ArrowRight } from "lucide-react";
 import { Link } from "wouter";
+import rocketImage from "@assets/image_1767746681686.webp";
 
 export function WorkSection() {
   return (
@@ -17,12 +18,12 @@ export function WorkSection() {
           {/* Featured: Rocket */}
           <Reveal className="lg:col-span-3">
             <Link href="/experience">
-              <div className="group h-full bg-white border border-slate-200 rounded-2xl overflow-hidden hover:border-blue-300 transition-all duration-300 cursor-pointer" style={{ boxShadow: "0 2px 12px rgba(15,23,42,0.04)" }}>
+              <div className="group h-full bg-white border border-slate-200 rounded-2xl overflow-hidden hover:border-blue-300 transition-all duration-300 cursor-pointer">
                 <div className="aspect-[16/9] overflow-hidden bg-slate-100">
                   <img
                     loading="lazy"
                     decoding="async"
-                    src="/attached_assets/image_1767746681686.webp"
+                    src={rocketImage}
                     alt="Rocket Mortgage product work"
                     className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500"
                   />
@@ -48,7 +49,7 @@ export function WorkSection() {
             {/* WtC */}
             <Reveal delay={0.08}>
               <Link href="/experience">
-                <div className="group bg-white border border-slate-200 rounded-2xl p-6 hover:border-blue-300 transition-all duration-300 cursor-pointer" style={{ boxShadow: "0 2px 12px rgba(15,23,42,0.04)" }}>
+                <div className="group bg-white border border-slate-200 rounded-2xl p-6 hover:border-blue-300 transition-all duration-300 cursor-pointer">
                   <p className="eyebrow mb-2">Welcome to Chinatown · 2026</p>
                   <h3 className="text-base font-bold text-slate-900 mb-2 group-hover:text-blue-800 transition-colors">
                     New York's first AI training program for small businesses
@@ -63,7 +64,7 @@ export function WorkSection() {
             {/* Snag */}
             <Reveal delay={0.14}>
               <Link href="/projects">
-                <div className="group bg-white border border-slate-200 rounded-2xl p-6 hover:border-blue-300 transition-all duration-300 cursor-pointer" style={{ boxShadow: "0 2px 12px rgba(15,23,42,0.04)" }}>
+                <div className="group bg-white border border-slate-200 rounded-2xl p-6 hover:border-blue-300 transition-all duration-300 cursor-pointer">
                   <p className="eyebrow mb-2">Snag · Personal project</p>
                   <h3 className="text-base font-bold text-slate-900 mb-2 group-hover:text-blue-800 transition-colors">
                     Get texted the promo codes buried in YouTube videos
