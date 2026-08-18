@@ -204,7 +204,7 @@ export default function MBA() {
                     ))}
                   </ul>
 
-                  <p className="text-sm text-slate-400 mt-4">{project.tags.join(" · ")}</p>
+                  <p className="text-[0.9375rem] font-semibold text-slate-600 mt-4">{project.tags.join(" · ")}</p>
 
                   {project.pdf && (
                     <a
@@ -228,7 +228,7 @@ export default function MBA() {
             <div className="text-center mb-8">
               <h3 className="text-2xl font-bold text-slate-900 inline-flex items-center gap-3">
                 <div className="w-12 h-12 bg-blue-900 rounded-xl flex items-center justify-center">
-                  <SiTableau className="h-6 w-6 text-white" />
+                  <SiTableau aria-hidden="true" className="h-6 w-6 text-white" />
                 </div>
                 Featured Tableau Dashboards
               </h3>

@@ -27,16 +27,16 @@ export default function Experience() {
   usePageTitle("Experience");
   const experiences: Experience[] = [
     {
-      title: "Operations Intern",
+      title: "AI Strategy and Operations Intern",
       company: "Welcome to Chinatown",
       location: "New York, NY",
-      period: "Jun 2026 - Present",
+      period: "Jun 2026 - Aug 2026",
       highlights: [
-        "I'm helping launch BuiltSmall's Train-the-Trainer bootcamp, New York State's first AI training program for the counselors who advise small businesses at its 26 Entrepreneur Assistance Centers.",
-        "I support our direct-to-business programming: monthly AI Foundations webinars, the AI on Main Street event series, and weekly office hours with small business owners.",
-        "Day to day, I help run Chinatown's first Small Business Innovation Hub, with programs built for immigrant-owned, multilingual businesses."
+        "I built an AI curriculum for immigrant-owned Chinatown small businesses and trained 5 pilot centers to scale it across 26 EACs statewide.",
+        "I shipped \"Justice is Served,\" a trilingual web app connecting 1,500+ daily jurors to 40+ local lunch spots, with the Borough President's office.",
+        "I built an automated air-quality alert system in Python for a local environmental-justice campaign, running serverless at $0."
       ],
-      tags: ["Program Operations", "Event Programming", "AI Training", "Community Engagement"],
+      tags: ["AI Curriculum", "Python", "Web Apps", "Accessibility"],
       logo: "wtc",
       logoBg: ""
     },
@@ -46,9 +46,9 @@ export default function Experience() {
       location: "New York, NY",
       period: "May 2025 - Aug 2025",
       highlights: [
-        "I owned QA for the booking flow, regression-testing 50+ core features and improving reliability by 20%.",
-        "I built Amplitude dashboards covering 150+ user events, using SQL to validate the data behind them.",
-        "I ran competitive analysis across 25+ travel platforms to prioritize which feature gaps were worth closing."
+        "I validated 50 features across 3 release cycles and prioritized fixes by client impact, recovering 20% more completed bookings.",
+        "I built Amplitude dashboards across 150+ events and defined the platform's first event taxonomy, giving the team one view that helped close 5 clients.",
+        "I built the parser behind Odynn's loyalty rewards, mapping balances across 100+ airline and hotel programs."
       ],
       tags: ["Jira", "Confluence", "Amplitude", "SQL", "Agile"],
       logo: "odynn",
@@ -62,9 +62,9 @@ export default function Experience() {
       location: "Detroit, MI",
       period: "May 2024 - Dec 2024",
       highlights: [
-        "I spearheaded a Plaid API integration that made account creation 4x faster and lifted verification success by 30%.",
-        "I reworked the AI chatbot's escalation logic, cutting human handoffs by 40% and boosting form completion by 25%.",
-        "A feature I designed won the internal 'Tech Demo' award and drove a 20% increase in user engagement."
+        "I led a Plaid integration on a mortgage app used by ~1M people monthly, growing direct account connections over 500%.",
+        "I designed an AI onboarding chatbot's escalation logic, cutting banker handoffs 40% and lifting form completion 25%.",
+        "I led five interns to build a home-comparison feature that won Rocket's June 2024 Tech Demo Award and lifted engagement 20%."
       ],
       tags: ["Plaid API", "Azure DevOps", "Figma", "Jira", "A/B Testing"],
       logo: "rocket",

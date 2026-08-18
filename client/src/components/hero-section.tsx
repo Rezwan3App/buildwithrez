@@ -43,9 +43,10 @@ export function HeroSection() {
                 rigor, business strategy, and user empathy finally pull in the same direction.
               </p>
               <p>
-                I've shipped product work at Rocket Mortgage and Odynn, and right now I'm
-                helping launch New York State's first AI training program for small
-                businesses at Welcome to Chinatown.
+                I've shipped product work at Rocket Mortgage and Odynn, and recently helped
+                launch New York State's first AI training program for small businesses at
+                Welcome to Chinatown. This fall I'm joining NBCUniversal as a product
+                management intern.
               </p>
             </div>
 

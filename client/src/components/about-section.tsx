@@ -42,10 +42,10 @@ export function AboutSection() {
                   rel="noopener noreferrer"
                   className="group flex items-center gap-4 py-4"
                 >
-                  <resource.icon className="h-5 w-5 text-slate-400 group-hover:text-blue-800 transition-colors shrink-0" />
+                  <resource.icon aria-hidden="true" className="h-5 w-5 text-slate-400 group-hover:text-blue-800 transition-colors shrink-0" />
                   <div className="flex-1 min-w-0">
                     <h4 className="text-slate-900 font-medium group-hover:text-blue-900 transition-colors">{resource.title}</h4>
-                    <p className="text-slate-500 text-sm">{resource.description}</p>
+                    <p className="text-slate-600 text-sm">{resource.description}</p>
                   </div>
                   <ArrowUpRight className="h-4 w-4 text-slate-300 group-hover:text-blue-800 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                 </a>
@@ -60,7 +60,7 @@ export function AboutSection() {
                 <FileText className="h-5 w-5 text-slate-400 group-hover:text-blue-800 transition-colors shrink-0" />
                 <div className="flex-1 min-w-0">
                   <h4 className="text-slate-900 font-medium group-hover:text-blue-900 transition-colors">Unofficial Transcript</h4>
-                  <p className="text-slate-500 text-sm">4.0 GPA · PDF</p>
+                  <p className="text-slate-600 text-sm">4.0 GPA · PDF</p>
                 </div>
                 <Download className="h-4 w-4 text-slate-300 group-hover:text-blue-800 transition-all" />
               </a>
@@ -85,7 +85,7 @@ export function AboutSection() {
                     </h3>
                     <span className="text-sm font-semibold text-blue-800">4.0 GPA</span>
                   </div>
-                  <p className="text-slate-500">
+                  <p className="text-slate-600">
                     Baruch College, Zicklin School of Business
                   </p>
                 </div>
@@ -102,7 +102,7 @@ export function AboutSection() {
                     </h3>
                     <span className="text-sm font-semibold text-blue-800">3.83 GPA</span>
                   </div>
-                  <p className="text-slate-500">
+                  <p className="text-slate-600">
                     City College of New York
                   </p>
                 </div>

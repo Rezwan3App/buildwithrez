@@ -1,7 +1,5 @@
 import { Switch, Route, useLocation } from "wouter";
 import { useEffect } from "react";
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/theme-provider";
 import { BackToTop } from "@/components/back-to-top";
 import Home from "@/pages/home";
@@ -40,11 +38,8 @@ function Router() {
 function App() {
   return (
     <ThemeProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Router />
-        <BackToTop />
-      </TooltipProvider>
+      <Router />
+      <BackToTop />
     </ThemeProvider>
   );
 }

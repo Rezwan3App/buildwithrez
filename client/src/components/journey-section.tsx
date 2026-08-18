@@ -8,6 +8,12 @@ const steps = [
       "I trained as a mechanical engineer at the City College of New York. Systems thinking, constraints, and root-cause habits: the parts of engineering I never left behind.",
   },
   {
+    period: "2021 – 2023",
+    title: "Engineering across fields",
+    description:
+      "I worked as a mechanical engineer at Zachry Nuclear Engineering, then as an assistant project manager in energy. Nuclear taught me how much rigor real systems demand before anything ships.",
+  },
+  {
     period: "2024",
     title: "Back to school",
     description:
@@ -20,10 +26,16 @@ const steps = [
       "At Rocket Mortgage I shipped an award-winning Plaid integration; at Odynn I owned QA and analytics for a travel-fintech booking flow. Product stopped being a theory.",
   },
   {
-    period: "Now",
+    period: "2026",
     title: "AI for Main Street",
     description:
-      "At Welcome to Chinatown I'm helping launch New York State's first AI training program for small businesses, bringing AI to immigrant-owned storefronts, not just startups.",
+      "At Welcome to Chinatown I helped launch New York State's first AI training program for small businesses, bringing AI to immigrant-owned storefronts, not just startups.",
+  },
+  {
+    period: "Next",
+    title: "Product at NBCUniversal",
+    description:
+      "This fall I'm joining NBCUniversal as a product management intern, helping build the publishing tools behind their streaming apps.",
   },
 ];
 
