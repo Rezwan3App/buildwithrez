@@ -2,10 +2,11 @@ import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { Reveal } from "@/components/reveal";
 import { usePageTitle } from "@/hooks/use-page-title";
-import { ExternalLink, Car, TrendingUp, Database, Utensils, X, Download } from "lucide-react";
+import { ExternalLink, Car, TrendingUp, Database, Utensils, Moon, X, Download } from "lucide-react";
 import { SiTableau } from "react-icons/si";
 import { useState } from "react";
 import eatTrackImage from "@assets/Team_5_EatTrak_Presentation_WIP_1767748204830.webp";
+import sleepWaveImage from "@assets/BOSE_SLEEPWAVE_PRESENTATION_GROUP_7_1767748368521.jpg";
 import mcdonaldsImage from "@assets/Group_B_FSA,_ACC_9110,_Spring_2025_1767748480441.jpg";
 
 export default function MBA() {
@@ -22,6 +23,17 @@ export default function MBA() {
       accentColor: "text-blue-800",
       icon: Utensils,
       image: eatTrackImage
+    },
+    {
+      title: "SleepWave GTM Strategy",
+      description: "I developed a data-backed go-to-market strategy for a Bose sleep tech product, running primary research with 50+ consumer interviews alongside competitive analysis.",
+      stats: "50+ consumer interviews · Bose sleep tech GTM",
+      tags: ["Go-to-Market", "Consumer Research", "Strategy"],
+      methods: ["50+ consumer interviews", "Competitive analysis", "Pricing & first-year revenue modeling"],
+      accentColor: "text-blue-800",
+      icon: Moon,
+      image: sleepWaveImage,
+      pdf: "/attached_assets/BOSE_SLEEPWAVE_PRESENTATION_GROUP_7_1767748370531.pdf"
     },
     {
       title: "McDonald's Financial Analysis",
