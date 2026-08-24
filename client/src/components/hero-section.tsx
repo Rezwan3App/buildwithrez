@@ -22,7 +22,7 @@ export function HeroSection() {
           {/* Left Column - Text Content */}
           <motion.div className="space-y-8" {...entrance(0)}>
             <div className="space-y-3">
-              <p className="eyebrow">Product Manager &middot; New York</p>
+              <p className="eyebrow">Product &middot; New York</p>
               <p className="inline-flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-slate-600">
                 <span className="inline-flex items-center gap-2 whitespace-nowrap">
                   <span className="w-2 h-2 rounded-full bg-emerald-500"></span>

@@ -61,16 +61,16 @@ export function WorkSection() {
               </Link>
             </Reveal>
 
-            {/* Snag */}
+            {/* Odynn */}
             <Reveal delay={0.14}>
-              <Link href="/projects">
+              <Link href="/experience">
                 <div className="group bg-white border border-slate-200 rounded-2xl p-6 hover:border-blue-300 transition-all duration-300 cursor-pointer">
-                  <p className="eyebrow mb-2">Snag · Personal project</p>
+                  <p className="eyebrow mb-2">Odynn · 2025</p>
                   <h3 className="text-base font-bold text-slate-900 mb-2 group-hover:text-blue-800 transition-colors">
-                    Get texted the promo codes buried in YouTube videos
+                    20% more completed bookings on a travel-fintech platform
                   </h3>
                   <p className="text-slate-600 text-sm">
-                    Built and shipped: watches channels via RSS, detects sponsor deals, texts you the code the moment it drops. No API key, zero quota.
+                    Owned QA and analytics for Awayz, a white-labeled booking platform serving roughly 15 clients. Prioritized defect fixes by client impact and built its first event taxonomy.
                   </p>
                 </div>
               </Link>

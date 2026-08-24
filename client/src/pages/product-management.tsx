@@ -6,7 +6,6 @@ import { ExternalLink, FileText, X, Youtube, BatteryCharging } from "lucide-reac
 import { useState } from "react";
 import { SiGithub } from "react-icons/si";
 import alltrailsIcon from "@assets/image_1768252840170.png";
-import linkedinIcon from "@assets/image_1768252917340.png";
 
 export default function ProductManagement() {
   usePageTitle("Projects");
@@ -24,7 +23,7 @@ export default function ProductManagement() {
                 Projects
               </h1>
               <p className="text-lg text-slate-600 max-w-3xl">
-                Things I've built and product thinking I've put on paper: case studies, PRDs, and side projects I've shipped and I'm building.
+                Things I've built and product thinking I've put on paper: side projects I've shipped and PRDs I've written.
               </p>
             </div>
           </Reveal>
@@ -153,41 +152,6 @@ export default function ProductManagement() {
                 </div>
 
                 <p className="text-sm text-slate-400 mt-6">Next.js · TypeScript · Postgres</p>
-              </div>
-              </Reveal>
-            </div>
-          </div>
-
-          <div className="mb-12">
-            <h2 className="text-2xl font-bold text-slate-900 mb-6">Case Studies</h2>
-            <div className="space-y-6">
-              <Reveal>
-              <div className="bg-white border border-slate-200 rounded-2xl p-6 hover:border-blue-300 card-glow transition-all duration-300">
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
-                  <div className="flex items-start gap-4">
-                    <div className="w-14 h-14 rounded-xl overflow-hidden shrink-0">
-                      <img loading="lazy" decoding="async" src={linkedinIcon} alt="LinkedIn" className="w-full h-full object-cover" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-slate-900">LinkedIn</h3>
-                      <p className="text-blue-800 font-medium">The Location Transparency Gap</p>
-                    </div>
-                  </div>
-                  <a
-                    href="/attached_assets/LinkedIn_Case_Study_1768252732588.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center px-4 py-2 btn-primary text-white rounded-lg text-sm font-semibold border-0"
-                    data-testid="button-view-linkedin-case-study"
-                  >
-                    <ExternalLink className="mr-2 h-4 w-4" />
-                    View Case Study
-                  </a>
-                </div>
-
-                <p className="text-slate-600">
-                  I identified a critical friction point in LinkedIn's job search experience: candidates are forced to apply first and assess commute viability second. I propose "LinkedIn Location Intelligence," a geospatial layer that visualizes job opportunities relative to the user's location, revealing commute clusters and transit access that are currently hidden by generic text labels.
-                </p>
               </div>
               </Reveal>
             </div>
