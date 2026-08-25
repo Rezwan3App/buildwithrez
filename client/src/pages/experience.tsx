@@ -130,7 +130,7 @@ export default function Experience() {
       metrics: [
         { num: "500%", cap: "Growth in direct account connections from the Plaid integration I led." },
         { num: "~1M", cap: "Clients a month on the Rocket Mortgage app I shipped features on." },
-        { num: "20%", cap: "Engagement lift from the Rocket Homes feature that won the June 2024 Tech Demo Award." }
+        { num: "40%", cap: "Drop in banker escalations after I designed the use cases and escalation logic for an AI onboarding chatbot." }
       ],
       tools: ["Plaid API", "Azure DevOps", "Adobe Analytics", "Figma", "A/B Testing"],
       logo: "rocket",
