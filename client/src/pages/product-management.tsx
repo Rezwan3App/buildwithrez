@@ -130,7 +130,18 @@ export default function ProductManagement() {
                       <p className="text-blue-800 font-medium">Honest EV Charge-Time Predictions</p>
                     </div>
                   </div>
-                  <span className="inline-flex items-center h-8 px-3 rounded-lg text-xs font-semibold bg-slate-100 text-slate-600 border border-slate-200">In progress</span>
+                  <div className="flex items-center gap-3">
+                    <span className="inline-flex items-center h-8 px-3 rounded-lg text-xs font-semibold bg-slate-100 text-slate-600 border border-slate-200">In progress</span>
+                    <a
+                      href="https://github.com/Rezwan3App/wattfinder"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-lg text-sm font-semibold transition-all"
+                    >
+                      <SiGithub aria-hidden="true" className="mr-2 h-4 w-4" />
+                      GitHub
+                    </a>
+                  </div>
                 </div>
 
                 <p className="text-slate-600 mb-6">
