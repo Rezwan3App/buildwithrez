@@ -97,15 +97,15 @@ export default function Experience() {
       scope: "Built and taught AI enablement for immigrant-owned small businesses, and shipped civic-tech tools, at a 501(c)(3) economic-development nonprofit.",
       metrics: [
         { num: "5", cap: "Pilot Entrepreneur Assistance Centers I trained to run the AI curriculum, ahead of a statewide rollout." },
-        { num: "1,500+", cap: "Daily jurors connected to 40+ local lunch spots by Justice is Served, the app I shipped." },
+        { num: "1,500+", cap: "Daily jurors guided to 40+ nearby lunch spots by Justice is Served, a courthouse lunch-finder web app I designed and shipped." },
         { num: "$0", cap: "Operating cost of the automated air-quality monitoring system I built in Python." }
       ],
-      tools: ["Claude Code", "Python", "PurpleAir API", "Accessibility"],
+      tools: ["Claude Code", "Python", "PurpleAir Air-Quality API", "Accessibility"],
       logo: "wtc",
       logoBg: ""
     },
     {
-      title: "Product/Data Analyst Intern",
+      title: "Product Manager Intern",
       company: "Odynn",
       location: "New York, NY",
       period: "June 2025 - Aug 2025",
@@ -122,11 +122,11 @@ export default function Experience() {
       imageCaption: "Led a Tableau workshop for fellow interns"
     },
     {
-      title: "Digital Product Management Intern",
+      title: "Product Manager Intern",
       company: "Rocket Mortgage",
       location: "Detroit, MI",
       period: "May 2024 - Dec 2024",
-      scope: "Shipped product on the Rocket Mortgage app, used by roughly 1M clients a month, leading design and engineering from requirements to launch.",
+      scope: "Shipped features on the Rocket Mortgage app, leading design and engineering from requirements through launch.",
       metrics: [
         { num: "500%", cap: "Growth in direct account connections from the Plaid integration I led." },
         { num: "~1M", cap: "Clients a month on the Rocket Mortgage app I shipped features on." },

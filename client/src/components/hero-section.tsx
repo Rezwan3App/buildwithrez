@@ -28,7 +28,6 @@ export function HeroSection() {
                   <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
                   Open to APM/PM roles
                 </span>
-                <span className="whitespace-nowrap">&middot; Graduating May 2027</span>
               </p>
             </div>
 
