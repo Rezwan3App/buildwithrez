@@ -116,8 +116,8 @@ export function HeroSection() {
               <img
                 src="/attached_assets/profile-headshot.png"
                 alt="Rezwan Islam"
-                fetchPriority="high"
                 className="w-full h-full object-cover object-top"
+                {...{ fetchpriority: "high" }}
               />
             </div>
           </motion.div>
