@@ -5,7 +5,7 @@ import rocketImage from "@assets/image_1767746681686.webp";
 
 export function WorkSection() {
   return (
-    <section id="work" className="py-20 border-t border-slate-200/70">
+    <section id="work" className="py-14 md:py-20 border-t border-slate-200/70">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
         <Reveal>
           <p className="eyebrow mb-3">Shipped work</p>

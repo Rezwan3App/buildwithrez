@@ -6,7 +6,7 @@ import { Reveal } from "@/components/reveal";
 export function ContactSection() {
   return (
     <section id="contact" className="bg-blue-900">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 py-20 sm:py-24">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 py-14 md:py-24">
         <Reveal>
           <div className="max-w-2xl">
             <h2 className="text-3xl sm:text-4xl font-semibold text-white">

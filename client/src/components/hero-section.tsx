@@ -17,10 +17,10 @@ export function HeroSection() {
 
   return (
     <section id="home" className="relative hero-grid">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 pt-36 pb-20 w-full">
-        <div className="grid lg:grid-cols-[1.4fr_1fr] gap-16 items-center">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 pt-24 sm:pt-36 pb-14 sm:pb-20 w-full">
+        <div className="grid lg:grid-cols-[1.4fr_1fr] gap-6 sm:gap-10 lg:gap-16 items-center">
           {/* Left Column - Text Content */}
-          <motion.div className="space-y-8" {...entrance(0)}>
+          <motion.div className="flex flex-col gap-6 sm:gap-8" {...entrance(0)}>
             <div className="space-y-3">
               <p className="eyebrow">Product &middot; New York</p>
               <p className="inline-flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-slate-600">
@@ -31,11 +31,11 @@ export function HeroSection() {
               </p>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-slate-900">
+            <h1 className="text-[2rem] leading-[1.15] sm:text-5xl lg:text-6xl font-semibold text-slate-900">
               From mechanical systems to digital products.
             </h1>
 
-            <div className="space-y-4 text-lg text-slate-600 leading-relaxed max-w-2xl">
+            <div className="space-y-4 text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl order-1 lg:order-none">
               <p>
                 I started out as a mechanical engineer, went back for an MBA at Baruch's
                 Zicklin School of Business, and found my way to product, where engineering
@@ -44,13 +44,13 @@ export function HeroSection() {
               <p>
                 I've shipped product work at Rocket Mortgage and Odynn, and recently helped
                 launch New York State's first AI training program for small businesses at
-                Welcome to Chinatown. This fall I'm joining NBCUniversal as a product
-                management intern.
+                Welcome to Chinatown. Now I'm a product management intern at
+                NBCUniversal.
               </p>
             </div>
 
             {/* Recommendation letter */}
-            <div className="pull-quote max-w-2xl">
+            <div className="pull-quote max-w-2xl order-2 lg:order-none">
               <p className="eyebrow mb-2">Recommendation</p>
               <p className="text-slate-600 leading-relaxed">
                 "His curiosity and comfort with ambiguity are the exact sort of intangible,
@@ -64,7 +64,7 @@ export function HeroSection() {
                   href="/attached_assets/Rezwan_Islam_Recommendation_Letter.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-800 font-medium hover:text-blue-900 transition-colors"
+                  className="inline-flex items-center min-h-[44px] text-blue-800 font-medium hover:text-blue-900 transition-colors"
                 >
                   Read the full letter
                 </a>
@@ -72,7 +72,7 @@ export function HeroSection() {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap gap-3 pt-2">
+            <div className="flex flex-wrap gap-3 sm:pt-2">
               <Button
                 size="lg"
                 asChild
@@ -103,7 +103,7 @@ export function HeroSection() {
 
             <Link
               href="/experience"
-              className="group inline-flex items-center gap-1.5 text-blue-800 font-semibold hover:text-blue-900 transition-colors"
+              className="group order-1 lg:order-none inline-flex items-center min-h-[44px] gap-1.5 text-blue-800 font-semibold hover:text-blue-900 transition-colors"
             >
               See what I've shipped
               <ArrowRight className="h-4 w-4 group-hover:translate-x-0.5 transition-transform" />
@@ -111,8 +111,8 @@ export function HeroSection() {
           </motion.div>
 
           {/* Right Column - Image */}
-          <motion.div className="order-first lg:order-none flex justify-center lg:justify-end" {...entrance(0.1)}>
-            <div className="profile-ring relative w-56 h-72 sm:w-80 sm:h-[420px] rounded-xl overflow-hidden shadow-lg">
+          <motion.div className="order-first lg:order-none flex justify-start sm:justify-center lg:justify-end" {...entrance(0.1)}>
+            <div className="profile-ring relative w-20 h-20 rounded-full sm:w-80 sm:h-[420px] sm:rounded-xl overflow-hidden shadow-lg">
               <img
                 src="/attached_assets/profile-headshot.png"
                 alt="Rezwan Islam"

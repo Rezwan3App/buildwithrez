@@ -86,11 +86,11 @@ export default function MBA() {
     <div className="min-h-screen">
       <Navigation />
       
-      <section className="pt-28 pb-20 relative overflow-hidden">
+      <section className="pt-24 sm:pt-28 pb-14 md:pb-20 relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
           <Reveal>
             <div className="mb-12">
-              <h1 className="text-4xl sm:text-5xl font-semibold text-slate-900 mb-4">
+              <h1 className="text-3xl sm:text-5xl font-semibold text-slate-900 mb-4">
                 MBA & Data Analytics
               </h1>
               <p className="text-lg text-slate-600 max-w-2xl">

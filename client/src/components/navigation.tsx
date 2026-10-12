@@ -77,7 +77,7 @@ export function Navigation() {
                       key={item.path}
                       href={item.path}
                       onClick={() => setIsOpen(false)}
-                      className={`px-4 py-4 rounded-xl text-base font-semibold transition-all ${
+                      className={`px-4 py-4 min-h-[44px] rounded-xl text-base font-semibold transition-all ${
                         location === item.path
                           ? "text-blue-900 bg-blue-50 border border-blue-100"
                           : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
@@ -87,6 +87,21 @@ export function Navigation() {
                       {item.label}
                     </Link>
                   ))}
+                  <a
+                    href="/attached_assets/Rezwan_Islam_Zicklin_Latest.pdf"
+                    download="Rezwan_Islam_Resume.pdf"
+                    className="px-4 py-4 min-h-[44px] rounded-xl text-base font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 border-t border-slate-200 mt-2"
+                  >
+                    Resume
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/rezwan-islam33"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-4 min-h-[44px] rounded-xl text-base font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+                  >
+                    LinkedIn
+                  </a>
                 </div>
               </SheetContent>
             </Sheet>
