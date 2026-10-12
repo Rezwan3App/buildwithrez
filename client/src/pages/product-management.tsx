@@ -120,7 +120,7 @@ export default function ProductManagement() {
                   </div>
                 </div>
 
-                <p className="text-sm text-slate-600 mt-6">Bun · Hono · YouTube RSS · Twilio SMS · JSON storage</p>
+                <p className="text-sm text-slate-600 mt-6">Bun · Hono · YouTube RSS · Twilio SMS · SQLite</p>
               </div>
               </Reveal>
 
