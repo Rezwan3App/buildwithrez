@@ -31,7 +31,7 @@ export function WorkSection() {
                 <div className="p-6">
                   <p className="eyebrow mb-2">Rocket Mortgage · 2024</p>
                   <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-800 transition-colors">
-                    Plaid Integration — 500% growth in direct account connections
+                    Plaid integration: 500% growth in direct account connections
                   </h3>
                   <p className="text-slate-600 text-sm leading-relaxed">
                     Led design and engineering for a Plaid bank-linking flow across the Rocket Mortgage app, used by roughly 1M clients a month.

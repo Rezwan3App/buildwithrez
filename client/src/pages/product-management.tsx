@@ -120,7 +120,7 @@ export default function ProductManagement() {
                   </div>
                 </div>
 
-                <p className="text-sm text-slate-400 mt-6">Bun · Hono · YouTube RSS · Twilio SMS · JSON storage</p>
+                <p className="text-sm text-slate-600 mt-6">Bun · Hono · YouTube RSS · Twilio SMS · JSON storage</p>
               </div>
               </Reveal>
 
@@ -168,7 +168,7 @@ export default function ProductManagement() {
                   </ul>
                 </div>
 
-                <p className="text-sm text-slate-400 mt-6">Next.js · TypeScript · Postgres</p>
+                <p className="text-sm text-slate-600 mt-6">Next.js · TypeScript · Postgres</p>
               </div>
               </Reveal>
             </div>
@@ -224,7 +224,7 @@ export default function ProductManagement() {
                         className="w-full h-auto hover:scale-105 transition-transform duration-300"
                       />
                     </button>
-                    <p className="text-xs text-slate-500 mt-2 text-center">Click to enlarge wireframe</p>
+                    <p className="text-[13px] text-slate-500 mt-2 text-center">Click to enlarge wireframe</p>
                   </div>
                 </div>
               </div>

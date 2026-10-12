@@ -132,7 +132,7 @@ export default function MBA() {
                       <p className="text-slate-600 mb-4">{project.description}</p>
 
                       <div className="mt-4 border-l-2 border-slate-200 pl-4">
-                        <p className="text-xs font-semibold tracking-widest uppercase text-slate-400 mb-2">How I built it</p>
+                        <p className="text-xs font-semibold tracking-widest uppercase text-slate-600 mb-2">How I built it</p>
                         <ul className="space-y-1">
                           {project.methods.map((m, i) => (
                             <li key={i} className="text-sm text-slate-600">{m}</li>
@@ -165,7 +165,7 @@ export default function MBA() {
                             className="w-full h-auto hover:scale-105 transition-transform duration-300"
                           />
                         </button>
-                        <p className="text-xs text-slate-500 mt-2 text-center">Click to enlarge</p>
+                        <p className="text-[13px] text-slate-500 mt-2 text-center">Click to enlarge</p>
                       </div>
                     )}
                   </div>
