@@ -58,8 +58,8 @@ export function HeroSection() {
               </p>
               <footer className="mt-3 text-sm">
                 <span className="text-slate-900 font-medium">Barry Biggs</span>
-                <span className="text-slate-500">, my mentor at Rocket Mortgage</span>
-                <span className="text-slate-400"> · </span>
+                <span className="text-slate-600">, my mentor at Rocket Mortgage</span>
+                <span className="text-slate-500"> · </span>
                 <a
                   href="/attached_assets/Rezwan_Islam_Recommendation_Letter.pdf"
                   target="_blank"
