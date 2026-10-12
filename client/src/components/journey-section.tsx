@@ -20,16 +20,16 @@ const steps = [
       "At Welcome to Chinatown I helped launch New York State's first AI training program for small businesses, bringing AI to immigrant-owned storefronts, not just startups.",
   },
   {
-    period: "Next",
+    period: "Sep 2026 – Present",
     title: "Product at NBCUniversal",
     description:
-      "This fall I'm joining NBCUniversal as a product management intern.",
+      "I'm a product management intern at NBCUniversal.",
   },
 ];
 
 export function JourneySection() {
   return (
-    <section id="journey" className="py-20 border-t border-slate-200/70">
+    <section id="journey" className="py-14 md:py-20 border-t border-slate-200/70">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
         <Reveal>
           <p className="eyebrow mb-3">My Path</p>
