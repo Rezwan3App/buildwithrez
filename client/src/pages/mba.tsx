@@ -4,7 +4,7 @@ import { Reveal } from "@/components/reveal";
 import { usePageTitle } from "@/hooks/use-page-title";
 import { ExternalLink, Car, TrendingUp, Database, Utensils, Moon, X, Download } from "lucide-react";
 import { SiTableau } from "react-icons/si";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import eatTrackImage from "@assets/Team_5_EatTrak_Presentation_WIP_1767748204830.webp";
 import sleepWaveImage from "@assets/BOSE_SLEEPWAVE_PRESENTATION_GROUP_7_1767748368521.jpg";
 import mcdonaldsImage from "@assets/Group_B_FSA,_ACC_9110,_Spring_2025_1767748480441.jpg";
@@ -12,6 +12,12 @@ import mcdonaldsImage from "@assets/Group_B_FSA,_ACC_9110,_Spring_2025_176774848
 export default function MBA() {
   usePageTitle("MBA & Data Analytics");
   const [modalImage, setModalImage] = useState<string | null>(null);
+  useEffect(() => {
+    if (!modalImage) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setModalImage(null);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [modalImage]);
 
   const mbaProjects = [
     {
@@ -294,6 +300,7 @@ export default function MBA() {
         >
           <button
             onClick={() => setModalImage(null)}
+            aria-label="Close image"
             className="absolute top-4 right-4 p-2 text-white hover:text-blue-300 transition-colors"
           >
             <X className="h-8 w-8" />
