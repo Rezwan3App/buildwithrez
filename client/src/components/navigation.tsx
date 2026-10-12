@@ -63,6 +63,7 @@ export function Navigation() {
                   variant="ghost"
                   size="icon"
                   className="rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 h-11 w-11"
+                  aria-label="Open navigation menu"
                   data-testid="button-mobile-menu"
                 >
                   <Menu className="h-5 w-5" />

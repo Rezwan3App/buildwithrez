@@ -3,13 +3,19 @@ import { Reveal } from "@/components/reveal";
 import { usePageTitle } from "@/hooks/use-page-title";
 import { Footer } from "@/components/footer";
 import { ExternalLink, FileText, X, Youtube, BatteryCharging } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { SiGithub } from "react-icons/si";
 import alltrailsIcon from "@assets/image_1768252840170.png";
 
 export default function ProductManagement() {
   usePageTitle("Projects");
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
+  useEffect(() => {
+    if (!isImageModalOpen) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setIsImageModalOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [isImageModalOpen]);
 
   return (
     <div className="min-h-screen">
@@ -236,6 +242,7 @@ export default function ProductManagement() {
         >
           <button
             onClick={() => setIsImageModalOpen(false)}
+            aria-label="Close image"
             className="absolute top-4 right-4 p-2 text-white hover:text-blue-300 transition-colors"
             data-testid="button-close-modal"
           >
