@@ -21,11 +21,11 @@ export default function ProductManagement() {
     <div className="min-h-screen">
       <Navigation />
 
-      <section className="pt-24 pb-20 relative overflow-hidden hero-grid">
-        <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
+      <section className="pt-28 pb-20 relative overflow-hidden">
+        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
           <Reveal>
             <div className="mb-12">
-              <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-4">
+              <h1 className="text-4xl sm:text-5xl font-semibold text-slate-900 mb-4">
                 Projects
               </h1>
               <p className="text-lg text-slate-600 max-w-3xl">
@@ -35,7 +35,7 @@ export default function ProductManagement() {
           </Reveal>
 
           <div className="mb-10">
-            <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+            <h2 className="text-2xl font-semibold text-slate-900 mb-6 flex items-center gap-3">
               <span className="w-8 h-[2px] bg-blue-800"></span>
               Personal Projects
             </h2>
@@ -48,7 +48,7 @@ export default function ProductManagement() {
                       <Youtube className="h-6 w-6 text-blue-800" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-slate-900">Snag</h3>
+                      <h3 className="text-xl font-semibold text-slate-900">Snag</h3>
                       <p className="text-blue-800 font-medium">Get Texted the Promo Codes Buried in YouTube Videos</p>
                     </div>
                   </div>
@@ -132,7 +132,7 @@ export default function ProductManagement() {
                       <BatteryCharging className="h-6 w-6 text-blue-800" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-slate-900">WattFinder</h3>
+                      <h3 className="text-xl font-semibold text-slate-900">WattFinder</h3>
                       <p className="text-blue-800 font-medium">Honest EV Charge-Time Predictions</p>
                     </div>
                   </div>
@@ -175,7 +175,7 @@ export default function ProductManagement() {
           </div>
 
           <div>
-            <h2 className="text-2xl font-bold text-slate-900 mb-6">Sample PRDs</h2>
+            <h2 className="text-2xl font-semibold text-slate-900 mb-6">Sample PRDs</h2>
             <div className="space-y-6">
               <Reveal>
               <div className="bg-white border border-slate-200 rounded-2xl p-6 hover:border-blue-300 card-glow transition-all duration-300">
@@ -186,7 +186,7 @@ export default function ProductManagement() {
                         <img loading="lazy" decoding="async" src={alltrailsIcon} alt="AllTrails" className="w-full h-full object-cover" />
                       </div>
                       <div>
-                        <h3 className="text-xl font-bold text-slate-900 mb-1">
+                        <h3 className="text-xl font-semibold text-slate-900 mb-1">
                           AllTrails "Journeys"
                         </h3>
                         <p className="text-blue-800 font-medium">

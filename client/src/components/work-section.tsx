@@ -30,7 +30,7 @@ export function WorkSection() {
                 </div>
                 <div className="p-6">
                   <p className="eyebrow mb-2">Rocket Mortgage · 2024</p>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-800 transition-colors">
+                  <h3 className="text-xl font-semibold text-slate-900 mb-2 group-hover:text-blue-800 transition-colors">
                     Plaid integration: 500% growth in direct account connections
                   </h3>
                   <p className="text-slate-600 text-sm leading-relaxed">
@@ -51,7 +51,7 @@ export function WorkSection() {
               <Link href="/experience">
                 <div className="group bg-white border border-slate-200 rounded-2xl p-6 hover:border-blue-300 transition-all duration-300 cursor-pointer">
                   <p className="eyebrow mb-2">Welcome to Chinatown · 2026</p>
-                  <h3 className="text-base font-bold text-slate-900 mb-2 group-hover:text-blue-800 transition-colors">
+                  <h3 className="text-base font-semibold text-slate-900 mb-2 group-hover:text-blue-800 transition-colors">
                     New York's first AI training program for small businesses
                   </h3>
                   <p className="text-slate-600 text-sm">
@@ -66,7 +66,7 @@ export function WorkSection() {
               <Link href="/experience">
                 <div className="group bg-white border border-slate-200 rounded-2xl p-6 hover:border-blue-300 transition-all duration-300 cursor-pointer">
                   <p className="eyebrow mb-2">Odynn · 2025</p>
-                  <h3 className="text-base font-bold text-slate-900 mb-2 group-hover:text-blue-800 transition-colors">
+                  <h3 className="text-base font-semibold text-slate-900 mb-2 group-hover:text-blue-800 transition-colors">
                     20% more completed bookings on a travel-fintech platform
                   </h3>
                   <p className="text-slate-600 text-sm">

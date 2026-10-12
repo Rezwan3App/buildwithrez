@@ -194,11 +194,11 @@ export default function Experience() {
     <div className="min-h-screen">
       <Navigation />
 
-      <section className="pt-24 pb-20 relative overflow-hidden hero-grid">
-        <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
+      <section className="pt-28 pb-20 relative overflow-hidden">
+        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
           <Reveal>
             <div className="mb-12">
-              <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-4">
+              <h1 className="text-4xl sm:text-5xl font-semibold text-slate-900 mb-4">
                 Product Experience
               </h1>
               <p className="text-lg text-slate-600 max-w-2xl">

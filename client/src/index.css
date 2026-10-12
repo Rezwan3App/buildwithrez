@@ -61,7 +61,7 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Manrope', 'Sora', system-ui, sans-serif;
-    @apply font-bold;
+    @apply font-semibold;
     letter-spacing: -0.02em;
     line-height: 1.15;
     color: #0f172a;
@@ -123,11 +123,11 @@
 }
 
 .pull-quote::before {
-  content: '"';
+  content: "\201C";
   position: absolute;
   left: -0.25rem;
   top: -0.75rem;
-  font-family: 'Manrope', serif;
+  font-family: 'Manrope', sans-serif;
   font-size: 3.5rem;
   font-weight: 700;
   color: #b6c4e8; /* light navy tint, same hue as the brand accent */

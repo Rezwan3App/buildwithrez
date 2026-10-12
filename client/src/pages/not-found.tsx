@@ -4,10 +4,10 @@ import { usePageTitle } from "@/hooks/use-page-title";
 export default function NotFound() {
   usePageTitle("Page not found");
   return (
-    <div className="min-h-screen w-full flex items-center justify-center hero-grid relative">
+    <div className="min-h-screen w-full flex items-center justify-center relative">
       <div className="text-center px-6">
         <p className="eyebrow mb-3">404</p>
-        <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+        <h1 className="text-3xl sm:text-4xl font-semibold text-slate-900 mb-4">
           This page doesn't exist.
         </h1>
         <p className="text-slate-600 mb-8">
