@@ -90,7 +90,7 @@ export default function Experience() {
   usePageTitle("Experience");
   const experiences: Experience[] = [
     {
-      title: "AI Strategy and Operations Intern",
+      title: "AI Strategy Intern",
       company: "Welcome to Chinatown",
       location: "New York, NY",
       period: "Jun 2026 - Aug 2026",
