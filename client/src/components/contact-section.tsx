@@ -9,7 +9,7 @@ export function ContactSection() {
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 py-20 sm:py-24">
         <Reveal>
           <div className="max-w-2xl">
-            <h2 className="text-3xl sm:text-4xl font-bold text-white">
+            <h2 className="text-3xl sm:text-4xl font-semibold text-white">
               Let's talk.
             </h2>
             <p className="mt-4 text-lg text-blue-100 leading-relaxed">

@@ -86,11 +86,11 @@ export default function MBA() {
     <div className="min-h-screen">
       <Navigation />
       
-      <section className="pt-24 pb-20 relative overflow-hidden hero-grid">
-        <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12">
+      <section className="pt-28 pb-20 relative overflow-hidden">
+        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
           <Reveal>
             <div className="mb-12">
-              <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-4">
+              <h1 className="text-4xl sm:text-5xl font-semibold text-slate-900 mb-4">
                 MBA & Data Analytics
               </h1>
               <p className="text-lg text-slate-600 max-w-2xl">
@@ -101,7 +101,7 @@ export default function MBA() {
 
           <div className="mb-12">
             <Reveal>
-              <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+              <h2 className="text-2xl font-semibold text-slate-900 mb-6 flex items-center gap-3">
                 <span className="w-8 h-[2px] bg-blue-800"></span>
                 MBA Projects
               </h2>
@@ -120,7 +120,7 @@ export default function MBA() {
                           <project.icon className="h-7 w-7 text-blue-800" />
                         </div>
                         <div>
-                          <h3 className="text-xl font-bold text-slate-900 mb-1">
+                          <h3 className="text-xl font-semibold text-slate-900 mb-1">
                             {project.title}
                           </h3>
                           <p className={`text-sm font-semibold ${project.accentColor}`}>
@@ -179,7 +179,7 @@ export default function MBA() {
             <Reveal>
               <div className="flex items-center gap-3 mb-8">
                 <div className="h-8 w-1 bg-blue-900 rounded-full"></div>
-                <h2 className="text-2xl font-bold text-slate-900">Data Analytics Projects</h2>
+                <h2 className="text-2xl font-semibold text-slate-900">Data Analytics Projects</h2>
               </div>
             </Reveal>
 
@@ -193,7 +193,7 @@ export default function MBA() {
                     <div className="w-14 h-14 bg-white border border-slate-200 rounded-xl flex items-center justify-center mx-auto mb-3">
                       <project.icon className="h-7 w-7 text-blue-800" />
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900">
+                    <h3 className="text-xl font-semibold text-slate-900">
                       {project.title}
                     </h3>
                     <p className={`text-sm font-semibold ${project.accentColor} mt-1`}>
@@ -232,7 +232,7 @@ export default function MBA() {
           <Reveal>
           <div className="bg-white border border-slate-200 hover:border-blue-300 card-glow transition-all duration-300 rounded-2xl p-8">
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-slate-900 inline-flex items-center gap-3">
+              <h3 className="text-2xl font-semibold text-slate-900 inline-flex items-center gap-3">
                 <div className="w-12 h-12 bg-blue-900 rounded-xl flex items-center justify-center">
                   <SiTableau aria-hidden="true" className="h-6 w-6 text-white" />
                 </div>

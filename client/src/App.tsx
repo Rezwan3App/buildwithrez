@@ -2,6 +2,7 @@ import { Switch, Route, useLocation } from "wouter";
 import { useEffect } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { BackToTop } from "@/components/back-to-top";
+import { FloatingWords } from "@/components/floating-words";
 import Home from "@/pages/home";
 import Experience from "@/pages/experience";
 import ProductManagement from "@/pages/product-management";
@@ -51,6 +52,7 @@ function Router() {
 function App() {
   return (
     <>
+      <FloatingWords />
       <Router />
       <BackToTop />
     </>
