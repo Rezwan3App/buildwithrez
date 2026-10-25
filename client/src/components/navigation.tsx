@@ -1,113 +1,69 @@
-import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
-import { Menu } from "lucide-react";
+import { motion, useScroll, useReducedMotion } from "framer-motion";
 import { Link, useLocation } from "wouter";
+import { EXPO } from "@/lib/motion";
 
 const navItems = [
   { path: "/", label: "Home" },
   { path: "/experience", label: "Experience" },
   { path: "/projects", label: "Projects" },
-  { path: "/mba", label: "Academics" },
+  { path: "/mba", label: "Education" },
 ];
 
-export function Navigation() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+export function SiteNav() {
   const [location] = useLocation();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const { scrollYProgress } = useScroll();
+  const reduce = useReducedMotion();
+  const active = location === "/product-management" ? "/projects" : location;
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
-          ? "bg-[#f4f6f9]/85 backdrop-blur-xl border-b border-slate-200 shadow-sm"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="flex items-center justify-between h-16">
-          <Link href="/" className="text-lg font-bold text-slate-900 hover:text-blue-800 transition-colors" style={{ fontFamily: "'Manrope', sans-serif" }} data-testid="link-home-logo">
-            Rezwan Islam
+    <nav className="sticky top-0 z-50 bg-[#f4f6f9] border-b border-slate-200" aria-label="Main">
+      <div className="max-w-6xl mx-auto px-3 sm:px-8 lg:px-12">
+        <div className="flex items-center justify-between h-14 sm:h-16">
+          <Link href="/" className="text-base sm:text-lg font-bold text-slate-900 hover:text-blue-800 transition-colors" style={{ fontFamily: "'Manrope', sans-serif" }} data-testid="link-home-logo">
+            <span className="sm:hidden" aria-label="Rezwan Islam, home">RI</span>
+            <span className="hidden sm:inline">Rezwan Islam</span>
           </Link>
 
-          <div className="hidden md:flex items-center gap-1">
+          <div className="flex items-center gap-0 sm:gap-1">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 href={item.path}
-                className={`px-4 py-2 rounded-lg text-base font-semibold transition-all duration-200 ${
-                  location === item.path
-                    ? "text-blue-900 bg-blue-50"
-                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+                aria-current={active === item.path ? "page" : undefined}
+                className={`relative px-2 sm:px-4 min-h-[44px] ${item.path === "/" ? "hidden sm:inline-flex" : "inline-flex"} items-center text-[13px] sm:text-base font-semibold transition-colors duration-200 ${
+                  active === item.path ? "text-blue-900" : "text-slate-600 hover:text-slate-900"
                 }`}
                 data-testid={`nav-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
               >
                 {item.label}
+                {active === item.path && (
+                  <motion.span
+                    layoutId="nav-underline"
+                    className="absolute left-2 right-2 sm:left-4 sm:right-4 bottom-1.5 h-0.5 bg-blue-900"
+                    transition={reduce ? { duration: 0 } : { duration: 0.2, ease: EXPO }}
+                  />
+                )}
               </Link>
             ))}
           </div>
 
-          <div className="flex items-center gap-2">
-            <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger asChild className="md:hidden">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="rounded-lg text-slate-600 hover:text-slate-900 hover:bg-slate-100 h-11 w-11"
-                  aria-label="Open navigation menu"
-                  data-testid="button-mobile-menu"
-                >
-                  <Menu className="h-5 w-5" />
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right" className="w-[280px] bg-white/95 backdrop-blur-xl border-slate-200 p-0">
-                <SheetTitle className="sr-only">Navigation menu</SheetTitle>
-                <div className="flex flex-col gap-1 mt-16 px-6">
-                  {navItems.map((item) => (
-                    <Link
-                      key={item.path}
-                      href={item.path}
-                      onClick={() => setIsOpen(false)}
-                      className={`px-4 py-4 min-h-[44px] rounded-xl text-base font-semibold transition-all ${
-                        location === item.path
-                          ? "text-blue-900 bg-blue-50 border border-blue-100"
-                          : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
-                      }`}
-                      data-testid={`nav-mobile-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
-                    >
-                      {item.label}
-                    </Link>
-                  ))}
-                  <a
-                    href="/attached_assets/Rezwan_Islam_Zicklin_Latest.pdf"
-                    download="Rezwan_Islam_Resume.pdf"
-                    className="px-4 py-4 min-h-[44px] rounded-xl text-base font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 border-t border-slate-200 mt-2"
-                  >
-                    Resume
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/in/rezwan-islam33"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-4 py-4 min-h-[44px] rounded-xl text-base font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100"
-                  >
-                    LinkedIn
-                  </a>
-                </div>
-              </SheetContent>
-            </Sheet>
-          </div>
+          <a
+            href="/attached_assets/Rezwan_Islam_Zicklin_Latest.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center min-h-[36px] px-2.5 sm:px-3 rounded-md border border-slate-300 text-[13px] sm:text-sm font-semibold text-slate-900 hover:border-blue-900 hover:text-blue-900 transition-colors"
+            data-testid="nav-resume"
+          >
+            Resume
+          </a>
         </div>
       </div>
+      <motion.div
+        className="absolute left-0 right-0 bottom-0 h-0.5 bg-[#1e3a8a] origin-left"
+        style={{ scaleX: scrollYProgress }}
+        aria-hidden="true"
+      />
     </nav>
   );
 }
+
