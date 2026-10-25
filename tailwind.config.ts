@@ -11,6 +11,7 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       colors: {
+        slate: { 500: "#5b6577" },
         background: "var(--background)",
         foreground: "var(--foreground)",
         card: {

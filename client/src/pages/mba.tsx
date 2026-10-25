@@ -1,10 +1,10 @@
 import { Footer } from "@/components/footer";
 import { Row, Page, SectionHeading } from "@/components/row";
-import { ProjectsTabs, Bullets, linkCls } from "@/pages/product-management";
+import { ProjectsTabs, Bullets, ImageModal, linkCls } from "@/pages/product-management";
 import { Reveal } from "@/components/reveal";
 import { usePageTitle } from "@/hooks/use-page-title";
-import { ExternalLink, X, Download } from "lucide-react";
-import { useState, useEffect } from "react";
+import { ExternalLink, Download } from "lucide-react";
+import { useState, useCallback } from "react";
 import eatTrackImage from "@assets/Team_5_EatTrak_Presentation_WIP_1767748204830.webp";
 import sleepWaveImage from "@assets/BOSE_SLEEPWAVE_PRESENTATION_GROUP_7_1767748368521.jpg";
 import mcdonaldsImage from "@assets/Group_B_FSA,_ACC_9110,_Spring_2025_1767748480441.jpg";
@@ -12,25 +12,25 @@ import mcdonaldsImage from "@assets/Group_B_FSA,_ACC_9110,_Spring_2025_176774848
 const mbaProjects = [
   {
     title: "EatTrack",
-    description: "A mobile app concept that flags ultra-processed foods while you shop. Our team ran a 55-person consumer survey, built a clickable Figma prototype, and tested it in 7 rounds with 13 users.",
-    stats: "55-person survey · 7 test rounds with 13 users",
-    methods: ["55-person consumer survey", "Figma prototype, 7 rounds of user testing", "Pricing: free tier plus a $7.99 one-time premium"],
+    description: "A mobile app concept that flags ultra-processed foods while you shop.",
+    meta: "Product concept",
+    methods: ["Ran a 55-person consumer survey", "Built a clickable Figma prototype and ran 7 rounds of testing with 13 users", "Priced it as a free tier plus a $7.99 one-time premium"],
     image: eatTrackImage,
     pdf: undefined as string | undefined,
   },
   {
     title: "SleepWave go-to-market plan",
-    description: "Our team wrote a go-to-market plan for SleepWave, a Bose sleep product. We ran 50+ consumer interviews and a competitive analysis, then set pricing and a first-year revenue model.",
-    stats: "50+ consumer interviews · Pricing and first-year revenue model",
-    methods: ["50+ consumer interviews", "Competitive analysis", "Pricing and first-year revenue model"],
+    description: "Class go-to-market plan for SleepWave, a Bose sleep product.",
+    meta: "Marketing",
+    methods: ["Ran 50+ consumer interviews", "Completed a competitive analysis", "Set pricing and built a first-year revenue model"],
     image: sleepWaveImage,
     pdf: "/attached_assets/BOSE_SLEEPWAVE_PRESENTATION_GROUP_7_1767748370531.pdf",
   },
   {
     title: "McDonald's financial analysis",
-    description: "Our team analyzed McDonald's 10-K against Wendy's and Burger King, built a DCF valuation with sensitivity tables, and reviewed its ESG commitments.",
-    stats: "3 companies compared · Ratio analysis and DCF",
-    methods: ["10-K financial statement analysis", "Excel DCF with sensitivity tables", "Ratio benchmarking and ESG review"],
+    description: "Financial analysis of McDonald's, benchmarked against Wendy's and Burger King.",
+    meta: "ACC 9110, Spring 2025",
+    methods: ["Analyzed the 10-K financial statements", "Built an Excel DCF valuation with sensitivity tables", "Benchmarked ratios across the three companies and reviewed ESG commitments"],
     image: mcdonaldsImage,
     pdf: "/attached_assets/Group_B_FSA,_ACC_9110,_Spring_2025_1767748486018.pdf",
   },
@@ -40,38 +40,34 @@ const dataProjects = [
   {
     title: "Ford crash risk analysis",
     highlights: [
-      "I ran a logistic regression in Python on 64,785 NYC motor vehicle collisions",
+      "Ran a logistic regression in Python on 64,785 NYC motor vehicle collisions",
       "Found no significant link between Ford vehicles and fatal crash outcomes (p = 0.203)",
-      "Found human behavior, such as speeding and impairment, to be the main predictor of fatal crashes",
+      "Found that human behavior, such as speeding and impairment, was the main predictor of fatal crashes",
     ],
-    stats: "64,785 collisions · No significant Ford effect",
+    meta: "Statistics",
     tags: ["Statistics", "Logistic Regression", "Python"],
     pdf: "/attached_assets/Final_Report-1_1767807752880.pdf" as string | undefined,
   },
   {
     title: "Pet adoption database",
     highlights: [
-      "I designed a relational database with 12+ normalized tables",
-      "Created ER diagrams and normalized the schema to BCNF",
+      "Designed a relational database with 12+ tables",
+      "Drew ER diagrams and normalized the schema to Boyce-Codd normal form (BCNF)",
       "Wrote SQL queries for adoption matching",
     ],
-    stats: "12+ tables · BCNF",
+    meta: "Databases",
     tags: ["SQL", "ER Modeling", "Database Design"],
     pdf: undefined as string | undefined,
   },
 ];
 
 const imgCls = "w-full max-w-xs h-auto border border-slate-200";
+type Modal = { src: string; title: string } | null;
 
 export default function MBA() {
   usePageTitle("MBA projects");
-  const [modalImage, setModalImage] = useState<string | null>(null);
-  useEffect(() => {
-    if (!modalImage) return;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setModalImage(null);
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [modalImage]);
+  const [modal, setModal] = useState<Modal>(null);
+  const closeModal = useCallback(() => setModal(null), []);
 
   return (
     <div className="min-h-screen">
@@ -87,13 +83,12 @@ export default function MBA() {
 
         <SectionHeading title="Team projects" />
         {mbaProjects.map((p) => (
-          <Row key={p.title} meta="Team project">
+          <Row key={p.title} meta={p.meta}>
             <h3 className="text-lg font-semibold text-slate-900">{p.title}</h3>
-            <p className="text-slate-500 mb-3">{p.stats}</p>
-            <p className="text-slate-600 mb-3">{p.description}</p>
+            <p className="text-slate-600 my-2">{p.description}</p>
             <Bullets items={p.methods} />
-            <button onClick={() => setModalImage(p.image)} className="block mt-4 cursor-zoom-in hover:opacity-90 transition-opacity w-full max-w-xs" aria-label={`Enlarge ${p.title} image`}>
-              <img loading="lazy" decoding="async" src={p.image} alt={p.title} className={imgCls} />
+            <button onClick={() => setModal({ src: p.image, title: p.title })} className="block mt-4 cursor-zoom-in hover:opacity-90 transition-opacity w-full max-w-xs" aria-label={`Enlarge ${p.title} image`}>
+              <img loading="lazy" decoding="async" src={p.image} alt={`${p.title} presentation slide`} width={960} height={540} className={imgCls} />
             </button>
             {p.pdf && (
               <p className="mt-3">
@@ -108,9 +103,8 @@ export default function MBA() {
         <div className="mt-16">
           <SectionHeading title="Data and analytics" />
           {dataProjects.map((p) => (
-            <Row key={p.title} meta="Data">
-              <h3 className="text-lg font-semibold text-slate-900">{p.title}</h3>
-              <p className="text-slate-500 mb-3">{p.stats}</p>
+            <Row key={p.title} meta={p.meta}>
+              <h3 className="text-lg font-semibold text-slate-900 mb-2">{p.title}</h3>
               <Bullets items={p.highlights} />
               <p className="text-sm text-slate-500 mt-3">{p.tags.join(" · ")}</p>
               {p.pdf && (
@@ -138,43 +132,26 @@ export default function MBA() {
               <ExternalLink aria-hidden="true" className="h-3 w-3" />
             </a>
           </p>
-          <Row meta="Tableau">
+          <Row meta="Retention">
             <a href="https://public.tableau.com/app/profile/rezwan.islam4698/viz/BankChurtProject/Dashboard1" target="_blank" rel="noopener noreferrer" className="block group/img" data-testid="link-tableau-churn">
               <h3 className="text-lg font-semibold text-slate-900 group-hover/img:text-blue-900">Customer churn analysis</h3>
               <p className="text-slate-600 my-2">I analyzed bank customer churn to find which segments leave and why, breaking retention down by geography, product mix, and account activity.</p>
-              <img loading="lazy" decoding="async" src="/attached_assets/image_1756834020456.webp" alt="Customer churn dashboard" className={imgCls} />
+              <img loading="lazy" decoding="async" src="/attached_assets/image_1756834020456.webp" alt="Customer churn dashboard" width={1400} height={759} className={imgCls} />
             </a>
           </Row>
-          <Row meta="Tableau">
-            <a href="https://public.tableau.com/app/profile/rezwan.islam4698/vizzes" target="_blank" rel="noopener noreferrer" className="block group/img" data-testid="link-tableau-fire">
+          <Row meta="Public safety">
+            <a href="https://public.tableau.com/app/profile/rezwan.islam4698/viz/NewYorkCityFireSafetyAnalysisDashboard/Dashboard3" target="_blank" rel="noopener noreferrer" className="block group/img" data-testid="link-tableau-fire">
               <h3 className="text-lg font-semibold text-slate-900 group-hover/img:text-blue-900">NYC fire safety analysis</h3>
               <p className="text-slate-600 my-2">I mapped NYC fire-inspection outcomes across boroughs: pass and fail rates, the most common causes of failed inspections, and where risk concentrates.</p>
-              <img loading="lazy" decoding="async" src="/attached_assets/image_1756834044327.webp" alt="NYC fire safety dashboard" className={imgCls} />
+              <img loading="lazy" decoding="async" src="/attached_assets/image_1756834044327.webp" alt="NYC fire safety dashboard" width={1400} height={802} className={imgCls} />
             </a>
           </Row>
         </div>
         <Footer />
       </Page>
 
-      {modalImage && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
-          onClick={() => setModalImage(null)}
-        >
-          <button
-            onClick={() => setModalImage(null)}
-            aria-label="Close image"
-            className="absolute top-4 right-4 p-2 text-white hover:text-blue-300 transition-colors"
-          >
-            <X className="h-8 w-8" />
-          </button>
-          <img loading="lazy" decoding="async"
-            src={modalImage}
-            alt="Project image, full size"
-            className="max-w-full max-h-[90vh] object-contain rounded-lg"
-            onClick={(e) => e.stopPropagation()}
-          />
-        </div>
+      {modal && (
+        <ImageModal src={modal.src} alt={`${modal.title} presentation slide, full size`} label={`${modal.title} image`} onClose={closeModal} />
       )}
 
     </div>

@@ -18,7 +18,7 @@ export function SiteRail() {
   const active = projectPaths.some((p) => location === p || location.startsWith(p + "/")) ? "/projects" : location;
 
   return (
-    <aside className="hidden lg:flex lg:flex-col lg:sticky lg:top-0 lg:h-screen lg:w-[300px] shrink-0 border-r border-slate-200 px-10 py-12">
+    <aside aria-label="Site" className="hidden lg:flex lg:flex-col lg:sticky lg:top-0 lg:h-screen lg:overflow-y-auto lg:w-[300px] shrink-0 border-r border-slate-200 px-10 py-12">
       <Link href="/" className="block" aria-label="Rezwan Islam, home">
         <img
           src="/attached_assets/profile-headshot-640.webp"
@@ -41,7 +41,7 @@ export function SiteRail() {
         Open to full-time APM and PM roles
       </p>
 
-      <nav aria-label="Main" className="mt-12">
+      <nav aria-label="Primary" className="mt-12">
         <ul className="space-y-1">
           {navItems.map((item) => {
             const isActive = active === item.path;
@@ -58,8 +58,8 @@ export function SiteRail() {
                 <Link
                   href={item.path}
                   aria-current={isActive ? "page" : undefined}
-                  className={`block py-2 text-sm font-semibold uppercase tracking-[0.12em] transition-all duration-200 ${
-                    isActive ? "pl-9 text-slate-900" : "pl-0 text-slate-500 hover:text-slate-900 hover:pl-3"
+                  className={`block py-2 text-sm font-semibold uppercase tracking-[0.12em] transition-[transform,color] duration-200 motion-reduce:transition-none ${
+                    isActive ? "translate-x-9 text-slate-900" : "text-slate-500 hover:text-slate-900 hover:translate-x-3"
                   }`}
                 >
                   {item.label}
@@ -77,7 +77,7 @@ export function SiteRail() {
         <a href="https://www.linkedin.com/in/rezwan-islam33" target="_blank" rel="noopener noreferrer" className="block text-slate-600 hover:text-blue-900">
           LinkedIn
         </a>
-        <a href="mailto:rezwan99@gmail.com" className="block text-slate-600 hover:text-blue-900">
+        <a href="mailto:rezwan99@gmail.com" className="block text-xs text-slate-500 hover:text-blue-900">
           rezwan99@gmail.com
         </a>
       </div>

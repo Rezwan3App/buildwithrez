@@ -58,7 +58,7 @@ const SECTIONS: Section[] = [
     body: (
       <>
         <p>
-          The goal is to validate demand with an A/B test and find product market fit before
+          The goal is to validate demand with an A/B test and find product-market fit before
           any monetization work. The primary KPIs:
         </p>
         <Ul
@@ -104,7 +104,7 @@ const SECTIONS: Section[] = [
           "Curate by hand first. Journey data is scattered and there is no API to pull it from, so I chose a small admin-curated set over trying to automate it.",
           "Use Google Maps APIs for directions instead of building routing, which keeps the lift at medium.",
           "Test before building the whole thing. The research shows demand, but an A/B test of the MVP decides what comes next. A full build would take much longer because of integration issues and unforeseen bugs.",
-          "Tie the feature to the paywall problem. Journeys lets people see the value of AllTrails+ (offline journey download, safety features) while planning, not in a crisis. Monetization only comes after product market fit.",
+          "Tie the feature to the paywall problem. Journeys lets people see the value of AllTrails+ (offline journey download, safety features) while planning, not in a crisis. Monetization only comes after product-market fit.",
         ]}
       />
     ),
@@ -116,7 +116,7 @@ const SECTIONS: Section[] = [
       <Ul
         items={[
           "Run the A/B test and read the KPIs above to decide the next steps.",
-          "If it holds up and product market fit is clear, move to monetization through AllTrails+.",
+          "If it holds up and product-market fit is clear, move to monetization through AllTrails+.",
           "Then scope the full feature, accepting a longer timeline.",
         ]}
       />
@@ -139,7 +139,7 @@ export default function AllTrailsPRD() {
           const isOpen = open === s.id;
           return (
             <div key={s.id} className="border-b border-slate-200">
-              <h4>
+              <h3>
                 <button
                   type="button"
                   aria-expanded={isOpen}
@@ -160,7 +160,7 @@ export default function AllTrailsPRD() {
                     {s.title}
                   </span>
                 </button>
-              </h4>
+              </h3>
               <AnimatePresence initial={false}>
                 {isOpen && (
                   <motion.div

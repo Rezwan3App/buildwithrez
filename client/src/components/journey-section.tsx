@@ -4,8 +4,8 @@ import { Row, SectionHeading } from "@/components/row";
 const steps = [
   ["2018", "B.E. in mechanical engineering, The City College of New York (CCNY)."],
   ["2021 – 2023", "Engineering and project management, including Zachry Nuclear Engineering."],
-  ["2024 – May 2027", "MBA at Baruch College, Zicklin School of Business. Shipped the Plaid integration at Rocket Companies; owned QA and analytics at Odynn."],
-  ["2026", "Helped launch New York State's AI training program for small businesses at Welcome to Chinatown."],
+  ["2024 – May 2027", "MBA at Baruch College, Zicklin School of Business, with product internships at Rocket Companies and Odynn."],
+  ["2026", "Built an AI curriculum for small businesses and trained 5 centers in a New York State pilot, at Welcome to Chinatown."],
   ["Sept 2026 – Present", "Product management intern at NBCUniversal."],
 ];
 

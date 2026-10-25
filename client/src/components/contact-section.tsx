@@ -29,7 +29,6 @@ export function ContactSection() {
         sel?.removeAllRanges();
         sel?.addRange(range);
       }
-      return;
     }
     setCopied(true);
     window.clearTimeout(timer.current);
@@ -47,9 +46,9 @@ export function ContactSection() {
     <section id="contact">
       <Reveal>
         <SectionHeading title="Contact" />
-        <p className="text-lg text-slate-600">Looking for full-time APM and PM roles in New York.</p>
+        <p className="text-lg text-slate-600">Email is the fastest way to reach me.</p>
         <p className="mt-4 flex flex-wrap items-center gap-x-3">
-          <a ref={emailRef} className={`${link} text-2xl sm:text-[1.75rem] break-all`} href={`mailto:${EMAIL}`}>
+          <a ref={emailRef} className="text-2xl sm:text-[1.75rem] font-semibold text-slate-900 hover:text-blue-900 underline underline-offset-4 decoration-slate-300 hover:decoration-blue-900 transition-colors break-all" href={`mailto:${EMAIL}`}>
             {EMAIL}
           </a>
           <button

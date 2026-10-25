@@ -6,8 +6,8 @@ import { Link } from "wouter";
 const rows = [
   {
     href: "/experience#nbcuniversal",
-    title: "Commerce tooling, Peacock GSP",
-    outcome: "Product work on the internal publishing tool behind Peacock's signed-out pages, with engineering and design. Started Sept 2026.",
+    title: "Commerce tooling for Peacock",
+    outcome: "Product work on the internal tool that builds the pages that turn visitors into Peacock subscribers, with engineering and design.",
     context: "NBCUniversal",
     year: "2026",
   },
@@ -20,7 +20,7 @@ const rows = [
   },
   {
     href: "/experience#welcome-to-chinatown",
-    title: "AI training for small businesses",
+    title: "AI curriculum for small businesses",
     outcome: "Built an AI curriculum for small businesses and trained 5 Entrepreneurship Assistance Centers in a New York State pilot.",
     context: "Welcome to Chinatown",
     year: "2026",
@@ -33,7 +33,7 @@ const rows = [
     year: "2025",
   },
   {
-    href: "/projects",
+    href: "/projects#snag",
     title: "Snag",
     outcome: "Watches the YouTube channels you follow and texts you the promo code, sponsor link and expiry the moment a deal drops.",
     context: "Personal project",
@@ -60,7 +60,7 @@ export function WorkSection() {
             >
               <Link
                 href={r.href}
-                className="group block outline-none focus-visible:bg-slate-100/60"
+                className="group block -mx-3 px-3 py-1 rounded outline-none transition-colors hover:bg-slate-100/60 focus-visible:bg-slate-100/60"
               >
                 <div className="flex items-baseline justify-between gap-4">
                   <h3 className="text-lg font-semibold text-slate-900 transition-colors group-hover:text-blue-900 group-focus-visible:text-blue-900">
