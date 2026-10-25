@@ -1,9 +1,6 @@
 import { useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { ExternalLink, FileText } from "lucide-react";
 import { EXPO } from "@/lib/motion";
-
-const PDF = "/attached_assets/AllTrails_Journeys_Curated_Hiking_Itineraries_1768253125440.pdf";
 
 type Section = { id: string; title: string; body: React.ReactNode };
 
@@ -186,17 +183,6 @@ export default function AllTrailsPRD() {
           );
         })}
       </div>
-      <a
-        href={PDF}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 mt-4 text-sm font-semibold underline-offset-4 hover:underline"
-        style={{ color: "#1e3a8a" }}
-      >
-        <FileText className="h-4 w-4" />
-        View PRD (PDF)
-        <ExternalLink className="h-3.5 w-3.5" />
-      </a>
     </div>
   );
 }

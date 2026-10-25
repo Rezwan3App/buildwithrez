@@ -1,4 +1,4 @@
-import { Reveal } from "@/components/reveal";
+import { Row, SectionHeading } from "@/components/row";
 
 const schools = [
   {
@@ -19,26 +19,15 @@ const schools = [
 
 export default function EducationSection() {
   return (
-    <section id="education" className="py-10 md:py-14 scroll-mt-24">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-        <Reveal>
-          <h2 className="text-2xl font-semibold text-slate-900 mb-6">Education</h2>
-          <ul className="divide-y divide-slate-200 border-y border-slate-200">
-            {schools.map((s) => (
-              <li key={s.degree} className="flex items-center gap-4 py-4">
-                <img loading="lazy" decoding="async" src={s.logo} alt={s.alt} className="h-10 w-10 object-contain shrink-0" />
-                <div className="flex-1 min-w-0 sm:flex sm:items-baseline sm:justify-between sm:gap-4">
-                  <div>
-                    <h3 className="text-lg font-semibold text-slate-900">{s.degree}</h3>
-                    <p className="text-slate-600">{s.school}</p>
-                  </div>
-                  <p className="text-sm font-semibold text-slate-600 mt-1 sm:mt-0 shrink-0">{s.meta}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </Reveal>
-      </div>
+    <section>
+      <SectionHeading id="education" title="Education" />
+      {schools.map((s) => (
+        <Row key={s.degree} meta={s.meta}>
+          <img loading="lazy" decoding="async" src={s.logo} alt={s.alt} className="mb-3 h-6 w-6 object-contain" />
+          <h3 className="text-lg font-semibold text-slate-900" style={{ fontFamily: "'Manrope', sans-serif" }}>{s.degree}</h3>
+          <p className="text-slate-600">{s.school}</p>
+        </Row>
+      ))}
     </section>
   );
 }

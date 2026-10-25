@@ -1,10 +1,8 @@
 import { Footer } from "@/components/footer";
-import { Reveal } from "@/components/reveal";
 import { LeadershipSection } from "@/components/leadership-section";
 import EducationSection from "@/components/education-section";
 import { usePageTitle } from "@/hooks/use-page-title";
-import { Calendar } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { Page, Row, SectionHeading } from "@/components/row";
 import odynnImage from "@assets/image_1767746624854.webp";
 import rocketImage from "@assets/image_1767746681686.webp";
 import odynnLogo from "@assets/image_1767747315335.png";
@@ -27,67 +25,10 @@ interface Experience {
   metrics: Metric[];
   tools: string[];
   logo: string;
-  logoBg: string;
   image?: string;
   imageCaption?: string;
   team?: string;
   quote?: boolean;
-}
-
-// Counts a formatted stat (e.g. "1,500+", "~1M", "$0") up from zero when it scrolls into view.
-function CountUp({ value }: { value: string }) {
-  const match = value.match(/^([^\d]*)([\d,]+(?:\.\d+)?)(.*)$/);
-  const ref = useRef<HTMLSpanElement>(null);
-  const [text, setText] = useState(value);
-  const done = useRef(false);
-
-  useEffect(() => {
-    if (!match) {
-      setText(value);
-      return;
-    }
-    const prefix = match[1];
-    const raw = match[2].replace(/,/g, "");
-    const target = parseFloat(raw);
-    const decimals = raw.includes(".") ? raw.split(".")[1].length : 0;
-    const suffix = match[3];
-    const fmt = (n: number) =>
-      prefix + n.toLocaleString("en-US", { minimumFractionDigits: decimals, maximumFractionDigits: decimals }) + suffix;
-
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setText(fmt(target));
-      return;
-    }
-    done.current = false;
-    setText(fmt(0));
-    const el = ref.current;
-    if (!el) {
-      setText(fmt(target));
-      return;
-    }
-    const io = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting && !done.current) {
-          done.current = true;
-          io.disconnect();
-          const dur = 900;
-          const start = performance.now();
-          const tick = (now: number) => {
-            const p = Math.min((now - start) / dur, 1);
-            setText(fmt(target * (1 - Math.pow(1 - p, 3))));
-            if (p < 1) requestAnimationFrame(tick);
-          };
-          requestAnimationFrame(tick);
-        }
-      },
-      { threshold: 0.4 }
-    );
-    io.observe(el);
-    return () => io.disconnect();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [value]);
-
-  return <span ref={ref}>{text}</span>;
 }
 
 export default function Experience() {
@@ -99,15 +40,10 @@ export default function Experience() {
       team: "Publishing Tools",
       location: "New York, NY",
       period: "Sept 2026 – Present",
-      scope: "I work on the internal publishing tool that teams at Peacock, SkyShowtime, and NOW use to build their signed-out pages, the pages that turn visitors into subscribers.",
-      metrics: [
-        { num: "5+", cap: "Bugs I surfaced in UAT and drove to fixes with engineering, design, and the data vendor on a live sports fixtures table, now in production beta." },
-        { num: "2 weeks", cap: "To decommission a low-value signed-out feature, including legal and cybersecurity review." },
-        { num: "3", cap: "Streaming platforms where I support A/B testing improvements so internal teams can test page templates on live audiences." }
-      ],
+      scope: "I work on internal commerce tooling for Peacock and NBCUniversal's global streaming platform (GSP): the publishing tool teams use to build the signed-out pages that turn visitors into subscribers. I partner with engineering and design on testing, the backlog, and feature improvements.",
+      metrics: [],
       tools: ["Jira", "Confluence", "Airtable", "UAT", "A/B testing"],
-      logo: "nbcu",
-      logoBg: "bg-slate-900"
+      logo: "nbcu"
     },
     {
       title: "AI Strategy and Operations Intern",
@@ -121,8 +57,7 @@ export default function Experience() {
         { num: "$0", cap: "Operating cost of the automated air-quality monitoring system I built in Python." }
       ],
       tools: ["Claude Code", "Python", "PurpleAir API", "Airtable"],
-      logo: "wtc",
-      logoBg: ""
+      logo: "wtc"
     },
     {
       title: "Product Manager Intern",
@@ -137,7 +72,6 @@ export default function Experience() {
       ],
       tools: ["Jira", "Amplitude", "SQL", "Postman", "Agile"],
       logo: "odynn",
-      logoBg: "bg-slate-900",
       image: odynnImage,
       imageCaption: "Led a Tableau workshop for fellow interns"
     },
@@ -154,7 +88,6 @@ export default function Experience() {
       ],
       tools: ["Plaid API", "Azure DevOps", "Adobe Analytics", "Figma", "A/B testing"],
       logo: "rocket",
-      logoBg: "bg-slate-900",
       image: rocketImage,
       imageCaption: "Moderated a product roadmap panel for 200+ people",
       quote: true
@@ -171,186 +104,114 @@ export default function Experience() {
         { num: "25%", cap: "Product-line expansion across 2 new lines, supported by my review of 300+ Amazon SKUs and their reviews." }
       ],
       tools: ["Google Analytics", "Google Trends", "Jungle Scout", "Market research"],
-      logo: "megaplants",
-      logoBg: "bg-white border border-slate-200"
+      logo: "megaplants"
     }
   ];
 
   const renderLogo = (exp: Experience) => {
-    if (exp.logo === "nbcu") {
-      return (
-        <div className="h-12 flex items-center shrink-0">
-          <img decoding="async" src={nbcuLogo} alt="NBCUniversal" width={284} height={28} className="h-7 w-auto object-contain" />
-        </div>
-      );
+    switch (exp.logo) {
+      case "nbcu":
+        return <img decoding="async" src={nbcuLogo} alt="NBCUniversal" width={284} height={28} className="h-8 w-auto" />;
+      case "wtc":
+        return <img decoding="async" src={wtcLogo} alt="Welcome to Chinatown" width={62} height={24} className="h-6 w-auto" />;
+      case "rocket":
+        return (
+          <span className="block w-[120px] h-6 overflow-hidden">
+            <img loading="lazy" decoding="async" src={rocketLogo} alt="Rocket Companies" width={762} height={376} className="w-full h-full object-cover" />
+          </span>
+        );
+      case "odynn":
+        return <img loading="lazy" decoding="async" src={odynnLogo} alt="Odynn" width={713} height={713} className="h-6 w-6 object-contain" />;
+      default:
+        return <img loading="lazy" decoding="async" src={megaplantsLogo} alt="MegaPlants" width={300} height={157} className="h-6 w-auto object-contain" />;
     }
-    if (exp.logo === "wtc") {
-      return (
-        <div className="h-12 flex items-center shrink-0">
-          <img decoding="async" src={wtcLogo} alt="Welcome to Chinatown" className="h-10 w-auto object-contain" />
-        </div>
-      );
-    }
-
-    const inner = (() => {
-      switch (exp.logo) {
-        case "rocket":
-          return (
-            <img loading="lazy" decoding="async" src={rocketLogo} alt="Rocket Companies" className="w-12 h-12 object-contain" />
-          );
-        case "odynn":
-          return (
-            <img loading="lazy" decoding="async" src={odynnLogo} alt="Odynn" className="w-10 h-10 object-contain" />
-          );
-        case "megaplants":
-          return (
-            <img loading="lazy" decoding="async" src={megaplantsLogo} alt="MegaPlants" className="w-12 h-8 object-contain" />
-          );
-        default:
-          return null;
-      }
-    })();
-
-    return (
-      <div className={`w-12 h-12 ${exp.logoBg} rounded-lg flex items-center justify-center shrink-0`}>
-        {inner}
-      </div>
-    );
   };
 
   return (
     <div className="min-h-screen">
+      <Page>
+        <h1 className="mb-4">Experience</h1>
+        <p className="text-lg text-slate-600 max-w-2xl">
+          My product internships, newest first, with the result I can point to in each.
+        </p>
+        <p className="mt-6 mb-16 text-sm text-slate-500">
+          <a href="#roles" className="hover:text-blue-800">Roles</a>
+          {" · "}
+          <a href="#education" className="hover:text-blue-800">Education</a>
+          {" · "}
+          <a href="#leadership" className="hover:text-blue-800">Leadership</a>
+        </p>
 
-      <section className="pt-24 sm:pt-28 pb-14 md:pb-20 relative overflow-hidden">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-          <Reveal>
-            <div className="mb-8 sm:mb-12">
-              <h1 className="text-3xl sm:text-5xl font-semibold text-slate-900 mb-4">
-                Experience
-              </h1>
-              <p className="text-lg text-slate-600 max-w-2xl">
-                My product internships, newest first, with the result I can point to in each.
+        <SectionHeading id="roles" title="Roles" />
+        <div>
+          {experiences.map((exp) => (
+            <Row
+              key={exp.company}
+              id={exp.company.toLowerCase().replace(/[^a-z0-9]+/g, "-")}
+              meta={
+                <>
+                  <p>{exp.period}</p>
+                  <p className="mt-1 font-normal normal-case tracking-normal text-sm">{exp.location}</p>
+                </>
+              }
+            >
+              <div className="mb-3 flex h-6 items-center">{renderLogo(exp)}</div>
+              <h3 className="text-lg font-semibold text-slate-900" style={{ fontFamily: "'Manrope', sans-serif" }}>{exp.title}</h3>
+              <p className="text-slate-600">
+                {exp.company}
+                {exp.team && <span> · {exp.team}</span>}
               </p>
-            </div>
-          </Reveal>
+              <p className="mt-3 text-slate-600">{exp.scope}</p>
 
-          <nav aria-label="On this page" className="flex gap-2 mb-8">
-            {[["#roles", "Roles"], ["#education", "Education"], ["#leadership", "Leadership"]].map(([href, label]) => (
-              <a
-                key={href}
-                href={href}
-                className="inline-flex items-center h-8 px-3.5 rounded-full border border-slate-200 bg-white text-sm font-semibold text-slate-600 hover:border-blue-300 transition-colors duration-200"
-              >
-                {label}
-              </a>
-            ))}
-          </nav>
-
-          <h2 id="roles" className="text-[28px] leading-tight font-semibold text-slate-900 mb-6 scroll-mt-24" style={{ fontFamily: "'Manrope', sans-serif" }}>
-            Roles
-          </h2>
-          <div className="space-y-6">
-            {experiences.map((exp, index) => (
-              <Reveal key={index} delay={index * 0.08}>
-                <div id={exp.company.toLowerCase().replace(/[^a-z0-9]+/g, "-")} className="scroll-mt-24 group p-6 sm:p-8 rounded-xl bg-white border border-slate-200 hover:border-blue-300 card-glow transition-all duration-200">
-                  <div className="flex flex-col lg:flex-row gap-6 lg:gap-10">
-                    <div className="flex-1">
-                      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4">
-                        <div className="flex items-start gap-4">
-                          {renderLogo(exp)}
-                          <div>
-                            <h3 className="text-xl font-semibold text-slate-900 mb-1">
-                              {exp.title}
-                            </h3>
-                            <p className="text-blue-800 font-medium">
-                              {exp.company}
-                              {exp.team && <span className="text-slate-600 font-normal"> · {exp.team}</span>}
-                            </p>
-                            <p className="text-sm text-slate-500">{exp.location}</p>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-2 text-slate-500 mt-3 sm:mt-0">
-                          <Calendar className="h-4 w-4" />
-                          <span className="text-sm">{exp.period}</span>
-                        </div>
-                      </div>
-
-                      <p className="text-slate-600 mb-4 max-w-2xl">{exp.scope}</p>
-
-                      <div className="flex flex-wrap gap-2 mb-6">
-                        {exp.tools.map((tool, idx) => (
-                          <span
-                            key={idx}
-                            className="inline-flex items-center rounded-md border border-blue-100 bg-blue-50 px-2.5 py-1 text-xs font-semibold text-blue-800"
-                          >
-                            {tool}
-                          </span>
-                        ))}
-                      </div>
-
-                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6 pt-6 border-t border-slate-100">
-                        {exp.metrics.map((m, idx) => (
-                          <div key={idx}>
-                            <div
-                              className="text-3xl sm:text-4xl font-bold text-blue-800 tracking-tight tabular-nums"
-                              style={{ fontFamily: "'Manrope', sans-serif" }}
-                            >
-                              <CountUp value={m.num} />
-                            </div>
-                            <p className="mt-2 text-sm text-slate-600 leading-snug">{m.cap}</p>
-                          </div>
-                        ))}
-                      </div>
-
-                      {exp.quote && (
-                        <div className="pull-quote max-w-[65ch] mt-6">
-                          <p className="text-slate-600 leading-relaxed">
-                            His curiosity and comfort with ambiguity are the exact sort of intangible,
-                            table stakes qualities that will continue to make him a great asset to any team.
-                          </p>
-                          <footer className="mt-3 text-sm">
-                            <span className="text-slate-900 font-medium">Barry Biggs</span>
-                            <span className="text-slate-600">, my mentor at Rocket Companies</span>
-                            <span className="text-slate-500"> · </span>
-                            <a
-                              href="/attached_assets/Rezwan_Islam_Recommendation_Letter.pdf"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center min-h-[44px] text-blue-800 font-medium hover:text-blue-900 transition-colors"
-                            >
-                              Read the full letter
-                            </a>
-                          </footer>
-                        </div>
-                      )}
+              {exp.metrics.length > 0 && <div className="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5">
+                {exp.metrics.map((m) => (
+                  <div key={m.num + m.cap}>
+                    <div className="text-[22px] leading-none font-semibold text-slate-900 tabular-nums" style={{ fontFamily: "'Manrope', sans-serif" }}>
+                      {m.num}
                     </div>
-
-                    {exp.image && (
-                      <div className="lg:w-60 shrink-0">
-                        <div className="rounded-lg overflow-hidden border border-slate-200">
-                          <img loading="lazy" decoding="async"
-                            src={exp.image}
-                            alt={`${exp.company} experience`}
-                            className="w-full h-auto object-cover"
-                          />
-                        </div>
-                        {exp.imageCaption && (
-                          <p className="text-slate-500 text-xs mt-2 text-center">{exp.imageCaption}</p>
-                        )}
-                      </div>
-                    )}
+                    <p className="mt-1.5 text-[13px] leading-snug text-slate-600">{m.cap}</p>
                   </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+                ))}
+              </div>}
+
+              <p className="mt-5 text-sm text-slate-500">{exp.tools.join(" · ")}</p>
+
+              {exp.image && (
+                <figure className="mt-5 max-w-[11rem]">
+                  <img loading="lazy" decoding="async" src={exp.image} alt={`${exp.company} experience`} className="w-full h-auto border border-slate-200" />
+                  {exp.imageCaption && <figcaption className="mt-1.5 text-xs text-slate-500">{exp.imageCaption}</figcaption>}
+                </figure>
+              )}
+
+              {exp.quote && (
+                <blockquote className="mt-6 ml-4 pl-4 border-l border-slate-300 max-w-[65ch]">
+                  <p className="text-slate-600 leading-relaxed">
+                    His curiosity and comfort with ambiguity are the exact sort of intangible,
+                    table stakes qualities that will continue to make him a great asset to any team.
+                  </p>
+                  <footer className="mt-2 text-sm">
+                    <span className="text-slate-900 font-medium">Barry Biggs</span>
+                    <span className="text-slate-600">, my mentor at Rocket Companies</span>
+                    <span className="text-slate-500"> · </span>
+                    <a
+                      href="/attached_assets/Rezwan_Islam_Recommendation_Letter.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center min-h-[44px] text-blue-800 font-medium hover:text-blue-900 transition-colors"
+                    >
+                      Read the full letter
+                    </a>
+                  </footer>
+                </blockquote>
+              )}
+            </Row>
+          ))}
         </div>
-      </section>
 
-      <EducationSection />
-      <LeadershipSection />
-
-      <Footer />
+        <div className="mt-20"><EducationSection /></div>
+        <div className="mt-20"><LeadershipSection /></div>
+        <div className="mt-20"><Footer /></div>
+      </Page>
     </div>
   );
 }
