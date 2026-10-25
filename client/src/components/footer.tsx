@@ -1,7 +1,9 @@
 export function Footer() {
   return (
-    <footer className="mt-20 pt-6 border-t border-slate-200">
-      <p className="text-sm text-slate-500">© 2026 Rezwan Islam · New York</p>
+    <footer className="pt-6 pb-24 border-t border-slate-200">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+        <p className="text-sm text-slate-600">&copy; 2026 Rezwan Islam &middot; New York</p>
+      </div>
     </footer>
   );
 }

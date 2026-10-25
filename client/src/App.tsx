@@ -2,7 +2,6 @@ import { Switch, Route, Redirect, useLocation } from "wouter";
 import { lazy, Suspense, useEffect } from "react";
 import { motion, MotionConfig } from "framer-motion";
 import { SiteNav } from "@/components/navigation";
-import { SiteRail } from "@/components/site-rail";
 import { EXPO } from "@/lib/motion";
 import Home from "@/pages/home";
 
@@ -73,12 +72,9 @@ function App() {
         Skip to content
       </a>
       <SiteNav />
-      <div className="lg:flex">
-        <SiteRail />
-        <main id="main" tabIndex={-1} className="flex-1 min-w-0 outline-none">
-          <Router />
-        </main>
-      </div>
+      <main id="main" tabIndex={-1} className="flex-1 min-w-0 outline-none">
+        <Router />
+      </main>
     </MotionConfig>
   );
 }
