@@ -194,7 +194,7 @@ export default function AllTrailsPRD() {
         style={{ color: "#1e3a8a" }}
       >
         <FileText className="h-4 w-4" />
-        Download full PRD (PDF)
+        View PRD (PDF)
         <ExternalLink className="h-3.5 w-3.5" />
       </a>
     </div>

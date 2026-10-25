@@ -7,3 +7,4 @@ vite.config.ts.*
 .claude/
 .impeccable/
 .local/
+docs/site-review/

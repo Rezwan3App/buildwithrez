@@ -1,8 +1,6 @@
-import { Switch, Route, useLocation } from "wouter";
+import { Switch, Route, Redirect, useLocation } from "wouter";
 import { lazy, Suspense, useEffect } from "react";
 import { motion, MotionConfig } from "framer-motion";
-import { BackToTop } from "@/components/back-to-top";
-import CustomCursor from "@/components/custom-cursor";
 import { SiteNav } from "@/components/navigation";
 import { EXPO } from "@/lib/motion";
 import Home from "@/pages/home";
@@ -15,18 +13,31 @@ const NotFound = lazy(() => import("@/pages/not-found"));
 function ScrollToTop() {
   const [location] = useLocation();
   useEffect(() => {
-    window.scrollTo(0, 0);
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    if (!id) {
+      window.scrollTo(0, 0);
+      return;
+    }
+    // Lazy pages mount after navigation, so retry briefly until the target exists.
+    let tries = 0;
+    const timer = window.setInterval(() => {
+      const el = document.getElementById(id);
+      if (el || ++tries > 20) {
+        window.clearInterval(timer);
+        el?.scrollIntoView();
+      }
+    }, 50);
+    return () => window.clearInterval(timer);
   }, [location]);
   return null;
 }
 
 function Router() {
   const [location] = useLocation();
-  const animationKey = location === "/product-management" ? "/projects" : location;
 
   return (
     <motion.div
-      key={animationKey}
+      key={location}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.2, ease: EXPO }}
@@ -37,8 +48,10 @@ function Router() {
         <Route path="/" component={Home} />
         <Route path="/experience" component={Experience} />
         <Route path="/projects" component={ProductManagement} />
-        <Route path="/product-management" component={ProductManagement} />
-        <Route path="/mba" component={MBA} />
+        <Route path="/projects/mba" component={MBA} />
+        <Route path="/mba">{() => <Redirect to="/projects/mba" replace />}</Route>
+        <Route path="/product-management">{() => <Redirect to="/projects" replace />}</Route>
+        <Route path="/education">{() => <Redirect to="/experience#education" replace />}</Route>
         <Route component={NotFound} />
       </Switch>
       </Suspense>
@@ -59,8 +72,6 @@ function App() {
       <div id="main" tabIndex={-1}>
         <Router />
       </div>
-      <BackToTop />
-      <CustomCursor />
     </MotionConfig>
   );
 }

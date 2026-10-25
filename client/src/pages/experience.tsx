@@ -1,6 +1,7 @@
 import { Footer } from "@/components/footer";
 import { Reveal } from "@/components/reveal";
 import { LeadershipSection } from "@/components/leadership-section";
+import EducationSection from "@/components/education-section";
 import { usePageTitle } from "@/hooks/use-page-title";
 import { Calendar } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
@@ -10,6 +11,7 @@ import odynnLogo from "@assets/image_1767747315335.png";
 import rocketLogo from "@assets/image_1767747337636.png";
 import megaplantsLogo from "@assets/image_1767747435421.png";
 import wtcLogo from "@assets/wtc-logo.png";
+import nbcuLogo from "@assets/nbcuniversal-logo.svg";
 
 interface Metric {
   num: string;
@@ -28,6 +30,8 @@ interface Experience {
   logoBg: string;
   image?: string;
   imageCaption?: string;
+  team?: string;
+  quote?: boolean;
 }
 
 // Counts a formatted stat (e.g. "1,500+", "~1M", "$0") up from zero when it scrolls into view.
@@ -92,15 +96,16 @@ export default function Experience() {
     {
       title: "Product Management Intern",
       company: "NBCUniversal",
+      team: "Publishing Tools",
       location: "New York, NY",
-      period: "Sept 2026 - Present",
-      scope: "Product work on the internal publishing tool behind Peacock, SkyShowtime, and NOW, focused on the signed-out, top-of-funnel experience and subscriber conversion.",
+      period: "Sept 2026 – Present",
+      scope: "I work on the internal publishing tool that teams at Peacock, SkyShowtime, and NOW use to build their signed-out pages, the pages that turn visitors into subscribers.",
       metrics: [
-        { num: "5-6", cap: "Bugs I surfaced in UAT and drove to fixes with engineering, design, and the data vendor on a live sports fixtures table, now in production beta." },
-        { num: "1", cap: "Low-value feature I decommissioned from the signed-out page, through legal and cybersecurity sign-off in two weeks." },
+        { num: "5+", cap: "Bugs I surfaced in UAT and drove to fixes with engineering, design, and the data vendor on a live sports fixtures table, now in production beta." },
+        { num: "2 weeks", cap: "To decommission a low-value signed-out feature, including legal and cybersecurity review." },
         { num: "3", cap: "Streaming platforms where I support A/B testing improvements so internal teams can test page templates on live audiences." }
       ],
-      tools: ["Jira", "Confluence", "Airtable", "UAT", "A/B Testing"],
+      tools: ["Jira", "Confluence", "Airtable", "UAT", "A/B testing"],
       logo: "nbcu",
       logoBg: "bg-slate-900"
     },
@@ -108,14 +113,14 @@ export default function Experience() {
       title: "AI Strategy and Operations Intern",
       company: "Welcome to Chinatown",
       location: "New York, NY",
-      period: "Jun 2026 - Aug 2026",
-      scope: "Built and taught AI enablement for immigrant-owned small businesses, and shipped civic-tech tools, at a 501(c)(3) economic-development nonprofit.",
+      period: "June 2026 – Aug 2026",
+      scope: "At a Chinatown economic development nonprofit, I built an AI curriculum and taught it to immigrant-owned small businesses, and built two public tools: a courthouse lunch guide and an air-quality alert system.",
       metrics: [
-        { num: "5", cap: "Pilot Entrepreneur Assistance Centers I trained to run the AI curriculum, ahead of a statewide rollout." },
+        { num: "5", cap: "Entrepreneurship Assistance Centers I trained to run the AI curriculum, ahead of a statewide rollout." },
         { num: "1,500+", cap: "Daily jurors guided to 40+ nearby lunch spots by Justice is Served, a courthouse lunch-finder web app I designed and shipped." },
         { num: "$0", cap: "Operating cost of the automated air-quality monitoring system I built in Python." }
       ],
-      tools: ["Claude Code", "Python", "PurpleAir Air-Quality API", "Accessibility"],
+      tools: ["Claude Code", "Python", "PurpleAir API", "Airtable"],
       logo: "wtc",
       logoBg: ""
     },
@@ -123,11 +128,11 @@ export default function Experience() {
       title: "Product Manager Intern",
       company: "Odynn",
       location: "New York, NY",
-      period: "June 2025 - Aug 2025",
-      scope: "Owned QA and analytics instrumentation for Awayz, a white-labeled travel and loyalty platform serving roughly 15 fintech and travel clients.",
+      period: "June 2025 – Aug 2025",
+      scope: "I tested releases and built event tracking for Awayz, a travel and loyalty platform that roughly 15 fintech and travel companies run under their own brand.",
       metrics: [
         { num: "20%", cap: "More completed flight bookings after I prioritized defect fixes by client impact." },
-        { num: "150+", cap: "User events I instrumented into the platform's first event taxonomy, validated in SQL." },
+        { num: "150+", cap: "User events I tracked in Amplitude under the platform's first event taxonomy, validated in SQL." },
         { num: "5", cap: "New clients supported after I rebuilt the platform's client-data view from scratch." }
       ],
       tools: ["Jira", "Amplitude", "SQL", "Postman", "Agile"],
@@ -137,40 +142,48 @@ export default function Experience() {
       imageCaption: "Led a Tableau workshop for fellow interns"
     },
     {
-      title: "Product Manager Intern",
+      title: "Digital Product Management Intern",
       company: "Rocket Companies",
       location: "Detroit, MI",
-      period: "May 2024 - Dec 2024",
-      scope: "Shipped features on the Rocket Mortgage app, leading design and engineering from requirements through launch.",
+      period: "May 2024 – Dec 2024",
+      scope: "I led designers and engineers from requirements to launch on features for the Rocket Mortgage app, used by roughly 1M clients a month.",
       metrics: [
         { num: "500%", cap: "Growth in direct account connections from the Plaid integration I led." },
-        { num: "~1M", cap: "Clients a month on the Rocket Mortgage app I shipped features on." },
-        { num: "40%", cap: "Drop in banker escalations after I designed the use cases and escalation logic for an AI onboarding chatbot." }
+        { num: "40%", cap: "Drop in banker escalations after I designed the use cases and escalation logic for an AI onboarding chatbot." },
+        { num: "20%", cap: "Increase in user engagement once the home comparison feature shipped. I led the 5-person intern team that built it and won the June 2024 Tech Demo Award." }
       ],
-      tools: ["Plaid API", "Azure DevOps", "Adobe Analytics", "Figma", "A/B Testing"],
+      tools: ["Plaid API", "Azure DevOps", "Adobe Analytics", "Figma", "A/B testing"],
       logo: "rocket",
       logoBg: "bg-slate-900",
       image: rocketImage,
-      imageCaption: "Moderated a product roadmap panel for 200+ people"
+      imageCaption: "Moderated a product roadmap panel for 200+ people",
+      quote: true
     },
     {
       title: "Product Development Intern",
       company: "MegaPlants LLC | Kosha Botanica",
       location: "New York, NY",
-      period: "Feb 2024 - May 2024",
-      scope: "Ran market and trend analysis to shape an early-stage e-commerce wellness product portfolio.",
+      period: "Feb 2024 – May 2024",
+      scope: "I screened product ideas for an early-stage e-commerce wellness brand using search trends and Amazon sales data, and recommended which lines to build.",
       metrics: [
         { num: "200+", cap: "Product concepts I screened through quantitative trend analysis." },
         { num: "3", cap: "High-potential product lines shortlisted for development." },
-        { num: "25%", cap: "Portfolio expansion from white space I identified across 300+ SKUs." }
+        { num: "25%", cap: "Product-line expansion across 2 new lines, supported by my review of 300+ Amazon SKUs and their reviews." }
       ],
-      tools: ["Google Analytics", "Google Trends", "Jungle Scout", "Market Research"],
+      tools: ["Google Analytics", "Google Trends", "Jungle Scout", "Market research"],
       logo: "megaplants",
       logoBg: "bg-white border border-slate-200"
     }
   ];
 
   const renderLogo = (exp: Experience) => {
+    if (exp.logo === "nbcu") {
+      return (
+        <div className="h-12 flex items-center shrink-0">
+          <img loading="lazy" decoding="async" src={nbcuLogo} alt="NBCUniversal" className="h-7 w-auto object-contain" />
+        </div>
+      );
+    }
     if (exp.logo === "wtc") {
       return (
         <div className="h-12 flex items-center shrink-0">
@@ -189,8 +202,6 @@ export default function Experience() {
           return (
             <img loading="lazy" decoding="async" src={odynnLogo} alt="Odynn" className="w-10 h-10 object-contain" />
           );
-        case "nbcu":
-          return <span className="text-white text-xs font-bold tracking-wide">NBCU</span>;
         case "megaplants":
           return (
             <img loading="lazy" decoding="async" src={megaplantsLogo} alt="MegaPlants" className="w-12 h-8 object-contain" />
@@ -215,16 +226,16 @@ export default function Experience() {
           <Reveal>
             <div className="mb-8 sm:mb-12">
               <h1 className="text-3xl sm:text-5xl font-semibold text-slate-900 mb-4">
-                Product Experience
+                Experience
               </h1>
               <p className="text-lg text-slate-600 max-w-2xl">
-                A snapshot of what I delivered at each internship. The full detail is in my resume; here, the impact reads at a glance.
+                My product internships, newest first, with the result I can point to in each.
               </p>
             </div>
           </Reveal>
 
           <nav aria-label="On this page" className="flex gap-2 mb-8">
-            {[["#roles", "Roles"], ["#leadership", "Leadership"]].map(([href, label]) => (
+            {[["#roles", "Roles"], ["#education", "Education"], ["#leadership", "Leadership"]].map(([href, label]) => (
               <a
                 key={href}
                 href={href}
@@ -235,10 +246,13 @@ export default function Experience() {
             ))}
           </nav>
 
-          <div id="roles" className="space-y-6 scroll-mt-24">
+          <h2 id="roles" className="text-[28px] leading-tight font-semibold text-slate-900 mb-6 scroll-mt-24" style={{ fontFamily: "'Manrope', sans-serif" }}>
+            Roles
+          </h2>
+          <div className="space-y-6">
             {experiences.map((exp, index) => (
               <Reveal key={index} delay={index * 0.08}>
-                <div className="group p-6 sm:p-8 rounded-xl bg-white border border-slate-200 hover:border-blue-300 card-glow transition-all duration-200">
+                <div id={exp.company.toLowerCase().replace(/[^a-z0-9]+/g, "-")} className="scroll-mt-24 group p-6 sm:p-8 rounded-xl bg-white border border-slate-200 hover:border-blue-300 card-glow transition-all duration-200">
                   <div className="flex flex-col lg:flex-row gap-6 lg:gap-10">
                     <div className="flex-1">
                       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4">
@@ -250,6 +264,7 @@ export default function Experience() {
                             </h3>
                             <p className="text-blue-800 font-medium">
                               {exp.company}
+                              {exp.team && <span className="text-slate-600 font-normal"> · {exp.team}</span>}
                             </p>
                             <p className="text-sm text-slate-500">{exp.location}</p>
                           </div>
@@ -286,6 +301,28 @@ export default function Experience() {
                           </div>
                         ))}
                       </div>
+
+                      {exp.quote && (
+                        <div className="pull-quote max-w-[65ch] mt-6">
+                          <p className="text-slate-600 leading-relaxed">
+                            His curiosity and comfort with ambiguity are the exact sort of intangible,
+                            table stakes qualities that will continue to make him a great asset to any team.
+                          </p>
+                          <footer className="mt-3 text-sm">
+                            <span className="text-slate-900 font-medium">Barry Biggs</span>
+                            <span className="text-slate-600">, my mentor at Rocket Companies</span>
+                            <span className="text-slate-500"> · </span>
+                            <a
+                              href="/attached_assets/Rezwan_Islam_Recommendation_Letter.pdf"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center min-h-[44px] text-blue-800 font-medium hover:text-blue-900 transition-colors"
+                            >
+                              Read the full letter
+                            </a>
+                          </footer>
+                        </div>
+                      )}
                     </div>
 
                     {exp.image && (
@@ -310,6 +347,7 @@ export default function Experience() {
         </div>
       </section>
 
+      <EducationSection />
       <LeadershipSection />
 
       <Footer />

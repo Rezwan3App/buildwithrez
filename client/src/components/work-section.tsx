@@ -4,32 +4,39 @@ import { Link } from "wouter";
 
 const rows = [
   {
-    href: "/projects",
-    title: "Snag",
-    outcome: "Watches the YouTube channels you follow and texts you the promo code, sponsor link and expiry the moment a deal drops.",
-    context: "Personal project",
-    year: "",
+    href: "/experience#nbcuniversal",
+    title: "Sports fixtures table, Peacock",
+    outcome: "Ran UAT on a live sports fixtures table for Peacock's signed-out page, surfaced 5+ bugs, and drove them to fixes before the production beta.",
+    context: "NBCUniversal",
+    year: "2026",
   },
   {
-    href: "/experience",
+    href: "/experience#rocket-companies",
     title: "Plaid integration",
     outcome: "500% growth in direct account connections, across the Rocket Mortgage app used by roughly 1M clients a month.",
     context: "Rocket Companies",
     year: "2024",
   },
   {
-    href: "/experience",
-    title: "Welcome to Chinatown",
-    outcome: "New York's first AI training program for small businesses, taught across 5 pilot Economic Anchor Centers statewide.",
+    href: "/experience#welcome-to-chinatown",
+    title: "AI training for small businesses",
+    outcome: "Built an AI curriculum for small businesses and trained 5 Entrepreneurship Assistance Centers in a New York State pilot.",
     context: "Welcome to Chinatown",
     year: "2026",
   },
   {
-    href: "/experience",
+    href: "/experience#odynn",
     title: "Awayz booking platform",
     outcome: "20% more completed flight bookings on a travel-fintech platform serving roughly 15 clients.",
     context: "Odynn",
     year: "2025",
+  },
+  {
+    href: "/projects",
+    title: "Snag",
+    outcome: "Watches the YouTube channels you follow and texts you the promo code, sponsor link and expiry the moment a deal drops.",
+    context: "Personal project",
+    year: "",
   },
 ];
 

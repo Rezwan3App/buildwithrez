@@ -1,3 +1,4 @@
+import { Link } from "wouter";
 import { Reveal } from "@/components/reveal";
 import { usePageTitle } from "@/hooks/use-page-title";
 import { Footer } from "@/components/footer";
@@ -16,6 +17,29 @@ const FILTERS: { id: "all" | Status; label: string }[] = [
   { id: "progress", label: "In progress" },
   { id: "prd", label: "PRD" },
 ];
+
+export function ProjectsTabs({ active }: { active: "product" | "mba" }) {
+  const tabs = [
+    { id: "product", href: "/projects", label: "Projects" },
+    { id: "mba", href: "/projects/mba", label: "MBA projects" },
+  ];
+  return (
+    <nav aria-label="Project types" className="flex gap-6 border-b border-slate-200 mb-10">
+      {tabs.map((t) => (
+        <Link
+          key={t.id}
+          href={t.href}
+          aria-current={active === t.id ? "page" : undefined}
+          className={`-mb-px py-3 text-base font-semibold border-b-2 transition-colors duration-200 ${
+            active === t.id ? "border-[#1e3a8a] text-blue-900" : "border-transparent text-slate-600 hover:text-blue-900"
+          }`}
+        >
+          {t.label}
+        </Link>
+      ))}
+    </nav>
+  );
+}
 
 export default function ProductManagement() {
   usePageTitle("Projects");
@@ -57,10 +81,12 @@ export default function ProductManagement() {
                 Projects
               </h1>
               <p className="text-lg text-slate-600 max-w-3xl">
-                Things I've built and product thinking I've put on paper: side projects I've shipped and PRDs I've written.
+                Personal projects I've built and shipped, plus a concept PRD.
               </p>
             </div>
           </Reveal>
+
+          <ProjectsTabs active="product" />
 
           <div role="group" aria-label="Filter projects" className="flex flex-wrap gap-2 mb-10">
             {FILTERS.map((f) => (
@@ -83,8 +109,7 @@ export default function ProductManagement() {
           {(show("shipped") || show("progress")) && (
           <div className="mb-10">
             <h2 className="text-2xl font-semibold text-slate-900 mb-6 flex items-center gap-3">
-              <span className="w-8 h-[2px] bg-blue-800"></span>
-              Personal Projects
+              Personal projects
             </h2>
             <div className="space-y-4">
               {item("shipped", "snag", <Reveal>
@@ -95,11 +120,12 @@ export default function ProductManagement() {
                       <Youtube className="h-6 w-6 text-blue-800" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold text-slate-900">Snag</h3>
-                      <p className="text-blue-800 font-medium">Get Texted the Promo Codes Buried in YouTube Videos</p>
+                      <h3 id="snag" className="text-xl font-semibold text-slate-900 scroll-mt-24">Snag</h3>
+                      <p className="text-blue-800 font-medium">Texts you the promo codes in YouTube sponsor reads</p>
                     </div>
                   </div>
-                  <div className="flex flex-wrap gap-3">
+                  <div className="flex items-center gap-3">
+                    <span className="inline-flex items-center h-8 px-3 rounded-lg text-xs font-semibold bg-slate-100 text-slate-600 border border-slate-200">Shipped</span>
                     <a
                       href="https://github.com/Rezwan3App/snag"
                       target="_blank"
@@ -113,7 +139,7 @@ export default function ProductManagement() {
                 </div>
 
                 <p className="text-slate-600 mb-6">
-                  Promo codes and sponsor deals get buried inside YouTube videos and vanish from your feed within days. I built Snag to watch the channels you follow, read each new video's description through a set of promo-detection rules, and text you the code, sponsor link, and expiry the moment it drops.
+                  Promo codes and sponsor deals get buried inside YouTube videos and vanish from your feed within days. I built Snag to watch the channels you follow, read each new video's description through a set of promo-detection rules, and text you the code, sponsor link, and expiry when it finds one.
                 </p>
 
                 <div className="flex-1">
@@ -129,18 +155,18 @@ export default function ProductManagement() {
                     </li>
                     <li className="flex items-start">
                       <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-2 mr-2 shrink-0"></span>
-                      <span>You get an SMS the moment a new code, sponsor link, or expiry date turns up.</span>
+                      <span>You get an SMS when a new code, sponsor link, or expiry date turns up.</span>
                     </li>
                   </ul>
                 </div>
 
                 <div className="mt-6 border-l-2 border-blue-800 pl-5">
-                  <p className="text-xs font-semibold tracking-widest uppercase text-blue-800 mb-4">Product Journey</p>
+                  <p className="text-xs font-semibold tracking-widest uppercase text-blue-800 mb-4">Product decisions</p>
                   <div className="space-y-4 text-sm">
                     <div className="flex gap-3">
                       <span className="text-blue-800 font-semibold text-xs mt-0.5 shrink-0">01</span>
                       <div>
-                        <p className="text-slate-900 font-medium mb-1">Ruthless MVP scoping</p>
+                        <p className="text-slate-900 font-medium mb-1">Scoped to one loop</p>
                         <p className="text-slate-600">
                           I cut the first version to one loop: watch a channel, detect a deal, send a text. No accounts, no build step, just JSON files and a background job that re-scans every watched channel on an interval.
                         </p>
@@ -158,16 +184,16 @@ export default function ProductManagement() {
                     <div className="flex gap-3">
                       <span className="text-blue-800 font-semibold text-xs mt-0.5 shrink-0">03</span>
                       <div>
-                        <p className="text-slate-900 font-medium mb-1">Key takeaway</p>
+                        <p className="text-slate-900 font-medium mb-1">What I learned</p>
                         <p className="text-slate-600">
-                          Constraints are forcing functions. Avoiding the official API pushed me toward a simpler, cheaper build that I can keep running for next to nothing.
+                          Skipping the official API made the build simpler and nearly free to run, and the RSS feed had everything the MVP needed.
                         </p>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <p className="text-sm text-slate-600 mt-6">Bun · Hono · YouTube RSS · Twilio SMS · SQLite</p>
+                <p className="text-sm text-slate-600 mt-6">Bun · Hono · YouTube RSS · Twilio SMS · JSON storage</p>
               </div>
               </Reveal>)}
 
@@ -180,7 +206,7 @@ export default function ProductManagement() {
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold text-slate-900">WattFinder</h3>
-                      <p className="text-blue-800 font-medium">Honest EV Charge-Time Predictions</p>
+                      <p className="text-blue-800 font-medium">Real EV charge times, not sticker kW</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
@@ -224,7 +250,7 @@ export default function ProductManagement() {
 
           {show("prd") && (
           <div>
-            <h2 className="text-2xl font-semibold text-slate-900 mb-6">Sample PRDs</h2>
+            <h2 className="text-2xl font-semibold text-slate-900 mb-6">Product requirements doc</h2>
             <div className="space-y-6">
               {item("prd", "alltrails", <Reveal>
               <div className="bg-white border border-slate-200 rounded-2xl p-6 hover:border-blue-300 card-glow transition-all duration-300">
@@ -236,16 +262,16 @@ export default function ProductManagement() {
                       </div>
                       <div>
                         <h3 className="text-xl font-semibold text-slate-900 mb-1">
-                          AllTrails "Journeys"
+                          AllTrails Journeys
                         </h3>
                         <p className="text-blue-800 font-medium">
-                          Curated Hiking Itineraries Feature
+                          Concept PRD: planning a multi-hike day in one app
                         </p>
                       </div>
                     </div>
 
                     <p className="text-slate-600 mb-4">
-                      I wrote a full PRD for a "Journeys" feature that lets users plan multi-hike itineraries with driving directions, amenities, and rest stops, killing the app-hop between AllTrails, Google Maps, and travel blogs.
+                      I wrote a PRD for Journeys, a feature that plans a multi-hike day with driving directions, rest stops, and amenities, so hikers stop switching between AllTrails, Google Maps, and travel blogs.
                     </p>
 
                     <a
@@ -256,7 +282,7 @@ export default function ProductManagement() {
                       data-testid="button-view-alltrails-prd"
                     >
                       <FileText className="mr-2 h-4 w-4" />
-                      View Full PRD
+                      View PRD (PDF)
                       <ExternalLink className="ml-2 h-3.5 w-3.5" />
                     </a>
                   </div>
@@ -273,7 +299,7 @@ export default function ProductManagement() {
                         className="w-full h-auto hover:scale-105 transition-transform duration-300"
                       />
                     </button>
-                    <p className="text-[13px] text-slate-500 mt-2 text-center">Click to enlarge wireframe</p>
+                    <p className="text-[13px] text-slate-500 mt-2 text-center">Click to enlarge</p>
                   </div>
                 </div>
                 <div className="mt-8 pt-6 border-t border-slate-100">
@@ -303,7 +329,7 @@ export default function ProductManagement() {
           </button>
           <img loading="lazy" decoding="async"
             src="/attached_assets/image_1768253142355.webp"
-            alt="AllTrails Journeys Figma Wireframe - Full Size"
+            alt="AllTrails Journeys Figma wireframe, full size"
             className="max-w-full max-h-[90vh] object-contain rounded-lg"
             onClick={(e) => e.stopPropagation()}
           />

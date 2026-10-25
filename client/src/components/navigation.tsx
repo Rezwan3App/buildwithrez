@@ -1,4 +1,4 @@
-import { motion, useScroll, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Link, useLocation } from "wouter";
 import { EXPO } from "@/lib/motion";
 
@@ -6,14 +6,13 @@ const navItems = [
   { path: "/", label: "Home" },
   { path: "/experience", label: "Experience" },
   { path: "/projects", label: "Projects" },
-  { path: "/mba", label: "Education" },
 ];
 
 export function SiteNav() {
   const [location] = useLocation();
-  const { scrollYProgress } = useScroll();
   const reduce = useReducedMotion();
-  const active = location === "/product-management" ? "/projects" : location;
+  const projectPaths = ["/projects", "/product-management", "/mba"];
+  const active = projectPaths.some((p) => location === p || location.startsWith(p + "/")) ? "/projects" : location;
 
   return (
     <nav className="sticky top-0 z-50 bg-[#f4f6f9] border-b border-slate-200" aria-label="Main">
@@ -58,11 +57,6 @@ export function SiteNav() {
           </a>
         </div>
       </div>
-      <motion.div
-        className="absolute left-0 right-0 bottom-0 h-0.5 bg-[#1e3a8a] origin-left"
-        style={{ scaleX: scrollYProgress }}
-        aria-hidden="true"
-      />
     </nav>
   );
 }

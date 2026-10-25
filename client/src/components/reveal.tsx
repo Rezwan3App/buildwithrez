@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
+import { EXPO } from "@/lib/motion";
 
 interface RevealProps {
   children: ReactNode;
@@ -8,8 +9,8 @@ interface RevealProps {
 }
 
 /**
- * Fades content up into view the first time it scrolls into the viewport.
- * Renders static when the visitor prefers reduced motion.
+ * Slides content up a few pixels as it enters the viewport. Opacity never
+ * drops below 1, so a cold load is never blank. Static under reduced motion.
  */
 export function Reveal({ children, delay = 0, className }: RevealProps) {
   const prefersReducedMotion = useReducedMotion();
@@ -21,10 +22,10 @@ export function Reveal({ children, delay = 0, className }: RevealProps) {
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ y: 12 }}
+      whileInView={{ y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.5, delay, ease: "easeOut" }}
+      transition={{ duration: 0.5, delay, ease: EXPO }}
     >
       {children}
     </motion.div>
