@@ -15,7 +15,7 @@ export function SiteNav() {
   const active = projectPaths.some((p) => location === p || location.startsWith(p + "/")) ? "/projects" : location;
 
   return (
-    <nav className="sticky top-0 z-50 bg-[#f4f6f9] border-b border-slate-200" aria-label="Main">
+    <nav className="lg:hidden sticky top-0 z-50 bg-[#f4f6f9] border-b border-slate-200" aria-label="Main">
       <div className="max-w-6xl mx-auto px-3 sm:px-8 lg:px-12">
         <div className="flex items-center justify-between h-14 sm:h-16">
           <Link href="/" className="text-base sm:text-lg font-bold text-slate-900 hover:text-blue-800 transition-colors" style={{ fontFamily: "'Manrope', sans-serif" }} data-testid="link-home-logo">
