@@ -89,7 +89,7 @@ export function AboutSection() {
                     <h3 className="text-lg font-semibold text-slate-900">
                       MBA in Progress
                     </h3>
-                    <span className="text-sm font-semibold text-blue-800">4.0 GPA</span>
+                    <span className="text-sm font-semibold text-blue-800">4.0 GPA · Exp. May 2027</span>
                   </div>
                   <p className="text-slate-600">
                     Baruch College, Zicklin School of Business

@@ -42,7 +42,7 @@ export function HeroSection() {
                 rigor, business strategy, and user empathy finally pull in the same direction.
               </p>
               <p>
-                I've shipped product work at Rocket Mortgage and Odynn, and recently helped
+                I've shipped product work at Rocket Companies and Odynn, and recently helped
                 launch New York State's first AI training program for small businesses at
                 Welcome to Chinatown. Now I'm a product management intern at
                 NBCUniversal.
@@ -58,7 +58,7 @@ export function HeroSection() {
               </p>
               <footer className="mt-3 text-sm">
                 <span className="text-slate-900 font-medium">Barry Biggs</span>
-                <span className="text-slate-600">, my mentor at Rocket Mortgage</span>
+                <span className="text-slate-600">, my mentor at Rocket Companies</span>
                 <span className="text-slate-500"> · </span>
                 <a
                   href="/attached_assets/Rezwan_Islam_Recommendation_Letter.pdf"
