@@ -15,11 +15,11 @@ export function SiteNav() {
   const active = projectPaths.some((p) => location === p || location.startsWith(p + "/")) ? "/projects" : location;
 
   return (
-    <nav className="lg:hidden sticky top-0 z-50 bg-[#f4f6f9] border-b border-slate-200" aria-label="Main">
+    <nav className="lg:hidden sticky top-0 z-50 bg-[#f4f6f9] border-b border-slate-200" aria-label="Primary, mobile">
       <div className="max-w-6xl mx-auto px-3 sm:px-8 lg:px-12">
         <div className="flex items-center justify-between h-14 sm:h-16">
-          <Link href="/" className="text-base sm:text-lg font-bold text-slate-900 hover:text-blue-800 transition-colors" style={{ fontFamily: "'Manrope', sans-serif" }} data-testid="link-home-logo">
-            <span className="sm:hidden" aria-label="Rezwan Islam, home">RI</span>
+          <Link href="/" aria-label="Rezwan Islam, home" className="inline-flex items-center min-h-[44px] text-base sm:text-lg font-bold text-slate-900 hover:text-blue-800 transition-colors" style={{ fontFamily: "'Manrope', sans-serif" }} data-testid="link-home-logo">
+            <span className="sm:hidden">Rezwan</span>
             <span className="hidden sm:inline">Rezwan Islam</span>
           </Link>
 
@@ -50,7 +50,7 @@ export function SiteNav() {
             href="/attached_assets/Rezwan_Islam_Zicklin_Latest.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center min-h-[36px] px-2.5 sm:px-3 rounded-md border border-slate-300 text-[13px] sm:text-sm font-semibold text-slate-900 hover:border-blue-900 hover:text-blue-900 transition-colors"
+            className="inline-flex items-center min-h-[44px] px-2.5 sm:px-3 rounded-md border border-slate-300 text-[13px] sm:text-sm font-semibold text-slate-900 hover:border-blue-900 hover:text-blue-900 transition-colors"
             data-testid="nav-resume"
           >
             Resume

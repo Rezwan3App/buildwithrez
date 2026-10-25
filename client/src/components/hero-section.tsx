@@ -39,7 +39,7 @@ export function HeroSection() {
           <div>
             <p className="font-semibold text-slate-900 leading-tight">Rezwan Islam</p>
             <p className="text-xs uppercase tracking-[0.12em] text-slate-500 leading-snug mt-1">
-              PM Intern, NBCUniversal &middot; Baruch MBA, May 2027
+              Product Management Intern, NBCUniversal &middot; Baruch MBA, May 2027
             </p>
           </div>
         </div>
@@ -48,8 +48,8 @@ export function HeroSection() {
         <HeroHeadline />
 
         <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-[60ch]">
-          I'm a product management intern at NBCUniversal and a Baruch MBA candidate who
-          started as a mechanical engineer, looking for full-time APM and PM roles in New York.
+          I work on internal commerce tooling for Peacock as a product management intern at
+          NBCUniversal. I'm finishing an MBA at Baruch and started out as a mechanical engineer.
         </p>
 
         <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
@@ -59,7 +59,7 @@ export function HeroSection() {
             className="btn-primary text-white px-6 py-3 font-semibold rounded-lg border-0"
           >
             <Link href="/experience">
-              See my work
+              See my experience
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>

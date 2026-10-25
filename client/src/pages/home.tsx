@@ -9,14 +9,12 @@ import { usePageTitle } from "@/hooks/use-page-title";
 export default function Home() {
   usePageTitle();
   return (
-    <main>
-      <Page>
-        <HeroSection />
-        <WorkSection />
-        <JourneySection />
-        <ContactSection />
-        <Footer />
-      </Page>
-    </main>
+    <Page>
+      <HeroSection />
+      <WorkSection />
+      <JourneySection />
+      <ContactSection />
+      <Footer />
+    </Page>
   );
 }

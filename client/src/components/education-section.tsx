@@ -4,16 +4,20 @@ const schools = [
   {
     degree: "MBA, Business and Data Analytics focus",
     school: "Baruch College, Zicklin School of Business",
-    meta: "4.0 GPA · Exp. May 2027",
+    meta: "4.0 GPA · Expected May 2027",
     logo: "/attached_assets/image_1766520608918.png",
     alt: "Baruch College",
+    w: 450,
+    h: 146,
   },
   {
     degree: "B.E. Mechanical Engineering",
-    school: "City College of New York",
+    school: "The City College of New York (CCNY)",
     meta: "3.83 GPA",
     logo: "/attached_assets/ccny-seal.png",
-    alt: "City College of New York",
+    alt: "CCNY",
+    w: 120,
+    h: 120,
   },
 ];
 
@@ -23,7 +27,7 @@ export default function EducationSection() {
       <SectionHeading id="education" title="Education" />
       {schools.map((s) => (
         <Row key={s.degree} meta={s.meta}>
-          <img loading="lazy" decoding="async" src={s.logo} alt={s.alt} className="mb-3 h-6 w-6 object-contain" />
+          <img loading="lazy" decoding="async" src={s.logo} alt={s.alt} className="mb-3 h-7 w-auto max-w-[150px] object-contain" width={s.w} height={s.h} />
           <h3 className="text-lg font-semibold text-slate-900" style={{ fontFamily: "'Manrope', sans-serif" }}>{s.degree}</h3>
           <p className="text-slate-600">{s.school}</p>
         </Row>

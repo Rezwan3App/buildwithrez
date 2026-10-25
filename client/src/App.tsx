@@ -15,8 +15,10 @@ function ScrollToTop() {
   const [location] = useLocation();
   useEffect(() => {
     const id = decodeURIComponent(window.location.hash.slice(1));
+    const main = document.getElementById("main");
     if (!id) {
       window.scrollTo(0, 0);
+      main?.focus({ preventScroll: true });
       return;
     }
     // Lazy pages mount after navigation, so retry briefly until the target exists.
@@ -26,6 +28,7 @@ function ScrollToTop() {
       if (el || ++tries > 20) {
         window.clearInterval(timer);
         el?.scrollIntoView();
+        main?.focus({ preventScroll: true });
       }
     }, 50);
     return () => window.clearInterval(timer);
@@ -72,9 +75,9 @@ function App() {
       <SiteNav />
       <div className="lg:flex">
         <SiteRail />
-        <div id="main" tabIndex={-1} className="flex-1 min-w-0">
+        <main id="main" tabIndex={-1} className="flex-1 min-w-0 outline-none">
           <Router />
-        </div>
+        </main>
       </div>
     </MotionConfig>
   );
