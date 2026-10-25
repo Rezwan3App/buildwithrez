@@ -180,14 +180,14 @@ export default function Experience() {
     if (exp.logo === "nbcu") {
       return (
         <div className="h-12 flex items-center shrink-0">
-          <img loading="lazy" decoding="async" src={nbcuLogo} alt="NBCUniversal" className="h-7 w-auto object-contain" />
+          <img decoding="async" src={nbcuLogo} alt="NBCUniversal" width={284} height={28} className="h-7 w-auto object-contain" />
         </div>
       );
     }
     if (exp.logo === "wtc") {
       return (
         <div className="h-12 flex items-center shrink-0">
-          <img loading="lazy" decoding="async" src={wtcLogo} alt="Welcome to Chinatown" className="h-10 w-auto object-contain" />
+          <img decoding="async" src={wtcLogo} alt="Welcome to Chinatown" className="h-10 w-auto object-contain" />
         </div>
       );
     }
