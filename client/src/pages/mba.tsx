@@ -90,7 +90,7 @@ export default function MBA() {
                 MBA projects
               </h1>
               <p className="text-lg text-slate-600 max-w-2xl">
-                Class projects from my MBA at Baruch's Zicklin School of Business: consumer research, go-to-market plans, financial models, and data analysis in SQL, Python, and Tableau. I led most of the team projects below.
+                Class projects from my MBA at Baruch's Zicklin School of Business: consumer research, go-to-market plans, financial models, and data analysis in SQL, Python, and Tableau. I led each of the team projects below.
               </p>
             </div>
           </Reveal>
