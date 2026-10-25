@@ -1,13 +1,16 @@
 import { Switch, Route, useLocation } from "wouter";
-import { useEffect } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { lazy, Suspense, useEffect } from "react";
+import { motion, MotionConfig } from "framer-motion";
 import { BackToTop } from "@/components/back-to-top";
-import { FloatingWords } from "@/components/floating-words";
+import CustomCursor from "@/components/custom-cursor";
+import { SiteNav } from "@/components/navigation";
+import { EXPO } from "@/lib/motion";
 import Home from "@/pages/home";
-import Experience from "@/pages/experience";
-import ProductManagement from "@/pages/product-management";
-import MBA from "@/pages/mba";
-import NotFound from "@/pages/not-found";
+
+const Experience = lazy(() => import("@/pages/experience"));
+const ProductManagement = lazy(() => import("@/pages/product-management"));
+const MBA = lazy(() => import("@/pages/mba"));
+const NotFound = lazy(() => import("@/pages/not-found"));
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -19,43 +22,46 @@ function ScrollToTop() {
 
 function Router() {
   const [location] = useLocation();
-  const prefersReducedMotion = useReducedMotion();
   const animationKey = location === "/product-management" ? "/projects" : location;
 
-  const variants = prefersReducedMotion
-    ? { initial: {}, animate: {}, exit: {} }
-    : {
-        initial: { opacity: 0, y: 6 },
-        animate: { opacity: 1, y: 0, transition: { duration: 0.22, ease: "easeOut" } },
-        exit:    { opacity: 0, y: -4, transition: { duration: 0.15, ease: "easeIn" } },
-      };
-
   return (
-    <>
-      <AnimatePresence mode="wait" initial={false}>
-        <motion.div key={animationKey} {...variants}>
-          <ScrollToTop />
-          <Switch location={location}>
-            <Route path="/" component={Home} />
-            <Route path="/experience" component={Experience} />
-            <Route path="/projects" component={ProductManagement} />
-            <Route path="/product-management" component={ProductManagement} />
-            <Route path="/mba" component={MBA} />
-            <Route component={NotFound} />
-          </Switch>
-        </motion.div>
-      </AnimatePresence>
-    </>
+    <motion.div
+      key={animationKey}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.2, ease: EXPO }}
+    >
+      <ScrollToTop />
+      <Suspense fallback={null}>
+      <Switch location={location}>
+        <Route path="/" component={Home} />
+        <Route path="/experience" component={Experience} />
+        <Route path="/projects" component={ProductManagement} />
+        <Route path="/product-management" component={ProductManagement} />
+        <Route path="/mba" component={MBA} />
+        <Route component={NotFound} />
+      </Switch>
+      </Suspense>
+    </motion.div>
   );
 }
 
 function App() {
   return (
-    <>
-      <FloatingWords />
-      <Router />
+    <MotionConfig reducedMotion="user" transition={{ ease: EXPO }}>
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:bg-white focus:text-blue-900 focus:px-4 focus:py-2 focus:border focus:border-slate-300"
+      >
+        Skip to content
+      </a>
+      <SiteNav />
+      <div id="main" tabIndex={-1}>
+        <Router />
+      </div>
       <BackToTop />
-    </>
+      <CustomCursor />
+    </MotionConfig>
   );
 }
 

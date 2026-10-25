@@ -20,8 +20,14 @@ export function Footer() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 min-h-[44px] text-sm text-slate-600 hover:text-blue-800 transition-colors"
             >
-              <FaLinkedin className="h-4 w-4" />
+              <FaLinkedin className="h-4 w-4" aria-hidden="true" />
               LinkedIn
+            </a>
+            <a
+              href="mailto:rezwan99@gmail.com"
+              className="inline-flex items-center min-h-[44px] text-sm text-slate-600 hover:text-blue-800 transition-colors"
+            >
+              Email
             </a>
           </div>
         </div>

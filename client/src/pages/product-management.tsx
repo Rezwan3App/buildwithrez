@@ -1,14 +1,43 @@
-import { Navigation } from "@/components/navigation";
 import { Reveal } from "@/components/reveal";
 import { usePageTitle } from "@/hooks/use-page-title";
 import { Footer } from "@/components/footer";
 import { ExternalLink, FileText, X, Youtube, BatteryCharging } from "lucide-react";
 import { useState, useEffect } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { EXPO } from "@/lib/motion";
 import { SiGithub } from "react-icons/si";
 import alltrailsIcon from "@assets/image_1768252840170.png";
+import AllTrailsPRD from "@/components/alltrails-prd";
+
+type Status = "shipped" | "progress" | "prd";
+const FILTERS: { id: "all" | Status; label: string }[] = [
+  { id: "all", label: "All" },
+  { id: "shipped", label: "Shipped" },
+  { id: "progress", label: "In progress" },
+  { id: "prd", label: "PRD" },
+];
 
 export default function ProductManagement() {
   usePageTitle("Projects");
+  const [filter, setFilter] = useState<"all" | Status>("all");
+  const reduce = useReducedMotion();
+  const t = { duration: reduce ? 0 : 0.22, ease: EXPO };
+  const show = (s: Status) => filter === "all" || filter === s;
+  const item = (s: Status, key: string, children: React.ReactNode) => (
+    <AnimatePresence initial={false} key={key}>
+      {show(s) && (
+        <motion.div
+          layout={!reduce}
+          initial={{ opacity: 0, scale: 0.98 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.98 }}
+          transition={t}
+        >
+          {children}
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   useEffect(() => {
     if (!isImageModalOpen) return;
@@ -19,7 +48,6 @@ export default function ProductManagement() {
 
   return (
     <div className="min-h-screen">
-      <Navigation />
 
       <section className="pt-24 sm:pt-28 pb-14 md:pb-20 relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
@@ -34,13 +62,32 @@ export default function ProductManagement() {
             </div>
           </Reveal>
 
+          <div role="group" aria-label="Filter projects" className="flex flex-wrap gap-2 mb-10">
+            {FILTERS.map((f) => (
+              <button
+                key={f.id}
+                type="button"
+                aria-pressed={filter === f.id}
+                onClick={() => setFilter(f.id)}
+                className={`inline-flex items-center h-8 px-3.5 rounded-full border text-sm font-semibold transition-colors duration-200 ${
+                  filter === f.id
+                    ? "bg-blue-800 border-blue-800 text-white"
+                    : "bg-white border-slate-200 text-slate-600 hover:border-blue-300"
+                }`}
+              >
+                {f.label}
+              </button>
+            ))}
+          </div>
+
+          {(show("shipped") || show("progress")) && (
           <div className="mb-10">
             <h2 className="text-2xl font-semibold text-slate-900 mb-6 flex items-center gap-3">
               <span className="w-8 h-[2px] bg-blue-800"></span>
               Personal Projects
             </h2>
             <div className="space-y-4">
-              <Reveal>
+              {item("shipped", "snag", <Reveal>
               <div className="bg-white border border-slate-200 rounded-2xl p-6 hover:border-blue-300 card-glow transition-all duration-300">
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                   <div className="flex items-start gap-4">
@@ -122,9 +169,9 @@ export default function ProductManagement() {
 
                 <p className="text-sm text-slate-600 mt-6">Bun · Hono · YouTube RSS · Twilio SMS · SQLite</p>
               </div>
-              </Reveal>
+              </Reveal>)}
 
-              <Reveal>
+              {item("progress", "wattfinder", <Reveal>
               <div className="bg-white border border-slate-200 rounded-2xl p-6 hover:border-blue-300 card-glow transition-all duration-300">
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
                   <div className="flex items-start gap-4">
@@ -170,14 +217,16 @@ export default function ProductManagement() {
 
                 <p className="text-sm text-slate-600 mt-6">Next.js · TypeScript · Postgres</p>
               </div>
-              </Reveal>
+              </Reveal>)}
             </div>
           </div>
+          )}
 
+          {show("prd") && (
           <div>
             <h2 className="text-2xl font-semibold text-slate-900 mb-6">Sample PRDs</h2>
             <div className="space-y-6">
-              <Reveal>
+              {item("prd", "alltrails", <Reveal>
               <div className="bg-white border border-slate-200 rounded-2xl p-6 hover:border-blue-300 card-glow transition-all duration-300">
                 <div className="flex flex-col lg:flex-row gap-6">
                   <div className="flex-1">
@@ -227,10 +276,14 @@ export default function ProductManagement() {
                     <p className="text-[13px] text-slate-500 mt-2 text-center">Click to enlarge wireframe</p>
                   </div>
                 </div>
+                <div className="mt-8 pt-6 border-t border-slate-100">
+                  <AllTrailsPRD />
+                </div>
               </div>
-              </Reveal>
+              </Reveal>)}
             </div>
           </div>
+          )}
 
         </div>
       </section>

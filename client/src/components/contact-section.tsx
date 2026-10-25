@@ -1,49 +1,80 @@
-import { Button } from "@/components/ui/button";
-import { Download } from "lucide-react";
-import { FaLinkedin } from "react-icons/fa";
+import { useRef, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { Check } from "lucide-react";
 import { Reveal } from "@/components/reveal";
+import { EXPO } from "@/lib/motion";
+
+const EMAIL = "rezwan99@gmail.com";
+
+const link =
+  "font-semibold text-blue-900 underline underline-offset-4 decoration-slate-300 hover:decoration-blue-900 transition-colors";
 
 export function ContactSection() {
+  const [copied, setCopied] = useState(false);
+  const reduce = useReducedMotion();
+  const timer = useRef<number>();
+  const emailRef = useRef<HTMLAnchorElement>(null);
+
+  async function copy() {
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+    } catch {
+      // Clipboard unavailable: select the address so the user can copy it.
+      const el = emailRef.current;
+      if (el) {
+        const range = document.createRange();
+        range.selectNodeContents(el);
+        const sel = window.getSelection();
+        sel?.removeAllRanges();
+        sel?.addRange(range);
+      }
+      return;
+    }
+    setCopied(true);
+    window.clearTimeout(timer.current);
+    timer.current = window.setTimeout(() => setCopied(false), 1600);
+  }
+
+  const fade = reduce
+    ? { duration: 0 }
+    : { duration: 0.12, ease: EXPO };
+
   return (
-    <section id="contact" className="bg-blue-900">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 py-14 md:py-24">
+    <section id="contact" className="py-12 md:py-16 border-t border-slate-200/70">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
         <Reveal>
-          <div className="max-w-2xl">
-            <h2 className="text-3xl sm:text-4xl font-semibold text-white">
-              Let's talk.
-            </h2>
-            <p className="mt-4 text-lg text-blue-100 leading-relaxed">
-              I'm looking for APM/PM roles where I can put engineering rigor and
-              business strategy to work. If that sounds like your team, I'd love
-              to hear from you.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Button
-                size="lg"
-                asChild
-                className="bg-white text-blue-900 hover:bg-blue-50 px-6 font-semibold rounded-lg border-0"
-              >
-                <a href="https://www.linkedin.com/in/rezwan-islam33" target="_blank" rel="noopener noreferrer">
-                  <FaLinkedin className="mr-2 h-4 w-4" />
-                  LinkedIn
-                </a>
-              </Button>
-              <Button
-                size="lg"
-                asChild
-                variant="outline"
-                className="bg-transparent border-blue-300 text-white hover:bg-blue-800 hover:border-blue-200 px-6 font-semibold rounded-lg"
-              >
-                <a
-                  href="/attached_assets/Rezwan_Islam_Zicklin_Latest.pdf"
-                  download="Rezwan_Islam_Resume.pdf"
-                >
-                  <Download className="mr-2 h-4 w-4" />
-                  Resume (PDF)
-                </a>
-              </Button>
-            </div>
-          </div>
+          <p className="text-slate-700">
+            Looking for APM/PM roles.{" "}
+            <a className={link} href="https://www.linkedin.com/in/rezwan-islam33" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            {" · "}
+            <a className={link} href="/attached_assets/Rezwan_Islam_Zicklin_Latest.pdf" download="Rezwan_Islam_Resume.pdf">Resume (PDF)</a>
+            {" · "}
+            <a ref={emailRef} className={link} href={`mailto:${EMAIL}`}>Email</a>{" "}
+            <button
+              type="button"
+              onClick={copy}
+              className="inline-flex items-center justify-center min-h-[44px] sm:min-h-[24px] px-2 -my-3 text-sm text-slate-600 hover:text-blue-900 transition-colors align-baseline"
+            >
+              <span className="relative inline-grid">
+                <AnimatePresence initial={false} mode="popLayout">
+                  <motion.span
+                    key={copied ? "c" : "n"}
+                    className="inline-flex items-center gap-1"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={fade}
+                  >
+                    {copied && <Check className="h-3.5 w-3.5" aria-hidden="true" />}
+                    {copied ? "Copied" : "Copy"}
+                  </motion.span>
+                </AnimatePresence>
+              </span>
+            </button>
+            <span className="sr-only" aria-live="polite">
+              {copied ? "Email address copied" : ""}
+            </span>
+          </p>
         </Reveal>
       </div>
     </section>

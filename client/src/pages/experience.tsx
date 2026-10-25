@@ -1,6 +1,6 @@
-import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { Reveal } from "@/components/reveal";
+import { LeadershipSection } from "@/components/leadership-section";
 import { usePageTitle } from "@/hooks/use-page-title";
 import { Calendar } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
@@ -209,7 +209,6 @@ export default function Experience() {
 
   return (
     <div className="min-h-screen">
-      <Navigation />
 
       <section className="pt-24 sm:pt-28 pb-14 md:pb-20 relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
@@ -224,7 +223,19 @@ export default function Experience() {
             </div>
           </Reveal>
 
-          <div className="space-y-6">
+          <nav aria-label="On this page" className="flex gap-2 mb-8">
+            {[["#roles", "Roles"], ["#leadership", "Leadership"]].map(([href, label]) => (
+              <a
+                key={href}
+                href={href}
+                className="inline-flex items-center h-8 px-3.5 rounded-full border border-slate-200 bg-white text-sm font-semibold text-slate-600 hover:border-blue-300 transition-colors duration-200"
+              >
+                {label}
+              </a>
+            ))}
+          </nav>
+
+          <div id="roles" className="space-y-6 scroll-mt-24">
             {experiences.map((exp, index) => (
               <Reveal key={index} delay={index * 0.08}>
                 <div className="group p-6 sm:p-8 rounded-xl bg-white border border-slate-200 hover:border-blue-300 card-glow transition-all duration-200">
@@ -266,7 +277,7 @@ export default function Experience() {
                         {exp.metrics.map((m, idx) => (
                           <div key={idx}>
                             <div
-                              className="text-3xl sm:text-4xl font-bold text-blue-800 tracking-tight"
+                              className="text-3xl sm:text-4xl font-bold text-blue-800 tracking-tight tabular-nums"
                               style={{ fontFamily: "'Manrope', sans-serif" }}
                             >
                               <CountUp value={m.num} />
@@ -298,6 +309,8 @@ export default function Experience() {
           </div>
         </div>
       </section>
+
+      <LeadershipSection />
 
       <Footer />
     </div>

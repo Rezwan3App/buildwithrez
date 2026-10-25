@@ -1,4 +1,3 @@
-import { Navigation } from "@/components/navigation";
 import { Footer } from "@/components/footer";
 import { Reveal } from "@/components/reveal";
 import { usePageTitle } from "@/hooks/use-page-title";
@@ -84,7 +83,6 @@ export default function MBA() {
 
   return (
     <div className="min-h-screen">
-      <Navigation />
       
       <section className="pt-24 sm:pt-28 pb-14 md:pb-20 relative overflow-hidden">
         <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">

@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite --port 5000",
-    "build": "vite build",
-    "build:static": "vite build",
+    "build": "vite build --config vite.pages.config.ts && vite build --config vite.pages.config.ts --ssr src/entry-server.tsx --outDir ../dist/server --emptyOutDir && node scripts/prerender.mjs",
+    "build:static": "npm run build",
     "preview": "vite preview --port 5000",
     "check": "tsc"
   },
