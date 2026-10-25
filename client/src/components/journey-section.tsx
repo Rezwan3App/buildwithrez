@@ -1,10 +1,11 @@
 import { Reveal } from "@/components/reveal";
 
 const steps = [
-  ["2014 â€“ 2023", "Mechanical engineering at CCNY, then engineering and project management, including Zachry Nuclear Engineering."],
-  ["2024 â€“ 2025", "MBA at Baruch Zicklin. Shipped the Plaid integration at Rocket Companies; owned QA and analytics at Odynn."],
-  ["2026", "Helped launch New York State's first AI training program for small businesses at Welcome to Chinatown."],
-  ["Sep 2026 â€“ Present", "Product management intern at NBCUniversal."],
+  ["2018", "B.E. in mechanical engineering, The City College of New York (CCNY)."],
+  ["2021 – 2023", "Engineering and project management, including Zachry Nuclear Engineering."],
+  ["2024 – May 2027", "MBA at Baruch College, Zicklin School of Business. Shipped the Plaid integration at Rocket Companies; owned QA and analytics at Odynn."],
+  ["2026", "Helped launch New York State's AI training program for small businesses at Welcome to Chinatown."],
+  ["Sept 2026 – Present", "Product management intern at NBCUniversal."],
 ];
 
 export function JourneySection() {

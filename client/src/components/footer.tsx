@@ -1,36 +1,15 @@
-import { FaLinkedin } from "react-icons/fa";
+const link = "inline-flex items-center min-h-[44px] hover:text-blue-800 transition-colors";
 
 export function Footer() {
   return (
-    <footer className="pt-10 pb-24 border-t border-slate-200">
+    <footer className="pt-6 pb-24 border-t border-slate-200">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-          <div className="text-center sm:text-left">
-            <p className="text-slate-600 text-sm">
-              Â© 2026 Rezwan Islam Â· New York
-            </p>
-            <p className="text-slate-600 text-xs mt-1">
-              Designed and built by me, no template. Last updated October 2026.
-            </p>
-          </div>
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-            <a
-              href="https://www.linkedin.com/in/rezwan-islam33"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 min-h-[44px] text-sm text-slate-600 hover:text-blue-800 transition-colors"
-            >
-              <FaLinkedin className="h-4 w-4" aria-hidden="true" />
-              LinkedIn
-            </a>
-            <a
-              href="mailto:rezwan99@gmail.com"
-              className="inline-flex items-center min-h-[44px] text-sm text-slate-600 hover:text-blue-800 transition-colors"
-            >
-              Email
-            </a>
-          </div>
-        </div>
+        <p className="flex flex-wrap items-center justify-center sm:justify-start gap-x-4 gap-y-1 text-sm text-slate-600">
+          <span>© 2026 Rezwan Islam · New York</span>
+          <a className={link} href="mailto:rezwan99@gmail.com">Email</a>
+          <a className={link} href="https://www.linkedin.com/in/rezwan-islam33" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a className={link} href="/attached_assets/Rezwan_Islam_Zicklin_Latest.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+        </p>
       </div>
     </footer>
   );

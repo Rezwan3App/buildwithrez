@@ -1,4 +1,5 @@
 import { Footer } from "@/components/footer";
+import { ProjectsTabs } from "@/pages/product-management";
 import { Reveal } from "@/components/reveal";
 import { usePageTitle } from "@/hooks/use-page-title";
 import { ExternalLink, Car, TrendingUp, Database, Utensils, Moon, X, Download } from "lucide-react";
@@ -9,7 +10,7 @@ import sleepWaveImage from "@assets/BOSE_SLEEPWAVE_PRESENTATION_GROUP_7_17677483
 import mcdonaldsImage from "@assets/Group_B_FSA,_ACC_9110,_Spring_2025_1767748480441.jpg";
 
 export default function MBA() {
-  usePageTitle("MBA & Data Analytics");
+  usePageTitle("MBA projects");
   const [modalImage, setModalImage] = useState<string | null>(null);
   useEffect(() => {
     if (!modalImage) return;
@@ -21,31 +22,28 @@ export default function MBA() {
   const mbaProjects = [
     {
       title: "EatTrack",
-      description: "A mobile app concept helping consumers identify ultra-processed foods while grocery shopping. I ran the consumer research, prototype testing, and go-to-market modeling behind it.",
-      stats: "80% of 55+ NYC adults surveyed wanted it",
-      tags: ["Product Development", "Consumer Research", "Go-to-Market"],
-      methods: ["Consumer surveys (55+ respondents)", "Concept & prototype testing", "Go-to-market revenue modeling"],
+      description: "A mobile app concept that flags ultra-processed foods while you shop. Our team ran a 55-person consumer survey, built a clickable Figma prototype, and tested it in 7 rounds with 13 users.",
+      stats: "55-person survey · 7 test rounds with 13 users",
+      methods: ["55-person consumer survey", "Figma prototype, 7 rounds of user testing", "Pricing: free tier plus a $7.99 one-time premium"],
       accentColor: "text-blue-800",
       icon: Utensils,
       image: eatTrackImage
     },
     {
-      title: "SleepWave GTM Strategy",
-      description: "I developed a data-backed go-to-market strategy for a Bose sleep tech product, running primary research with 50+ consumer interviews alongside competitive analysis.",
-      stats: "50+ consumer interviews · Bose sleep tech GTM",
-      tags: ["Go-to-Market", "Consumer Research", "Strategy"],
-      methods: ["50+ consumer interviews", "Competitive analysis", "Pricing & first-year revenue modeling"],
+      title: "SleepWave go-to-market plan",
+      description: "Our team wrote a go-to-market plan for SleepWave, a Bose sleep product. We ran 50+ consumer interviews and a competitive analysis, then set pricing and a first-year revenue model.",
+      stats: "50+ consumer interviews · Pricing and first-year revenue model",
+      methods: ["50+ consumer interviews", "Competitive analysis", "Pricing and first-year revenue model"],
       accentColor: "text-blue-800",
       icon: Moon,
       image: sleepWaveImage,
       pdf: "/attached_assets/BOSE_SLEEPWAVE_PRESENTATION_GROUP_7_1767748370531.pdf"
     },
     {
-      title: "McDonald's Financial Analysis",
-      description: "I performed a comprehensive 10-K analysis benchmarked against Wendy's and Burger King, built a DCF model with sensitivity analysis, and evaluated ESG initiatives.",
-      stats: "3 companies analyzed · Full ratio & DCF analysis",
-      tags: ["DCF", "Ratio Analysis", "10-K Analysis"],
-      methods: ["10-K financial statement analysis", "Excel DCF with sensitivity tables", "Ratio benchmarking & ESG review"],
+      title: "McDonald's financial analysis",
+      description: "Our team analyzed McDonald's 10-K against Wendy's and Burger King, built a DCF valuation with sensitivity tables, and reviewed its ESG commitments.",
+      stats: "3 companies compared · Ratio analysis and DCF",
+      methods: ["10-K financial statement analysis", "Excel DCF with sensitivity tables", "Ratio benchmarking and ESG review"],
       accentColor: "text-blue-800",
       icon: TrendingUp,
       image: mcdonaldsImage,
@@ -55,26 +53,26 @@ export default function MBA() {
 
   const dataProjects = [
     {
-      title: "Ford Vehicle Crash Risk Analysis",
+      title: "Ford crash risk analysis",
       highlights: [
-        "I used logistic regression in Python to analyze 64,000+ NYC motor vehicle collisions",
-        "Found no significant link between Ford vehicles and fatal crash outcomes",
-        "Identified human behavior (speeding, impairment) as primary fatality predictors"
+        "I ran a logistic regression in Python on 64,785 NYC motor vehicle collisions",
+        "Found no significant link between Ford vehicles and fatal crash outcomes (p = 0.203)",
+        "Found human behavior, such as speeding and impairment, to be the main predictor of fatal crashes"
       ],
-      stats: "64K+ collisions · p-value 0.203",
+      stats: "64,785 collisions · No significant Ford effect",
       tags: ["Statistics", "Logistic Regression", "Python"],
       accentColor: "text-blue-800",
       icon: Car,
       pdf: "/attached_assets/Final_Report-1_1767807752880.pdf"
     },
     {
-      title: "Pet Adoption Database",
+      title: "Pet adoption database",
       highlights: [
         "I designed a relational database with 12+ normalized tables",
         "Created ER diagrams and normalized the schema to BCNF",
-        "Implemented complex SQL queries for adoption matching"
+        "Wrote SQL queries for adoption matching"
       ],
-      stats: "12+ tables · BCNF normalized",
+      stats: "12+ tables · BCNF",
       tags: ["SQL", "ER Modeling", "Database Design"],
       accentColor: "text-blue-800",
       icon: Database,
@@ -89,20 +87,19 @@ export default function MBA() {
           <Reveal>
             <div className="mb-12">
               <h1 className="text-3xl sm:text-5xl font-semibold text-slate-900 mb-4">
-                MBA & Data Analytics
+                MBA projects
               </h1>
               <p className="text-lg text-slate-600 max-w-2xl">
-                Coursework from Baruch's Zicklin School of Business where I got to stress-test product ideas with real analysis: surveys, financial models, SQL, and Python.
+                Class projects from my MBA at Baruch's Zicklin School of Business: consumer research, go-to-market plans, financial models, and data analysis in SQL, Python, and Tableau.
               </p>
             </div>
           </Reveal>
 
+          <ProjectsTabs active="mba" />
+
           <div className="mb-12">
             <Reveal>
-              <h2 className="text-2xl font-semibold text-slate-900 mb-6 flex items-center gap-3">
-                <span className="w-8 h-[2px] bg-blue-800"></span>
-                MBA Projects
-              </h2>
+              <h2 className="text-2xl font-semibold text-slate-900 mb-6">Team projects</h2>
             </Reveal>
 
             <div className="space-y-6">
@@ -130,7 +127,7 @@ export default function MBA() {
                       <p className="text-slate-600 mb-4">{project.description}</p>
 
                       <div className="mt-4 border-l-2 border-slate-200 pl-4">
-                        <p className="text-xs font-semibold tracking-widest uppercase text-slate-600 mb-2">How I built it</p>
+                        <p className="text-xs font-semibold tracking-widest uppercase text-slate-600 mb-2">Methods</p>
                         <ul className="space-y-1">
                           {project.methods.map((m, i) => (
                             <li key={i} className="text-sm text-slate-600">{m}</li>
@@ -146,7 +143,7 @@ export default function MBA() {
                           className="inline-flex items-center mt-4 px-4 py-2 border border-slate-300 text-slate-800 hover:border-blue-800 hover:text-blue-900 rounded-lg text-sm font-semibold transition-all bg-white"
                         >
                           <Download className="mr-2 h-4 w-4" />
-                          Download Slide Deck
+                          Download slide deck
                         </a>
                       )}
                     </div>
@@ -175,10 +172,7 @@ export default function MBA() {
 
           <div className="mb-16">
             <Reveal>
-              <div className="flex items-center gap-3 mb-8">
-                <div className="h-8 w-1 bg-blue-900 rounded-full"></div>
-                <h2 className="text-2xl font-semibold text-slate-900">Data Analytics Projects</h2>
-              </div>
+              <h2 className="text-2xl font-semibold text-slate-900 mb-6">Data and analytics</h2>
             </Reveal>
 
             <div className="grid md:grid-cols-2 gap-6">
@@ -218,7 +212,7 @@ export default function MBA() {
                       className="inline-flex items-center mt-4 px-4 py-2 border border-slate-300 text-slate-800 hover:border-blue-800 hover:text-blue-900 rounded-lg text-sm font-semibold transition-all bg-white"
                     >
                       <Download className="mr-2 h-4 w-4" />
-                      Download Report
+                      Download report
                     </a>
                   )}
                 </div>
@@ -230,12 +224,12 @@ export default function MBA() {
           <Reveal>
           <div className="bg-white border border-slate-200 hover:border-blue-300 card-glow transition-all duration-300 rounded-2xl p-8">
             <div className="text-center mb-8">
-              <h3 className="text-2xl font-semibold text-slate-900 inline-flex items-center gap-3">
-                <div className="w-12 h-12 bg-blue-900 rounded-xl flex items-center justify-center">
+              <h2 className="text-2xl font-semibold text-slate-900 inline-flex items-center gap-3">
+                <span className="w-12 h-12 bg-blue-900 rounded-xl flex items-center justify-center">
                   <SiTableau aria-hidden="true" className="h-6 w-6 text-white" />
-                </div>
-                Featured Tableau Dashboards
-              </h3>
+                </span>
+                Tableau dashboards
+              </h2>
               <div className="mt-3">
                 <a
                   href="https://public.tableau.com/app/profile/rezwan.islam4698/vizzes"
@@ -244,7 +238,7 @@ export default function MBA() {
                   className="inline-flex items-center text-blue-800 hover:text-blue-900 transition-colors font-medium group"
                   data-testid="link-tableau-portfolio"
                 >
-                  View All Dashboards
+                  View all dashboards
                   <ExternalLink className="ml-2 h-4 w-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </a>
               </div>
@@ -261,11 +255,11 @@ export default function MBA() {
                 <div className="relative overflow-hidden rounded-xl border border-slate-200 group-hover/img:border-blue-300 transition-all">
                   <img loading="lazy" decoding="async" 
                     src="/attached_assets/image_1756834020456.webp" 
-                    alt="Customer Churn Dashboard"
+                    alt="Customer churn dashboard"
                     className="w-full group-hover/img:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <p className="text-sm text-slate-900 mt-3 font-medium group-hover/img:text-blue-800 transition-colors">Customer Churn Analysis</p>
+                <p className="text-sm text-slate-900 mt-3 font-medium group-hover/img:text-blue-800 transition-colors">Customer churn analysis</p>
                 <p className="text-sm text-slate-500 mt-1">I analyzed bank customer churn to find which segments leave and why, breaking retention down by geography, product mix, and account activity.</p>
               </a>
               <a
@@ -278,11 +272,11 @@ export default function MBA() {
                 <div className="relative overflow-hidden rounded-xl border border-slate-200 group-hover/img:border-blue-300 transition-all">
                   <img loading="lazy" decoding="async" 
                     src="/attached_assets/image_1756834044327.webp" 
-                    alt="NYC Fire Safety Dashboard"
+                    alt="NYC fire safety dashboard"
                     className="w-full group-hover/img:scale-105 transition-transform duration-500"
                   />
                 </div>
-                <p className="text-sm text-slate-900 mt-3 font-medium group-hover/img:text-blue-800 transition-colors">New York City Fire Safety Analysis</p>
+                <p className="text-sm text-slate-900 mt-3 font-medium group-hover/img:text-blue-800 transition-colors">NYC fire safety analysis</p>
                 <p className="text-sm text-slate-500 mt-1">I mapped NYC fire-inspection outcomes across boroughs: pass and fail rates, the most common causes of failed inspections, and where risk concentrates.</p>
               </a>
             </div>
@@ -305,7 +299,7 @@ export default function MBA() {
           </button>
           <img loading="lazy" decoding="async" 
             src={modalImage}
-            alt="Project Image - Full Size"
+            alt="Project image, full size"
             className="max-w-full max-h-[90vh] object-contain rounded-lg"
             onClick={(e) => e.stopPropagation()}
           />

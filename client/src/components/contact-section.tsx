@@ -43,13 +43,10 @@ export function ContactSection() {
     <section id="contact" className="py-12 md:py-16 border-t border-slate-200/70">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
         <Reveal>
-          <p className="text-slate-700">
-            Looking for APM/PM roles.{" "}
-            <a className={link} href="https://www.linkedin.com/in/rezwan-islam33" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            {" Â· "}
-            <a className={link} href="/attached_assets/Rezwan_Islam_Zicklin_Latest.pdf" download="Rezwan_Islam_Resume.pdf">Resume (PDF)</a>
-            {" Â· "}
-            <a ref={emailRef} className={link} href={`mailto:${EMAIL}`}>Email</a>{" "}
+          <p className="text-slate-700 mb-4">Looking for full-time APM and PM roles in New York.</p>
+          <ul className="border-t border-slate-200">
+            <li className="py-2 border-b border-slate-200">
+              <a ref={emailRef} className={link} href={`mailto:${EMAIL}`}>rezwan99@gmail.com</a>{" "}
             <button
               type="button"
               onClick={copy}
@@ -74,6 +71,23 @@ export function ContactSection() {
             <span className="sr-only" aria-live="polite">
               {copied ? "Email address copied" : ""}
             </span>
+            </li>
+            <li className="py-2 border-b border-slate-200">
+              <a className={link} href="https://www.linkedin.com/in/rezwan-islam33" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </li>
+            <li className="py-2 border-b border-slate-200">
+              <a className={link} href="/attached_assets/Rezwan_Islam_Zicklin_Latest.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+            </li>
+          </ul>
+          <p className="mt-4 text-sm text-slate-600">
+            Elsewhere:{" "}
+            <a className={link} href="https://github.com/Rezwan3App" target="_blank" rel="noopener noreferrer">GitHub</a>
+            {" · "}
+            <a className={link} href="https://nycstartupinternshipprogram.substack.com/p/from-dashboards-to-dms-rezwan-islams" target="_blank" rel="noopener noreferrer">Substack</a>
+            {" · "}
+            <a className={link} href="https://open.spotify.com/episode/2pcqPSQeTCfmnsSgAyDvB8" target="_blank" rel="noopener noreferrer">Podcast</a>
+            {" · "}
+            <a className={link} href="https://public.tableau.com/app/profile/rezwan.islam4698/vizzes" target="_blank" rel="noopener noreferrer">Tableau</a>
           </p>
         </Reveal>
       </div>
