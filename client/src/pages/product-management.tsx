@@ -2,7 +2,6 @@ import { Link } from "wouter";
 import { Reveal } from "@/components/reveal";
 import { usePageTitle } from "@/hooks/use-page-title";
 import { Footer } from "@/components/footer";
-import { Row, Page } from "@/components/row";
 import { ExternalLink, FileText, X, Youtube, BatteryCharging } from "lucide-react";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
@@ -40,7 +39,7 @@ export function ImageModal({ src, alt, label, onClose }: { src: string; alt: str
       <button ref={closeRef} type="button" onClick={onClose} aria-label="Close image" className="absolute top-4 right-4 p-2 text-white hover:text-blue-300 transition-colors" data-testid="button-close-modal">
         <X aria-hidden="true" className="h-8 w-8" />
       </button>
-      <img src={src} alt={alt} className="max-w-full max-h-[90vh] object-contain rounded-md" onClick={(e) => e.stopPropagation()} />
+      <img src={src} alt={alt} className="max-w-full max-h-[90vh] object-contain rounded-lg" onClick={(e) => e.stopPropagation()} />
     </div>
   );
 }
@@ -51,7 +50,7 @@ export function ProjectsTabs({ active }: { active: "product" | "mba" }) {
     { id: "mba", href: "/projects/mba", label: "MBA projects", sub: "Team class projects I led at Baruch" },
   ];
   return (
-    <nav aria-label="Project types" className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-8 mb-10">
+    <nav aria-label="Project types" className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
       {tabs.map((t) => {
         const on = active === t.id;
         return (
@@ -59,19 +58,19 @@ export function ProjectsTabs({ active }: { active: "product" | "mba" }) {
             key={t.id}
             href={t.href}
             aria-current={on ? "page" : undefined}
-            className={`group flex items-center justify-between gap-4 rounded-md border px-5 py-4 transition-colors duration-200 ${
-              on ? "border-[#1e3a8a] bg-white" : "border-slate-300 hover:border-[#1e3a8a] hover:bg-white"
+            className={`group flex items-center justify-between gap-4 rounded-2xl border-2 px-6 py-5 transition-colors duration-200 ${
+              on ? "border-[#1e3a8a] bg-blue-50" : "border-slate-200 bg-white hover:border-blue-300"
             }`}
           >
             <span>
-              <span className={`block text-lg font-semibold ${on ? "text-slate-900" : "text-slate-700 group-hover:text-slate-900"}`} style={{ fontFamily: "'Manrope', sans-serif" }}>
-                {t.label}
-              </span>
-              <span className="block text-sm text-slate-500">{t.sub}</span>
+              <span className={`block text-xl font-semibold ${on ? "text-blue-900" : "text-slate-900"}`}>{t.label}</span>
+              <span className="block text-sm text-slate-600">{t.sub}</span>
             </span>
-            <span aria-hidden="true" className={`text-xl transition-transform duration-200 ${on ? "text-[#1e3a8a]" : "text-slate-400 group-hover:translate-x-1 group-hover:text-[#1e3a8a]"}`}>
-              {on ? <span className="text-xs font-semibold uppercase tracking-[0.12em]">Viewing</span> : "→"}
-            </span>
+            {on ? (
+              <span className="shrink-0 text-xs font-semibold uppercase tracking-widest text-blue-900">Viewing</span>
+            ) : (
+              <span aria-hidden="true" className="shrink-0 text-xl text-slate-400 transition-transform duration-200 group-hover:translate-x-1 group-hover:text-blue-900">→</span>
+            )}
           </Link>
         );
       })}
@@ -79,14 +78,9 @@ export function ProjectsTabs({ active }: { active: "product" | "mba" }) {
   );
 }
 
-export const linkCls = "inline-flex items-center gap-1.5 text-sm font-semibold text-blue-900 underline-offset-4 hover:underline";
-export const Bullets = ({ items }: { items: React.ReactNode[] }) => (
-  <ul className="list-disc pl-5 space-y-1.5 text-[0.9375rem] text-slate-600">
-    {items.map((t, i) => (
-      <li key={i}>{t}</li>
-    ))}
-  </ul>
-);
+const Dot = () => <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-2 mr-2 shrink-0"></span>;
+const statusCls = "inline-flex items-center h-8 px-3 rounded-lg text-xs font-semibold bg-slate-100 text-slate-600 border border-slate-200";
+const cardCls = "bg-white border border-slate-200 rounded-2xl p-6 hover:border-blue-300 card-glow transition-all duration-300";
 
 export default function ProductManagement() {
   usePageTitle("Projects");
@@ -112,109 +106,201 @@ export default function ProductManagement() {
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const closeModal = useCallback(() => setIsImageModalOpen(false), []);
 
-  const strong = "font-semibold text-slate-900";
-
   return (
     <div className="min-h-screen">
-      <Page>
-        <Reveal>
-          <h1 className="text-slate-900 mb-4">Projects</h1>
-          <p className="text-lg text-slate-600">Products I built on my own, one still in progress, plus a concept PRD.</p>
-        </Reveal>
 
-        <ProjectsTabs active="product" />
+      <section className="pt-24 sm:pt-28 pb-14 md:pb-20 relative overflow-hidden">
+        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
+          <Reveal>
+            <div className="mb-10">
+              <h1 className="text-3xl sm:text-5xl font-semibold text-slate-900 mb-4">
+                Projects
+              </h1>
+              <p className="text-lg text-slate-600 max-w-3xl">
+                Products I built on my own, plus a concept PRD.
+              </p>
+            </div>
+          </Reveal>
 
-        <div role="group" aria-label="Filter projects" className="flex flex-wrap gap-x-4 gap-y-1 mb-2">
-          {FILTERS.map((f) => (
-            <button
-              key={f.id}
-              type="button"
-              aria-pressed={filter === f.id}
-              onClick={() => setFilter(f.id)}
-              className={`min-h-8 px-1 text-sm font-semibold transition-colors duration-200 ${
-                filter === f.id ? "text-slate-900 underline underline-offset-4 decoration-[#1e3a8a]" : "text-slate-500 hover:text-blue-900"
-              }`}
-            >
-              {f.label}
-            </button>
-          ))}
+          <ProjectsTabs active="product" />
+
+          <div role="group" aria-label="Filter projects" className="flex flex-wrap gap-2 mb-10">
+            {FILTERS.map((f) => (
+              <button
+                key={f.id}
+                type="button"
+                aria-pressed={filter === f.id}
+                onClick={() => setFilter(f.id)}
+                className={`inline-flex items-center h-8 px-3.5 rounded-full border text-sm font-semibold transition-colors duration-200 ${
+                  filter === f.id
+                    ? "bg-blue-800 border-blue-800 text-white"
+                    : "bg-white border-slate-200 text-slate-600 hover:border-blue-300"
+                }`}
+              >
+                {f.label}
+              </button>
+            ))}
+          </div>
+
+          {(show("shipped") || show("progress")) && (
+          <div className="mb-10">
+            <h2 className="text-2xl font-semibold text-slate-900 mb-6">Personal projects</h2>
+            <div className="space-y-4">
+              {item("shipped", "snag", <Reveal>
+              <div id="snag" className={`${cardCls} scroll-mt-24`}>
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-white border border-slate-200 rounded-xl flex items-center justify-center shrink-0">
+                      <Youtube aria-hidden="true" className="h-6 w-6 text-blue-800" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-slate-900">Snag</h3>
+                      <p className="text-blue-800 font-medium">Texts you the promo codes in YouTube sponsor reads</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className={statusCls}>Shipped</span>
+                    <span className={statusCls}>2026</span>
+                    <a
+                      href="https://github.com/Rezwan3App/snag"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-lg text-sm font-semibold transition-all"
+                    >
+                      <SiGithub aria-hidden="true" className="mr-2 h-4 w-4" />
+                      GitHub
+                    </a>
+                  </div>
+                </div>
+
+                <p className="text-slate-600 mb-3">
+                  Watches the channels you follow and texts you each new code, sponsor link, and expiry.
+                </p>
+
+                <ul className="text-slate-600 text-sm space-y-1">
+                  {[
+                    "Add a YouTuber's channel to your watchlist.",
+                    "Scans every new upload's description for deals.",
+                    "Sends an SMS when a code or expiry turns up.",
+                  ].map((b) => (
+                    <li key={b} className="flex items-start"><Dot /><span>{b}</span></li>
+                  ))}
+                </ul>
+
+                <div className="mt-5 border-l-2 border-blue-800 pl-5">
+                  <p className="text-xs font-semibold tracking-widest uppercase text-blue-800 mb-2">Product decisions</p>
+                  <ul className="text-sm text-slate-600 space-y-1">
+                    <li><span className="text-slate-900 font-medium">One loop:</span> watch, detect, text.</li>
+                    <li><span className="text-slate-900 font-medium">No accounts:</span> just JSON files and a background job.</li>
+                  </ul>
+                </div>
+
+                <p className="text-sm text-slate-600 mt-5">Bun · Hono · YouTube RSS · Twilio SMS · JSON storage</p>
+              </div>
+              </Reveal>)}
+
+              {item("progress", "wattfinder", <Reveal>
+              <div className={cardCls}>
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-white border border-slate-200 rounded-xl flex items-center justify-center shrink-0">
+                      <BatteryCharging aria-hidden="true" className="h-6 w-6 text-blue-800" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-slate-900">WattFinder</h3>
+                      <p className="text-blue-800 font-medium">Real EV charge times, not sticker kW</p>
+                    </div>
+                  </div>
+                  <span className={`${statusCls} self-start`}>In progress</span>
+                </div>
+
+                <p className="text-slate-600 mb-3">
+                  Predicts charge time from a battery's real charging curve, not the charger's peak kW.
+                </p>
+
+                <ul className="text-slate-600 text-sm space-y-1">
+                  <li className="flex items-start"><Dot /><span>Models charging behavior across 3 EV platforms.</span></li>
+                </ul>
+
+                <p className="text-sm text-slate-600 mt-5">Next.js · TypeScript · Postgres</p>
+              </div>
+              </Reveal>)}
+            </div>
+          </div>
+          )}
+
+          {show("prd") && (
+          <div>
+            <h2 className="text-2xl font-semibold text-slate-900 mb-6">Product requirements doc</h2>
+            <div className="space-y-6">
+              {item("prd", "alltrails", <Reveal>
+              <div className={cardCls}>
+                <div className="flex flex-col lg:flex-row gap-6">
+                  <div className="flex-1">
+                    <div className="flex items-start gap-4 mb-4">
+                      <div className="w-14 h-14 rounded-xl overflow-hidden shrink-0">
+                        <img decoding="async" src={alltrailsIcon} alt="AllTrails logo" width={56} height={56} className="w-full h-full object-cover" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-semibold text-slate-900 mb-1">
+                          AllTrails Journeys
+                        </h3>
+                        <p className="text-blue-800 font-medium">
+                          Plan a multi-hike day in one app
+                        </p>
+                      </div>
+                    </div>
+
+                    <a
+                      href="/attached_assets/AllTrails_Journeys_Curated_Hiking_Itineraries_1768253125440.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center px-5 py-2.5 btn-primary text-white rounded-lg text-sm font-semibold border-0"
+                      data-testid="button-view-alltrails-prd"
+                    >
+                      <FileText aria-hidden="true" className="mr-2 h-4 w-4" />
+                      View PRD (PDF)
+                      <ExternalLink aria-hidden="true" className="ml-2 h-3.5 w-3.5" />
+                    </a>
+                  </div>
+
+                  <div className="lg:w-72 shrink-0">
+                    <button
+                      type="button"
+                      onClick={() => setIsImageModalOpen(true)}
+                      aria-label="Enlarge AllTrails Journeys wireframe"
+                      className="rounded-xl overflow-hidden border border-slate-200 hover:border-blue-400 transition-colors cursor-zoom-in w-full"
+                      data-testid="button-enlarge-wireframe"
+                    >
+                      <img
+                        decoding="async"
+                        src="/attached_assets/image_1768253142355.webp"
+                        alt="AllTrails Journeys Figma wireframe"
+                        width={739}
+                        height={758}
+                        className="w-full h-auto"
+                      />
+                    </button>
+                    <p className="text-[13px] text-slate-500 mt-2 text-center">Click to enlarge</p>
+                  </div>
+                </div>
+                <div className="mt-8 pt-6 border-t border-slate-100">
+                  <AllTrailsPRD />
+                </div>
+              </div>
+              </Reveal>)}
+            </div>
+          </div>
+          )}
+
         </div>
-
-        {item("shipped", "snag", <Row id="snag" meta={<>Shipped<br />2026</>}>
-          <h2 className="text-lg font-semibold text-slate-900 flex items-center gap-2"><Youtube aria-hidden="true" className="h-4 w-4 text-slate-500" />Snag</h2>
-          <p className="text-slate-500 mb-3">Texts you the promo codes in YouTube sponsor reads</p>
-          <p className="text-slate-600 mb-4">
-            Promo codes in YouTube sponsor reads are easy to miss and easy to lose. I built Snag to watch the channels you follow and text you the code, sponsor link, and expiry as soon as a new video has one.
-          </p>
-          <Bullets items={[
-            "Search for a YouTuber and add their channel to your watchlist.",
-            "Snag pulls each channel's RSS feed and scans every new upload's description for deals.",
-            "You get an SMS when a new code, sponsor link, or expiry date turns up.",
-          ]} />
-          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500 mt-5 mb-2">Product decisions</p>
-          <Bullets items={[
-            <><b className={strong}>Scoped to one loop.</b> I cut the first version to one loop: watch a channel, detect a deal, send a text. No accounts, no build step, just JSON files and a background job that re-scans every watched channel on an interval.</>,
-            <><b className={strong}>Skipping the official API.</b> YouTube's Data API means keys, quotas, and approval. I pulled new uploads straight from each channel's public RSS feed instead: zero keys, zero quota, and enough in the video description to find the deal.</>,
-          ]} />
-          <p className="text-sm text-slate-500 mt-4">Bun · Hono · YouTube RSS · Twilio SMS · JSON storage</p>
-          <p className="mt-3">
-            <a href="https://github.com/Rezwan3App/snag" target="_blank" rel="noopener noreferrer" className={linkCls}>
-              <SiGithub aria-hidden="true" className="h-3.5 w-3.5" />GitHub
-            </a>
-          </p>
-        </Row>)}
-
-        {item("progress", "wattfinder", <Row id="wattfinder" meta="In progress">
-          <h2 className="text-lg font-semibold text-slate-900 flex items-center gap-2"><BatteryCharging aria-hidden="true" className="h-4 w-4 text-slate-500" />WattFinder</h2>
-          <p className="text-slate-500 mb-3">Real EV charge times, not sticker kW</p>
-          <p className="text-slate-600 mb-4">
-            Public chargers advertise a sticker kilowatt rating that almost no car ever hits. I'm building WattFinder to replace that number with physics-based charge-time predictions, modeling real charging curves so drivers see how long a stop will actually take.
-          </p>
-          <Bullets items={[
-            "Predicts charge time from a battery's real charging curve, not the charger's peak kW.",
-            "Models charging behavior across 3 EV platforms so estimates hold across different cars.",
-          ]} />
-          <p className="text-sm text-slate-500 mt-4">Next.js · TypeScript · Postgres</p>
-        </Row>)}
-
-        {item("prd", "alltrails", <Row meta={<>PRD<br />Dec 2025</>}>
-          <div className="flex items-center gap-3 mb-1">
-            <img src={alltrailsIcon} alt="AllTrails" width={24} height={24} className="h-6 w-6 rounded object-cover" />
-            <h2 className="text-lg font-semibold text-slate-900">AllTrails Journeys</h2>
-          </div>
-          <p className="text-slate-500 mb-3">Concept PRD for a feature that does not exist yet</p>
-          <div className="flex flex-col sm:flex-row gap-4 items-start mb-4">
-            <p className="text-slate-600 flex-1">
-              I wrote a PRD for Journeys, a feature that plans a multi-hike day with driving directions, rest stops, and amenities, so hikers stop switching between AllTrails, Google Maps, and travel blogs.
-            </p>
-            <button
-              onClick={() => setIsImageModalOpen(true)}
-              className="w-[200px] shrink-0 border border-slate-200 hover:border-blue-400 transition-colors cursor-zoom-in"
-              data-testid="button-enlarge-wireframe"
-              aria-label="Enlarge AllTrails Journeys wireframe"
-            >
-              <img src="/attached_assets/image_1768253142355.webp" alt="AllTrails Journeys Figma wireframe" width={739} height={758} decoding="async" className="w-full h-auto" />
-            </button>
-          </div>
-          <a
-            href="/attached_assets/AllTrails_Journeys_Curated_Hiking_Itineraries_1768253125440.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={linkCls}
-            data-testid="button-view-alltrails-prd"
-          >
-            <FileText aria-hidden="true" className="h-3.5 w-3.5" />View PRD (PDF)<ExternalLink aria-hidden="true" className="h-3 w-3" />
-          </a>
-          <div className="mt-6">
-            <AllTrailsPRD />
-          </div>
-        </Row>)}
-        <Footer />
-      </Page>
+      </section>
 
       {isImageModalOpen && (
         <ImageModal src="/attached_assets/image_1768253142355.webp" alt="AllTrails Journeys Figma wireframe, full size" label="AllTrails Journeys wireframe" onClose={closeModal} />
       )}
+
+      <Footer />
     </div>
   );
 }
