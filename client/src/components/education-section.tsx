@@ -2,7 +2,7 @@ import { Reveal } from "@/components/reveal";
 
 const schools = [
   {
-    degree: "MBA in Business Analytics",
+    degree: "MBA, Business and Data Analytics focus",
     school: "Baruch College, Zicklin School of Business",
     meta: "4.0 GPA · Exp. May 2027",
     logo: "/attached_assets/image_1766520608918.png",
