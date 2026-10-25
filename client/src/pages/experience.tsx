@@ -90,7 +90,22 @@ export default function Experience() {
   usePageTitle("Experience");
   const experiences: Experience[] = [
     {
-      title: "AI Strategy Intern",
+      title: "Product Management Intern",
+      company: "NBCUniversal",
+      location: "New York, NY",
+      period: "Sept 2026 - Present",
+      scope: "Product work on the internal publishing tool behind Peacock, SkyShowtime, and NOW, focused on the signed-out, top-of-funnel experience and subscriber conversion.",
+      metrics: [
+        { num: "5-6", cap: "Bugs I surfaced in UAT and drove to fixes with engineering, design, and the data vendor on a live sports fixtures table, now in production beta." },
+        { num: "1", cap: "Low-value feature I decommissioned from the signed-out page, through legal and cybersecurity sign-off in two weeks." },
+        { num: "3", cap: "Streaming platforms where I support A/B testing improvements so internal teams can test page templates on live audiences." }
+      ],
+      tools: ["Jira", "Confluence", "Airtable", "UAT", "A/B Testing"],
+      logo: "nbcu",
+      logoBg: "bg-slate-900"
+    },
+    {
+      title: "AI Strategy and Operations Intern",
       company: "Welcome to Chinatown",
       location: "New York, NY",
       period: "Jun 2026 - Aug 2026",
@@ -111,7 +126,7 @@ export default function Experience() {
       period: "June 2025 - Aug 2025",
       scope: "Owned QA and analytics instrumentation for Awayz, a white-labeled travel and loyalty platform serving roughly 15 fintech and travel clients.",
       metrics: [
-        { num: "20%", cap: "More completed bookings after I prioritized defect fixes by client impact." },
+        { num: "20%", cap: "More completed flight bookings after I prioritized defect fixes by client impact." },
         { num: "150+", cap: "User events I instrumented into the platform's first event taxonomy, validated in SQL." },
         { num: "5", cap: "New clients supported after I rebuilt the platform's client-data view from scratch." }
       ],
@@ -123,7 +138,7 @@ export default function Experience() {
     },
     {
       title: "Product Manager Intern",
-      company: "Rocket Mortgage",
+      company: "Rocket Companies",
       location: "Detroit, MI",
       period: "May 2024 - Dec 2024",
       scope: "Shipped features on the Rocket Mortgage app, leading design and engineering from requirements through launch.",
@@ -168,12 +183,14 @@ export default function Experience() {
       switch (exp.logo) {
         case "rocket":
           return (
-            <img loading="lazy" decoding="async" src={rocketLogo} alt="Rocket Mortgage" className="w-12 h-12 object-contain" />
+            <img loading="lazy" decoding="async" src={rocketLogo} alt="Rocket Companies" className="w-12 h-12 object-contain" />
           );
         case "odynn":
           return (
             <img loading="lazy" decoding="async" src={odynnLogo} alt="Odynn" className="w-10 h-10 object-contain" />
           );
+        case "nbcu":
+          return <span className="text-white text-xs font-bold tracking-wide">NBCU</span>;
         case "megaplants":
           return (
             <img loading="lazy" decoding="async" src={megaplantsLogo} alt="MegaPlants" className="w-12 h-8 object-contain" />

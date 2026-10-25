@@ -11,7 +11,7 @@ const steps = [
     period: "2024 – 2025",
     title: "Business school, then product",
     description:
-      "I went back for an MBA at Baruch's Zicklin School of Business and dove into product. At Rocket Mortgage I shipped a Plaid integration that grew direct account connections 500%; at Odynn I owned QA and analytics for a travel-fintech booking flow. Product stopped being a theory.",
+      "I went back for an MBA at Baruch's Zicklin School of Business and dove into product. At Rocket Companies I shipped a Plaid integration that grew direct account connections 500%; at Odynn I owned QA and analytics for a travel-fintech booking flow. Product stopped being a theory.",
   },
   {
     period: "2026",

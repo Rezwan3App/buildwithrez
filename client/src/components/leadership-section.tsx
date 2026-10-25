@@ -9,7 +9,7 @@ export function LeadershipSection() {
       logo: "/attached_assets/image_1766520551280.png",
     },
     {
-      title: "MBA Student Ambassador",
+      title: "Zicklin Graduate Student Ambassador",
       organization: "Baruch College",
       description: "I represent the MBA program to prospective students through admissions events and orientation.",
       logo: "/attached_assets/image_1766520608918.png",
