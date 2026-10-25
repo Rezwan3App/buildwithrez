@@ -56,20 +56,6 @@ export function AboutSection() {
                   <ArrowUpRight className="h-4 w-4 text-slate-300 group-hover:text-blue-800 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                 </a>
               ))}
-
-              {/* Unofficial Transcript */}
-              <a
-                href="/attached_assets/SSR_TSRPT_1766519113256.pdf"
-                download="Rezwan_Islam_Unofficial_Transcript.pdf"
-                className="group flex items-center gap-4 py-4"
-              >
-                <FileText className="h-5 w-5 text-slate-400 group-hover:text-blue-800 transition-colors shrink-0" />
-                <div className="flex-1 min-w-0">
-                  <h4 className="text-slate-900 font-medium group-hover:text-blue-900 transition-colors">Unofficial Transcript</h4>
-                  <p className="text-slate-600 text-sm">4.0 GPA · PDF</p>
-                </div>
-                <Download className="h-4 w-4 text-slate-300 group-hover:text-blue-800 transition-all" />
-              </a>
             </div>
           </Reveal>
 
