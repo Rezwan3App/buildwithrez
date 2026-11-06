@@ -2,9 +2,9 @@ import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { EXPO } from "@/lib/motion";
 
-// Gears into dots: two meshing gears turn, dissolve, and their tooth tips settle into a dot grid.
-const NAVY = "#1e3a8a";
-const SLATE = "#94a3b8";
+// Blueprint gears: a meshing pair drawn as line art with centre marks. They turn once on load
+// and again on hover, then rest. The turn is the one authored motion moment on the site.
+const LINE = "#8fb0ff";
 const A = { n: 12, r: 24, cx: 42, cy: 60, turn: 60 }; // gear A turns +60deg
 const B = { n: 8, r: 16, cx: 82, cy: 60, turn: -90 }; // 12/8 ratio, opposite direction
 const TOOTH = 3.5;
@@ -27,23 +27,6 @@ function gearPath(g: typeof A) {
   return `M${pts.join("L")}Z`;
 }
 
-// Tooth-tip positions after the gears finish turning, in svg coordinates.
-const tips = [A, B]
-  .flatMap((g) =>
-    tipAngles(g).map((a) => ({
-      x: g.cx + (g.r + TOOTH) * Math.cos(rad(a + g.turn)),
-      y: g.cy + (g.r + TOOTH) * Math.sin(rad(a + g.turn)),
-    })),
-  )
-  .sort((p, q) => p.y - q.y || p.x - q.x);
-
-const dots = tips.map((t, i) => {
-  const gx = 60 + ((i % 5) - 2) * 14;
-  const gy = 60 + (Math.floor(i / 5) - 1.5) * 14;
-  return { gx, gy, dx: t.x - gx, dy: t.y - gy };
-});
-const HI = 7;
-
 export default function HeroMotif({ className, size = 140 }: { className?: string; size?: number }) {
   const reduce = useReducedMotion();
   const [run, setRun] = useState(0);
@@ -58,42 +41,22 @@ export default function HeroMotif({ className, size = 140 }: { className?: strin
       className={className}
       onPointerEnter={() => play && setRun((r) => r + 1)}
     >
-      {play &&
-        [A, B].map((g) => (
-          <g key={`${g.n}-${run}`} transform={`translate(${g.cx} ${g.cy})`}>
-            <motion.path
-              d={gearPath(g)}
-              fill="none"
-              stroke={NAVY}
-              strokeWidth={1}
-              strokeLinejoin="round"
-              initial={{ rotate: 0, opacity: 1 }}
-              animate={{ rotate: g.turn, opacity: [1, 1, 0] }}
-              transition={{
-                rotate: { duration: 1.1, ease: EXPO },
-                opacity: { duration: 1.3, times: [0, 0.62, 1], ease: EXPO },
-              }}
-            />
-          </g>
-        ))}
-      <g key={`dots-${run}`}>
-        {dots.map((d, i) => (
-          <motion.circle
-            key={i}
-            cx={d.gx}
-            cy={d.gy}
-            r={i === HI ? 2.2 : 1.6}
-            fill={i === HI ? NAVY : SLATE}
-            initial={play ? { x: d.dx, y: d.dy, opacity: 0 } : false}
-            animate={{ x: 0, y: 0, opacity: 1 }}
-            transition={{
-              x: { duration: 0.8, delay: 0.9, ease: EXPO },
-              y: { duration: 0.8, delay: 0.9, ease: EXPO },
-              opacity: { duration: 0.3, delay: 0.8, ease: EXPO },
-            }}
+      {[A, B].map((g) => (
+        <g key={g.n} transform={`translate(${g.cx} ${g.cy})`} stroke={LINE} fill="none" vectorEffect="non-scaling-stroke">
+          <circle r={g.r - TOOTH - 4} strokeWidth={0.35} strokeDasharray="1.6 1.6" opacity={0.7} />
+          <circle r={3} strokeWidth={0.5} />
+          <path d={`M-${g.r + 9} 0H${g.r + 9}M0 -${g.r + 9}V${g.r + 9}`} strokeWidth={0.22} strokeDasharray="4 1 1 1" opacity={0.75} />
+          <motion.path
+            key={run}
+            d={gearPath(g)}
+            strokeWidth={0.6}
+            strokeLinejoin="round"
+            initial={play ? { rotate: -g.turn } : false}
+            animate={{ rotate: 0 }}
+            transition={{ duration: 1.4, ease: EXPO }}
           />
-        ))}
-      </g>
+        </g>
+      ))}
     </svg>
   );
 }

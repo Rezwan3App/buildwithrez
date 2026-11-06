@@ -12,6 +12,7 @@ export default {
       },
       colors: {
         slate: { 500: "#5b6577" },
+        ink: "var(--ink)",
         background: "var(--background)",
         foreground: "var(--foreground)",
         card: {

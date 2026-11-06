@@ -1,5 +1,3 @@
-import { Reveal } from "@/components/reveal";
-
 const steps = [
   ["2018", "B.E. in mechanical engineering, CCNY."],
   ["2021 – 2023", "Engineering and project management, including Zachry Nuclear Engineering."],
@@ -10,19 +8,23 @@ const steps = [
 
 export function JourneySection() {
   return (
-    <section id="journey" className="py-12 md:py-16 border-t border-slate-200/70">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-        <Reveal>
-          <h2 className="eyebrow mb-4">Path</h2>
-          <ol className="border-t border-slate-200">
-            {steps.map(([period, text]) => (
-              <li key={period} className="grid sm:grid-cols-[11rem_1fr] gap-x-6 gap-y-0.5 py-3 border-b border-slate-200">
-                <span className="text-sm font-medium text-blue-900">{period}</span>
-                <span className="text-sm text-slate-700 leading-snug">{text}</span>
-              </li>
-            ))}
-          </ol>
-        </Reveal>
+    <section id="journey" className="section bg-[var(--paper-deep)]">
+      <div className="wrap">
+        <h2 className="mb-6 sm:mb-8">Path</h2>
+        <ol className="relative ml-[5px] border-l-2 border-blue-900/25">
+          {steps.map(([period, text], i) => (
+            <li key={period} className="relative pl-6 pb-6 last:pb-0 sm:grid sm:grid-cols-[12rem_1fr] sm:gap-x-6">
+              <span
+                aria-hidden="true"
+                className={`absolute -left-[7px] top-[7px] h-3 w-3 rounded-full ring-4 ring-[var(--paper-deep)] ${
+                  i === steps.length - 1 ? "bg-blue-900" : "bg-[var(--paper-deep)] border-2 border-blue-900"
+                }`}
+              />
+              <span className="block text-[15px] font-bold text-blue-900">{period}</span>
+              <span className="mt-0.5 block leading-snug text-slate-800 sm:mt-0">{text}</span>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   );

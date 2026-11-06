@@ -1,7 +1,10 @@
 export function HeroHeadline() {
   return (
-    <h1 className="text-[2rem] leading-[1.15] sm:text-5xl font-semibold text-slate-900 max-w-[22ch]">
-      From mechanical systems to digital products.
-    </h1>
+    <div className="space-y-3">
+      <h1>Rezwan Islam</h1>
+      <p className="text-[1.375rem] sm:text-[1.75rem] leading-[1.2] font-bold tracking-tight text-[var(--blue-light)]">
+        From mechanical systems to digital products.
+      </p>
+    </div>
   );
 }

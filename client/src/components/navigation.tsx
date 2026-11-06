@@ -1,63 +1,101 @@
 import { motion, useReducedMotion } from "framer-motion";
+import { Briefcase, FolderOpen, Home, Mail, type LucideIcon } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import { EXPO } from "@/lib/motion";
+import { RESUME_URL } from "@/lib/site";
 
-const navItems = [
-  { path: "/", label: "Home" },
-  { path: "/experience", label: "Experience" },
-  { path: "/projects", label: "Projects" },
+const navItems: { path: string; label: string; icon: LucideIcon }[] = [
+  { path: "/", label: "Home", icon: Home },
+  { path: "/experience", label: "Experience", icon: Briefcase },
+  { path: "/projects", label: "Projects", icon: FolderOpen },
 ];
 
-export function SiteNav() {
+function useActivePath() {
   const [location] = useLocation();
-  const reduce = useReducedMotion();
+  const normal = location.length > 1 ? location.replace(/\/$/, "") : location;
   const projectPaths = ["/projects", "/product-management", "/mba"];
-  const active = projectPaths.some((p) => location === p || location.startsWith(p + "/")) ? "/projects" : location;
+  return projectPaths.some((p) => normal === p || normal.startsWith(p + "/")) ? "/projects" : normal;
+}
+
+export function SiteNav() {
+  const active = useActivePath();
+  const reduce = useReducedMotion();
 
   return (
-    <nav className="sticky top-0 z-50 bg-[#f4f6f9] border-b border-slate-200" aria-label="Primary">
-      <div className="max-w-6xl mx-auto px-3 sm:px-8 lg:px-12">
-        <div className="flex items-center justify-between h-14 sm:h-16">
-          <Link href="/" aria-label="Rezwan Islam, home" className="inline-flex items-center min-h-[44px] text-base sm:text-lg font-bold text-slate-900 hover:text-blue-800 transition-colors" style={{ fontFamily: "'Manrope', sans-serif" }} data-testid="link-home-logo">
-            <span className="sm:hidden">Rezwan</span>
-            <span className="hidden sm:inline">Rezwan Islam</span>
-          </Link>
+    <header className="band-ink sticky top-0 z-50 border-b border-[var(--ink-line)]">
+      <div className="wrap flex items-center justify-between h-14 sm:h-16">
+        <Link
+          href="/"
+          aria-label="Rezwan Islam, home"
+          className="inline-flex items-center min-h-[44px] text-lg font-extrabold tracking-tight text-[var(--on-ink)] hover:text-[var(--blue-light)] transition-colors"
+          data-testid="link-home-logo"
+        >
+          Rezwan Islam
+        </Link>
 
-          <div className="flex items-center gap-0 sm:gap-1">
-            {navItems.map((item) => (
-              <Link
-                key={item.path}
-                href={item.path}
-                aria-current={active === item.path ? "page" : undefined}
-                className={`relative px-2 sm:px-4 min-h-[44px] ${item.path === "/" ? "hidden sm:inline-flex" : "inline-flex"} items-center text-[13px] sm:text-base font-semibold transition-colors duration-200 ${
-                  active === item.path ? "text-blue-900" : "text-slate-600 hover:text-slate-900"
-                }`}
-                data-testid={`nav-${item.label.toLowerCase().replace(/\s+/g, '-')}`}
-              >
-                {item.label}
-                {active === item.path && (
-                  <motion.span
-                    layoutId="nav-underline"
-                    className="absolute left-2 right-2 sm:left-4 sm:right-4 bottom-1.5 h-0.5 bg-blue-900"
-                    transition={reduce ? { duration: 0 } : { duration: 0.2, ease: EXPO }}
-                  />
-                )}
-              </Link>
-            ))}
-          </div>
+        <nav aria-label="Primary" className="hidden sm:flex items-center gap-1">
+          {navItems.map((item) => (
+            <Link
+              key={item.path}
+              href={item.path}
+              aria-current={active === item.path ? "page" : undefined}
+              className={`relative inline-flex items-center px-4 min-h-[44px] font-semibold transition-colors duration-200 ${
+                active === item.path ? "text-[var(--on-ink)]" : "text-[var(--on-ink-2)] hover:text-[var(--on-ink)]"
+              }`}
+              data-testid={`nav-${item.label.toLowerCase()}`}
+            >
+              {item.label}
+              {active === item.path && (
+                <motion.span
+                  layoutId="nav-underline"
+                  className="absolute left-4 right-4 bottom-1.5 h-0.5 bg-[var(--blue-light)]"
+                  transition={reduce ? { duration: 0 } : { duration: 0.2, ease: EXPO }}
+                />
+              )}
+            </Link>
+          ))}
+        </nav>
 
-          <a
-            href="/attached_assets/Rezwan_Islam_Zicklin_Latest.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center min-h-[44px] px-2.5 sm:px-3 rounded-md border border-slate-300 text-[13px] sm:text-sm font-semibold text-slate-900 hover:border-blue-900 hover:text-blue-900 transition-colors"
-            data-testid="nav-resume"
-          >
-            Resume
-          </a>
-        </div>
+        <a
+          href={RESUME_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center min-h-[44px] px-4 rounded-[10px] border border-[#52617f] text-[15px] font-bold text-[var(--on-ink)] hover:bg-[var(--on-ink)] hover:text-[var(--ink)] hover:border-[var(--on-ink)] transition-colors"
+          data-testid="nav-resume"
+        >
+          Resume
+        </a>
       </div>
-    </nav>
+    </header>
   );
 }
 
+/** Phone navigation: four tabs in thumb reach. Hidden from sm up, where the header nav takes over. */
+export function MobileTabBar() {
+  const active = useActivePath();
+  const tab =
+    "flex flex-1 flex-col items-center justify-center gap-0.5 min-h-[58px] text-[13px] font-bold leading-none transition-colors";
+
+  return (
+    <nav
+      aria-label="Primary"
+      className="band-ink fixed inset-x-0 bottom-0 z-50 flex border-t border-[var(--ink-line)] pb-[env(safe-area-inset-bottom)] sm:hidden"
+    >
+      {navItems.map(({ path, label, icon: Icon }) => (
+        <Link
+          key={path}
+          href={path}
+          aria-current={active === path ? "page" : undefined}
+          className={`${tab} ${active === path ? "text-[var(--blue-light)]" : "text-[var(--on-ink-2)]"}`}
+        >
+          <Icon className="h-5 w-5" aria-hidden="true" />
+          {label}
+        </Link>
+      ))}
+      <a href="/#contact" className={`${tab} text-[var(--on-ink-2)]`}>
+        <Mail className="h-5 w-5" aria-hidden="true" />
+        Contact
+      </a>
+    </nav>
+  );
+}

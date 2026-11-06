@@ -1,7 +1,7 @@
 import { Switch, Route, Redirect, useLocation } from "wouter";
-import { lazy, Suspense, useEffect } from "react";
+import { lazy, Suspense, useEffect, useRef } from "react";
 import { motion, MotionConfig } from "framer-motion";
-import { SiteNav } from "@/components/navigation";
+import { SiteNav, MobileTabBar } from "@/components/navigation";
 import { EXPO } from "@/lib/motion";
 import Home from "@/pages/home";
 
@@ -12,12 +12,16 @@ const NotFound = lazy(() => import("@/pages/not-found"));
 
 function ScrollToTop() {
   const [location] = useLocation();
+  const firstRender = useRef(true);
   useEffect(() => {
+    const isFirstRender = firstRender.current;
+    firstRender.current = false;
     const id = decodeURIComponent(window.location.hash.slice(1));
-    const main = document.getElementById("main");
     if (!id) {
+      // A fresh page load leaves focus alone, so the first Tab reaches the skip link.
+      if (isFirstRender) return;
       window.scrollTo(0, 0);
-      main?.focus({ preventScroll: true });
+      document.getElementById("main")?.focus({ preventScroll: true });
       return;
     }
     // Lazy pages mount after navigation, so retry briefly until the target exists.
@@ -27,7 +31,9 @@ function ScrollToTop() {
       if (el || ++tries > 20) {
         window.clearInterval(timer);
         el?.scrollIntoView();
-        main?.focus({ preventScroll: true });
+        // Focus follows the scroll, so the next Tab continues from the target.
+        el?.setAttribute("tabindex", "-1");
+        el?.focus({ preventScroll: true });
       }
     }, 50);
     return () => window.clearInterval(timer);
@@ -37,15 +43,16 @@ function ScrollToTop() {
 
 function Router() {
   const [location] = useLocation();
+  // The prerendered page shows at once. Only moves between pages fade in.
+  const firstPage = useRef(location);
 
   return (
     <motion.div
       key={location}
-      initial={{ opacity: 0 }}
+      initial={location === firstPage.current ? false : { opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.2, ease: EXPO }}
     >
-      <ScrollToTop />
       <Suspense fallback={null}>
       <Switch location={location}>
         <Route path="/" component={Home} />
@@ -71,10 +78,12 @@ function App() {
       >
         Skip to content
       </a>
+      <ScrollToTop />
       <SiteNav />
       <main id="main" tabIndex={-1} className="flex-1 min-w-0 outline-none">
         <Router />
       </main>
+      <MobileTabBar />
     </MotionConfig>
   );
 }

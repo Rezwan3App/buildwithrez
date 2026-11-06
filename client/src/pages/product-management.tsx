@@ -1,8 +1,8 @@
 import { Link } from "wouter";
-import { Reveal } from "@/components/reveal";
 import { usePageTitle } from "@/hooks/use-page-title";
 import { Footer } from "@/components/footer";
-import { ExternalLink, FileText, X, Youtube, BatteryCharging } from "lucide-react";
+import { PageClose } from "@/components/page-close";
+import { ArrowRight, ExternalLink, FileText, X, Youtube, BatteryCharging } from "lucide-react";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { EXPO } from "@/lib/motion";
@@ -17,6 +17,7 @@ const FILTERS: { id: "all" | Status; label: string }[] = [
   { id: "progress", label: "In progress" },
   { id: "prd", label: "PRD" },
 ];
+const PROJECT_STATUSES: Status[] = ["shipped", "progress", "prd"];
 
 export function ImageModal({ src, alt, label, onClose }: { src: string; alt: string; label: string; onClose: () => void }) {
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -44,13 +45,14 @@ export function ImageModal({ src, alt, label, onClose }: { src: string; alt: str
   );
 }
 
-export function ProjectsTabs({ active }: { active: "product" | "mba" }) {
+/** Sits on ink or on paper: the inactive tab inherits its colour from the band around it. */
+export function ProjectsTabs({ active, className = "mb-10" }: { active: "product" | "mba"; className?: string }) {
   const tabs = [
     { id: "product", href: "/projects", label: "Projects", sub: "Products I built and a PRD I wrote" },
     { id: "mba", href: "/projects/mba", label: "MBA projects", sub: "Team class projects I led at Baruch" },
   ];
   return (
-    <nav aria-label="Project types" className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+    <nav aria-label="Project types" className={`grid grid-cols-1 gap-3 sm:grid-cols-2 ${className}`}>
       {tabs.map((t) => {
         const on = active === t.id;
         return (
@@ -58,18 +60,21 @@ export function ProjectsTabs({ active }: { active: "product" | "mba" }) {
             key={t.id}
             href={t.href}
             aria-current={on ? "page" : undefined}
-            className={`group flex items-center justify-between gap-4 rounded-2xl border-2 px-6 py-5 transition-colors duration-200 ${
-              on ? "border-[#1e3a8a] bg-blue-50" : "border-slate-200 bg-white hover:border-blue-300"
+            className={`group flex min-h-[44px] items-center justify-between gap-4 rounded-[10px] border px-5 py-4 transition-colors duration-200 ${
+              on ? "border-blue-900 bg-white text-slate-700" : "border-slate-400/50 hover:border-[var(--blue-light)]"
             }`}
           >
-            <span>
-              <span className={`block text-xl font-semibold ${on ? "text-blue-900" : "text-slate-900"}`}>{t.label}</span>
-              <span className="block text-sm text-slate-600">{t.sub}</span>
+            <span className="min-w-0">
+              <span className={`block text-lg font-bold leading-snug ${on ? "text-blue-900" : ""}`}>{t.label}</span>
+              <span className="mt-0.5 block text-[15px] leading-snug">{t.sub}</span>
             </span>
             {on ? (
-              <span className="shrink-0 text-xs font-semibold uppercase tracking-widest text-blue-900">Viewing</span>
+              <span className="shrink-0 text-[15px] font-semibold text-blue-900">Viewing</span>
             ) : (
-              <span aria-hidden="true" className="shrink-0 text-xl text-slate-400 transition-transform duration-200 group-hover:translate-x-1 group-hover:text-blue-900">→</span>
+              <ArrowRight
+                aria-hidden="true"
+                className="h-5 w-5 shrink-0 transition-transform duration-200 group-hover:translate-x-1 motion-reduce:transform-none"
+              />
             )}
           </Link>
         );
@@ -78,9 +83,21 @@ export function ProjectsTabs({ active }: { active: "product" | "mba" }) {
   );
 }
 
-const Dot = () => <span className="w-1.5 h-1.5 rounded-full bg-slate-300 mt-2 mr-2 shrink-0"></span>;
-const statusCls = "inline-flex items-center h-8 px-3 rounded-lg text-xs font-semibold bg-slate-100 text-slate-600 border border-slate-200";
-const cardCls = "bg-white border border-slate-200 rounded-2xl p-6 hover:border-blue-300 card-glow transition-all duration-300";
+const metaCls = "text-[15px] font-semibold text-slate-600";
+const rowCls = "border-b border-slate-300 py-7 sm:py-9";
+const rowGridCls = "grid gap-5 lg:grid-cols-2 lg:gap-12";
+const titleCls = "text-[1.1875rem] sm:text-xl font-bold";
+
+const Bullets = ({ items }: { items: string[] }) => (
+  <ul className="space-y-2 text-slate-700">
+    {items.map((b) => (
+      <li key={b} className="flex items-start gap-3">
+        <span aria-hidden="true" className="mt-[0.6rem] h-1.5 w-1.5 shrink-0 rounded-full bg-blue-900" />
+        <span className="min-w-0">{b}</span>
+      </li>
+    ))}
+  </ul>
+);
 
 export default function ProductManagement() {
   usePageTitle("Projects");
@@ -105,171 +122,162 @@ export default function ProductManagement() {
   );
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const closeModal = useCallback(() => setIsImageModalOpen(false), []);
+  const count = PROJECT_STATUSES.filter(show).length;
+  const activeLabel = FILTERS.find((f) => f.id === filter)?.label;
 
   return (
     <div className="min-h-screen">
+      <header className="band-ink blueprint">
+        <div className="wrap py-8 sm:py-14">
+          <h1>Projects</h1>
+          <p className="mt-3 text-lg">Products I built on my own, plus a concept PRD.</p>
+          <ProjectsTabs active="product" className="mt-6 sm:mt-8" />
+        </div>
+      </header>
 
-      <section className="pt-24 sm:pt-28 pb-14 md:pb-20 relative overflow-hidden">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-          <Reveal>
-            <div className="mb-10">
-              <h1 className="text-3xl sm:text-5xl font-semibold text-slate-900 mb-4">
-                Projects
-              </h1>
-              <p className="text-lg text-slate-600 max-w-3xl">
-                Products I built on my own, plus a concept PRD.
-              </p>
-            </div>
-          </Reveal>
+      <div className="wrap pt-8 pb-8 sm:pt-10">
+        <div role="group" aria-label="Filter projects" className="flex flex-wrap gap-2">
+          {FILTERS.map((f) => (
+            <button
+              key={f.id}
+              type="button"
+              aria-pressed={filter === f.id}
+              onClick={() => setFilter(f.id)}
+              className={`inline-flex min-h-[44px] flex-1 items-center justify-center whitespace-nowrap rounded-[10px] border px-3 text-[15px] font-semibold sm:flex-none sm:px-4 transition-colors duration-200 ${
+                filter === f.id
+                  ? "border-blue-900 bg-blue-900 text-white"
+                  : "border-slate-300 text-slate-700 hover:border-blue-900 hover:text-blue-900"
+              }`}
+            >
+              {f.label}
+            </button>
+          ))}
+        </div>
+        <span className="sr-only" aria-live="polite">
+          {activeLabel}: {count} {count === 1 ? "project" : "projects"}
+        </span>
+      </div>
 
-          <ProjectsTabs active="product" />
-
-          <div role="group" aria-label="Filter projects" className="flex flex-wrap gap-2 mb-10">
-            {FILTERS.map((f) => (
-              <button
-                key={f.id}
-                type="button"
-                aria-pressed={filter === f.id}
-                onClick={() => setFilter(f.id)}
-                className={`inline-flex items-center h-8 px-3.5 rounded-full border text-sm font-semibold transition-colors duration-200 ${
-                  filter === f.id
-                    ? "bg-blue-800 border-blue-800 text-white"
-                    : "bg-white border-slate-200 text-slate-600 hover:border-blue-300"
-                }`}
-              >
-                {f.label}
-              </button>
-            ))}
-          </div>
-
-          {(show("shipped") || show("progress")) && (
-          <div className="mb-10">
-            <h2 className="text-2xl font-semibold text-slate-900 mb-6">Personal projects</h2>
-            <div className="space-y-4">
-              {item("shipped", "snag", <Reveal>
-              <div id="snag" className={`${cardCls} scroll-mt-24`}>
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-white border border-slate-200 rounded-xl flex items-center justify-center shrink-0">
-                      <Youtube aria-hidden="true" className="h-6 w-6 text-blue-800" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-slate-900">Snag</h3>
-                      <p className="text-blue-800 font-medium">Texts you the promo codes in YouTube sponsor reads</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <span className={statusCls}>Shipped</span>
-                    <span className={statusCls}>2026</span>
-                    <a
-                      href="https://github.com/Rezwan3App/snag"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-lg text-sm font-semibold transition-all"
-                    >
-                      <SiGithub aria-hidden="true" className="mr-2 h-4 w-4" />
-                      GitHub
-                    </a>
-                  </div>
-                </div>
-
-                <p className="text-slate-600 mb-3">
-                  Watches the channels you follow and texts you each new code, sponsor link, and expiry.
-                </p>
-
-                <ul className="text-slate-600 text-sm space-y-1">
-                  {[
-                    "Add a YouTuber's channel to your watchlist.",
-                    "Scans every new upload's description for deals.",
-                    "Sends an SMS when a code or expiry turns up.",
-                  ].map((b) => (
-                    <li key={b} className="flex items-start"><Dot /><span>{b}</span></li>
-                  ))}
-                </ul>
-
-                <div className="mt-5 border-l-2 border-blue-800 pl-5">
-                  <p className="text-xs font-semibold tracking-widest uppercase text-blue-800 mb-2">Product decisions</p>
-                  <ul className="text-sm text-slate-600 space-y-1">
-                    <li><span className="text-slate-900 font-medium">One loop:</span> watch, detect, text.</li>
-                    <li><span className="text-slate-900 font-medium">No accounts:</span> just JSON files and a background job.</li>
-                  </ul>
-                </div>
-
-                <p className="text-sm text-slate-600 mt-5">Bun · Hono · YouTube RSS · Twilio SMS · JSON storage</p>
-              </div>
-              </Reveal>)}
-
-              {item("progress", "wattfinder", <Reveal>
-              <div className={cardCls}>
-                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-white border border-slate-200 rounded-xl flex items-center justify-center shrink-0">
-                      <BatteryCharging aria-hidden="true" className="h-6 w-6 text-blue-800" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-slate-900">WattFinder</h3>
-                      <p className="text-blue-800 font-medium">Real EV charge times, not sticker kW</p>
-                    </div>
-                  </div>
-                  <span className={`${statusCls} self-start`}>In progress</span>
-                </div>
-
-                <p className="text-slate-600 mb-3">
-                  Predicts charge time from a battery's real charging curve, not the charger's peak kW.
-                </p>
-
-                <ul className="text-slate-600 text-sm space-y-1">
-                  <li className="flex items-start"><Dot /><span>Models charging behavior across 3 EV platforms.</span></li>
-                </ul>
-
-                <p className="text-sm text-slate-600 mt-5">Next.js · TypeScript · Postgres</p>
-              </div>
-              </Reveal>)}
-            </div>
-          </div>
-          )}
-
-          {show("prd") && (
-          <div>
-            <h2 className="text-2xl font-semibold text-slate-900 mb-6">Product requirements doc</h2>
-            <div className="space-y-6">
-              {item("prd", "alltrails", <Reveal>
-              <div className={cardCls}>
-                <div className="flex flex-col lg:flex-row gap-6">
-                  <div className="flex-1">
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className="w-14 h-14 rounded-xl overflow-hidden shrink-0">
-                        <img decoding="async" src={alltrailsIcon} alt="AllTrails logo" width={56} height={56} className="w-full h-full object-cover" />
+      {(show("shipped") || show("progress")) && (
+        <section className="section !pt-0">
+          <div className="wrap">
+            <h2 className="mb-6 sm:mb-8">Personal projects</h2>
+            <div className="border-t-2 border-ink">
+              {item("shipped", "snag",
+                <article id="snag" className={rowCls}>
+                  <div className={rowGridCls}>
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-2.5">
+                        <Youtube aria-hidden="true" className="h-6 w-6 shrink-0 text-blue-900" />
+                        <h3 className={titleCls}>Snag</h3>
                       </div>
-                      <div>
-                        <h3 className="text-xl font-semibold text-slate-900 mb-1">
-                          AllTrails Journeys
-                        </h3>
-                        <p className="text-blue-800 font-medium">
-                          Plan a multi-hike day in one app
-                        </p>
+                      <p className="mt-1.5 font-semibold text-blue-900">Texts you the promo codes in YouTube sponsor reads</p>
+                      <p className={`mt-2 ${metaCls}`}>Shipped &middot; 2026</p>
+                      <p className="mt-4 text-slate-700">
+                        Watches the channels you follow and texts you each new code, sponsor link, and expiry.
+                      </p>
+                      <div className="mt-5 flex flex-wrap gap-3">
+                        <a
+                          href="https://snag-2232.onrender.com/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn-line flex-1 whitespace-nowrap sm:flex-none"
+                        >
+                          Try Snag
+                          <ExternalLink aria-hidden="true" className="h-4 w-4" />
+                        </a>
+                        <a
+                          href="https://github.com/Rezwan3App/snag"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn-line flex-1 whitespace-nowrap sm:flex-none"
+                        >
+                          <SiGithub aria-hidden="true" className="h-4 w-4" />
+                          GitHub
+                        </a>
                       </div>
                     </div>
 
-                    <a
-                      href="/attached_assets/AllTrails_Journeys_Curated_Hiking_Itineraries_1768253125440.pdf"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center px-5 py-2.5 btn-primary text-white rounded-lg text-sm font-semibold border-0"
-                      data-testid="button-view-alltrails-prd"
-                    >
-                      <FileText aria-hidden="true" className="mr-2 h-4 w-4" />
-                      View PRD (PDF)
-                      <ExternalLink aria-hidden="true" className="ml-2 h-3.5 w-3.5" />
-                    </a>
+                    <div className="min-w-0">
+                      <Bullets
+                        items={[
+                          "Add a YouTuber's channel to your watchlist.",
+                          "Scans every new upload's description for deals.",
+                          "Sends an SMS when a code or expiry turns up.",
+                        ]}
+                      />
+                      <h4 className="mt-6 font-bold">Product decisions</h4>
+                      <ul className="mt-2 space-y-1 text-slate-700">
+                        <li><span className="font-semibold text-ink">One loop:</span> watch, detect, text.</li>
+                        <li><span className="font-semibold text-ink">No accounts:</span> just JSON files and a background job.</li>
+                      </ul>
+                      <p className={`mt-5 ${metaCls}`}>Bun · Hono · YouTube RSS · Twilio SMS · JSON storage</p>
+                    </div>
                   </div>
+                </article>
+              )}
 
-                  <div className="lg:w-72 shrink-0">
+              {item("progress", "wattfinder",
+                <article className={rowCls}>
+                  <div className={rowGridCls}>
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-2.5">
+                        <BatteryCharging aria-hidden="true" className="h-6 w-6 shrink-0 text-blue-900" />
+                        <h3 className={titleCls}>WattFinder</h3>
+                      </div>
+                      <p className="mt-1.5 font-semibold text-blue-900">Real EV charge times, not sticker kW</p>
+                      <p className={`mt-2 ${metaCls}`}>In progress</p>
+                      <p className="mt-4 text-slate-700">
+                        Predicts charge time from a battery's real charging curve, not the charger's peak kW.
+                      </p>
+                    </div>
+
+                    <div className="min-w-0">
+                      <Bullets items={["Models charging behavior across 3 EV platforms."]} />
+                      <p className={`mt-5 ${metaCls}`}>Next.js · TypeScript · Postgres</p>
+                    </div>
+                  </div>
+                </article>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {show("prd") && (
+        <section className="section bg-[var(--paper-deep)]">
+          <div className="wrap">
+            <h2 className="mb-6 sm:mb-8">Product requirements doc</h2>
+            {item("prd", "alltrails",
+              <article className="grid gap-y-7 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-x-12">
+                <div className="min-w-0 lg:col-start-1 lg:row-start-1">
+                  <div className="flex items-start gap-4">
+                    <img decoding="async" src={alltrailsIcon} alt="AllTrails logo" width={56} height={56} className="h-14 w-14 shrink-0 rounded-xl object-cover" />
+                    <div className="min-w-0">
+                      <h3 className={titleCls}>AllTrails Journeys</h3>
+                      <p className="mt-1 font-semibold text-blue-900">Plan a multi-hike day in one app</p>
+                    </div>
+                  </div>
+                  <a
+                    href="/attached_assets/AllTrails_Journeys_Curated_Hiking_Itineraries_1768253125440.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-line mt-5 w-full sm:w-auto"
+                    data-testid="button-view-alltrails-prd"
+                  >
+                    <FileText aria-hidden="true" className="h-4 w-4" />
+                    View PRD (PDF)
+                    <ExternalLink aria-hidden="true" className="h-4 w-4" />
+                  </a>
+                </div>
+
+                <div className="min-w-0 w-full max-w-sm lg:sticky lg:top-24 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-start">
+                  <div className="ticks">
                     <button
                       type="button"
                       onClick={() => setIsImageModalOpen(true)}
                       aria-label="Enlarge AllTrails Journeys wireframe"
-                      className="rounded-xl overflow-hidden border border-slate-200 hover:border-blue-400 transition-colors cursor-zoom-in w-full"
+                      className="block w-full cursor-zoom-in overflow-hidden rounded-[6px]"
                       data-testid="button-enlarge-wireframe"
                     >
                       <img
@@ -278,28 +286,26 @@ export default function ProductManagement() {
                         alt="AllTrails Journeys Figma wireframe"
                         width={739}
                         height={758}
-                        className="w-full h-auto"
+                        className="h-auto w-full"
                       />
                     </button>
-                    <p className="text-[13px] text-slate-500 mt-2 text-center">Click to enlarge</p>
                   </div>
                 </div>
-                <div className="mt-8 pt-6 border-t border-slate-100">
+
+                <div className="min-w-0 lg:col-start-1 lg:row-start-2">
                   <AllTrailsPRD />
                 </div>
-              </div>
-              </Reveal>)}
-            </div>
+              </article>
+            )}
           </div>
-          )}
-
-        </div>
-      </section>
+        </section>
+      )}
 
       {isImageModalOpen && (
         <ImageModal src="/attached_assets/image_1768253142355.webp" alt="AllTrails Journeys Figma wireframe, full size" label="AllTrails Journeys wireframe" onClose={closeModal} />
       )}
 
+      <PageClose />
       <Footer />
     </div>
   );

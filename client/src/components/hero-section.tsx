@@ -1,89 +1,64 @@
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
 import { Link } from "wouter";
-import { motion, useReducedMotion } from "framer-motion";
-import { EXPO } from "@/lib/motion";
 import { HeroHeadline } from "@/components/hero-headline";
 import HeroMotif from "@/components/hero-motif";
+import { EMAIL } from "@/lib/site";
 
 export function HeroSection() {
-  const prefersReducedMotion = useReducedMotion();
-  const entrance = (delay: number) =>
-    prefersReducedMotion
-      ? {}
-      : {
-          initial: { opacity: 0, y: 16 },
-          animate: { opacity: 1, y: 0 },
-          transition: { duration: 0.5, delay, ease: EXPO },
-        };
-
   return (
-    <section id="home" className="relative hero-grid">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 pt-20 sm:pt-36 pb-12 sm:pb-20 w-full">
-        <div className="grid lg:grid-cols-[1.4fr_1fr] gap-6 sm:gap-10 lg:gap-16 items-center">
-          {/* Left Column - Text Content */}
-          <motion.div className="flex flex-col gap-6 sm:gap-8" {...entrance(0)}>
-            <div className="space-y-3">
-              <p className="eyebrow">Product &middot; New York</p>
-              <p className="inline-flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-slate-600">
-                <span className="inline-flex items-center gap-2 whitespace-nowrap">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-                  Open to APM/PM roles
-                </span>
-              </p>
+    <section id="home" className="band-ink blueprint relative overflow-hidden">
+      <HeroMotif
+        size={300}
+        className="absolute -right-28 -top-16 opacity-40 sm:-right-16 sm:-top-14 sm:w-[420px] sm:h-[420px] lg:right-auto lg:left-[42%] lg:top-auto lg:-bottom-44 lg:w-[460px] lg:h-[460px] lg:opacity-35"
+      />
+      <div className="wrap relative pt-7 pb-10 sm:pt-20 sm:pb-20">
+        <div className="grid gap-6 lg:grid-cols-[1.35fr_1fr] lg:gap-16 lg:items-center">
+          <div className="lg:order-last lg:justify-self-end">
+            <div className="ticks w-[88px] h-[88px] sm:w-72 sm:h-[360px] lg:w-80 lg:h-[420px]">
+              <picture className="contents">
+                <source
+                  type="image/webp"
+                  srcSet="/attached_assets/profile-headshot-640.webp 640w"
+                  sizes="(min-width: 1024px) 320px, (min-width: 640px) 288px, 88px"
+                />
+                <img
+                  src="/attached_assets/profile-headshot.png"
+                  alt="Rezwan Islam"
+                  width={320}
+                  height={420}
+                  className="w-full h-full object-cover object-top rounded-[6px]"
+                  {...{ fetchpriority: "high" }}
+                />
+              </picture>
             </div>
+          </div>
 
-            <HeroMotif size={72} className="mb-2" />
+          <div className="flex flex-col gap-5 sm:gap-7">
             <HeroHeadline />
 
-            <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-[48ch]">
+            <p className="text-[1.0625rem] sm:text-lg leading-relaxed max-w-[46ch]">
               I'm a product management intern at NBCUniversal, working on internal commerce tooling for
               Peacock. Baruch MBA, mechanical engineer by training.
             </p>
 
-            <div className="flex flex-wrap items-center gap-x-6 gap-y-2 sm:pt-2">
-              <Button
-                size="lg"
-                asChild
-                className="btn-primary text-white px-6 py-3 font-semibold rounded-lg border-0"
-              >
-                <Link href="/experience">
-                  See my experience
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              <a
-                href="/attached_assets/Rezwan_Islam_Zicklin_Latest.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center min-h-[44px] font-semibold text-blue-900 underline underline-offset-4 decoration-slate-300 hover:decoration-blue-900 transition-colors"
-              >
-                Resume
+            <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-7">
+              <a href={`mailto:${EMAIL}`} className="btn-cta w-full sm:w-auto">
+                <Mail className="h-5 w-5" aria-hidden="true" />
+                Email me
               </a>
+              <Link
+                href="/experience"
+                className="group inline-flex items-center gap-2 min-h-[44px] font-bold text-[var(--on-ink)] underline underline-offset-4 decoration-[#52617f] hover:decoration-[var(--blue-light)] transition-colors"
+              >
+                See my experience
+                <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1 motion-reduce:transform-none" aria-hidden="true" />
+              </Link>
             </div>
-          </motion.div>
 
-          {/* Right Column - Image */}
-          <div className="order-first lg:order-none">
-          <motion.div className="flex justify-start sm:justify-center lg:justify-end" {...entrance(0.1)}>
-            <div className="relative w-20 h-20 rounded-full sm:w-80 sm:h-[420px] sm:rounded-xl overflow-hidden">
-              <picture className="contents">
-              <source
-                type="image/webp"
-                srcSet="/attached_assets/profile-headshot-640.webp 640w, /attached_assets/profile-headshot-960.webp 960w"
-                sizes="(min-width: 640px) 320px, 80px"
-              />
-              <img
-                src="/attached_assets/profile-headshot.png"
-                alt="Rezwan Islam"
-                width={320}
-                height={420}
-                className="w-full h-full object-cover object-top"
-                {...{ fetchpriority: "high" }}
-              />
-              </picture>
-            </div>
-          </motion.div>
+            <p className="flex items-center gap-2.5 text-[15px] font-semibold text-[var(--on-ink-2)]">
+              <span className="h-2 w-2 rounded-full bg-[var(--blue-light)]" aria-hidden="true" />
+              Open to APM/PM roles &middot; New York
+            </p>
           </div>
         </div>
       </div>

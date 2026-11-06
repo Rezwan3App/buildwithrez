@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import { EXPO } from "@/lib/motion";
 
 type Section = { id: string; title: string; body: React.ReactNode };
@@ -124,61 +125,63 @@ const SECTIONS: Section[] = [
   },
 ];
 
-export default function AllTrailsPRD() {
-  const [open, setOpen] = useState<string>(SECTIONS[0].id);
+/** Stays in the DOM while closed, so aria-controls always resolves. `hidden` lands once the close animation ends. */
+function Panel({ section, open }: { section: Section; open: boolean }) {
   const reduce = useReducedMotion();
-  const dur = reduce ? 0 : 0.25;
+  const [closing, setClosing] = useState(false);
+  const [wasOpen, setWasOpen] = useState(open);
+  if (open !== wasOpen) {
+    setWasOpen(open);
+    setClosing(!open && !reduce);
+  }
 
   return (
-    <div style={{ fontFamily: "Sora, sans-serif" }}>
-      <p className="text-[13px] text-slate-500 mb-3">
+    <motion.div
+      id={`prd-${section.id}`}
+      role="region"
+      aria-labelledby={`prd-btn-${section.id}`}
+      hidden={!open && !closing}
+      initial={false}
+      animate={open ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }}
+      transition={{ duration: reduce ? 0 : 0.25, ease: EXPO }}
+      onAnimationComplete={() => setClosing(false)}
+      className="overflow-hidden"
+    >
+      <div className="max-w-[65ch] space-y-3 pb-5 leading-relaxed text-slate-700">{section.body}</div>
+    </motion.div>
+  );
+}
+
+export default function AllTrailsPRD() {
+  const [open, setOpen] = useState<string>(SECTIONS[0].id);
+
+  return (
+    <div>
+      <p className="mb-3 text-[15px] font-semibold text-slate-800">
         Concept PRD, written December 2025. Not shipped, and not affiliated with AllTrails.
       </p>
-      <div className="border-t border-slate-200">
+      <div className="border-t border-slate-300">
         {SECTIONS.map((s) => {
           const isOpen = open === s.id;
           return (
-            <div key={s.id} className="border-b border-slate-200">
-              <h3>
+            <div key={s.id} className="border-b border-slate-300">
+              <h4>
                 <button
                   type="button"
                   aria-expanded={isOpen}
                   aria-controls={`prd-${s.id}`}
                   id={`prd-btn-${s.id}`}
                   onClick={() => setOpen(isOpen ? "" : s.id)}
-                  className="w-full flex items-center gap-3 py-3.5 text-left"
+                  className="flex min-h-[44px] w-full items-center justify-between gap-3 py-3.5 text-left transition-colors hover:text-blue-900"
                 >
-                  <span
-                    aria-hidden
-                    className="h-4 w-0.5 shrink-0 transition-colors"
-                    style={{ background: isOpen ? "#1e3a8a" : "transparent" }}
+                  <span className="min-w-0 font-semibold tracking-normal">{s.title}</span>
+                  <ChevronDown
+                    aria-hidden="true"
+                    className={`h-5 w-5 shrink-0 text-blue-900 transition-transform duration-200 motion-reduce:transition-none ${isOpen ? "rotate-180" : ""}`}
                   />
-                  <span
-                    className="text-[15px] font-semibold text-slate-900"
-                    style={{ fontFamily: "Manrope, sans-serif" }}
-                  >
-                    {s.title}
-                  </span>
                 </button>
-              </h3>
-              <AnimatePresence initial={false}>
-                {isOpen && (
-                  <motion.div
-                    id={`prd-${s.id}`}
-                    role="region"
-                    aria-labelledby={`prd-btn-${s.id}`}
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: dur, ease: EXPO }}
-                    className="overflow-hidden"
-                  >
-                    <div className="pb-5 pl-3.5 max-w-[65ch] space-y-3 text-[15px] leading-relaxed text-slate-600">
-                      {s.body}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              </h4>
+              <Panel section={s} open={isOpen} />
             </div>
           );
         })}

@@ -1,28 +1,26 @@
 import { Link } from "wouter";
 import { usePageTitle } from "@/hooks/use-page-title";
+import { EMAIL, RESUME_URL } from "@/lib/site";
 
-const cls = "hover:text-blue-900 underline underline-offset-4";
+const line = "btn-line !px-3 sm:!px-6";
 
 export default function NotFound() {
   usePageTitle("Page not found");
   return (
-    <div className="min-h-[70vh] w-full flex items-center justify-center">
-      <div className="px-6 max-w-md">
-        <p className="eyebrow mb-3">404</p>
-        <h1 className="text-3xl font-semibold text-slate-900 mb-4">
-          That page is not here.
-        </h1>
-        <p className="text-slate-600 mb-6">
+    <header className="band-ink blueprint flex min-h-[calc(100svh-61px)] sm:min-h-[calc(100svh-69px)] flex-col justify-center pb-[calc(58px+env(safe-area-inset-bottom))] sm:pb-0">
+      <div className="wrap py-8 sm:py-14">
+        <h1>That page is not here.</h1>
+        <p className="mt-4 text-[1.0625rem] sm:text-lg leading-relaxed">
           The link may be old or mistyped. Here is where to go instead.
         </p>
-        <nav aria-label="Pages" className="flex flex-wrap gap-x-6 gap-y-2 text-slate-900 font-medium">
-          <Link href="/" className={cls}>Home</Link>
-          <Link href="/experience" className={cls}>Experience</Link>
-          <Link href="/projects" className={cls}>Projects</Link>
-          <a href="/attached_assets/Rezwan_Islam_Zicklin_Latest.pdf" target="_blank" rel="noopener noreferrer" className={cls}>Resume</a>
-          <a href="mailto:rezwan99@gmail.com" className={cls}>Email</a>
+        <nav aria-label="Pages" className="mt-8 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">
+          <Link href="/" className="btn-cta col-span-2">Home</Link>
+          <Link href="/experience" className={line}>Experience</Link>
+          <Link href="/projects" className={line}>Projects</Link>
+          <a href={RESUME_URL} target="_blank" rel="noopener noreferrer" className={line}>Resume</a>
+          <a href={`mailto:${EMAIL}`} className={line}>Email</a>
         </nav>
       </div>
-    </div>
+    </header>
   );
 }

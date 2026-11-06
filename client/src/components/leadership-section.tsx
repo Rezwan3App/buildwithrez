@@ -1,4 +1,4 @@
-import { Reveal } from "@/components/reveal";
+import { body } from "@/components/education-section";
 
 export function LeadershipSection() {
   const leadershipRoles = [
@@ -23,27 +23,20 @@ export function LeadershipSection() {
   ];
 
   return (
-    <section id="leadership" className="py-14 md:py-20 border-t border-slate-200/70">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-        <Reveal>
-          <h2 className="text-[28px] leading-tight font-semibold text-slate-900 mb-6" style={{ fontFamily: "'Manrope', sans-serif" }}>
-            Leadership and community
-          </h2>
-        </Reveal>
-
-        <div className="border-t border-slate-200">
-          {leadershipRoles.map((role, index) => (
-            <Reveal key={index} delay={index * 0.08}>
-              <div className="grid grid-cols-1 md:grid-cols-[minmax(0,2fr)_3fr] gap-x-10 gap-y-1 py-5 border-b border-slate-200">
-                <div className="min-w-0">
-                  <h3 className="text-base font-semibold text-slate-900">{role.title}</h3>
-                  <p className="text-slate-600 text-sm">{role.organization}{role.dates && ` · ${role.dates}`}</p>
-                </div>
-                <p className="text-slate-600 text-sm leading-relaxed">{role.description}</p>
+    <section id="leadership" className="py-8 sm:py-20">
+      <div className="wrap">
+        <h2 className="mb-5 sm:mb-8">Leadership and community</h2>
+        <ul className="border-t-2 border-ink">
+          {leadershipRoles.map((role) => (
+            <li key={role.title} className="grid gap-y-1 border-b border-slate-300 py-4 sm:gap-y-2 sm:py-5 lg:grid-cols-[minmax(0,2fr)_3fr] lg:gap-x-12">
+              <div className="min-w-0">
+                <h3 className="text-[1.1875rem] sm:text-xl font-bold">{role.title}</h3>
+                <p className={`mt-1 font-semibold text-slate-600 ${body}`}>{role.organization}{role.dates && ` · ${role.dates}`}</p>
               </div>
-            </Reveal>
+              <p className={`text-slate-700 ${body}`}>{role.description}</p>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

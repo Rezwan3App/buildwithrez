@@ -1,5 +1,3 @@
-import { Reveal } from "@/components/reveal";
-
 const schools = [
   {
     degree: "MBA, Business and Data Analytics focus",
@@ -17,27 +15,35 @@ const schools = [
   },
 ];
 
+/** The one logo slot on the Experience page, shared by roles and schools. */
+export const logoBox =
+  "flex h-[68px] w-[136px] shrink-0 items-center justify-center overflow-hidden rounded-[6px] border border-slate-200 bg-white p-2";
+
+/** Readable copy on this page: 16px and tighter on phones, the 17px base from sm: up. */
+export const body = "text-[16px] leading-[1.45] sm:text-base sm:leading-[1.6]";
+
 export default function EducationSection() {
   return (
-    <section id="education" className="py-10 md:py-14 scroll-mt-24">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-        <Reveal>
-          <h2 className="text-2xl font-semibold text-slate-900 mb-6">Education</h2>
-          <ul className="divide-y divide-slate-200 border-y border-slate-200">
-            {schools.map((s) => (
-              <li key={s.degree} className="flex items-center gap-4 py-4">
-                <img loading="lazy" decoding="async" width={40} height={40} src={s.logo} alt={s.alt} className="h-10 w-10 object-contain shrink-0" />
-                <div className="flex-1 min-w-0 sm:flex sm:items-baseline sm:justify-between sm:gap-4">
-                  <div>
-                    <h3 className="text-lg font-semibold text-slate-900">{s.degree}</h3>
-                    <p className="text-slate-600">{s.school}</p>
-                  </div>
-                  <p className="text-sm font-semibold text-slate-600 mt-1 sm:mt-0 shrink-0">{s.meta}</p>
-                </div>
-              </li>
-            ))}
-          </ul>
-        </Reveal>
+    <section id="education" className="py-8 sm:py-20 bg-[var(--paper-deep)]">
+      <div className="wrap">
+        <h2 className="mb-5 sm:mb-8">Education</h2>
+        <ul className="border-t-2 border-ink">
+          {schools.map((s) => (
+            <li
+              key={s.degree}
+              className="grid grid-cols-[136px_minmax(0,1fr)] items-center gap-x-3 gap-y-2 border-b border-slate-300 py-4 sm:py-5 sm:grid-cols-[10rem_minmax(0,1fr)_auto] sm:gap-x-8"
+            >
+              <div className={logoBox}>
+                <img loading="lazy" decoding="async" width={120} height={52} src={s.logo} alt={s.alt} className="h-full w-full object-contain" />
+              </div>
+              <p className="text-[15px] font-semibold leading-snug text-slate-600 sm:col-start-3 sm:row-start-1">{s.meta}</p>
+              <div className="col-span-2 min-w-0 sm:col-span-1 sm:col-start-2 sm:row-start-1">
+                <h3 className="text-[1.1875rem] sm:text-xl font-bold">{s.degree}</h3>
+                <p className={`mt-1 text-slate-700 ${body}`}>{s.school}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

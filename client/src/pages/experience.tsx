@@ -1,9 +1,8 @@
 import { Footer } from "@/components/footer";
-import { Reveal } from "@/components/reveal";
+import { PageClose } from "@/components/page-close";
 import { LeadershipSection } from "@/components/leadership-section";
-import EducationSection from "@/components/education-section";
+import EducationSection, { body, logoBox } from "@/components/education-section";
 import { usePageTitle } from "@/hooks/use-page-title";
-import { Calendar } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import odynnImage from "@assets/image_1767746624854.webp";
 import rocketImage from "@assets/image_1767746681686.webp";
@@ -16,6 +15,8 @@ import nbcuLogo from "@assets/nbcuniversal-logo.svg";
 interface Metric {
   num: string;
   cap: string;
+  /** Long caption: takes the full width on phones. */
+  wide?: boolean;
 }
 
 interface Experience {
@@ -26,8 +27,7 @@ interface Experience {
   scope: string;
   metrics: Metric[];
   tools: string[];
-  logo: string;
-  logoBg: string;
+  logo: { src: string; alt: string; className?: string; eager?: boolean };
   image?: string;
   imageCaption?: string;
   team?: string;
@@ -102,8 +102,7 @@ export default function Experience() {
       scope: "Internal commerce tooling for Peacock and NBCUniversal's global streaming platform (GSP). I work on the publishing tool teams use to build the pages that turn visitors into subscribers, with engineering and design.",
       metrics: [],
       tools: ["Jira", "Confluence", "Airtable"],
-      logo: "nbcu",
-      logoBg: "bg-slate-900"
+      logo: { src: nbcuLogo, alt: "NBCUniversal", eager: true }
     },
     {
       title: "AI Strategy and Operations Intern",
@@ -117,8 +116,7 @@ export default function Experience() {
         { num: "$0", cap: "Operating cost of the air-quality alerts" }
       ],
       tools: ["Claude Code", "Python", "PurpleAir API", "Airtable"],
-      logo: "wtc",
-      logoBg: ""
+      logo: { src: wtcLogo, alt: "Welcome to Chinatown" }
     },
     {
       title: "Product Manager Intern",
@@ -132,8 +130,7 @@ export default function Experience() {
         { num: "5", cap: "New clients supported by a rebuilt data view" }
       ],
       tools: ["Jira", "Amplitude", "SQL", "Postman", "Agile"],
-      logo: "odynn",
-      logoBg: "bg-slate-900",
+      logo: { src: odynnLogo, alt: "Odynn" },
       image: odynnImage,
       imageCaption: "Led a Tableau workshop for fellow interns"
     },
@@ -144,13 +141,13 @@ export default function Experience() {
       period: "May 2024 – Dec 2024",
       scope: "I led designers and engineers from requirements to launch on Rocket Mortgage app features.",
       metrics: [
-        { num: "500%", cap: "Growth in direct account connections" },
+        { num: "500%", cap: "Led a Plaid integration on a mortgage app used by roughly 1M people monthly; A/B tests lifted direct connections over 500%", wide: true },
         { num: "40%", cap: "Fewer banker escalations after the AI onboarding chatbot" },
         { num: "20%", cap: "More engagement from the home comparison feature, a June 2024 Tech Demo Award winner" }
       ],
       tools: ["Plaid API", "Azure DevOps", "Adobe Analytics", "Figma", "A/B testing"],
-      logo: "rocket",
-      logoBg: "bg-slate-900",
+      // The file has wide transparent margins, so scale it up to fill the box.
+      logo: { src: rocketLogo, alt: "Rocket Companies", className: "scale-[1.45]" },
       image: rocketImage,
       imageCaption: "Moderated a product roadmap panel for 200+ people",
       quote: true
@@ -167,185 +164,137 @@ export default function Experience() {
         { num: "25%", cap: "Product-line expansion across 2 new lines, from a review of 300+ Amazon SKUs and reviews" }
       ],
       tools: ["Google Analytics", "Google Trends", "Jungle Scout", "Market research"],
-      logo: "megaplants",
-      logoBg: "bg-white border border-slate-200"
+      logo: { src: megaplantsLogo, alt: "MegaPlants" }
     }
   ];
 
-  const renderLogo = (exp: Experience) => {
-    if (exp.logo === "nbcu") {
-      return (
-        <div className="h-12 flex items-center shrink-0">
-          <img loading="eager" decoding="async" src={nbcuLogo} alt="NBCUniversal" width={230} height={23} className="w-[230px] max-w-full h-auto object-contain" />
-        </div>
-      );
-    }
-    if (exp.logo === "wtc") {
-      return (
-        <div className="w-12 h-12 flex items-center justify-center shrink-0">
-          <img loading="lazy" decoding="async" src={wtcLogo} alt="Welcome to Chinatown" width={48} height={48} className="w-12 h-12 object-contain" />
-        </div>
-      );
-    }
-
-    const inner = (() => {
-      switch (exp.logo) {
-        case "rocket":
-          return (
-            <img loading="lazy" decoding="async" src={rocketLogo} alt="Rocket Companies" width={48} height={48} className="w-12 h-12 object-contain" />
-          );
-        case "odynn":
-          return (
-            <img loading="lazy" decoding="async" src={odynnLogo} alt="Odynn" className="w-12 h-12 object-contain" width={48} height={48} />
-          );
-        case "megaplants":
-          return (
-            <img loading="lazy" decoding="async" src={megaplantsLogo} alt="MegaPlants" width={48} height={32} className="w-12 h-8 object-contain" />
-          );
-        default:
-          return null;
-      }
-    })();
-
-    return (
-      <div className={`w-12 h-12 ${exp.logoBg} rounded-lg flex items-center justify-center shrink-0`}>
-        {inner}
-      </div>
-    );
-  };
-
   return (
     <div className="min-h-screen">
-
-      <section className="pt-24 sm:pt-28 pb-14 md:pb-20 relative overflow-hidden">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12">
-          <Reveal>
-            <div className="mb-8 sm:mb-12">
-              <h1 className="text-3xl sm:text-5xl font-semibold text-slate-900 mb-4">
-                Experience
-              </h1>
-              <p className="text-lg text-slate-600 max-w-2xl">
-                My product internships, newest first.
-              </p>
-            </div>
-          </Reveal>
-
-          <nav aria-label="On this page" className="flex gap-2 mb-8">
+      <header className="band-ink blueprint">
+        <div className="wrap py-8 sm:py-14">
+          <h1>Experience</h1>
+          <p className="mt-3 text-lg">My product internships, newest first.</p>
+          <nav aria-label="On this page" className="mt-3 flex flex-wrap gap-x-6">
             {[["#roles", "Roles"], ["#education", "Education"], ["#leadership", "Leadership"]].map(([href, label]) => (
               <a
                 key={href}
                 href={href}
-                className="inline-flex items-center h-8 px-3.5 rounded-full border border-slate-200 bg-white text-sm font-semibold text-slate-600 hover:border-blue-300 transition-colors duration-200"
+                className="inline-flex items-center min-h-[44px] font-semibold text-[var(--blue-light)] underline underline-offset-4 decoration-[#52617f] hover:decoration-[var(--blue-light)] transition-colors"
               >
                 {label}
               </a>
             ))}
           </nav>
+        </div>
+      </header>
 
-          <h2 id="roles" className="text-[28px] leading-tight font-semibold text-slate-900 mb-6 scroll-mt-24" style={{ fontFamily: "'Manrope', sans-serif" }}>
-            Roles
-          </h2>
-          <div className="space-y-6">
-            {experiences.map((exp, index) => (
-              <Reveal key={index} delay={index * 0.08}>
-                <div id={exp.company.toLowerCase().replace(/[^a-z0-9]+/g, "-")} className="scroll-mt-24 group p-6 sm:p-8 rounded-xl bg-white border border-slate-200 hover:border-blue-300 card-glow transition-all duration-200">
-                  <div className="flex flex-col lg:flex-row gap-6 lg:gap-10">
-                    <div className="flex-1">
-                      <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4">
-                        <div className={`flex gap-4 ${exp.logo === "nbcu" ? "flex-col items-start" : "items-start"}`}>
-                          {renderLogo(exp)}
-                          <div>
-                            <h3 className="text-xl font-semibold text-slate-900 mb-1">
-                              {exp.title}
-                            </h3>
-                            <p className="text-blue-800 font-medium">
-                              {exp.company}
-                              {exp.team && <span className="text-slate-600 font-normal"> · {exp.team}</span>}
-                            </p>
-                            <p className="text-sm text-slate-500">{exp.location}</p>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-2 text-slate-500 mt-3 sm:mt-0">
-                          <Calendar className="h-4 w-4" />
-                          <span className="text-sm">{exp.period}</span>
-                        </div>
-                      </div>
-
-                      <p className="text-slate-600 mb-4 max-w-2xl">{exp.scope}</p>
-
-                      <div className="flex flex-wrap gap-2 mb-5">
-                        {exp.tools.map((tool, idx) => (
-                          <span
-                            key={idx}
-                            className="inline-flex items-center rounded-md border border-blue-100 bg-blue-50 px-2.5 py-1 text-xs font-semibold text-blue-800"
-                          >
-                            {tool}
-                          </span>
-                        ))}
-                      </div>
-
-                      {exp.metrics.length > 0 && <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6 pt-6 border-t border-slate-100">
-                        {exp.metrics.map((m, idx) => (
-                          <div key={idx}>
-                            <div
-                              className="text-3xl sm:text-4xl font-bold text-blue-800 tracking-tight tabular-nums"
-                              style={{ fontFamily: "'Manrope', sans-serif" }}
-                            >
-                              <CountUp value={m.num} />
-                            </div>
-                            <p className="mt-1 text-sm text-slate-600 leading-snug">{m.cap}</p>
-                          </div>
-                        ))}
-                      </div>}
-
-                      {exp.quote && (
-                        <div className="pull-quote max-w-[65ch] mt-6">
-                          <p className="text-slate-600 leading-relaxed">
-                            His curiosity and comfort with ambiguity are the exact sort of intangible,
-                            table stakes qualities that will continue to make him a great asset to any team.
-                          </p>
-                          <footer className="mt-3 text-sm">
-                            <span className="text-slate-900 font-medium">Barry Biggs</span>
-                            <span className="text-slate-600">, my mentor at Rocket Companies</span>
-                            <span className="text-slate-500"> · </span>
-                            <a
-                              href="/attached_assets/Rezwan_Islam_Recommendation_Letter.pdf"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center min-h-[44px] text-blue-800 font-medium hover:text-blue-900 transition-colors"
-                            >
-                              Read the full letter
-                            </a>
-                          </footer>
-                        </div>
-                      )}
-                    </div>
-
-                    {exp.image && (
-                      <div className="lg:w-60 shrink-0">
-                        <div className="rounded-lg overflow-hidden border border-slate-200">
-                          <img loading="lazy" decoding="async"
-                            src={exp.image}
-                            alt={exp.imageCaption ?? `${exp.company} experience`} width={240} height={180}
-                            className="w-full h-auto object-cover"
-                          />
-                        </div>
-                        {exp.imageCaption && (
-                          <p className="text-slate-500 text-xs mt-2 text-center">{exp.imageCaption}</p>
-                        )}
-                      </div>
-                    )}
+      <section className="py-8 sm:py-20">
+        <div className="wrap">
+          <h2 id="roles" className="mb-5 sm:mb-8">Roles</h2>
+          <ol className="border-t-2 border-ink">
+            {experiences.map((exp) => (
+              <li
+                key={exp.company}
+                id={exp.company.toLowerCase().replace(/[^a-z0-9]+/g, "-")}
+                className="grid gap-y-3 border-b border-slate-300 py-4 sm:gap-y-4 sm:py-8 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-x-8 lg:grid-cols-[10rem_minmax(0,1fr)_15rem] lg:gap-x-12"
+              >
+                <div className="flex items-center gap-3 sm:flex-col sm:items-start">
+                  <div className={logoBox}>
+                    <img
+                      loading={exp.logo.eager ? "eager" : "lazy"}
+                      decoding="async"
+                      src={exp.logo.src}
+                      alt={exp.logo.alt}
+                      width={120}
+                      height={52}
+                      className={`h-full w-full object-contain ${exp.logo.className ?? ""}`}
+                    />
                   </div>
+                  <p className="text-[15px] font-semibold leading-snug text-slate-600">
+                    <span className="block">{exp.period}</span>
+                    <span className="block">{exp.location}</span>
+                  </p>
                 </div>
-              </Reveal>
+
+                <div className={`min-w-0 ${exp.image ? "" : "lg:col-span-2"}`}>
+                  <h3 className="text-[1.1875rem] sm:text-xl font-bold">{exp.title}</h3>
+                  <p className={`mt-1 font-semibold text-[var(--ink)] ${body}`}>
+                    {exp.company}
+                    {exp.team && <span className="font-medium text-slate-600"> · {exp.team}</span>}
+                  </p>
+
+                  <p className={`mt-2 text-slate-700 sm:mt-3 ${body}`}>{exp.scope}</p>
+
+                  {exp.metrics.length > 0 && (
+                    <div className={`mt-4 grid grid-cols-2 gap-x-5 gap-y-4 border-t border-slate-300 pt-4 sm:mt-5 sm:gap-x-8 sm:gap-y-5 sm:pt-5 ${exp.metrics.some((x) => x.wide) ? "" : "sm:grid-cols-3"}`}>
+                      {exp.metrics.map((m) => (
+                        <div
+                          key={m.cap}
+                          className={`min-w-0 ${
+                            m.wide ? "col-span-2" : exp.metrics.some((x) => x.wide) ? "" : "last:col-span-2 sm:last:col-span-1"
+                          }`}
+                        >
+                          <div className="text-[1.75rem] sm:text-4xl font-extrabold leading-none tracking-tight tabular-nums text-blue-900">
+                            <CountUp value={m.num} />
+                          </div>
+                          <p className="mt-1 text-[16px] leading-snug text-slate-700 sm:mt-2 sm:text-base">{m.cap}</p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {exp.quote && (
+                    <div className="pull-quote !pl-7 mt-5 sm:mt-7">
+                      <p className={`text-slate-700 ${body}`}>
+                        His curiosity and comfort with ambiguity are the exact sort of intangible,
+                        table stakes qualities that will continue to make him a great asset to any team.
+                      </p>
+                      <footer className={`mt-2 ${body}`}>
+                        <span className="font-semibold text-[var(--ink)]">Barry Biggs</span>
+                        <span className="text-slate-600">, my mentor at Rocket Companies</span>
+                        <a
+                          href="/attached_assets/Rezwan_Islam_Recommendation_Letter.pdf"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center min-h-[44px] w-fit font-semibold text-blue-900 underline underline-offset-4 decoration-slate-400 hover:decoration-blue-900 transition-colors"
+                        >
+                          Read the full letter
+                        </a>
+                      </footer>
+                    </div>
+                  )}
+
+                  <p className="mt-3 text-[15px] font-semibold leading-snug text-slate-600 sm:mt-4">{exp.tools.join(" · ")}</p>
+                </div>
+
+                {exp.image && (
+                  <figure className="mt-1 grid grid-cols-2 items-center gap-x-4 sm:col-start-2 sm:mt-2 sm:block lg:col-start-3 lg:row-start-1 lg:mt-1">
+                    <div className="ticks">
+                      <img
+                        loading="lazy"
+                        decoding="async"
+                        src={exp.image}
+                        alt={exp.imageCaption ?? `${exp.company} experience`}
+                        width={800}
+                        height={600}
+                        className="aspect-[4/3] w-full rounded-[6px] object-cover sm:aspect-auto sm:h-auto"
+                      />
+                    </div>
+                    {exp.imageCaption && (
+                      <figcaption className="text-[15px] sm:mt-4 leading-snug text-slate-600">{exp.imageCaption}</figcaption>
+                    )}
+                  </figure>
+                )}
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 
       <EducationSection />
       <LeadershipSection />
 
+      <PageClose />
       <Footer />
     </div>
   );
