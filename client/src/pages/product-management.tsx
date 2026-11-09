@@ -2,11 +2,10 @@ import { Link } from "wouter";
 import { usePageTitle } from "@/hooks/use-page-title";
 import { Footer } from "@/components/footer";
 import { PageClose } from "@/components/page-close";
-import { ArrowRight, ExternalLink, FileText, X, Youtube, BatteryCharging } from "lucide-react";
+import { ArrowRight, ExternalLink, FileText, X, Youtube, BatteryCharging, Github } from "lucide-react";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { EXPO } from "@/lib/motion";
-import { SiGithub } from "react-icons/si";
 import alltrailsIcon from "@assets/image_1768252840170.png";
 import AllTrailsPRD from "@/components/alltrails-prd";
 
@@ -192,7 +191,7 @@ export default function ProductManagement() {
                           rel="noopener noreferrer"
                           className="btn-line flex-1 whitespace-nowrap sm:flex-none"
                         >
-                          <SiGithub aria-hidden="true" className="h-4 w-4" />
+                          <Github aria-hidden="true" className="h-4 w-4" />
                           GitHub
                         </a>
                       </div>
