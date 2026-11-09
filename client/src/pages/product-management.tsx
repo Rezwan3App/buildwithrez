@@ -2,21 +2,20 @@ import { Link } from "wouter";
 import { usePageTitle } from "@/hooks/use-page-title";
 import { Footer } from "@/components/footer";
 import { PageClose } from "@/components/page-close";
-import { ArrowRight, ExternalLink, FileText, X, Youtube, BatteryCharging, Github } from "lucide-react";
+import { ArrowRight, ExternalLink, FileText, X, Youtube, Github } from "lucide-react";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { EXPO } from "@/lib/motion";
 import alltrailsIcon from "@assets/image_1768252840170.png";
 import AllTrailsPRD from "@/components/alltrails-prd";
 
-type Status = "shipped" | "progress" | "prd";
+type Status = "shipped" | "prd";
 const FILTERS: { id: "all" | Status; label: string }[] = [
   { id: "all", label: "All" },
   { id: "shipped", label: "Shipped" },
-  { id: "progress", label: "In progress" },
   { id: "prd", label: "PRD" },
 ];
-const PROJECT_STATUSES: Status[] = ["shipped", "progress", "prd"];
+const PROJECT_STATUSES: Status[] = ["shipped", "prd"];
 
 export function ImageModal({ src, alt, label, onClose }: { src: string; alt: string; label: string; onClose: () => void }) {
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -82,6 +81,14 @@ export function ProjectsTabs({ active, className = "mb-10" }: { active: "product
   );
 }
 
+type Shot = { src: string; alt: string; label: string; w?: number; h?: number };
+const WIREFRAME: Shot = { src: "/attached_assets/image_1768253142355.webp", alt: "AllTrails Journeys Figma wireframe, full size", label: "AllTrails Journeys wireframe" };
+const SNAG_SHOTS: Shot[] = [
+  { src: "/attached_assets/snag/screenshot.webp", w: 1440, h: 860, label: "Search a YouTuber", alt: "Snag homepage: search a YouTuber, with a promo code card it caught" },
+  { src: "/attached_assets/snag/how-it-works.webp", w: 1116, h: 567, label: "How a deal gets caught", alt: "A video description with the deal phrases underlined, next to the sponsor, code and end date Snag pulls out" },
+  { src: "/attached_assets/snag/alerts-and-history.webp", w: 1116, h: 685, label: "Alerts and deal history", alt: "Watched channels, text alerts, and a history of saved deals" },
+];
+
 const metaCls = "text-[15px] font-semibold text-slate-600";
 const rowCls = "border-b border-slate-300 py-7 sm:py-9";
 const rowGridCls = "grid gap-5 lg:grid-cols-2 lg:gap-12";
@@ -119,8 +126,8 @@ export default function ProductManagement() {
       )}
     </AnimatePresence>
   );
-  const [isImageModalOpen, setIsImageModalOpen] = useState(false);
-  const closeModal = useCallback(() => setIsImageModalOpen(false), []);
+  const [modal, setModal] = useState<Shot | null>(null);
+  const closeModal = useCallback(() => setModal(null), []);
   const count = PROJECT_STATUSES.filter(show).length;
   const activeLabel = FILTERS.find((f) => f.id === filter)?.label;
 
@@ -157,7 +164,7 @@ export default function ProductManagement() {
         </span>
       </div>
 
-      {(show("shipped") || show("progress")) && (
+      {show("shipped") && (
         <section className="section !pt-0">
           <div className="wrap">
             <h2 className="mb-6 sm:mb-8">Personal projects</h2>
@@ -208,34 +215,26 @@ export default function ProductManagement() {
                       <h4 className="mt-6 font-bold">Product decisions</h4>
                       <ul className="mt-2 space-y-1 text-slate-700">
                         <li><span className="font-semibold text-ink">One loop:</span> watch, detect, text.</li>
-                        <li><span className="font-semibold text-ink">No accounts:</span> just JSON files and a background job.</li>
+                        <li><span className="font-semibold text-ink">No accounts:</span> one SQLite file and a background job.</li>
                       </ul>
-                      <p className={`mt-5 ${metaCls}`}>Bun · Hono · YouTube RSS · Twilio SMS · JSON storage</p>
+                      <p className={`mt-5 ${metaCls}`}>Bun · Hono · YouTube RSS · Twilio SMS · SQLite</p>
                     </div>
                   </div>
-                </article>
-              )}
-
-              {item("progress", "wattfinder",
-                <article className={rowCls}>
-                  <div className={rowGridCls}>
-                    <div className="min-w-0">
-                      <div className="flex items-center gap-2.5">
-                        <BatteryCharging aria-hidden="true" className="h-6 w-6 shrink-0 text-blue-900" />
-                        <h3 className={titleCls}>WattFinder</h3>
-                      </div>
-                      <p className="mt-1.5 font-semibold text-blue-900">Real EV charge times, not sticker kW</p>
-                      <p className={`mt-2 ${metaCls}`}>In progress</p>
-                      <p className="mt-4 text-slate-700">
-                        Predicts charge time from a battery's real charging curve, not the charger's peak kW.
-                      </p>
-                    </div>
-
-                    <div className="min-w-0">
-                      <Bullets items={["Models charging behavior across 3 EV platforms."]} />
-                      <p className={`mt-5 ${metaCls}`}>Next.js · TypeScript · Postgres</p>
-                    </div>
-                  </div>
+                  <ul className="mt-7 grid grid-cols-1 gap-4 sm:grid-cols-3" aria-label="Snag screenshots">
+                    {SNAG_SHOTS.map((shot) => (
+                      <li key={shot.src}>
+                        <button
+                          type="button"
+                          onClick={() => setModal(shot)}
+                          aria-label={`Enlarge screenshot: ${shot.label}`}
+                          className="block w-full cursor-zoom-in overflow-hidden rounded-[6px] border border-slate-300 transition-colors duration-200 hover:border-blue-900"
+                        >
+                          <img decoding="async" loading="lazy" src={shot.src} alt={shot.alt} width={shot.w} height={shot.h} className="aspect-[16/10] h-auto w-full object-cover object-top" />
+                        </button>
+                        <p className="mt-2 text-[15px] text-slate-600">{shot.label}</p>
+                      </li>
+                    ))}
+                  </ul>
                 </article>
               )}
             </div>
@@ -274,7 +273,7 @@ export default function ProductManagement() {
                   <div className="ticks">
                     <button
                       type="button"
-                      onClick={() => setIsImageModalOpen(true)}
+                      onClick={() => setModal(WIREFRAME)}
                       aria-label="Enlarge AllTrails Journeys wireframe"
                       className="block w-full cursor-zoom-in overflow-hidden rounded-[6px]"
                       data-testid="button-enlarge-wireframe"
@@ -300,9 +299,7 @@ export default function ProductManagement() {
         </section>
       )}
 
-      {isImageModalOpen && (
-        <ImageModal src="/attached_assets/image_1768253142355.webp" alt="AllTrails Journeys Figma wireframe, full size" label="AllTrails Journeys wireframe" onClose={closeModal} />
-      )}
+      {modal && <ImageModal src={modal.src} alt={modal.alt} label={modal.label} onClose={closeModal} />}
 
       <PageClose />
       <Footer />
