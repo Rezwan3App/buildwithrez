@@ -109,6 +109,14 @@ const Gallery = ({ label, shots, onOpen }: { label: string; shots: Shot[]; onOpe
   </ul>
 );
 
+const SNAG_URL = "https://snag-2232.onrender.com/";
+let snagWarmed = false;
+// wakes Render's free tier; no-cors since we ignore the response
+function warmSnag() {
+  if (snagWarmed) return;
+  snagWarmed = true;
+  fetch(SNAG_URL, { mode: "no-cors", cache: "no-store" }).catch(() => {});
+}
 const metaCls = "text-[15px] font-semibold text-slate-600";
 const rowCls = "border-b border-slate-300 py-7 sm:py-9";
 const rowGridCls = "grid gap-5 lg:grid-cols-2 lg:gap-12";
@@ -127,6 +135,7 @@ const Bullets = ({ items }: { items: string[] }) => (
 
 export default function ProductManagement() {
   usePageTitle("Projects");
+  useEffect(() => { snagWarmed = false; warmSnag(); }, []);
   const [filter, setFilter] = useState<"all" | Status>("all");
   const reduce = useReducedMotion();
   const t = { duration: reduce ? 0 : 0.22, ease: EXPO };
@@ -204,7 +213,9 @@ export default function ProductManagement() {
                       </p>
                       <div className="mt-5 flex flex-wrap gap-3">
                         <a
-                          href="https://snag-2232.onrender.com/"
+                          href={SNAG_URL}
+                          onPointerEnter={warmSnag}
+                          onFocus={warmSnag}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="btn-line flex-1 whitespace-nowrap sm:flex-none"
@@ -222,6 +233,7 @@ export default function ProductManagement() {
                           GitHub
                         </a>
                       </div>
+                      <p className={`mt-3 ${metaCls}`}>Free server: the first load can take about 30 seconds.</p>
                     </div>
 
                     <div className="min-w-0">

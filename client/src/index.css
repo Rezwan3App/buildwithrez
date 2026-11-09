@@ -86,7 +86,7 @@
 
   /* Type scale at the 17px root: meta 15, body 17, h3 19, h2 30-38, h1 47-77 */
   h1 {
-    font-size: clamp(2.75rem, 12vw, 4.5rem);
+    font-size: clamp(2.5rem, 12vw, 4.5rem);
     font-weight: 800;
     line-height: 1.04;
     letter-spacing: -0.035em;
