@@ -1,4 +1,4 @@
-import { body } from "@/components/education-section";
+import { body } from "@/lib/ui";
 
 export function LeadershipSection() {
   const leadershipRoles = [

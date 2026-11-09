@@ -18,7 +18,12 @@ const ROUTES = [
   {
     path: "/projects",
     title: "Projects | Rezwan Islam",
-    description: "Product projects by Rezwan Islam, including Snag and an AllTrails PRD.",
+    description: "Product projects by Rezwan Islam, including Snag and RageParser.",
+  },
+  {
+    path: "/education",
+    title: "Education | Rezwan Islam",
+    description: "Rezwan Islam's education: an MBA at Baruch College (Zicklin) and a B.E. in Mechanical Engineering from CCNY, summa cum laude.",
   },
   {
     path: "/projects/mba",
@@ -31,7 +36,6 @@ const ROUTES = [
 const REDIRECTS = {
   "/mba": "/projects/mba",
   "/product-management": "/projects",
-  "/education": "/experience#education",
 };
 
 const root = path.resolve(import.meta.dirname, "..");

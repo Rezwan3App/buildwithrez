@@ -1,7 +1,7 @@
 import { Footer } from "@/components/footer";
 import { PageClose } from "@/components/page-close";
 import { LeadershipSection } from "@/components/leadership-section";
-import EducationSection, { body, logoBox } from "@/components/education-section";
+import { body, logoBox } from "@/lib/ui";
 import { usePageTitle } from "@/hooks/use-page-title";
 import { useEffect, useRef, useState } from "react";
 import odynnImage from "@assets/image_1767746624854.webp";
@@ -119,7 +119,7 @@ export default function Experience() {
       logo: { src: wtcLogo, alt: "Welcome to Chinatown" }
     },
     {
-      title: "Product Manager Intern",
+      title: "Product Management Intern",
       company: "Odynn",
       location: "New York, NY",
       period: "June 2025 – Aug 2025",
@@ -175,7 +175,7 @@ export default function Experience() {
           <h1>Experience</h1>
           <p className="mt-3 text-lg">My product internships, newest first.</p>
           <nav aria-label="On this page" className="mt-3 flex flex-wrap gap-x-6">
-            {[["#roles", "Roles"], ["#education", "Education"], ["#leadership", "Leadership"]].map(([href, label]) => (
+            {[["#roles", "Roles"], ["#leadership", "Leadership"]].map(([href, label]) => (
               <a
                 key={href}
                 href={href}
@@ -291,7 +291,6 @@ export default function Experience() {
         </div>
       </section>
 
-      <EducationSection />
       <LeadershipSection />
 
       <PageClose />

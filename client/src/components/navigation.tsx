@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from "framer-motion";
-import { Briefcase, FolderOpen, Home, Mail, type LucideIcon } from "lucide-react";
+import { Briefcase, FolderOpen, GraduationCap, Home, Mail, type LucideIcon } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import { EXPO } from "@/lib/motion";
 import { RESUME_URL } from "@/lib/site";
@@ -8,6 +8,7 @@ const navItems: { path: string; label: string; icon: LucideIcon }[] = [
   { path: "/", label: "Home", icon: Home },
   { path: "/experience", label: "Experience", icon: Briefcase },
   { path: "/projects", label: "Projects", icon: FolderOpen },
+  { path: "/education", label: "Education", icon: GraduationCap },
 ];
 
 function useActivePath() {

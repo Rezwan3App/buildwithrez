@@ -6,6 +6,7 @@ import { EXPO } from "@/lib/motion";
 import Home from "@/pages/home";
 
 const Experience = lazy(() => import("@/pages/experience"));
+const Education = lazy(() => import("@/pages/education"));
 const ProductManagement = lazy(() => import("@/pages/product-management"));
 const MBA = lazy(() => import("@/pages/mba"));
 const NotFound = lazy(() => import("@/pages/not-found"));
@@ -58,10 +59,10 @@ function Router() {
         <Route path="/" component={Home} />
         <Route path="/experience" component={Experience} />
         <Route path="/projects" component={ProductManagement} />
+        <Route path="/education" component={Education} />
         <Route path="/projects/mba" component={MBA} />
         <Route path="/mba">{() => <Redirect to="/projects/mba" replace />}</Route>
         <Route path="/product-management">{() => <Redirect to="/projects" replace />}</Route>
-        <Route path="/education">{() => <Redirect to="/experience#education" replace />}</Route>
         <Route component={NotFound} />
       </Switch>
       </Suspense>
