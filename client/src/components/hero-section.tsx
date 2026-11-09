@@ -1,8 +1,8 @@
-import { ArrowRight, Mail } from "lucide-react";
+import { ArrowRight, Download } from "lucide-react";
 import { Link } from "wouter";
 import { HeroHeadline } from "@/components/hero-headline";
 import HeroMotif from "@/components/hero-motif";
-import { EMAIL } from "@/lib/site";
+import { RESUME_URL } from "@/lib/site";
 
 export function HeroSection() {
   return (
@@ -42,9 +42,9 @@ export function HeroSection() {
             </p>
 
             <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-7">
-              <a href={`mailto:${EMAIL}`} className="btn-cta w-full sm:w-auto">
-                <Mail className="h-5 w-5" aria-hidden="true" />
-                Email me
+              <a href={RESUME_URL} download="Rezwan_Islam_Resume.pdf" className="btn-cta w-full sm:w-auto">
+                <Download className="h-5 w-5" aria-hidden="true" />
+                Download resume
               </a>
               <Link
                 href="/experience"
