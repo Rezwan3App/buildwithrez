@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { Check, Mail } from "lucide-react";
+import { Check } from "lucide-react";
+import { GetInTouch } from "@/components/get-in-touch";
 import { EXPO } from "@/lib/motion";
 import { EMAIL, RESUME_URL } from "@/lib/site";
 
@@ -44,16 +45,13 @@ export function ContactSection() {
     : { duration: 0.12, ease: EXPO };
 
   return (
-    <section id="contact" className="band-ink section">
+    <section id="contact" className="band-ink blueprint section">
       <div className="wrap">
         <h2>Let's talk</h2>
         <p className="mt-3 text-lg">Open to APM/PM roles in New York. Email is the best way to reach me.</p>
 
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-          <a href={`mailto:${EMAIL}`} className="btn-cta w-full sm:w-auto">
-            <Mail className="h-5 w-5" aria-hidden="true" />
-            Email me
-          </a>
+          <GetInTouch />
           <a href="https://www.linkedin.com/in/rezwan-islam33" target="_blank" rel="noopener noreferrer" className="btn-line w-full sm:w-auto">
             Message me on LinkedIn
           </a>

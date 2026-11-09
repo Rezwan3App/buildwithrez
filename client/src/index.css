@@ -262,6 +262,53 @@
 }
 
 
+/* Get in touch: the label rolls up and the arrow passes through its chip (mouse and trackpad only) */
+.btn-touch { padding-right: 0.5rem; gap: 0.875rem; }
+.roll { display: inline-block; overflow: hidden; height: 1.25em; line-height: 1.25em; }
+.roll > span { display: block; transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1); }
+.roll > span::after { content: attr(data-text); display: block; }
+.chip {
+  position: relative; display: inline-grid; place-items: center; overflow: hidden;
+  width: 2.25rem; height: 2.25rem; border-radius: 4px; background: rgba(255, 255, 255, 0.16);
+}
+.chip > svg { grid-area: 1 / 1; transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1), opacity 520ms ease; }
+.chip-in { transform: translate(-130%, 130%); opacity: 0; }
+@media (hover: hover) and (pointer: fine) {
+  .btn-touch:hover .roll > span, .btn-touch:focus-visible .roll > span { transform: translateY(-50%); }
+  .btn-touch:hover .chip-out, .btn-touch:focus-visible .chip-out { transform: translate(130%, -130%); opacity: 0; }
+  .btn-touch:hover .chip-in, .btn-touch:focus-visible .chip-in { transform: none; opacity: 1; }
+}
+
+/* Status light: a small square that flickers softly, like an indicator on a panel */
+.status-light {
+  width: 7px; height: 7px; border-radius: 1px; flex-shrink: 0;
+  background: var(--on-ink);
+  animation: flicker 1.4s ease-in-out infinite;
+}
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  25% { opacity: 0.5; }
+  50% { opacity: 0.25; }
+  75% { opacity: 0.9; }
+}
+
+/* Underline wipe: the line leaves to the right and redraws from the left */
+.u-wipe { position: relative; display: inline-block; }
+.u-wipe::before, .u-wipe::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 1px; background: currentColor;
+}
+.u-wipe::before { transform-origin: right; transition: transform 450ms cubic-bezier(0.16, 1, 0.3, 1); }
+.u-wipe::after { transform: scaleX(0); transform-origin: left; transition: transform 450ms cubic-bezier(0.16, 1, 0.3, 1) 150ms; }
+a:hover > .u-wipe::before, .u-wipe:hover::before { transform: scaleX(0); }
+a:hover > .u-wipe::after, .u-wipe:hover::after { transform: scaleX(1); }
+
+/* Cursor ring: trails the pointer; difference blending keeps it visible on ink and on paper */
+.cursor-ring {
+  position: fixed; left: 0; top: 0; z-index: 70; pointer-events: none;
+  width: 28px; height: 28px; margin: -14px 0 0 -14px; border-radius: 9999px;
+  border: 1.5px solid #fff; mix-blend-mode: difference; will-change: transform;
+}
+
 :focus-visible {
   outline: 2px solid #1e3a8a;
   outline-offset: 2px;
