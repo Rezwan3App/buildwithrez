@@ -4,6 +4,8 @@ import { motion, MotionConfig } from "framer-motion";
 import { SiteNav, MobileTabBar } from "@/components/navigation";
 import { Cursor } from "@/components/cursor";
 import { EXPO } from "@/lib/motion";
+import { track } from "@/lib/db";
+import { RESUME_URL } from "@/lib/site";
 import Home from "@/pages/home";
 
 const Experience = lazy(() => import("@/pages/experience"));
@@ -40,6 +42,24 @@ function ScrollToTop() {
     }, 50);
     return () => window.clearInterval(timer);
   }, [location]);
+  return null;
+}
+
+// One listener for all analytics: page changes, plus clicks on the links worth counting.
+function Analytics() {
+  const [location] = useLocation();
+  useEffect(() => track("page_view", location), [location]);
+  useEffect(() => {
+    const click = (e: MouseEvent) => {
+      const href = (e.target as Element | null)?.closest?.("a")?.getAttribute("href") ?? "";
+      if (href === RESUME_URL) track("resume_download");
+      else if (href.includes("snag-2232.onrender.com")) track("snag_open");
+      else if (href.startsWith("mailto:")) track("email_click");
+      else if (href.includes("linkedin.com")) track("linkedin_click");
+    };
+    document.addEventListener("click", click);
+    return () => document.removeEventListener("click", click);
+  }, []);
   return null;
 }
 
@@ -81,6 +101,7 @@ function App() {
         Skip to content
       </a>
       <ScrollToTop />
+      <Analytics />
       <Cursor />
       <SiteNav />
       <main id="main" tabIndex={-1} className="flex-1 min-w-0 outline-none">

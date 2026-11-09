@@ -12,6 +12,17 @@ import megaplantsLogo from "@assets/image_1767747435421.png";
 import wtcLogo from "@assets/wtc-logo.png";
 import nbcuLogo from "@assets/nbcuniversal-logo.svg";
 
+import roles from "@/data/roles.json";
+
+const MEDIA: Record<string, Pick<Experience, "logo" | "image" | "quote">> = {
+  NBCUniversal: { logo: { src: nbcuLogo, alt: "NBCUniversal", eager: true } },
+  "Welcome to Chinatown": { logo: { src: wtcLogo, alt: "Welcome to Chinatown" } },
+  Odynn: { logo: { src: odynnLogo, alt: "Odynn" }, image: odynnImage },
+  // The file has wide transparent margins, so scale it up to fill the box.
+  "Rocket Companies": { logo: { src: rocketLogo, alt: "Rocket Companies", className: "scale-[1.45]" }, image: rocketImage, quote: true },
+  "MegaPlants LLC | Kosha Botanica": { logo: { src: megaplantsLogo, alt: "MegaPlants" } },
+};
+
 interface Metric {
   num: string;
   cap: string;
@@ -92,81 +103,14 @@ function CountUp({ value }: { value: string }) {
 
 export default function Experience() {
   usePageTitle("Experience");
-  const experiences: Experience[] = [
-    {
-      title: "Product Management Intern",
-      company: "NBCUniversal",
-      team: "Publishing Tools",
-      location: "New York, NY",
-      period: "Sept 2026 – Present",
-      scope: "Internal commerce tooling for Peacock and NBCUniversal's global streaming platform (GSP). I work on the publishing tool teams use to build the pages that turn visitors into subscribers, with engineering and design.",
-      metrics: [],
-      tools: ["Jira", "Confluence", "Airtable"],
-      logo: { src: nbcuLogo, alt: "NBCUniversal", eager: true }
-    },
-    {
-      title: "AI Strategy and Operations Intern",
-      company: "Welcome to Chinatown",
-      location: "New York, NY",
-      period: "June 2026 – Aug 2026",
-      scope: "I built an AI curriculum for immigrant-owned small businesses and two public tools: a courthouse lunch guide and an air-quality alert system.",
-      metrics: [
-        { num: "5", cap: "Assistance Centers trained on the curriculum", wide: true },
-        { num: "1,500+", cap: "Daily jurors guided to 40+ lunch spots" },
-        { num: "$0", cap: "Operating cost of the air-quality alerts" }
-      ],
-      tools: ["Claude Code", "Python", "PurpleAir API", "Airtable"],
-      logo: { src: wtcLogo, alt: "Welcome to Chinatown" }
-    },
-    {
-      title: "Product Management Intern",
-      company: "Odynn",
-      location: "New York, NY",
-      period: "June 2025 – Aug 2025",
-      scope: "I tested releases and built event tracking for Awayz, a travel and loyalty platform run by roughly 15 fintech and travel companies.",
-      metrics: [
-        { num: "20%", cap: "More completed flight bookings", wide: true },
-        { num: "150+", cap: "User events tracked in Amplitude" },
-        { num: "5", cap: "New clients supported by a rebuilt data view" }
-      ],
-      tools: ["Jira", "Amplitude", "SQL", "Postman", "Agile"],
-      logo: { src: odynnLogo, alt: "Odynn" },
-      image: odynnImage,
-      imageCaption: "Led a Tableau workshop for fellow interns"
-    },
-    {
-      title: "Digital Product Management Intern",
-      company: "Rocket Companies",
-      location: "Detroit, MI",
-      period: "May 2024 – Dec 2024",
-      scope: "I led designers and engineers from requirements to launch on Rocket Mortgage app features.",
-      metrics: [
-        { num: "500%", cap: "Led a Plaid integration on a mortgage app used by roughly 1M people monthly; A/B tests lifted direct connections over 500%", wide: true },
-        { num: "40%", cap: "Fewer banker escalations after the AI onboarding chatbot" },
-        { num: "20%", cap: "More engagement from the home comparison feature, a June 2024 Tech Demo Award winner" }
-      ],
-      tools: ["Plaid API", "Azure DevOps", "Adobe Analytics", "Figma", "A/B testing"],
-      // The file has wide transparent margins, so scale it up to fill the box.
-      logo: { src: rocketLogo, alt: "Rocket Companies", className: "scale-[1.45]" },
-      image: rocketImage,
-      imageCaption: "Moderated a product roadmap panel for 200+ people",
-      quote: true
-    },
-    {
-      title: "Product Development Intern",
-      company: "MegaPlants LLC | Kosha Botanica",
-      location: "New York, NY",
-      period: "Feb 2024 – May 2024",
-      scope: "I screened product ideas for an early-stage wellness brand using search trends and Amazon sales data.",
-      metrics: [
-        { num: "25%", cap: "Product-line expansion across 2 new lines, from a review of 300+ Amazon SKUs and reviews", wide: true },
-        { num: "200+", cap: "Concepts screened" },
-        { num: "3", cap: "Tincture concepts recommended" }
-      ],
-      tools: ["Google Analytics", "Google Trends", "Jungle Scout", "Market research"],
-      logo: { src: megaplantsLogo, alt: "MegaPlants" }
-    }
-  ];
+  // Words and numbers come from the database (roles.json is refreshed on every build).
+  // Logos and photos stay in code, matched by company name.
+  const experiences: Experience[] = roles.map((r) => ({
+    ...r,
+    team: r.team ?? undefined,
+    imageCaption: r.image_caption ?? undefined,
+    ...(MEDIA[r.company] ?? { logo: { src: "", alt: r.company } }),
+  }));
 
   return (
     <div className="min-h-screen">

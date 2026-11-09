@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Check } from "lucide-react";
 import { GetInTouch } from "@/components/get-in-touch";
+import { ContactForm } from "@/components/contact-form";
 import { EXPO } from "@/lib/motion";
 import { EMAIL, RESUME_URL } from "@/lib/site";
 
@@ -97,6 +98,8 @@ export function ContactSection() {
             </li>
           ))}
         </ul>
+
+        <ContactForm />
       </div>
     </section>
   );

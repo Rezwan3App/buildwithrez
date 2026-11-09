@@ -1,0 +1,139 @@
+[
+  {
+    "title": "Product Management Intern",
+    "company": "NBCUniversal",
+    "team": "Publishing Tools",
+    "location": "New York, NY",
+    "period": "Sept 2026 – Present",
+    "scope": "Internal commerce tooling for Peacock and NBCUniversal's global streaming platform (GSP). I work on the publishing tool teams use to build the pages that turn visitors into subscribers, with engineering and design.",
+    "metrics": [],
+    "tools": [
+      "Jira",
+      "Confluence",
+      "Airtable"
+    ],
+    "image_caption": null
+  },
+  {
+    "title": "AI Strategy and Operations Intern",
+    "company": "Welcome to Chinatown",
+    "team": null,
+    "location": "New York, NY",
+    "period": "June 2026 – Aug 2026",
+    "scope": "I built an AI curriculum for immigrant-owned small businesses and two public tools: a courthouse lunch guide and an air-quality alert system.",
+    "metrics": [
+      {
+        "cap": "Assistance Centers trained on the curriculum",
+        "num": "5",
+        "wide": true
+      },
+      {
+        "cap": "Daily jurors guided to 40+ lunch spots",
+        "num": "1,500+"
+      },
+      {
+        "cap": "Operating cost of the air-quality alerts",
+        "num": "$0"
+      }
+    ],
+    "tools": [
+      "Claude Code",
+      "Python",
+      "PurpleAir API",
+      "Airtable"
+    ],
+    "image_caption": null
+  },
+  {
+    "title": "Product Management Intern",
+    "company": "Odynn",
+    "team": null,
+    "location": "New York, NY",
+    "period": "June 2025 – Aug 2025",
+    "scope": "I tested releases and built event tracking for Awayz, a travel and loyalty platform run by roughly 15 fintech and travel companies.",
+    "metrics": [
+      {
+        "cap": "More completed flight bookings",
+        "num": "20%",
+        "wide": true
+      },
+      {
+        "cap": "User events tracked in Amplitude",
+        "num": "150+"
+      },
+      {
+        "cap": "New clients supported by a rebuilt data view",
+        "num": "5"
+      }
+    ],
+    "tools": [
+      "Jira",
+      "Amplitude",
+      "SQL",
+      "Postman",
+      "Agile"
+    ],
+    "image_caption": "Led a Tableau workshop for fellow interns"
+  },
+  {
+    "title": "Digital Product Management Intern",
+    "company": "Rocket Companies",
+    "team": null,
+    "location": "Detroit, MI",
+    "period": "May 2024 – Dec 2024",
+    "scope": "I led designers and engineers from requirements to launch on Rocket Mortgage app features.",
+    "metrics": [
+      {
+        "cap": "Led a Plaid integration on a mortgage app used by roughly 1M people monthly; A/B tests lifted direct connections over 500%",
+        "num": "500%",
+        "wide": true
+      },
+      {
+        "cap": "Fewer banker escalations after the AI onboarding chatbot",
+        "num": "40%"
+      },
+      {
+        "cap": "More engagement from the home comparison feature, a June 2024 Tech Demo Award winner",
+        "num": "20%"
+      }
+    ],
+    "tools": [
+      "Plaid API",
+      "Azure DevOps",
+      "Adobe Analytics",
+      "Figma",
+      "A/B testing"
+    ],
+    "image_caption": "Moderated a product roadmap panel for 200+ people"
+  },
+  {
+    "title": "Product Development Intern",
+    "company": "MegaPlants LLC | Kosha Botanica",
+    "team": null,
+    "location": "New York, NY",
+    "period": "Feb 2024 – May 2024",
+    "scope": "I screened product ideas for an early-stage wellness brand using search trends and Amazon sales data.",
+    "metrics": [
+      {
+        "cap": "Product-line expansion across 2 new lines, from a review of 300+ Amazon SKUs and reviews",
+        "num": "25%",
+        "wide": true
+      },
+      {
+        "cap": "Concepts screened",
+        "num": "200+"
+      },
+      {
+        "cap": "Tincture concepts recommended",
+        "num": "3"
+      }
+    ],
+    "tools": [
+      "Google Analytics",
+      "Google Trends",
+      "Jungle Scout",
+      "Market research"
+    ],
+    "image_caption": null
+  }
+]
