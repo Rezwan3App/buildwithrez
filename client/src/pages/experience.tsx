@@ -111,7 +111,7 @@ export default function Experience() {
       period: "June 2026 – Aug 2026",
       scope: "I built an AI curriculum for immigrant-owned small businesses and two public tools: a courthouse lunch guide and an air-quality alert system.",
       metrics: [
-        { num: "5", cap: "Assistance Centers trained on the curriculum" },
+        { num: "5", cap: "Assistance Centers trained on the curriculum", wide: true },
         { num: "1,500+", cap: "Daily jurors guided to 40+ lunch spots" },
         { num: "$0", cap: "Operating cost of the air-quality alerts" }
       ],
@@ -125,7 +125,7 @@ export default function Experience() {
       period: "June 2025 – Aug 2025",
       scope: "I tested releases and built event tracking for Awayz, a travel and loyalty platform run by roughly 15 fintech and travel companies.",
       metrics: [
-        { num: "20%", cap: "More completed flight bookings" },
+        { num: "20%", cap: "More completed flight bookings", wide: true },
         { num: "150+", cap: "User events tracked in Amplitude" },
         { num: "5", cap: "New clients supported by a rebuilt data view" }
       ],
@@ -159,9 +159,9 @@ export default function Experience() {
       period: "Feb 2024 – May 2024",
       scope: "I screened product ideas for an early-stage wellness brand using search trends and Amazon sales data.",
       metrics: [
+        { num: "25%", cap: "Product-line expansion across 2 new lines, from a review of 300+ Amazon SKUs and reviews", wide: true },
         { num: "200+", cap: "Concepts screened" },
-        { num: "3", cap: "Tincture concepts recommended" },
-        { num: "25%", cap: "Product-line expansion across 2 new lines, from a review of 300+ Amazon SKUs and reviews" }
+        { num: "3", cap: "Tincture concepts recommended" }
       ],
       tools: ["Google Analytics", "Google Trends", "Jungle Scout", "Market research"],
       logo: { src: megaplantsLogo, alt: "MegaPlants" }
@@ -234,7 +234,7 @@ export default function Experience() {
                             m.wide ? "col-span-2" : exp.metrics.some((x) => x.wide) ? "" : "last:col-span-2 sm:last:col-span-1"
                           }`}
                         >
-                          <div className="text-[1.75rem] sm:text-4xl font-extrabold leading-none tracking-tight tabular-nums text-blue-900">
+                          <div className={`${m.wide ? "text-[2.25rem] sm:text-5xl" : "text-[1.5rem] sm:text-[1.875rem]"} font-extrabold leading-none tracking-tight tabular-nums text-blue-900`}>
                             <CountUp value={m.num} />
                           </div>
                           <p className="mt-1 text-[16px] leading-snug text-slate-700 sm:mt-2 sm:text-base">{m.cap}</p>
