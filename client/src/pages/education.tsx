@@ -35,15 +35,11 @@ const tracks = [
 const involvement = [
   {
     title: "Zicklin Graduate Student Ambassador",
-    detail: "I spoke at the August 2026 MBA orientation for incoming students.",
+    detail: "I host sessions for incoming MBA students and share my experience in the program.",
   },
   {
     title: "Vice President, Data Science and Analytics Society",
     detail: "Feb 2024 to Jan 2026. I ran 15+ workshops, panels and events, and active membership doubled in one semester.",
-  },
-  {
-    title: "Executives on Campus mentorship",
-    detail: "2026 to 2027.",
   },
 ];
 
