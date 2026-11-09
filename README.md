@@ -1,119 +1,142 @@
-# Rezwan Islam – Portfolio
+# buildwithrez
 
-Personal portfolio site for **Rezwan Islam** (Product Manager).  
-Live at **[www.buildwithrez.com](https://www.buildwithrez.com)**.
+My portfolio site: product internships, projects and education, with my resume one click away.
 
-## Tech Stack
+**Live:** [www.buildwithrez.com](https://www.buildwithrez.com)
 
-- **React** + **Vite** + **TypeScript**
-- **Tailwind CSS** + **shadcn/ui**
-- **Wouter** for routing
+**Contents:** [Run it locally](#run-it-locally) · [Architecture](#architecture) · [How a page gets built](#how-a-page-gets-built) · [Database](#database) · [Editing content](#editing-content) · [Analytics](#analytics) · [Deploying](#deploying) · [Project layout](#project-layout)
 
-## Local Development
+## What it does
 
-```bash
+- **Five pages.** Home, Experience, Projects, Education, and MBA projects.
+- **Resume first.** The main button downloads my resume PDF.
+- **Contact form.** Visitors can leave a note, which is saved to the database. Email and LinkedIn links sit next to it.
+- **Visit analytics.** Page views and key clicks (resume, Snag, email, LinkedIn) are counted, with no cookies and no personal data.
+- **Content from a database.** Experience roles live in a Supabase table and are pulled in at build time.
+
+## Run it locally
+
+Requires Node 20.
+
+```sh
 npm install
 npm run dev
 ```
 
-Open **http://localhost:5000/**.
+Open http://localhost:5000. Analytics are off in dev, so local testing never shows up in the numbers.
 
-## Build
+## Architecture
 
-```bash
-npm run build
+The site is static. GitHub Pages serves prerendered HTML, and React takes over in the browser. The only backend is Supabase, which the browser calls directly for two writes (notes and events) and the build calls once for content.
+
+```mermaid
+flowchart TB
+  Visitor["Visitor's browser<br/>React app"]
+  Snag["Snag on Render<br/>(linked demo)"]
+  Pages["GitHub Pages<br/>prerendered HTML, JS, PDFs"]
+  subgraph Supabase["Supabase (Postgres + REST)"]
+    direction LR
+    Messages[("messages")]
+    Events[("events")]
+    Roles[("roles")]
+  end
+  Actions["GitHub Actions<br/>deploy on push, daily keep-awake ping"]
+
+  Visitor -.->|"wake-up ping<br/>on /projects"| Snag
+  Visitor -->|"load pages"| Pages
+  Visitor -->|"send note"| Messages
+  Visitor -->|"log view or click"| Events
+  Actions -->|"read roles"| Roles
+  Actions -->|"deploy dist/public"| Pages
 ```
 
-Output goes to `dist/public` (HTML, JS, CSS, and assets).
+### Design decisions
 
-## Deployment (GitHub Pages)
+- **Static over a server.** Nothing on the site changes per visitor, so there is no server to run, pay for, or wake up.
+- **No Supabase SDK.** Two `fetch` calls in `client/src/lib/db.ts` cover everything the site needs.
+- **Public key, locked tables.** The publishable key ships in the page on purpose. Row-level security lets visitors insert notes and events and read published roles, and nothing else.
+- **Content at build time.** Roles are fetched during the build, not on page load, so pages stay fast and still work if Supabase is down.
+- **Reduced motion respected.** Animations turn off when the visitor's system asks for less motion.
 
-### Update local → GitHub immediately
+## How a page gets built
 
-Run this to push all local changes and update the live site:
-
-```powershell
-.\push-to-github.ps1
+```mermaid
+flowchart TD
+  A["git push to main"] --> B["pull-content.mjs<br/>roles from Supabase to roles.json"]
+  B --> C{"Supabase reachable?"}
+  C -- no --> D["keep the committed roles.json"]
+  C -- yes --> E["write fresh roles.json"]
+  D --> F["vite build: client bundle"]
+  E --> F
+  F --> G["vite build --ssr: entry-server.tsx"]
+  G --> H["prerender.mjs: one HTML file per route<br/>with its own title and description"]
+  H --> I["deploy dist/public to GitHub Pages"]
 ```
 
-Or manually:
+## Database
 
-```powershell
-cd c:\Users\Rezwan\website\buildwithrez
-git add -A
-git commit -m "Sync local to GitHub"
-git push origin main
-```
+One free Supabase project (`buildwithrez`, us-east-1).
 
-Then check **Actions** → **Build and Deploy to GitHub Pages** (must be green). Refresh **www.buildwithrez.com** with `Ctrl+Shift+R`.
+| Table | Holds | Visitors can |
+|---|---|---|
+| `messages` | Contact form notes: name, email, message, read flag | insert only |
+| `events` | One row per page view or tracked click: type, path, referrer | insert only |
+| `roles` | Experience page entries: title, company, dates, scope, metrics, tools | read published rows |
+| `event_summary` (view) | Totals per event and page, plus the last 7 days | nothing |
 
----
+Checks in the database reject bad input: field lengths, email format, and a fixed list of event types. The contact form also has a hidden field that bots fill in and people don't.
 
-The site is deployed via **GitHub Actions**. On every push to `main`:
+## Editing content
 
-1. The workflow runs `npx vite build`
-2. The contents of `dist/public` are deployed to GitHub Pages
-3. **www.buildwithrez.com** is updated automatically
+1. Open the `roles` table in the Supabase Table Editor and edit a row. Use `sort` for order and `published` to hide a role.
+2. Rebuild the site: GitHub, then **Actions**, then **Build and Deploy to GitHub Pages**, then **Run workflow**.
 
-### One-time setup
+Logos and photos stay in code, matched by company name in `client/src/pages/experience.tsx`. A new company needs a logo added there.
 
-1. Open **Settings → Pages** in the repo.
-2. Under **Build and deployment**, set **Source** to **GitHub Actions**.
-3. Push to `main`; the workflow will build and deploy.
+Everything else (projects, education, home) is still written directly in the page files.
 
-### Sync dev server → live (build locally and push)
+## Analytics
 
-To make the live site match what you see at **http://localhost:5173/**:
+Open the Supabase Table Editor:
 
-1. **Build and copy** deploy files into the repo root:
-   ```bash
-   npm run deploy:pages
-   ```
-2. **Commit and push** the updated `index.html`, `404.html`, `assets/`, and `attached_assets/`:
-   ```bash
-   git add index.html 404.html assets attached_assets CNAME
-   git commit -m "Deploy: sync live site with dev"
-   git push
-   ```
+- `event_summary` for totals.
+- `events` for each visit, newest first when sorted by `created_at`.
 
-Use this if you use **Deploy from a branch** (root or `gh-pages`). If you use **GitHub Actions**, pushing source to `main` triggers the workflow and deploys; you don’t need to run `deploy:pages` or commit built files.
+Times are stored in UTC. Event types are `page_view`, `resume_download`, `snag_open`, `email_click`, `linkedin_click` and `contact_sent`.
 
-### Why “local vs live” can differ
+## Deploying
 
-- **Locally:** You run `npm run dev`, which serves the **source** in `client/src/` with hot reload.
-- **Live:** GitHub Pages serves either the **built** output from the `deploy` workflow (Actions) or the built files you committed (branch deploy).
+Every push to `main` runs `.github/workflows/deploy.yml`, which builds the site and publishes `dist/public` to GitHub Pages at www.buildwithrez.com. If a run fails on a network error, re-run it from the Actions tab.
 
-So you always see the latest code locally, but the live site only updates after a successful **build and deploy** (workflow or `deploy:pages` + push).
+Free-tier note: Supabase pauses a free project after about a week with no traffic. `.github/workflows/keep-supabase-awake.yml` reads one row every morning so that never happens. GitHub turns off scheduled workflows in a repo with no commits for 60 days, so re-enable it from the Actions tab after a long break. If the project does pause, the form shows an email fallback and the build uses the saved roles until it is restored from the dashboard.
 
-### Local doesn’t match live?
-
-1. **Check Actions:** Repo → **Actions** → **Build and Deploy to GitHub Pages**. Ensure the latest run is **green**. If it’s red, the live site is still the last successful deploy (often older).
-2. **Re-run the workflow:** Open the workflow, click **Run workflow** → **Run workflow**. Wait for it to finish, then reload **www.buildwithrez.com**.
-3. **Hard refresh the live site:** `Ctrl+Shift+R` (or `Cmd+Shift+R` on Mac) to bypass cache.
-4. **Confirm Pages source:** **Settings** → **Pages** → **Build and deployment** → **Source** must be **GitHub Actions**. If it’s “Deploy from a branch”, the site is built from repo root, not the workflow.
-
-## Project Structure
+## Project layout
 
 ```
-├── client/
-│   ├── index.html      # HTML entry (Vite)
-│   ├── public/         # Static assets (copied into build)
-│   │   └── attached_assets/
-│   └── src/
-│       ├── components/
-│       ├── pages/
-│       ├── App.tsx
-│       ├── index.css
-│       └── main.tsx
-├── .github/workflows/
-│   └── deploy.yml      # Build + deploy to GitHub Pages
-├── CNAME               # www.buildwithrez.com
-├── index.html          # (legacy deploy; workflow uses dist/public)
-├── package.json
-├── tailwind.config.ts
-└── vite.config.ts
+client/
+  index.html             HTML entry
+  public/                Favicons, fonts, sitemap, PDFs and screenshots (served as is)
+  src/
+    App.tsx              Routes, page transitions, analytics listener
+    entry-server.tsx     Server render used by the prerender step
+    main.tsx             Browser entry
+    index.css            Design tokens and shared styles
+    components/          Nav, hero, contact form, cursor and other sections
+    pages/               One file per route
+    data/roles.json      Roles pulled from Supabase (committed as a fallback)
+    lib/db.ts            Supabase calls: send a note, log an event
+    lib/site.ts          Email and resume path
+scripts/
+  pull-content.mjs       Fetches roles before the build
+  prerender.mjs          Writes an HTML file for every route
+.github/workflows/
+  deploy.yml             Build and deploy on push to main
+  keep-supabase-awake.yml  Daily ping so the free database never pauses
+vite.pages.config.ts     Build config
+tailwind.config.ts       Tailwind theme
+PRODUCT.md               Product and design brief for the site
 ```
 
-## License
+## Stack
 
-MIT
+React 18, TypeScript, Vite 5, Tailwind CSS 3, wouter for routing, framer-motion for motion, lucide icons, and Supabase for data.
