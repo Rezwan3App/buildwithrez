@@ -194,9 +194,9 @@ header.band-ink h1::before {
   vertical-align: 0.12em; background: var(--red);
 }
 
-/* Text links: underline turns red on hover or focus; text colour is untouched */
-main a:not(.btn-cta):not(.btn-line):not(.btn-touch):hover,
-main a:not(.btn-cta):not(.btn-line):not(.btn-touch):focus-visible,
+/* Underlined text links: the underline turns red on hover or focus. Block links (whole rows) are left alone. */
+main a.underline:hover,
+main a.underline:focus-visible,
 footer a:hover {
   text-decoration: underline;
   text-decoration-color: var(--red);

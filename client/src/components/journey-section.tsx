@@ -20,7 +20,7 @@ export function JourneySection() {
                   i === steps.length - 1 ? "bg-blue-900" : "bg-[var(--paper-deep)] border-2 border-blue-900"
                 }`}
               />
-              <span className="block text-[15px] font-bold text-blue-900">{period}</span>
+              <span className="block label text-blue-900">{period}</span>
               <span className="mt-0.5 block leading-snug text-slate-800 sm:mt-0">{text}</span>
             </li>
           ))}

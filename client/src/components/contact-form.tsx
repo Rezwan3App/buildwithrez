@@ -36,7 +36,7 @@ export function ContactForm() {
 
   return (
     <form onSubmit={submit} className="mt-8 max-w-[36rem] border-t border-[#52617f] pt-6">
-      <h3 className="text-[1.1875rem] font-bold">Or leave a note</h3>
+      <h3 className="text-[1.1875rem] sm:text-xl font-bold">Or leave a note</h3>
       <div className="mt-4 grid gap-4 sm:grid-cols-2">
         <label className={label}>
           Name

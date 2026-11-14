@@ -19,10 +19,10 @@ export function WorkSection() {
             <li key={r.title} className="border-b border-slate-300">
               <Link
                 href={r.href}
-                className="group grid grid-cols-[1fr_auto] gap-x-4 py-5 sm:grid-cols-[1fr_12rem_auto] sm:items-baseline sm:gap-x-8 sm:py-6 focus-visible:bg-slate-100"
+                className="group grid grid-cols-[1fr_auto] gap-x-4 py-4 focus-visible:bg-white sm:grid-cols-[1fr_16.5rem_auto] sm:items-baseline sm:gap-x-8 sm:py-5"
               >
                 <span className="min-w-0">
-                  <h3 className="text-[1.1875rem] sm:text-xl font-bold transition-colors group-hover:text-blue-900">
+                  <h3 className="text-[1.1875rem] sm:text-xl font-bold transition-colors duration-150 ease-out group-hover:text-blue-900">
                     {r.title}
                   </h3>
                   <p className="mt-1.5 leading-snug text-slate-700">{r.outcome}</p>
