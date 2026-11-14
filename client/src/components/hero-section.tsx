@@ -51,11 +51,11 @@ export function HeroSection() {
                 className="group inline-flex items-center gap-2 min-h-[44px] font-bold text-[var(--on-ink)] hover:text-[var(--blue-light)] transition-colors"
               >
                 <span className="u-wipe">See my experience</span>
-                <ArrowRight className="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1 motion-reduce:transform-none" aria-hidden="true" />
+                <ArrowRight className="h-5 w-5" aria-hidden="true" />
               </Link>
             </div>
 
-            <p className="flex items-center gap-2.5 text-[15px] font-semibold text-[var(--on-ink-2)]">
+            <p className="flex items-center gap-2.5 label text-[var(--on-ink-2)]">
               <span className="status-light" aria-hidden="true" />
               Open to APM/PM roles &middot; New York
             </p>

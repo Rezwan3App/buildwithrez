@@ -39,7 +39,7 @@ export function SiteNav() {
               key={item.path}
               href={item.path}
               aria-current={active === item.path ? "page" : undefined}
-              className={`relative inline-flex items-center px-4 min-h-[44px] font-semibold transition-colors duration-200 ${
+              className={`relative inline-flex items-center px-4 min-h-[44px] font-semibold transition-colors duration-150 ease-out ${
                 active === item.path ? "text-[var(--on-ink)]" : "text-[var(--on-ink-2)] hover:text-[var(--on-ink)]"
               }`}
               data-testid={`nav-${item.label.toLowerCase()}`}

@@ -56,7 +56,7 @@ export function ProjectsTabs({ active, className = "mb-10" }: { active: "product
             key={t.id}
             href={t.href}
             aria-current={on ? "page" : undefined}
-            className={`group flex min-h-[44px] items-center justify-between gap-4 rounded-[10px] border px-5 py-4 transition-colors duration-200 ${
+            className={`group flex min-h-[44px] items-center justify-between gap-4 rounded-[10px] border px-5 py-4 transition-colors duration-150 ease-out ${
               on ? "border-blue-900 bg-white text-slate-700" : "border-slate-400/50 hover:border-[var(--blue-light)]"
             }`}
           >
@@ -69,7 +69,7 @@ export function ProjectsTabs({ active, className = "mb-10" }: { active: "product
             ) : (
               <ArrowRight
                 aria-hidden="true"
-                className="h-5 w-5 shrink-0 transition-transform duration-200 group-hover:translate-x-1 motion-reduce:transform-none"
+                className="h-5 w-5 shrink-0"
               />
             )}
           </Link>
@@ -99,7 +99,7 @@ const Gallery = ({ label, shots, onOpen }: { label: string; shots: Shot[]; onOpe
           type="button"
           onClick={() => onOpen(shot)}
           aria-label={`Enlarge screenshot: ${shot.label}`}
-          className="block w-full cursor-zoom-in overflow-hidden rounded-[6px] border border-slate-300 transition-colors duration-200 hover:border-blue-900"
+          className="block w-full cursor-zoom-in overflow-hidden rounded-[6px] border border-slate-300 transition-colors duration-150 ease-out hover:border-blue-900"
         >
           <img decoding="async" loading="lazy" src={shot.src} alt={shot.alt} width={shot.w} height={shot.h} className="aspect-[16/10] h-auto w-full object-cover object-top" />
         </button>
@@ -117,7 +117,7 @@ function warmSnag() {
   snagWarmed = true;
   fetch(SNAG_URL, { mode: "no-cors", cache: "no-store" }).catch(() => {});
 }
-const metaCls = "text-[15px] font-semibold text-slate-600";
+const metaCls = "label text-slate-600";
 const rowCls = "border-b border-slate-300 py-7 sm:py-9";
 const rowGridCls = "grid gap-5 lg:grid-cols-2 lg:gap-12";
 const titleCls = "text-[1.1875rem] sm:text-xl font-bold";
@@ -178,7 +178,7 @@ export default function ProductManagement() {
               type="button"
               aria-pressed={filter === f.id}
               onClick={() => setFilter(f.id)}
-              className={`inline-flex min-h-[44px] flex-1 items-center justify-center whitespace-nowrap rounded-[10px] border px-3 text-[15px] font-semibold sm:flex-none sm:px-4 transition-colors duration-200 ${
+              className={`inline-flex min-h-[44px] flex-1 items-center justify-center whitespace-nowrap rounded-[10px] border px-3 text-[15px] font-semibold sm:flex-none sm:px-4 transition-colors duration-150 ease-out ${
                 filter === f.id
                   ? "border-blue-900 bg-blue-900 text-white"
                   : "border-slate-300 text-slate-700 hover:border-blue-900 hover:text-blue-900"
@@ -233,7 +233,7 @@ export default function ProductManagement() {
                           GitHub
                         </a>
                       </div>
-                      <p className={`mt-3 ${metaCls}`}>Free server: the first load can take about 30 seconds.</p>
+                      <p className="mt-3 text-[15px] font-semibold text-slate-600">Free server: the first load can take about 30 seconds.</p>
                     </div>
 
                     <div className="min-w-0">

@@ -175,7 +175,7 @@ export default function MBA() {
               >
                 <div>
                   <h3 className={h3Size}>{project.title}</h3>
-                  <p className="mt-1.5 text-[15px] font-semibold text-slate-600">{project.tags.join(" · ")}</p>
+                  <p className="mt-1.5 label text-slate-600">{project.tags.join(" · ")}</p>
                 </div>
                 <div className="mt-4 lg:mt-0">
                   <Marked items={project.highlights} />

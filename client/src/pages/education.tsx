@@ -73,7 +73,7 @@ function School({
           <div className={logoBox}>
             <img loading="lazy" decoding="async" width={120} height={52} src={logo} alt={alt} className="h-full w-full object-contain" />
           </div>
-          <p className="text-[15px] font-semibold leading-snug text-slate-600">{meta}</p>
+          <p className="label text-slate-600">{meta}</p>
         </div>
         <h2 id={id} className="mt-5 sm:mt-6">{degree}</h2>
         <p className={`mt-1 font-semibold text-[var(--ink)] ${body}`}>{school}</p>

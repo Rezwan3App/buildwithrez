@@ -28,10 +28,10 @@ export function WorkSection() {
                   <p className="mt-1.5 leading-snug text-slate-700">{r.outcome}</p>
                 </span>
                 <ArrowRight
-                  className="row-span-2 mt-1 h-5 w-5 text-blue-900 transition-transform duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1 motion-reduce:transform-none sm:col-start-3 sm:row-span-1"
+                  className="row-span-2 mt-1 h-5 w-5 text-blue-900 sm:col-start-3 sm:row-span-1"
                   aria-hidden="true"
                 />
-                <span className="mt-2 text-[15px] font-semibold text-slate-600 sm:col-start-2 sm:row-start-1 sm:mt-0">
+                <span className="mt-2 whitespace-nowrap label text-slate-600 sm:col-start-2 sm:row-start-1 sm:mt-0">
                   {r.context} &middot; {r.year}
                 </span>
               </Link>

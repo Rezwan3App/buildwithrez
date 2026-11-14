@@ -140,7 +140,7 @@ export default function Experience() {
               <li
                 key={exp.company}
                 id={exp.company.toLowerCase().replace(/[^a-z0-9]+/g, "-")}
-                className="grid gap-y-3 border-b border-slate-300 py-4 sm:gap-y-4 sm:py-8 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-x-8 lg:grid-cols-[10rem_minmax(0,1fr)_15rem] lg:gap-x-12"
+                className="grid gap-y-3 border-b border-slate-300 py-4 sm:gap-y-4 sm:py-8 sm:grid-cols-[12.5rem_minmax(0,1fr)] sm:gap-x-8 lg:grid-cols-[12.5rem_minmax(0,1fr)_15rem] lg:gap-x-12"
               >
                 <div className="flex items-center gap-3 sm:flex-col sm:items-start">
                   <div className={logoBox}>
@@ -154,8 +154,8 @@ export default function Experience() {
                       className={`h-full w-full object-contain ${exp.logo.className ?? ""}`}
                     />
                   </div>
-                  <p className="text-[15px] font-semibold leading-snug text-slate-600">
-                    <span className="block">
+                  <p className="label text-slate-600">
+                    <span className="block sm:whitespace-nowrap">
                       {exp.period.includes("Present") && (
                         <span className="mr-2 inline-block h-[7px] w-[7px] rounded-full bg-[var(--red)] align-middle" aria-hidden="true" />
                       )}
@@ -213,7 +213,7 @@ export default function Experience() {
                     </div>
                   )}
 
-                  <p className="mt-3 text-[15px] font-semibold leading-snug text-slate-600 sm:mt-4">{exp.tools.join(" · ")}</p>
+                  <p className="mt-3 label text-slate-600 sm:mt-4">{exp.tools.join(" · ")}</p>
                 </div>
 
                 {exp.image && (

@@ -1,18 +1,13 @@
 import { ArrowUpRight } from "lucide-react";
 import { EMAIL } from "@/lib/site";
 
-const LABEL = "Get in touch";
-
-/** The red email action: on hover the label rolls up and the arrow slides through its chip. */
+/** The red email action: a label and an arrow chip. Hover only deepens the fill. */
 export function GetInTouch() {
   return (
-    <a href={`mailto:${EMAIL}`} className="btn-cta btn-touch w-full sm:w-auto" aria-label={`${LABEL} by email`}>
-      <span className="roll" aria-hidden="true">
-        <span data-text={LABEL}>{LABEL}</span>
-      </span>
+    <a href={`mailto:${EMAIL}`} className="btn-cta btn-touch w-full sm:w-auto" aria-label="Get in touch by email">
+      <span aria-hidden="true">Get in touch</span>
       <span className="chip" aria-hidden="true">
-        <ArrowUpRight className="chip-out h-4 w-4" />
-        <ArrowUpRight className="chip-in h-4 w-4" />
+        <ArrowUpRight className="h-4 w-4" />
       </span>
     </a>
   );
