@@ -2,7 +2,6 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Briefcase, FolderOpen, GraduationCap, Home, Mail, type LucideIcon } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import { EXPO } from "@/lib/motion";
-import { RESUME_URL } from "@/lib/site";
 
 const navItems: { path: string; label: string; icon: LucideIcon }[] = [
   { path: "/", label: "Home", icon: Home },
@@ -49,7 +48,7 @@ export function SiteNav() {
               {active === item.path && (
                 <motion.span
                   layoutId="nav-underline"
-                  className="absolute left-4 right-4 bottom-1.5 h-0.5 bg-[var(--blue-light)]"
+                  className="absolute left-4 right-4 bottom-1.5 h-0.5 bg-[var(--red)]"
                   transition={reduce ? { duration: 0 } : { duration: 0.2, ease: EXPO }}
                 />
               )}
@@ -57,15 +56,6 @@ export function SiteNav() {
           ))}
         </nav>
 
-        <a
-          href={RESUME_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center min-h-[44px] px-4 rounded-[10px] border border-[#52617f] text-[15px] font-bold text-[var(--on-ink)] hover:bg-[var(--on-ink)] hover:text-[var(--ink)] hover:border-[var(--on-ink)] transition-colors"
-          data-testid="nav-resume"
-        >
-          Resume
-        </a>
       </div>
     </header>
   );
@@ -87,10 +77,11 @@ export function MobileTabBar() {
           key={path}
           href={path}
           aria-current={active === path ? "page" : undefined}
-          className={`${tab} ${active === path ? "text-[var(--blue-light)]" : "text-[var(--on-ink-2)]"}`}
+          className={`${tab} relative ${active === path ? "text-[var(--on-ink)]" : "text-[var(--on-ink-2)]"}`}
         >
           <Icon className="h-5 w-5" aria-hidden="true" />
           {label}
+          {active === path && <span className="absolute top-0 h-0.5 w-8 bg-[var(--red)]" aria-hidden="true" />}
         </Link>
       ))}
       <a href="/#contact" className={`${tab} text-[var(--on-ink-2)]`}>

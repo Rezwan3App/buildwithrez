@@ -3,9 +3,9 @@ import { Link } from "wouter";
 
 const rows = [
   { href: "/experience#rocket-companies", title: "Plaid asset verification", outcome: "Grew direct account connections over 500% on a mortgage app used by roughly 1M people monthly.", context: "Rocket Companies", year: "2024" },
-  { href: "/experience#odynn", title: "Awayz booking platform", outcome: "Recovered 20% more completed flight bookings by tracing failures and prioritizing fixes.", context: "Odynn", year: "2025" },
-  { href: "/experience#welcome-to-chinatown", title: "AI training for small businesses", outcome: "Trained 5 pilot Entrepreneurship Assistance Centers and turned 23 responses into a rollout fix list.", context: "Welcome to Chinatown", year: "2026" },
-  { href: "/experience#nbcuniversal", title: "Publishing tools for streaming", outcome: "Coordinating UAT and release communications for an internal publishing tool used by teams across Peacock, NOW, and SkyShowtime.", context: "NBCUniversal", year: "2026" },
+  { href: "/experience#rocket-companies", title: "AI onboarding chatbot", outcome: "Cut banker escalations by 40% by designing what the bot resolved and what went to a banker.", context: "Rocket Companies", year: "2024" },
+  { href: "/experience#odynn", title: "Awayz booking fixes", outcome: "Recovered 20% more completed flight bookings by tracing failures and prioritizing fixes.", context: "Odynn", year: "2025" },
+  { href: "/experience#welcome-to-chinatown", title: "Courthouse lunch guide", outcome: "Launched a public web app guiding 1,500+ daily jurors to 40+ local lunch spots.", context: "Welcome to Chinatown", year: "2026" },
   { href: "/projects#snag", title: "Snag", outcome: "Shipped an app that scans new YouTube uploads for promo codes and texts them to you.", context: "Personal project", year: "2026" },
 ];
 
@@ -13,7 +13,7 @@ export function WorkSection() {
   return (
     <section id="work" className="section">
       <div className="wrap">
-        <h2 className="mb-6 sm:mb-8">Selected work</h2>
+        <h2 className="mb-6 sm:mb-8">Shipped work</h2>
         <ul className="border-t-2 border-ink">
           {rows.map((r) => (
             <li key={r.title} className="border-b border-slate-300">

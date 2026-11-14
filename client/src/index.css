@@ -13,8 +13,9 @@
 /*
   Design system: blueprint.
   Near-black ink bands and a fine blue drawing grid, on cool paper. Navy is the
-  brand colour for links and marks. Red is the main call to action and nothing
-  else: if it is not the thing to press, it is not red. One red button a screen.
+  brand colour for links and marks. Red is the main call to action (the only
+  solid red button a screen) plus small drafting accents: active-nav line, status light,
+  heading marks, link underlines on hover. Never red body text.
   Mobile first: base styles are the phone, sm: and lg: add to them.
 */
 
@@ -28,7 +29,7 @@
   --on-ink: #f7f9fc;     /* primary text on ink */
   --on-ink-2: #b8c4d9;   /* secondary text on ink */
   --blue-light: #8fb0ff; /* links and marks on ink */
-  --red: #d7192b;        /* main CTA only */
+  --red: #d7192b;        /* main CTA fill; elsewhere only thin lines, dots and small squares, never text */
   --red-deep: #b51323;   /* CTA hover */
 
   --background: hsl(0, 0%, 100%);
@@ -176,7 +177,27 @@
   background-repeat: no-repeat;
 }
 
-/* Main call to action. The only red on the page. */
+/* Red drafting marks: a short bar before section headings, a square beside page-header titles */
+h2::before {
+  content: ""; display: inline-block; width: 18px; height: 3px; margin-right: 0.6rem;
+  vertical-align: 0.28em; background: var(--red);
+}
+header.band-ink h1::before {
+  content: ""; display: inline-block; width: 0.22em; height: 0.22em; margin-right: 0.3em;
+  vertical-align: 0.12em; background: var(--red);
+}
+
+/* Text links: underline turns red on hover or focus; text colour is untouched */
+main a:not(.btn-cta):not(.btn-line):not(.btn-touch):hover,
+main a:not(.btn-cta):not(.btn-line):not(.btn-touch):focus-visible,
+footer a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--red);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+/* Main call to action. The only solid red fill on a page. */
 .btn-cta,
 .btn-line {
   display: inline-flex;
@@ -282,7 +303,7 @@
 /* Status light: a small square that flickers softly, like an indicator on a panel */
 .status-light {
   width: 7px; height: 7px; border-radius: 1px; flex-shrink: 0;
-  background: var(--on-ink);
+  background: var(--red);
   animation: flicker 1.4s ease-in-out infinite;
 }
 @keyframes flicker {

@@ -12,6 +12,7 @@ const Experience = lazy(() => import("@/pages/experience"));
 const Education = lazy(() => import("@/pages/education"));
 const ProductManagement = lazy(() => import("@/pages/product-management"));
 const MBA = lazy(() => import("@/pages/mba"));
+const Stats = lazy(() => import("@/pages/stats"));
 const NotFound = lazy(() => import("@/pages/not-found"));
 
 function ScrollToTop() {
@@ -48,9 +49,12 @@ function ScrollToTop() {
 // One listener for all analytics: page changes, plus clicks on the links worth counting.
 function Analytics() {
   const [location] = useLocation();
-  useEffect(() => track("page_view", location), [location]);
+  useEffect(() => {
+    if (location !== "/stats") track("page_view", location);
+  }, [location]);
   useEffect(() => {
     const click = (e: MouseEvent) => {
+      if (window.location.pathname.startsWith("/stats")) return;
       const href = (e.target as Element | null)?.closest?.("a")?.getAttribute("href") ?? "";
       if (href === RESUME_URL) track("resume_download");
       else if (href.includes("snag-2232.onrender.com")) track("snag_open");
@@ -82,6 +86,7 @@ function Router() {
         <Route path="/projects" component={ProductManagement} />
         <Route path="/education" component={Education} />
         <Route path="/projects/mba" component={MBA} />
+        <Route path="/stats" component={Stats} />
         <Route path="/mba">{() => <Redirect to="/projects/mba" replace />}</Route>
         <Route path="/product-management">{() => <Redirect to="/projects" replace />}</Route>
         <Route component={NotFound} />

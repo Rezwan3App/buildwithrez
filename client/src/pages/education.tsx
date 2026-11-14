@@ -1,3 +1,4 @@
+import { Download } from "lucide-react";
 import { Link } from "wouter";
 import { Footer } from "@/components/footer";
 import { PageClose } from "@/components/page-close";
@@ -102,6 +103,14 @@ export default function Education() {
         school="Baruch College, Zicklin School of Business"
         meta="Evening program · 4.0 GPA · Exp. May 2027"
       >
+        <a
+          href="/attached_assets/Rezwan_Islam_Baruch_Transcript.pdf"
+          download="Rezwan_Islam_Baruch_Transcript.pdf"
+          className="btn-line mt-5 w-full sm:w-auto"
+        >
+          <Download aria-hidden="true" className="h-5 w-5" />
+          Download transcript (unofficial)
+        </a>
         <h3 className="mt-6 text-[1.1875rem] sm:mt-8 sm:text-xl font-bold">Coursework</h3>
         <div className="mt-3 grid gap-x-12 gap-y-6 sm:grid-cols-2">
           {tracks.map((t) => (

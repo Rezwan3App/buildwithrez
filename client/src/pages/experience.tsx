@@ -155,7 +155,12 @@ export default function Experience() {
                     />
                   </div>
                   <p className="text-[15px] font-semibold leading-snug text-slate-600">
-                    <span className="block">{exp.period}</span>
+                    <span className="block">
+                      {exp.period.includes("Present") && (
+                        <span className="mr-2 inline-block h-[7px] w-[7px] rounded-full bg-[var(--red)] align-middle" aria-hidden="true" />
+                      )}
+                      {exp.period}
+                    </span>
                     <span className="block">{exp.location}</span>
                   </p>
                 </div>

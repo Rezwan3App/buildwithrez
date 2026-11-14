@@ -9,7 +9,7 @@ export function HeroSection() {
     <section id="home" className="band-ink blueprint relative overflow-hidden">
       <HeroMotif
         size={300}
-        className="absolute -right-28 -top-16 opacity-40 sm:-right-16 sm:-top-14 sm:w-[420px] sm:h-[420px] lg:right-auto lg:left-[42%] lg:top-auto lg:-bottom-44 lg:w-[460px] lg:h-[460px] lg:opacity-35"
+        className="absolute -right-28 -top-16 opacity-40 sm:-right-16 sm:-top-14 sm:w-[420px] sm:h-[420px] lg:right-auto lg:left-[6%] lg:top-auto lg:-bottom-60 lg:w-[420px] lg:h-[420px] lg:opacity-35"
       />
       <div className="wrap relative pt-7 pb-10 sm:pt-20 sm:pb-20">
         <div className="grid gap-6 lg:grid-cols-[1.35fr_1fr] lg:gap-16 lg:items-center">
