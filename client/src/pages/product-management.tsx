@@ -2,7 +2,7 @@ import { Link } from "wouter";
 import { usePageTitle } from "@/hooks/use-page-title";
 import { Footer } from "@/components/footer";
 import { PageClose } from "@/components/page-close";
-import { ArrowRight, ExternalLink, X, Youtube, Github, ListOrdered } from "lucide-react";
+import { ArrowRight, ExternalLink, X, Youtube, Github, ListOrdered, Gauge } from "lucide-react";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { EXPO } from "@/lib/motion";
@@ -79,7 +79,7 @@ export function ProjectsTabs({ active, className = "mb-10" }: { active: "product
   );
 }
 
-type Shot = { src: string; alt: string; label: string; w?: number; h?: number };
+type Shot = { src: string; alt: string; label: string; w?: number; h?: number; contain?: boolean };
 const SNAG_SHOTS: Shot[] = [
   { src: "/attached_assets/snag/screenshot.webp", w: 1440, h: 860, label: "Search a YouTuber", alt: "Snag homepage: search a YouTuber, with a promo code card it caught" },
   { src: "/attached_assets/snag/how-it-works.webp", w: 1116, h: 567, label: "How a deal gets caught", alt: "A video description with the deal phrases underlined, next to the sponsor, code and end date Snag pulls out" },
@@ -89,6 +89,11 @@ const SNAG_SHOTS: Shot[] = [
 const RAGE_SHOTS: Shot[] = [
   { src: "/attached_assets/rageparser/ranked-themes.webp", w: 1440, h: 990, label: "Venmo, ranked by RICE", alt: "RageParser Venmo page: complaint themes ranked by RICE score, each with a product, design and engineering fix" },
   { src: "/attached_assets/rageparser/app-picker.webp", w: 1440, h: 660, label: "Pick one of 50 apps", alt: "RageParser homepage: what users hate about 50 apps, with an app picker grouped by category" },
+];
+
+const METER_SHOTS: Shot[] = [
+  { src: "/attached_assets/usage-meter/band.webp", w: 686, h: 95, contain: true, label: "Control bar above the chat box", alt: "Control bar: model, effort and agent count dropdowns, an agent talk toggle, and the working folder" },
+  { src: "/attached_assets/usage-meter/pane.webp", w: 484, h: 959, contain: true, label: "Session pane", alt: "Session pane: progress bar, usage bars for memory and the 5-hour and 7-day limits, running and finished agents, and the agent chat" },
 ];
 
 const Gallery = ({ label, shots, onOpen }: { label: string; shots: Shot[]; onOpen: (s: Shot) => void }) => (
@@ -101,7 +106,7 @@ const Gallery = ({ label, shots, onOpen }: { label: string; shots: Shot[]; onOpe
           aria-label={`Enlarge screenshot: ${shot.label}`}
           className="block w-full cursor-zoom-in overflow-hidden rounded-[6px] border border-slate-300 transition-colors duration-150 ease-out hover:border-blue-900"
         >
-          <img decoding="async" loading="lazy" src={shot.src} alt={shot.alt} width={shot.w} height={shot.h} className="aspect-[16/10] h-auto w-full object-cover object-top" />
+          <img decoding="async" loading="lazy" src={shot.src} alt={shot.alt} width={shot.w} height={shot.h} className={`aspect-[16/10] h-auto w-full ${shot.contain ? "bg-[var(--ink)] object-contain p-3" : "object-cover object-top"}`} />
         </button>
         <p className="mt-2 text-[15px] text-slate-600">{shot.label}</p>
       </li>
@@ -253,6 +258,51 @@ export default function ProductManagement() {
                     </div>
                   </div>
                   <Gallery label="Snag screenshots" shots={SNAG_SHOTS} onOpen={setModal} />
+                </article>
+              )}
+
+              {item("shipped", "usage-meter",
+                <article id="usage-meter" className={rowCls}>
+                  <div className={rowGridCls}>
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-2.5">
+                        <Gauge aria-hidden="true" className="h-6 w-6 shrink-0 text-blue-900" />
+                        <h3 className={titleCls}>usage-meter for Claude Code</h3>
+                      </div>
+                      <p className="mt-1.5 font-semibold text-blue-900">See what your AI coding session is doing at a glance</p>
+                      <p className={`mt-2 ${metaCls}`}>Shipped &middot; 2026</p>
+                      <p className="mt-4 text-slate-700">
+                        A mod that adds a control bar and a live session pane to Claude Code: limits, agents, and what they say to each other.
+                      </p>
+                      <div className="mt-5 flex flex-wrap gap-3">
+                        <a
+                          href="https://github.com/Rezwan3App/claude-usage-meter-mod"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn-line flex-1 whitespace-nowrap sm:flex-none"
+                        >
+                          <Github aria-hidden="true" className="h-4 w-4" />
+                          GitHub
+                        </a>
+                      </div>
+                    </div>
+
+                    <div className="min-w-0">
+                      <Bullets
+                        items={[
+                          "Switch model, effort and agent count from a bar above the chat box.",
+                          "Shows conversation memory and 5-hour and 7-day limits with reset times.",
+                          "Lists every agent live, with its model, run time, tokens and messages.",
+                        ]}
+                      />
+                      <h4 className="mt-6 font-bold">Product decisions</h4>
+                      <ul className="mt-2 space-y-1 text-slate-700">
+                        <li><span className="font-semibold text-ink">Spend limits wisely:</span> agents get Haiku, Sonnet or Opus based on the task.</li>
+                      </ul>
+                      <p className={`mt-5 ${metaCls}`}>TypeScript · Claude Code hooks · Plugin</p>
+                    </div>
+                  </div>
+                  <Gallery label="usage-meter screenshots" shots={METER_SHOTS} onOpen={setModal} />
                 </article>
               )}
 
