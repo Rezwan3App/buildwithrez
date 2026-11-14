@@ -2,9 +2,9 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 
 const rows = [
-  { href: "/experience#rocket-companies", title: "Plaid asset verification", outcome: "Grew direct account connections over 500% on a mortgage app used by roughly 1M people monthly.", context: "Rocket Companies", year: "2024" },
-  { href: "/experience#rocket-companies", title: "AI onboarding chatbot", outcome: "Cut banker escalations by 40% by designing what the bot resolved and what went to a banker.", context: "Rocket Companies", year: "2024" },
-  { href: "/experience#odynn", title: "Awayz booking fixes", outcome: "Recovered 20% more completed flight bookings by tracing failures and prioritizing fixes.", context: "Odynn", year: "2025" },
+  { href: "/experience#rocket-companies", title: "Plaid asset verification", outcome: "Launched Plaid verification on a mortgage app used by roughly 1M people monthly, growing direct account connections over 500%.", context: "Rocket Companies", year: "2024" },
+  { href: "/experience#rocket-companies", title: "Home comparison feature", outcome: "Launched a home comparison feature that lifted engagement 20% and won the June 2024 Tech Demo Award.", context: "Rocket Companies", year: "2024" },
+  { href: "/experience#odynn", title: "Awayz booking fixes", outcome: "Tracked 150+ booking events in Amplitude and shipped the fixes they surfaced, recovering 20% more completed flight bookings.", context: "Odynn", year: "2025" },
   { href: "/experience#welcome-to-chinatown", title: "Courthouse lunch guide", outcome: "Launched a public web app guiding 1,500+ daily jurors to 40+ local lunch spots.", context: "Welcome to Chinatown", year: "2026" },
   { href: "/projects#snag", title: "Snag", outcome: "Shipped an app that scans new YouTube uploads for promo codes and texts them to you.", context: "Personal project", year: "2026" },
 ];
