@@ -30,6 +30,12 @@ const KEY_EVENTS: [string, string][] = [
 
 const nyDay = (d: Date | string) =>
   new Date(d).toLocaleDateString("en-CA", { timeZone: "America/New_York" }); // YYYY-MM-DD
+const nyWhen = (d: string) =>
+  new Date(d).toLocaleString("en-US", { timeZone: "America/New_York", month: "short", day: "numeric", year: "numeric", hour: "numeric", minute: "2-digit" });
+const PAGE_NAMES: Record<string, string> = { "/": "Home", "/experience": "Experience", "/projects": "Projects", "/education": "Education", "/projects/mba": "MBA projects" };
+const pageName = (p: string | null) => PAGE_NAMES[p || "/"] ?? (p || "/");
+const TYPE_NAMES: Record<string, string> = { page_view: "Page view", resume_download: "Resume download", snag_open: "Opened Snag", email_click: "Email click", linkedin_click: "LinkedIn click", contact_sent: "Contact note" };
+const refHost = (r: string | null) => { try { return r ? new URL(r).hostname.replace(/^www\./, "") : "Direct"; } catch { return "Direct"; } };
 
 const card = "border border-slate-200 bg-white p-4 sm:p-5";
 const btn =
@@ -119,6 +125,7 @@ function Dashboard() {
   const [range, setRange] = useState<Range>(30);
   const [events, setEvents] = useState<Ev[] | null>(null);
   const [msgs, setMsgs] = useState<Msg[]>([]);
+  const [resumes, setResumes] = useState<Ev[]>([]);
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -128,11 +135,14 @@ function Dashboard() {
     Promise.all([
       loadEvents(range),
       supabase.from("messages").select("id,created_at,name,body").order("created_at", { ascending: false }).limit(5),
+      // All-time, so "last resume download" never depends on the selected range.
+      supabase.from("events").select("created_at,type,path,referrer").eq("type", "resume_download").order("created_at", { ascending: false }).limit(10),
     ])
-      .then(([ev, m]) => {
+      .then(([ev, m, r]) => {
         if (!live) return;
         setEvents(ev);
         setMsgs((m.data as Msg[]) ?? []);
+        setResumes((r.data as Ev[]) ?? []);
       })
       .catch(() => live && setError("Could not load stats. Try again in a moment."));
     return () => { live = false; };
@@ -162,6 +172,29 @@ function Dashboard() {
         byDay.push({ name: k.slice(5), n: days.get(k) ?? 0 });
       }
     }
+    // Every event type per New York day, newest first, with the change in views vs the day before.
+    const perDay = new Map<string, Record<string, number>>();
+    ev.forEach((e) => {
+      const k = nyDay(e.created_at);
+      const r = perDay.get(k) ?? {};
+      r[e.type] = (r[e.type] ?? 0) + 1;
+      perDay.set(k, r);
+    });
+    const dayKeys: string[] = [];
+    if (ev.length) {
+      const first = nyDay(ev[0].created_at);
+      const start = range ? nyDay(new Date(Date.now() - (range - 1) * 864e5)) : first;
+      for (let d = new Date(start + "T12:00:00Z"); nyDay(d) <= nyDay(new Date()); d = new Date(d.getTime() + 864e5)) dayKeys.push(d.toISOString().slice(0, 10));
+    }
+    const dayRows = dayKeys
+      .map((k) => {
+        const r = perDay.get(k) ?? {};
+        return { day: k, views: r.page_view ?? 0, resume: r.resume_download ?? 0, snag: r.snag_open ?? 0, email: r.email_click ?? 0, linkedin: r.linkedin_click ?? 0, notes: r.contact_sent ?? 0 };
+      })
+      .map((row, i, all) => ({ ...row, delta: i ? row.views - all[i - 1].views : null }))
+      .reverse();
+    const today = perDay.get(nyDay(new Date()))?.page_view ?? 0;
+    const yesterday = perDay.get(nyDay(new Date(Date.now() - 864e5)))?.page_view ?? 0;
     const top = (m: Map<string, number>, n: number) =>
       Array.from(m.entries()).sort((a, b) => b[1] - a[1]).slice(0, n).map(([name, n]) => ({ name, n }));
     return {
@@ -170,18 +203,26 @@ function Dashboard() {
       resume: ev.filter((e) => e.type === "resume_download").length,
       notes: ev.filter((e) => e.type === "contact_sent").length,
       byDay,
-      topPages: top(pages, 8),
+      topPages: top(pages, 8).map((p) => ({ ...p, name: pageName(p.name) })),
+      pageTable: top(pages, 50).map((p) => ({ ...p, share: views.length ? Math.round((p.n / views.length) * 100) : 0 })),
+      dayRows,
+      today,
+      yesterday,
+      recent: [...ev].reverse().slice(0, 25),
       topRefs: top(refs, 8),
       keyEvents: KEY_EVENTS.map(([t, name]) => ({ name, n: ev.filter((e) => e.type === t).length })),
     };
   }, [events, range]);
 
-  const kpis: [string, number][] = [
-    ["Page views", agg.views],
-    ["Unique pages", agg.pageCount],
-    ["Resume downloads", agg.resume],
-    ["Contact notes", agg.notes],
+  const diff = agg.today - agg.yesterday;
+  const kpis: [string, string, string | undefined][] = [
+    ["Views today", String(agg.today), `${diff >= 0 ? "+" : ""}${diff} vs yesterday (${agg.yesterday})`],
+    ["Page views", String(agg.views), "in this range"],
+    ["Resume downloads", String(agg.resume), "in this range"],
+    ["Last resume download", resumes[0] ? nyWhen(resumes[0].created_at) : "None yet", resumes[0] ? `from ${pageName(resumes[0].path)}` : undefined],
   ];
+  const th = "py-2 pr-3 text-left font-semibold whitespace-nowrap";
+  const td = "py-2 pr-3 tabular-nums whitespace-nowrap";
 
   return (
     <div>
@@ -203,10 +244,11 @@ function Dashboard() {
       {events && (
         <>
           <div className="mt-4 grid grid-cols-2 gap-3 lg:grid-cols-4">
-            {kpis.map(([label, n]) => (
+            {kpis.map(([label, n, sub]) => (
               <div key={label} className={card}>
                 <div className="text-sm text-slate-600">{label}</div>
-                <div className="mt-1 text-3xl font-bold tabular-nums" style={{ color: INK }}>{n}</div>
+                <div className={`mt-1 font-bold tabular-nums ${n.length > 8 ? "text-lg" : "text-3xl"}`} style={{ color: INK }}>{n}</div>
+                {sub && <div className="mt-1 text-xs text-slate-600">{sub}</div>}
               </div>
             ))}
           </div>
@@ -229,6 +271,70 @@ function Dashboard() {
                   ))}
                 </ul>
               ) : <p className="text-slate-600">No referrers yet.</p>}
+            </Card>
+            <Card title="Page visits, ranked">
+              {agg.pageTable.length ? (
+                <table className="w-full text-sm" style={{ color: INK }}>
+                  <thead className="border-b border-slate-200">
+                    <tr><th className={th}>Page</th><th className={th}>Views</th><th className={th}>Share</th></tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-200">
+                    {agg.pageTable.map((p) => (
+                      <tr key={p.name}><td className="py-2 pr-3">{pageName(p.name)}</td><td className={td}>{p.n}</td><td className={td}>{p.share}%</td></tr>
+                    ))}
+                  </tbody>
+                </table>
+              ) : <p className="text-slate-600">No page views yet.</p>}
+            </Card>
+            <Card title="Resume downloads (latest 10, all time)">
+              {resumes.length ? (
+                <ul className="divide-y divide-slate-200">
+                  {resumes.map((r) => (
+                    <li key={r.created_at} className="flex flex-wrap justify-between gap-x-3 py-2 text-sm" style={{ color: INK }}>
+                      <span className="tabular-nums">{nyWhen(r.created_at)}</span>
+                      <span className="text-slate-600">{pageName(r.path)} · {refHost(r.referrer)}</span>
+                    </li>
+                  ))}
+                </ul>
+              ) : <p className="text-slate-600">No resume downloads yet.</p>}
+            </Card>
+            <Card title="Day by day" className="lg:col-span-2">
+              {agg.dayRows.length ? (
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm" style={{ color: INK }}>
+                    <thead className="border-b border-slate-200">
+                      <tr>{["Day", "Views", "Change", "Resume", "Snag", "Email", "LinkedIn", "Notes"].map((h) => <th key={h} className={th}>{h}</th>)}</tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-200">
+                      {agg.dayRows.map((r) => (
+                        <tr key={r.day}>
+                          <td className={td}>{new Date(r.day + "T12:00:00Z").toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric", timeZone: "UTC" })}</td>
+                          <td className={`${td} font-semibold`}>{r.views}</td>
+                          <td className={`${td} ${r.delta && r.delta > 0 ? "text-green-700" : r.delta && r.delta < 0 ? "text-red-700" : "text-slate-500"}`}>{r.delta === null ? "" : `${r.delta > 0 ? "+" : ""}${r.delta}`}</td>
+                          <td className={td}>{r.resume || ""}</td>
+                          <td className={td}>{r.snag || ""}</td>
+                          <td className={td}>{r.email || ""}</td>
+                          <td className={td}>{r.linkedin || ""}</td>
+                          <td className={td}>{r.notes || ""}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              ) : <p className="text-slate-600">No activity yet.</p>}
+            </Card>
+            <Card title="Recent activity (latest 25)" className="lg:col-span-2">
+              {agg.recent.length ? (
+                <ul className="divide-y divide-slate-200">
+                  {agg.recent.map((e, i) => (
+                    <li key={e.created_at + i} className="grid grid-cols-[1fr_auto] gap-x-3 py-2 text-sm sm:grid-cols-[12rem_10rem_1fr]" style={{ color: INK }}>
+                      <span className="tabular-nums text-slate-600">{nyWhen(e.created_at)}</span>
+                      <span className="font-semibold">{TYPE_NAMES[e.type] ?? e.type}</span>
+                      <span className="col-span-2 text-slate-600 sm:col-span-1">{pageName(e.path)} · {refHost(e.referrer)}</span>
+                    </li>
+                  ))}
+                </ul>
+              ) : <p className="text-slate-600">No activity yet.</p>}
             </Card>
             <Card title="Latest contact notes">
               {msgs.length ? (
