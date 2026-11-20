@@ -32,7 +32,7 @@ export type HeroItem = { id: HeroItemId; x: number; top: number; show: boolean }
 
 export const HERO_LAYOUT: HeroItem[] = [
   { id: "booking", x: 25, top: 6, show: true },
-  { id: "plaid", x: -49, top: 63.1, show: true },
+  { id: "plaid", x: -36, top: 85.2, show: true },
   { id: "haptic", x: 212, top: 3, show: false },
   { id: "stream", x: 389, top: 2, show: true },
   { id: "scan", x: 552, top: 19.3, show: true },

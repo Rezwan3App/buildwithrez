@@ -515,15 +515,23 @@ a:hover > .u-wipe, a:focus-visible > .u-wipe { text-decoration-color: var(--red)
 .gl-thumbs { display: flex; gap: 0.3rem; }
 .gl-thumbs i { flex: 1; height: 1.1rem; border-radius: var(--r-sm); background: rgba(255, 255, 255, 0.1); }
 
-/* Rocket + Plaid: bank connected into the mortgage flow (still) */
+/* Rocket + Plaid: a red dot travels from the bank to the home, then a check appears */
 .gl-plaid { display: flex; align-items: center; gap: 0.35rem; padding: 0.7rem 0.8rem; }
 .gl-link { width: 3.4rem; height: 0.8rem; stroke: rgba(198, 214, 255, 0.6); stroke-width: 1.2; }
-.gl-packet { fill: #e34a5a; stroke: none; opacity: 0.75; }
+.gl-packet { fill: #e34a5a; stroke: none; animation: gl-packet 5s ease-in-out infinite; }
+@keyframes gl-packet {
+  0% { transform: translateX(0); opacity: 0; }
+  12% { opacity: 0.85; }
+  80% { transform: translateX(56px); opacity: 0.85; }
+  92%, 100% { transform: translateX(56px); opacity: 0; }
+}
 .gl-check {
   position: absolute; top: -0.45rem; right: -0.45rem; display: grid; place-items: center;
   width: 1.1rem; height: 1.1rem; border-radius: 50%; background: rgba(46, 160, 110, 0.8); color: #fff;
+  animation: gl-check 5s ease-in-out infinite;
 }
 .gl-check svg { width: 0.65rem; height: 0.65rem; }
+@keyframes gl-check { 0%, 72% { opacity: 0; transform: scale(0.85); } 82%, 94% { opacity: 0.85; transform: scale(1); } 100% { opacity: 0; } }
 
 /* Haptic navigation: arrow with soft pulses */
 .gl-haptic { display: grid; place-items: center; width: 4.25rem; height: 4.25rem; border-radius: 50%; }

@@ -67,7 +67,7 @@ const ITEMS: Record<HeroItemId, { depth: Depth; className?: string; bare?: boole
         <Landmark className="gl-icon" strokeWidth={1.5} />
         <svg className="gl-link" viewBox="0 0 60 12" fill="none">
           <path d="M2 6h56" strokeDasharray="2 4" />
-          <circle className="gl-packet" cx="30" cy="6" r="3" />
+          <circle className="gl-packet" cx="2" cy="6" r="3" />
         </svg>
         <House className="gl-icon" strokeWidth={1.5} />
         <span className="gl-check"><Check strokeWidth={3} /></span>
