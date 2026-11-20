@@ -13,7 +13,8 @@ const FILTERS: { id: "all" | Status; label: string }[] = [
   { id: "shipped", label: "Shipped" },
   { id: "progress", label: "In progress" },
 ];
-const PROJECT_STATUSES: Status[] = ["shipped", "progress"];
+// One entry per project on the page (Snag, usage-meter, RageParser), so the filter count stays right.
+const PROJECT_STATUSES: Status[] = ["shipped", "shipped", "progress"];
 
 export function ImageModal({ src, alt, label, onClose }: { src: string; alt: string; label: string; onClose: () => void }) {
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -83,7 +84,7 @@ type Shot = { src: string; alt: string; label: string; w?: number; h?: number; c
 const SNAG_SHOTS: Shot[] = [
   { src: "/attached_assets/snag/screenshot.webp", w: 1440, h: 860, label: "Search a YouTuber", alt: "Snag homepage: search a YouTuber, with a promo code card it caught" },
   { src: "/attached_assets/snag/how-it-works.webp", w: 1116, h: 567, label: "How a deal gets caught", alt: "A video description with the deal phrases underlined, next to the sponsor, code and end date Snag pulls out" },
-  { src: "/attached_assets/snag/alerts-and-history.webp", w: 1116, h: 685, label: "Alerts and deal history", alt: "Watched channels, text alerts, and a history of saved deals" },
+  { src: "/attached_assets/snag/alerts-and-history.webp", w: 1116, h: 685, label: "Alerts and deal history", alt: "Watched channels, text alerts and a history of saved deals" },
 ];
 
 const RAGE_SHOTS: Shot[] = [
@@ -92,8 +93,8 @@ const RAGE_SHOTS: Shot[] = [
 ];
 
 const METER_SHOTS: Shot[] = [
-  { src: "/attached_assets/usage-meter/band.webp", w: 686, h: 95, contain: true, label: "Control bar above the chat box", alt: "Control bar: model, effort and agent count dropdowns, an agent talk toggle, and the working folder" },
-  { src: "/attached_assets/usage-meter/pane.webp", w: 484, h: 959, contain: true, label: "Session pane", alt: "Session pane: progress bar, usage bars for memory and the 5-hour and 7-day limits, running and finished agents, and the agent chat" },
+  { src: "/attached_assets/usage-meter/band.webp", w: 686, h: 95, contain: true, label: "Control bar above the chat box", alt: "Control bar: model, effort and agent count dropdowns, an agent talk toggle and the working folder" },
+  { src: "/attached_assets/usage-meter/pane.webp", w: 484, h: 959, contain: true, label: "Session pane", alt: "Session pane: progress bar, usage bars for memory and the 5-hour and 7-day limits, running and finished agents and the agent chat" },
 ];
 
 const Gallery = ({ label, shots, onOpen }: { label: string; shots: Shot[]; onOpen: (s: Shot) => void }) => (
@@ -170,7 +171,7 @@ export default function ProductManagement() {
       <header className="band-ink band-glow">
         <div className="wrap py-6 sm:py-10">
           <h1>Projects</h1>
-          <p className="mt-3 text-lg">Products I built on my own, from idea to working app.</p>
+          <p className="mt-3 text-lg">Apps I designed and built myself.</p>
           <ProjectsTabs active="product" className="mt-6 sm:mt-8" />
         </div>
       </header>
@@ -214,7 +215,7 @@ export default function ProductManagement() {
                       <p className="mt-1.5 font-semibold text-blue-900">Texts you the promo codes in YouTube sponsor reads</p>
                       <p className={`mt-2 ${metaCls}`}>Shipped &middot; 2026</p>
                       <p className="mt-4 text-slate-700">
-                        Watches the channels you follow and texts you each new code, sponsor link, and expiry.
+                        Watches the channels you follow and texts you each new code, sponsor link and expiry.
                       </p>
                       <div className="mt-5 flex flex-wrap gap-3">
                         <a
@@ -272,7 +273,7 @@ export default function ProductManagement() {
                       <p className="mt-1.5 font-semibold text-blue-900">See what your AI coding session is doing at a glance</p>
                       <p className={`mt-2 ${metaCls}`}>Shipped &middot; 2026</p>
                       <p className="mt-4 text-slate-700">
-                        A mod that adds a control bar and a live session pane to Claude Code: limits, agents, and what they say to each other.
+                        A mod that adds a control bar and a live session pane to Claude Code: limits, agents and what they say to each other.
                       </p>
                       <div className="mt-5 flex flex-wrap gap-3">
                         <a

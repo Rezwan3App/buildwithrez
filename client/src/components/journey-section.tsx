@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 const steps = [
   ["2018", "B.E. in mechanical engineering, CCNY."],
-  ["2021 – 2023", "Engineering and project management, including Zachry Nuclear Engineering."],
+  ["2021 – 2023", "Mechanical engineer at Zachry Nuclear Engineering."],
   ["2024 – May 2027", "MBA at Baruch, with product roles at Rocket Companies and Odynn."],
   ["2026", "Welcome to Chinatown: AI training for small businesses."],
   ["Sept 2026 – Present", "Product management intern at NBCUniversal."],

@@ -40,7 +40,7 @@ const involvement = [
   },
   {
     title: "Vice President, Data Science and Analytics Society",
-    detail: "Feb 2024 to Jan 2026. I ran 15+ workshops, panels and events, and active membership doubled in one semester.",
+    detail: "Feb 2024 – Jan 2026. I ran 15+ workshops, panels and events, and active membership doubled in one semester.",
   },
 ];
 

@@ -62,7 +62,7 @@ const dashboards = [
     width: 1400,
     height: 759,
     title: "Customer churn analysis",
-    caption: "Which bank customer segments leave, by geography, product mix, and account activity.",
+    caption: "Which bank customer segments leave, by geography, product mix and account activity.",
   },
   {
     href: "https://public.tableau.com/app/profile/rezwan.islam4698/viz/NewYorkCityFireSafetyAnalysisDashboard/Dashboard3",
