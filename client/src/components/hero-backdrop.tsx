@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent, type ReactNode } from "react";
-import { Check, House, Landmark, MapPin, Navigation, Plane, Play, Tag, UtensilsCrossed } from "lucide-react";
+import { Check, House, Landmark, MapPin, Navigation, Plane, Play, UtensilsCrossed } from "lucide-react";
 import { HERO_LABELS, HERO_LAYOUT, type HeroItem, type HeroItemId } from "@/components/hero-layout";
 
 /**
@@ -71,16 +71,6 @@ const ITEMS: Record<HeroItemId, { depth: Depth; className?: string; bare?: boole
         </svg>
         <House className="gl-icon" strokeWidth={1.5} />
         <span className="gl-check"><Check strokeWidth={3} /></span>
-      </>
-    ),
-  },
-  snag: {
-    depth: "near",
-    className: "gl-bubble",
-    body: (
-      <>
-        <Tag className="gl-tag" strokeWidth={2} />
-        <span>SAVE20</span>
       </>
     ),
   },

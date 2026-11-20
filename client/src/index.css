@@ -470,7 +470,7 @@ a:hover > .u-wipe, a:focus-visible > .u-wipe { text-decoration-color: var(--red)
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.45;
+  opacity: 0.3;
   color: rgba(198, 214, 255, 0.85);
 }
 .gl-card {
@@ -514,15 +514,6 @@ a:hover > .u-wipe, a:focus-visible > .u-wipe { text-decoration-color: var(--red)
 @keyframes gl-play { from { transform: scaleX(0.05); } to { transform: scaleX(1); } }
 .gl-thumbs { display: flex; gap: 0.3rem; }
 .gl-thumbs i { flex: 1; height: 1.1rem; border-radius: var(--r-sm); background: rgba(255, 255, 255, 0.1); }
-
-/* Snag: promo code alert */
-.gl-bubble {
-  display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 0.9rem;
-  border-bottom-left-radius: var(--r-sm);
-  font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.8rem; letter-spacing: 0.08em;
-  color: rgba(230, 236, 255, 0.9);
-}
-.gl-tag { width: 1rem; height: 1rem; color: #e34a5a; }
 
 /* Rocket + Plaid: bank connected into the mortgage flow (still) */
 .gl-plaid { display: flex; align-items: center; gap: 0.35rem; padding: 0.7rem 0.8rem; }
@@ -623,7 +614,6 @@ a:hover > .u-wipe, a:focus-visible > .u-wipe { text-decoration-color: var(--red)
      edge (still peeking), and only the streaming card sits on the right. */
   .hero-scene:not(.is-arranging) .gl-item-booking { left: calc(50% + 55px) !important; }
   .hero-scene:not(.is-arranging) .gl-item-plaid { left: calc(50% + 45px) !important; }
-  .hero-scene:not(.is-arranging) .gl-item-snag { left: calc(50% + 35px) !important; }
   .hero-scene:not(.is-arranging) .gl-item-stream { left: calc(50% + 388px) !important; }
   .hero-scene:not(.is-arranging) .gl-item-compare { display: none; }
 }

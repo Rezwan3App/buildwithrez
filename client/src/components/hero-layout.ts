@@ -13,7 +13,6 @@
 export type HeroItemId =
   | "booking"
   | "plaid"
-  | "snag"
   | "haptic"
   | "stream"
   | "scan"
@@ -34,7 +33,6 @@ export type HeroItem = { id: HeroItemId; x: number; top: number; show: boolean }
 export const HERO_LAYOUT: HeroItem[] = [
   { id: "booking", x: 25, top: 6, show: true },
   { id: "plaid", x: -49, top: 63.1, show: true },
-  { id: "snag", x: 44, top: 82.4, show: false }, // hidden while Snag is still being built
   { id: "haptic", x: 212, top: 3, show: false },
   { id: "stream", x: 389, top: 2, show: true },
   { id: "scan", x: 552, top: 19.3, show: true },
@@ -54,7 +52,6 @@ export const HERO_LAYOUT: HeroItem[] = [
 export const HERO_LABELS: Record<HeroItemId, string> = {
   booking: "Flight booking phone (Odynn)",
   plaid: "Bank to home (Plaid, Rocket)",
-  snag: "SAVE20 tag (Snag)",
   haptic: "Navigation pulse (haptic nav)",
   stream: "Streaming player (Peacock)",
   scan: "Barcode scanner (EatTrack)",

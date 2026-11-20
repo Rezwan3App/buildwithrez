@@ -11,12 +11,12 @@ export function HeroSection() {
       <div className="wrap relative pt-6 pb-10 sm:pt-12 sm:pb-16">
         <div className="grid gap-6 lg:grid-cols-[1.35fr_1fr] lg:gap-16 lg:items-center">
           <div className="lg:order-last lg:justify-self-start">
-            <div className="ticks w-[88px] h-[88px] sm:w-72 sm:h-[360px] lg:w-64 lg:h-[320px]">
+            <div className="ticks w-[88px] h-[88px] sm:w-72 sm:h-[360px] lg:w-[304px] lg:h-[360px]">
               <picture className="contents">
                 <source
                   type="image/webp"
                   srcSet="/attached_assets/profile-headshot-640.webp 640w"
-                  sizes="(min-width: 1024px) 272px, (min-width: 640px) 288px, 88px"
+                  sizes="(min-width: 1024px) 304px, (min-width: 640px) 288px, 88px"
                 />
                 <img
                   src="/attached_assets/profile-headshot.png"
