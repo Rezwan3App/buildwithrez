@@ -36,7 +36,7 @@ export function ImageModal({ src, alt, label, onClose }: { src: string; alt: str
       <button ref={closeRef} type="button" onClick={onClose} aria-label="Close image" className="absolute top-4 right-4 p-2 text-white hover:text-blue-300 transition-colors" data-testid="button-close-modal">
         <X aria-hidden="true" className="h-8 w-8" />
       </button>
-      <img src={src} alt={alt} className="max-w-full max-h-[90vh] object-contain rounded-lg" onClick={(e) => e.stopPropagation()} />
+      <img src={src} alt={alt} className="max-w-full max-h-[90vh] object-contain rounded-[10px]" onClick={(e) => e.stopPropagation()} />
     </div>
   );
 }
@@ -104,7 +104,7 @@ const Gallery = ({ label, shots, onOpen }: { label: string; shots: Shot[]; onOpe
           type="button"
           onClick={() => onOpen(shot)}
           aria-label={`Enlarge screenshot: ${shot.label}`}
-          className="block w-full cursor-zoom-in overflow-hidden rounded-[6px] border border-slate-300 transition-colors duration-150 ease-out hover:border-blue-900"
+          className="block w-full cursor-zoom-in overflow-hidden rounded-[10px] border border-slate-300 transition-colors duration-150 ease-out hover:border-blue-900"
         >
           <img decoding="async" loading="lazy" src={shot.src} alt={shot.alt} width={shot.w} height={shot.h} className={`aspect-[16/10] h-auto w-full ${shot.contain ? "bg-[var(--ink)] object-contain p-3" : "object-cover object-top"}`} />
         </button>

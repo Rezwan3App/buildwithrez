@@ -1,20 +1,12 @@
 import { useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { Check, Download } from "lucide-react";
-import { GetInTouch } from "@/components/get-in-touch";
+import { Check, ChevronDown, Download } from "lucide-react";
 import { ContactForm } from "@/components/contact-form";
 import { EXPO } from "@/lib/motion";
 import { EMAIL, RESUME_URL } from "@/lib/site";
 
 const link =
   "font-semibold text-[var(--blue-light)] underline underline-offset-4 decoration-[#52617f] hover:decoration-[var(--blue-light)] transition-colors";
-
-const elsewhere = [
-  ["GitHub", "https://github.com/Rezwan3App"],
-  ["Substack", "https://nycstartupinternshipprogram.substack.com/p/from-dashboards-to-dms-rezwan-islams"],
-  ["Podcast", "https://open.spotify.com/episode/2pcqPSQeTCfmnsSgAyDvB8"],
-  ["Tableau", "https://public.tableau.com/app/profile/rezwan.islam4698/vizzes"],
-];
 
 export function ContactSection() {
   const [copied, setCopied] = useState(false);
@@ -56,7 +48,6 @@ export function ContactSection() {
             <Download className="h-5 w-5" aria-hidden="true" />
             Download my resume
           </a>
-          <GetInTouch />
           <a href="https://www.linkedin.com/in/rezwan-islam33" target="_blank" rel="noopener noreferrer" className="btn-line w-full sm:w-auto">
             Message me on LinkedIn
           </a>
@@ -90,17 +81,14 @@ export function ContactSection() {
           </span>
         </p>
 
-        <ul className="mt-2 flex flex-wrap gap-x-6">
-          {elsewhere.map(([label, href]) => (
-            <li key={label}>
-              <a className={`${link} inline-flex items-center min-h-[44px]`} href={href} target="_blank" rel="noopener noreferrer">
-                {label}
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        <ContactForm />
+        {/* The form stays one click away so the band leads with three clear options */}
+        <details className="note-toggle mt-4 max-w-[36rem] border-t border-[#52617f] pt-4">
+          <summary className="inline-flex items-center gap-2 min-h-[44px] font-semibold text-[var(--on-ink)] cursor-pointer">
+            Or leave a note here
+            <ChevronDown className="note-chevron h-4 w-4" aria-hidden="true" />
+          </summary>
+          <ContactForm />
+        </details>
       </div>
     </section>
   );

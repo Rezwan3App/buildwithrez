@@ -227,7 +227,7 @@ export default function Experience() {
                         alt={exp.imageCaption ?? `${exp.company} experience`}
                         width={800}
                         height={600}
-                        className="aspect-[4/3] w-full rounded-[6px] object-cover sm:aspect-auto sm:h-auto"
+                        className="aspect-[4/3] w-full rounded-[10px] object-cover sm:aspect-auto sm:h-auto"
                       />
                     </div>
                     {exp.imageCaption && (

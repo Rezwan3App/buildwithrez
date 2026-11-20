@@ -137,7 +137,7 @@ export default function MBA() {
                     type="button"
                     aria-label={`Open ${project.title} slide at full size`}
                     onClick={() => setModal({ src: project.image, title: project.title })}
-                    className="group relative block w-full cursor-zoom-in overflow-hidden rounded-[6px] border border-slate-300 bg-white transition-colors hover:border-blue-900"
+                    className="group relative block w-full cursor-zoom-in overflow-hidden rounded-[10px] border border-slate-300 bg-white transition-colors hover:border-blue-900"
                   >
                     <img
                       loading="lazy"
@@ -148,7 +148,7 @@ export default function MBA() {
                       height={540}
                       className="block h-auto w-full"
                     />
-                    <span className="absolute bottom-2 right-2 flex h-9 w-9 items-center justify-center rounded-[6px] bg-[var(--ink)] text-[var(--on-ink)] transition-colors group-hover:bg-blue-900">
+                    <span className="absolute bottom-2 right-2 flex h-9 w-9 items-center justify-center rounded-[4px] bg-[var(--ink)] text-[var(--on-ink)] transition-colors group-hover:bg-blue-900">
                       <Maximize2 aria-hidden="true" className="h-5 w-5" />
                     </span>
                   </button>
@@ -223,7 +223,7 @@ export default function MBA() {
                     alt={d.alt}
                     width={d.width}
                     height={d.height}
-                    className="block aspect-[7/4] h-auto w-full rounded-[6px] border border-slate-300 bg-white object-contain transition-colors group-hover:border-blue-900"
+                    className="block aspect-[7/4] h-auto w-full rounded-[10px] border border-slate-300 bg-white object-contain transition-colors group-hover:border-blue-900"
                   />
                 </div>
                 <h3 className={`mt-5 ${h3Size} transition-colors group-hover:text-blue-900`}>{d.title}</h3>

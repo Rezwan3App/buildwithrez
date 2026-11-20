@@ -2,7 +2,6 @@ import { Switch, Route, Redirect, useLocation } from "wouter";
 import { lazy, Suspense, useEffect, useRef } from "react";
 import { MotionConfig } from "framer-motion";
 import { SiteNav, MobileTabBar } from "@/components/navigation";
-import { Cursor } from "@/components/cursor";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { EXPO } from "@/lib/motion";
 import { track } from "@/lib/db";
@@ -107,7 +106,6 @@ function App() {
       <ScrollToTop />
       <Analytics />
       <ScrollReveal />
-      <Cursor />
       <SiteNav />
       <main id="main" tabIndex={-1} className="flex-1 min-w-0 outline-none">
         <Router />

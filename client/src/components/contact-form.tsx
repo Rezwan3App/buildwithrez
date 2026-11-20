@@ -29,15 +29,14 @@ export function ContactForm() {
 
   if (state === "sent")
     return (
-      <p role="status" className="mt-8 max-w-[36rem] border-t border-[#52617f] pt-6 text-lg text-[var(--on-ink)]">
+      <p role="status" className="mt-4 max-w-[36rem] text-lg text-[var(--on-ink)]">
         Thanks, your note reached me. I'll reply by email.
       </p>
     );
 
   return (
-    <form onSubmit={submit} className="mt-8 max-w-[36rem] border-t border-[#52617f] pt-6">
-      <h3 className="text-[1.1875rem] sm:text-xl font-bold">Or leave a note</h3>
-      <div className="mt-4 grid gap-4 sm:grid-cols-2">
+    <form onSubmit={submit} className="mt-4 max-w-[36rem]">
+      <div className="grid gap-4 sm:grid-cols-2">
         <label className={label}>
           Name
           <input name="name" required maxLength={100} autoComplete="name" className={field} />

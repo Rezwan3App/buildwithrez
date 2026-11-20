@@ -1,18 +1,16 @@
 import type { CSSProperties, ReactNode } from "react";
-import { House, MapPin, Plane, Tag } from "lucide-react";
+import { Navigation, Plane, Play, Tag } from "lucide-react";
 
 /**
- * Hero scene: frosted glass cards of the actual work floating on the right,
- * with depth blur (far cards soft, near cards sharp) and the left kept empty
- * for the headline. Each card points at something real:
- *   travel booking phone  -> Odynn / Awayz booking-flow fixes
+ * Hero scene: a few faint frosted glass cards of the actual work, behind the
+ * photo, each with one small slow loop.
+ *   streaming player      -> NBCUniversal, Peacock commerce tooling
+ *   flight booking phone  -> Odynn / Awayz mobile booking-flow fixes
+ *   promo code tag        -> Snag
  *   barcode scan phone    -> EatTrack (MBA team app)
- *   house + two cards     -> Rocket Homes side-by-side comparison
- *   map pin               -> courthouse lunch guide
- *   promo code message    -> Snag
- *   blueprint sheet       -> Little Falcon, CCNY senior design (top view from the team's drawing)
- *   small chart           -> analytics, kept small on purpose
- * Purely decorative.
+ *   nav arrow + pulses    -> haptic navigation work
+ * Only three cards move (scan line, nav pulse, streaming progress); the rest
+ * stay still so the motion never competes. Reduced-motion visitors see none.
  */
 
 type Depth = "far" | "mid" | "near";
@@ -34,51 +32,46 @@ function Phone({ children }: { children: ReactNode }) {
   );
 }
 
-/** Little Falcon, top view, simplified from the 2018 assembly drawing. */
-function LittleFalcon() {
-  return (
-    <svg viewBox="0 0 240 200" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round">
-      <path d="M8 40h224" className="gl-dim" />
-      <path d="M8 36v8M232 36v8" className="gl-dim" />
-      <rect x="8" y="62" width="224" height="30" />
-      {[30, 52, 74, 96, 144, 166, 188, 210].map((x) => (
-        <path key={x} d={`M${x} 62v30`} className="gl-dim" />
-      ))}
-      <rect x="104" y="52" width="32" height="64" />
-      <path d="M104 52l32 64M136 52l-32 64" className="gl-dim" />
-      <path d="M108 46h24" strokeWidth="2" />
-      <path d="M120 46v6" />
-      <path d="M120 116v44" />
-      <rect x="84" y="160" width="72" height="18" />
-      <path d="M92 164h12v10H92zM114 164h12v10h-12zM136 164h12v10h-12z" className="gl-dim" />
-      <path d="M170 182h62v14h-62z" className="gl-dim" />
-    </svg>
-  );
-}
-
 export function HeroBackdrop() {
   return (
     <div className="hero-scene" aria-hidden="true">
-      <span className="gl-bokeh" style={{ left: "27%", top: "30%" }} />
-      <span className="gl-bokeh gl-bokeh-sm" style={{ left: "40%", top: "8%" }} />
+      <span className="gl-bokeh" style={{ left: "29%", top: "26%" }} />
 
-      <Card depth="far" className="gl-chart" style={{ left: "33%", top: "3%" }}>
-        <span style={{ height: "35%" }} />
-        <span style={{ height: "55%" }} />
-        <span style={{ height: "80%" }} />
-      </Card>
-
-      <Card depth="mid" className="gl-float" style={{ left: "19%", top: "13%" }}>
+      {/* Odynn / Awayz: mobile flight booking (still) */}
+      <Card depth="mid" style={{ left: "17%", top: "12%" }}>
         <Phone>
           <Plane className="gl-icon" strokeWidth={1.5} />
-          <svg className="gl-arc" viewBox="0 0 60 30" fill="none"><path d="M2 28C14 6 38 2 58 6" strokeDasharray="3 4" /></svg>
+          <svg className="gl-arc" viewBox="0 0 60 30" fill="none"><path className="gl-route-path" d="M2 28C14 6 38 2 58 6" /></svg>
           <i className="gl-line" />
           <i className="gl-line gl-short" />
           <i className="gl-pill" />
         </Phone>
       </Card>
 
-      <Card depth="near" className="gl-float gl-float-2" style={{ left: "31%", top: "38%" }}>
+      {/* NBCUniversal / Peacock: a streaming player with a slowly filling progress bar */}
+      <Card depth="mid" className="gl-stream" style={{ left: "30%", top: "10%" }}>
+        <div className="gl-stream-screen">
+          <Play className="gl-play" strokeWidth={1.5} />
+        </div>
+        <div className="gl-progress"><i /></div>
+        <div className="gl-thumbs"><i /><i /><i /></div>
+      </Card>
+
+      {/* Snag: promo code alert (still) */}
+      <Card depth="near" className="gl-bubble" style={{ left: "15%", top: "70%" }}>
+        <Tag className="gl-tag" strokeWidth={2} />
+        <span>SAVE20</span>
+      </Card>
+
+      {/* Haptic navigation: an arrow sending out soft pulses */}
+      <Card depth="mid" className="gl-haptic" style={{ left: "29%", top: "77%" }}>
+        <i className="gl-ring" />
+        <i className="gl-ring gl-ring-2" />
+        <Navigation className="gl-nav-icon" strokeWidth={1.75} />
+      </Card>
+
+      {/* EatTrack: barcode scan */}
+      <Card depth="near" className="gl-scan-card" style={{ left: "38%", top: "38%" }}>
         <Phone>
           <div className="gl-scan">
             <svg viewBox="0 0 40 24" fill="none" stroke="currentColor">
@@ -89,28 +82,6 @@ export function HeroBackdrop() {
             <i className="gl-scanline" />
           </div>
         </Phone>
-      </Card>
-
-      <Card depth="near" className="gl-compare" style={{ right: "2%", top: "6%" }}>
-        <House className="gl-icon" strokeWidth={1.5} />
-        <div className="gl-mini"><i /><i className="gl-short" /><b /></div>
-        <div className="gl-mini gl-mini-hl"><i /><i className="gl-short" /><b /></div>
-      </Card>
-
-      <Card depth="mid" className="gl-map" style={{ right: "-3%", top: "52%" }}>
-        <svg viewBox="0 0 120 90" fill="none" stroke="currentColor" strokeWidth="1">
-          <path d="M0 20h120M0 52h120M0 76h120M18 0v90M54 0v90M92 0v90M0 90L70 0" className="gl-dim" />
-        </svg>
-        <MapPin className="gl-pin" strokeWidth={2} />
-      </Card>
-
-      <Card depth="near" className="gl-bubble gl-float gl-float-3" style={{ left: "17%", top: "58%" }}>
-        <Tag className="gl-tag" strokeWidth={2} />
-        <span>SAVE20</span>
-      </Card>
-
-      <Card depth="mid" className="gl-blueprint" style={{ left: "35%", bottom: "6%" }}>
-        <LittleFalcon />
       </Card>
     </div>
   );
