@@ -22,8 +22,8 @@ export function SiteNav() {
   const reduce = useReducedMotion();
 
   return (
-    <header className="band-ink sticky top-0 z-50 border-b border-[var(--ink-line)]">
-      <div className="wrap flex items-center justify-between h-14 sm:h-16">
+    <header className="nav-float">
+      <div className="nav-float-bar band-ink frost-ink flex items-center justify-between h-14 sm:h-16">
         <Link
           href="/"
           aria-label="Rezwan Islam, home"
@@ -39,7 +39,7 @@ export function SiteNav() {
               key={item.path}
               href={item.path}
               aria-current={active === item.path ? "page" : undefined}
-              className={`relative inline-flex items-center px-4 min-h-[44px] font-semibold transition-colors duration-150 ease-out ${
+              className={`relative isolate inline-flex items-center px-4 min-h-[44px] rounded-[10px] font-semibold transition-colors duration-150 ease-out ${
                 active === item.path ? "text-[var(--on-ink)]" : "text-[var(--on-ink-2)] hover:text-[var(--on-ink)]"
               }`}
               data-testid={`nav-${item.label.toLowerCase()}`}
@@ -47,9 +47,10 @@ export function SiteNav() {
               {item.label}
               {active === item.path && (
                 <motion.span
-                  layoutId="nav-underline"
-                  className="absolute left-4 right-4 bottom-1.5 h-0.5 bg-[var(--red)]"
-                  transition={reduce ? { duration: 0 } : { duration: 0.2, ease: EXPO }}
+                  layoutId="nav-tile"
+                  className="nav-tile absolute inset-0 -z-10"
+                  aria-hidden="true"
+                  transition={reduce ? { duration: 0 } : { duration: 0.25, ease: EXPO }}
                 />
               )}
             </Link>
@@ -65,23 +66,23 @@ export function SiteNav() {
 export function MobileTabBar() {
   const active = useActivePath();
   const tab =
-    "flex flex-1 flex-col items-center justify-center gap-0.5 min-h-[58px] text-[13px] font-bold leading-none transition-colors";
+    "flex flex-1 min-w-0 flex-col items-center justify-center gap-1 min-h-[58px] px-0.5 text-[13px] max-[380px]:text-[11px] max-[380px]:tracking-tight font-bold leading-none transition-colors";
 
   return (
     <nav
       aria-label="Primary"
-      className="band-ink fixed inset-x-0 bottom-0 z-50 flex border-t border-[var(--ink-line)] pb-[env(safe-area-inset-bottom)] sm:hidden"
+      className="band-ink frost-ink fixed inset-x-0 bottom-0 z-50 flex border-t border-[var(--ink-line)] pb-[env(safe-area-inset-bottom)] sm:hidden"
     >
       {navItems.map(({ path, label, icon: Icon }) => (
         <Link
           key={path}
           href={path}
           aria-current={active === path ? "page" : undefined}
-          className={`${tab} relative ${active === path ? "text-[var(--on-ink)]" : "text-[var(--on-ink-2)]"}`}
+          className={`${tab} relative isolate ${active === path ? "text-[var(--on-ink)]" : "text-[var(--on-ink-2)]"}`}
         >
           <Icon className="h-5 w-5" aria-hidden="true" />
           {label}
-          {active === path && <span className="absolute top-0 h-0.5 w-8 bg-[var(--red)]" aria-hidden="true" />}
+          {active === path && <span className="nav-tile absolute inset-x-0.5 inset-y-1.5 -z-10" aria-hidden="true" />}
         </Link>
       ))}
       <a href="/#contact" className={`${tab} text-[var(--on-ink-2)]`}>

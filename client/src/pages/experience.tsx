@@ -114,8 +114,8 @@ export default function Experience() {
 
   return (
     <div className="min-h-screen">
-      <header className="band-ink blueprint">
-        <div className="wrap py-8 sm:py-14">
+      <header className="band-ink band-glow">
+        <div className="wrap py-6 sm:py-10">
           <h1>Experience</h1>
           <p className="mt-3 text-lg">My product internships, newest first.</p>
           <nav aria-label="On this page" className="mt-3 flex flex-wrap gap-x-6">
@@ -139,6 +139,7 @@ export default function Experience() {
             {experiences.map((exp) => (
               <li
                 key={exp.company}
+                data-reveal=""
                 id={exp.company.toLowerCase().replace(/[^a-z0-9]+/g, "-")}
                 className="grid gap-y-3 border-b border-slate-300 py-4 sm:gap-y-4 sm:py-8 sm:grid-cols-[12.5rem_minmax(0,1fr)] sm:gap-x-8 lg:grid-cols-[12.5rem_minmax(0,1fr)_15rem] lg:gap-x-12"
               >

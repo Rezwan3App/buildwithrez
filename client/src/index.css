@@ -25,8 +25,8 @@
 @tailwind utilities;
 
 /*
-  Design system: blueprint.
-  Near-black ink bands and a fine blue drawing grid, on cool paper. Navy is the
+  Design system: ink and frosted glass.
+  Near-black ink bands lit with soft navy, frosted glass surfaces, on cool paper. Navy is the
   brand colour for links and marks. Red is the main call to action (the only
   solid red button a screen) plus small drafting accents: active-nav line, status light,
   heading marks, link underlines on hover. Never red body text.
@@ -45,6 +45,11 @@
   --blue-light: #8fb0ff; /* links and marks on ink */
   --red: #d7192b;        /* main CTA fill; elsewhere only thin lines, dots and small squares, never text */
   --red-deep: #b51323;   /* CTA hover */
+  /* Frosted glass: translucent fills that blur whatever scrolls behind them */
+  --glass: rgba(255, 255, 255, 0.62);
+  --glass-deep: rgba(232, 236, 242, 0.6);
+  --glass-ink: rgba(11, 18, 32, 0.72);
+  --glass-edge: rgba(255, 255, 255, 0.7);
 
   --background: hsl(0, 0%, 100%);
   --foreground: hsl(222, 47%, 11%);
@@ -76,7 +81,7 @@
   html {
     font-size: 17px;
     scroll-behavior: smooth;
-    scroll-padding-top: 5rem;
+    scroll-padding-top: 6rem;
     scroll-padding-bottom: 5.5rem;
     -webkit-text-size-adjust: 100%;
   }
@@ -142,10 +147,10 @@
 
 /* Vertical rhythm for every section */
 .section {
-  padding-block: 3.25rem;
+  padding-block: 2.75rem;
 }
 @media (min-width: 640px) {
-  .section { padding-block: 5rem; }
+  .section { padding-block: 4rem; }
 }
 
 /* Ink band: near-black ground, used for the hero, the closing band, nav and footer */
@@ -161,14 +166,11 @@
 }
 
 /* Blueprint: a fine drawing grid with a heavier line every fifth cell */
-.blueprint {
+.band-glow {
+  /* Soft navy light from the upper right instead of the old drafting grid */
   background-image:
-    linear-gradient(rgba(143, 176, 255, 0.11) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(143, 176, 255, 0.11) 1px, transparent 1px),
-    linear-gradient(rgba(143, 176, 255, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(143, 176, 255, 0.045) 1px, transparent 1px);
-  background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
-  background-position: -1px -1px;
+    radial-gradient(70% 120% at 100% 0%, rgba(46, 74, 128, 0.55), transparent 65%),
+    radial-gradient(50% 90% at 0% 100%, rgba(30, 58, 138, 0.18), transparent 70%);
 }
 
 /* Drawing registration marks on the four corners of a framed image */
@@ -235,6 +237,18 @@ footer a:hover {
 .btn-cta:hover {
   background: var(--red-deep);
 }
+
+/* Hero CTA: solid red with a small lift. No gradient or glow. */
+.btn-hero {
+  box-shadow: 0 8px 20px -10px rgba(215, 25, 43, 0.7);
+  transition: background-color 150ms ease-out, transform 200ms ease-out, box-shadow 200ms ease-out;
+}
+.btn-hero:hover,
+.btn-hero:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 26px -12px rgba(215, 25, 43, 0.8);
+}
+.btn-hero:active { transform: translateY(0); }
 
 /* Secondary action: an outline that inherits its colour from the band it sits on */
 .btn-line {
@@ -348,5 +362,222 @@ a:hover > .u-wipe, a:focus-visible > .u-wipe { text-decoration-color: var(--red)
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* Shipped-work icon tile: sits on the paper, rises and inks in when its row is hovered */
+.icon-tile {
+  display: inline-grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-top: 0.125rem;
+  border-radius: 10px;
+  border: 1px solid var(--glass-edge);
+  background: var(--glass);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  backdrop-filter: blur(10px) saturate(150%);
+  color: var(--navy);
+  box-shadow: 0 1px 0 rgba(11, 18, 32, 0.04), 0 6px 14px -8px rgba(30, 58, 138, 0.35);
+  transition: transform 200ms ease-out, box-shadow 200ms ease-out, background-color 150ms ease-out, color 150ms ease-out, border-color 150ms ease-out;
+}
+.group:hover .icon-tile,
+.group:focus-visible .icon-tile {
+  transform: translateY(-3px) rotate(-4deg);
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--on-ink);
+  box-shadow: 0 0 0 1px var(--ink), 0 14px 22px -10px rgba(11, 18, 32, 0.55), 2px 2px 0 var(--red);
+}
+
+/* Scroll reveal (see scroll-reveal.tsx): only items below the fold start hidden */
+[data-reveal="hidden"] {
+  opacity: 0;
+  transform: translateY(18px);
+}
+[data-reveal="in"] {
+  opacity: 1;
+  transform: none;
+  transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1), transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+/*
+  Frosted look. A soft colour wash is fixed behind the page, so translucent
+  surfaces (nav, tab bar, tinted bands, icon tiles) pick up a hint of it and
+  blur whatever scrolls beneath them.
+*/
+body::before {
+  content: "";
+  position: fixed;
+  inset: -10vmax;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(40vmax 40vmax at 12% 20%, rgba(143, 176, 255, 0.32), transparent 62%),
+    radial-gradient(34vmax 34vmax at 88% 45%, rgba(215, 25, 43, 0.1), transparent 62%),
+    radial-gradient(44vmax 44vmax at 40% 92%, rgba(30, 58, 138, 0.16), transparent 62%);
+  filter: blur(30px);
+}
+.frost-ink {
+  background-color: var(--glass-ink);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  backdrop-filter: blur(16px) saturate(160%);
+}
+.frost-band {
+  background-color: var(--glass-deep);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  backdrop-filter: blur(18px) saturate(140%);
+  border-block: 1px solid var(--glass-edge);
+}
+/* Browsers without backdrop blur get near-solid fills so text stays readable */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .frost-ink { background-color: rgba(11, 18, 32, 0.96); }
+  .frost-band { background-color: rgba(232, 236, 242, 0.95); }
+  .icon-tile { background: #fff; }
+}
+
+/*
+  Floating nav: a frosted bar inset from the edges that stays in view while
+  scrolling. It takes no layout space, so the first ink band on each page
+  grows a transparent top border (its own background paints under it) to
+  clear the bar.
+*/
+.nav-float {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  z-index: 50;
+  padding: 0.75rem 0.75rem 0;
+  pointer-events: none;
+}
+.nav-float-bar {
+  pointer-events: auto;
+  max-width: 70rem;
+  margin-inline: auto;
+  padding-inline: 1rem 0.5rem;
+  border: 1px solid rgba(143, 176, 255, 0.18);
+  border-radius: 16px;
+  box-shadow: 0 12px 32px -14px rgba(11, 18, 32, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+#main .band-ink:first-child {
+  border-top: 4.25rem solid transparent;
+}
+@media (min-width: 640px) {
+  .nav-float { padding: 1rem 1.5rem 0; }
+  .nav-float-bar { padding-inline: 1.5rem 0.75rem; }
+  #main .band-ink:first-child { border-top-width: 5rem; }
+}
+
+/* Selected nav item: a filled frosted tile with a small red mark, replacing the old underline */
+.nav-tile {
+  border-radius: 10px;
+  background: rgba(247, 249, 252, 0.14);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), inset 0 -2px 0 var(--red);
+}
+
+/*
+  Hero scene: frosted glass cards of the real work on the right, blurred by
+  depth, with the left side left empty for the headline. The hero itself is
+  lit from the upper right so the glass has light to catch.
+*/
+.hero-lit {
+  background-image:
+    radial-gradient(55% 85% at 88% 18%, rgba(52, 84, 145, 0.75), transparent 70%),
+    linear-gradient(90deg, #0b1220 30%, #101b38 70%, #152650 100%);
+}
+.hero-scene {
+  position: absolute;
+  inset: 0 0 0 38%;
+  pointer-events: none;
+  opacity: 0.45;
+  color: rgba(198, 214, 255, 0.85);
+}
+.gl-card {
+  position: absolute;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.035));
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  backdrop-filter: blur(12px) saturate(140%);
+  box-shadow: 0 24px 40px -22px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+.gl-far { filter: blur(4px); opacity: 0.55; }
+.gl-mid { filter: blur(1.2px); opacity: 0.8; }
+.gl-near { filter: blur(0.6px); opacity: 0.9; }
+.gl-dim { opacity: 0.5; }
+.gl-icon { width: 1.75rem; height: 1.75rem; }
+
+.gl-phone {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.55rem;
+  width: 5.5rem;
+  height: 11rem;
+  padding: 1.6rem 0.6rem 0.8rem;
+}
+.gl-notch { position: absolute; top: 0.5rem; width: 1.6rem; height: 0.3rem; border-radius: 9px; background: rgba(255, 255, 255, 0.18); }
+.gl-arc { width: 3.4rem; height: 1.6rem; stroke: currentColor; stroke-width: 1.2; margin-top: -0.4rem; }
+.gl-line { display: block; width: 100%; height: 0.4rem; border-radius: 4px; background: rgba(255, 255, 255, 0.16); }
+.gl-short { width: 62%; align-self: flex-start; }
+.gl-pill { display: block; width: 100%; height: 0.9rem; margin-top: auto; border-radius: 6px; background: rgba(215, 25, 43, 0.75); }
+
+.gl-scan { position: relative; margin-top: 2.2rem; width: 3.6rem; padding: 0.4rem; border: 1px solid rgba(255, 255, 255, 0.35); border-radius: 6px; }
+.gl-scan svg { display: block; width: 100%; }
+.gl-scanline {
+  position: absolute; left: -0.6rem; right: -0.6rem; top: 50%; height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(220, 230, 255, 0.95), transparent);
+  box-shadow: 0 0 10px rgba(180, 205, 255, 0.8);
+  animation: gl-scan 3.2s ease-in-out infinite;
+}
+@keyframes gl-scan { 0%, 100% { transform: translateY(-0.6rem); } 50% { transform: translateY(0.6rem); } }
+
+.gl-compare { display: flex; align-items: flex-end; gap: 0.5rem; padding: 0.75rem; }
+.gl-compare .gl-icon { align-self: flex-start; }
+.gl-mini { display: flex; flex-direction: column; gap: 0.35rem; width: 4rem; padding: 0.55rem; border-radius: 9px; background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 255, 255, 0.12); }
+.gl-mini i { display: block; height: 0.3rem; border-radius: 3px; background: rgba(255, 255, 255, 0.22); }
+.gl-mini b { display: block; height: 0.6rem; margin-top: 0.3rem; border-radius: 4px; background: rgba(255, 255, 255, 0.14); }
+.gl-mini-hl b { background: rgba(143, 176, 255, 0.55); }
+
+.gl-map { width: 9rem; height: 7rem; overflow: hidden; }
+.gl-map svg { width: 100%; height: 100%; }
+.gl-pin { position: absolute; left: 44%; top: 30%; width: 1.6rem; height: 1.6rem; color: #e34a5a; filter: drop-shadow(0 0 8px rgba(215, 25, 43, 0.6)); }
+
+.gl-bubble {
+  display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 0.9rem;
+  border-bottom-left-radius: 4px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.8rem; letter-spacing: 0.08em;
+  color: rgba(230, 236, 255, 0.9);
+}
+.gl-tag { width: 1rem; height: 1rem; color: #e34a5a; }
+
+.gl-blueprint {
+  width: 10.5rem; padding: 0.55rem;
+  background: linear-gradient(160deg, rgba(70, 110, 200, 0.28), rgba(40, 70, 150, 0.14));
+  border-color: rgba(143, 176, 255, 0.35);
+  color: rgba(200, 220, 255, 0.85);
+}
+.gl-blueprint svg { display: block; width: 100%; }
+
+.gl-chart { display: flex; align-items: flex-end; gap: 0.35rem; width: 4.5rem; height: 4.5rem; padding: 0.7rem; }
+.gl-chart span { flex: 1; border-radius: 3px; background: rgba(143, 176, 255, 0.6); }
+
+.gl-bokeh { position: absolute; width: 2.25rem; height: 2.25rem; border-radius: 50%; background: rgba(215, 25, 43, 0.55); filter: blur(10px); }
+.gl-bokeh-sm { width: 1.4rem; height: 1.4rem; opacity: 0.7; }
+
+.gl-float { animation: gl-float 9s ease-in-out infinite; }
+.gl-float-2 { animation-duration: 11s; animation-delay: -3s; }
+.gl-float-3 { animation-duration: 10s; animation-delay: -6s; }
+@keyframes gl-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+@media (max-width: 1023px) {
+  /* Stacked layout: the text spans the width, so the scene goes quiet behind it */
+  .hero-scene { inset: 0 -12% 0 30%; opacity: 0.2; filter: blur(2px); }
+  .hero-lit {
+    background-image:
+      radial-gradient(70% 60% at 90% 10%, rgba(52, 84, 145, 0.6), transparent 70%),
+      linear-gradient(180deg, #0f1a35, #0b1220 70%);
   }
 }

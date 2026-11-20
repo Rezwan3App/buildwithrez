@@ -107,8 +107,8 @@ export default function MBA() {
 
   return (
     <div className="min-h-screen">
-      <header className="band-ink blueprint">
-        <div className="wrap py-8 sm:py-14">
+      <header className="band-ink band-glow">
+        <div className="wrap py-6 sm:py-10">
           <h1>MBA projects</h1>
           <p className="mt-4 text-[1.0625rem] sm:text-lg leading-relaxed">
             Class projects from my MBA at Baruch's Zicklin School of Business. I led each of the team projects below.
@@ -124,6 +124,7 @@ export default function MBA() {
             {mbaProjects.map((project) => (
               <li
                 key={project.title}
+                data-reveal=""
                 className="border-b border-slate-300 py-7 sm:py-10 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)] lg:grid-rows-[auto_1fr] lg:gap-x-14"
               >
                 <div>
@@ -164,13 +165,14 @@ export default function MBA() {
         </div>
       </section>
 
-      <section className="section bg-[var(--paper-deep)]">
+      <section className="section frost-band">
         <div className="wrap">
           <h2 className="mb-6 sm:mb-8">Data and analytics</h2>
           <ul className="border-t-2 border-ink">
             {dataProjects.map((project) => (
               <li
                 key={project.title}
+                data-reveal=""
                 className="border-b border-slate-300 py-7 sm:py-8 lg:grid lg:grid-cols-[20rem_minmax(0,1fr)] lg:gap-x-14"
               >
                 <div>
@@ -206,6 +208,7 @@ export default function MBA() {
             {dashboards.map((d) => (
               <a
                 key={d.testId}
+                data-reveal=""
                 href={d.href}
                 target="_blank"
                 rel="noopener noreferrer"

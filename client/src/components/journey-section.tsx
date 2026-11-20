@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 const steps = [
   ["2018", "B.E. in mechanical engineering, CCNY."],
   ["2021 – 2023", "Engineering and project management, including Zachry Nuclear Engineering."],
@@ -8,12 +9,12 @@ const steps = [
 
 export function JourneySection() {
   return (
-    <section id="journey" className="section bg-[var(--paper-deep)]">
+    <section id="journey" className="section frost-band">
       <div className="wrap">
         <h2 className="mb-6 sm:mb-8">Path</h2>
         <ol className="relative ml-[5px] border-l-2 border-blue-900/25">
           {steps.map(([period, text], i) => (
-            <li key={period} className="relative pl-6 pb-6 last:pb-0 sm:grid sm:grid-cols-[12rem_1fr] sm:gap-x-6">
+            <li key={period} data-reveal="" style={{ "--reveal-delay": `${i * 60}ms` } as CSSProperties} className="relative pl-6 pb-6 last:pb-0 sm:grid sm:grid-cols-[12rem_1fr] sm:gap-x-6">
               <span
                 aria-hidden="true"
                 className={`absolute -left-[7px] top-[7px] h-3 w-3 rounded-full ring-4 ring-[var(--paper-deep)] ${

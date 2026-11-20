@@ -167,8 +167,8 @@ export default function ProductManagement() {
 
   return (
     <div className="min-h-screen">
-      <header className="band-ink blueprint">
-        <div className="wrap py-8 sm:py-14">
+      <header className="band-ink band-glow">
+        <div className="wrap py-6 sm:py-10">
           <h1>Projects</h1>
           <p className="mt-3 text-lg">Products I built on my own, from idea to working app.</p>
           <ProjectsTabs active="product" className="mt-6 sm:mt-8" />
@@ -204,7 +204,7 @@ export default function ProductManagement() {
             <h2 className="mb-6 sm:mb-8">Personal projects</h2>
             <div className="border-t-2 border-ink">
               {item("shipped", "snag",
-                <article id="snag" className={rowCls}>
+                <article id="snag" data-reveal="" className={rowCls}>
                   <div className={rowGridCls}>
                     <div className="min-w-0">
                       <div className="flex items-center gap-2.5">
@@ -262,7 +262,7 @@ export default function ProductManagement() {
               )}
 
               {item("shipped", "usage-meter",
-                <article id="usage-meter" className={rowCls}>
+                <article id="usage-meter" data-reveal="" className={rowCls}>
                   <div className={rowGridCls}>
                     <div className="min-w-0">
                       <div className="flex items-center gap-2.5">
@@ -307,7 +307,7 @@ export default function ProductManagement() {
               )}
 
               {item("progress", "rageparser",
-                <article id="rageparser" className={rowCls}>
+                <article id="rageparser" data-reveal="" className={rowCls}>
                   <div className={rowGridCls}>
                     <div className="min-w-0">
                       <div className="flex items-center gap-2.5">

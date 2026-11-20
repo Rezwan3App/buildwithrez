@@ -88,8 +88,8 @@ export default function Education() {
 
   return (
     <div className="min-h-screen">
-      <header className="band-ink blueprint">
-        <div className="wrap py-8 sm:py-14">
+      <header className="band-ink band-glow">
+        <div className="wrap py-6 sm:py-10">
           <h1>Education</h1>
           <p className="mt-3 text-lg">An MBA in progress and an engineering degree behind it.</p>
         </div>
@@ -114,7 +114,7 @@ export default function Education() {
         <h3 className="mt-6 text-[1.1875rem] sm:mt-8 sm:text-xl font-bold">Coursework</h3>
         <div className="mt-3 grid gap-x-12 gap-y-6 sm:grid-cols-2">
           {tracks.map((t) => (
-            <div key={t.name}>
+            <div key={t.name} data-reveal="">
               <h4 className="border-b-2 border-ink pb-2 text-base font-bold">{t.name}</h4>
               <ul>
                 {t.courses.map((c) => (
@@ -130,7 +130,7 @@ export default function Education() {
         <h3 className="mt-8 text-[1.1875rem] sm:text-xl font-bold">Involvement</h3>
         <ul className="mt-3 border-t-2 border-ink">
           {involvement.map((i) => (
-            <li key={i.title} className="grid gap-y-1 border-b border-slate-300 py-4 lg:grid-cols-[minmax(0,2fr)_3fr] lg:gap-x-12">
+            <li key={i.title} data-reveal="" className="grid gap-y-1 border-b border-slate-300 py-4 lg:grid-cols-[minmax(0,2fr)_3fr] lg:gap-x-12">
               <h4 className="text-base font-bold">{i.title}</h4>
               <p className={`text-slate-700 ${body}`}>{i.detail}</p>
             </li>
@@ -150,7 +150,7 @@ export default function Education() {
         degree="B.E. Mechanical Engineering"
         school="The City College of New York"
         meta="3.83 GPA · Summa Cum Laude"
-        tone="bg-[var(--paper-deep)]"
+        tone="frost-band"
       >
         <p className={`mt-4 max-w-[60ch] text-slate-700 ${body}`}>
           I specialized in nuclear engineering and finite element analysis in SolidWorks. I then worked as a mechanical

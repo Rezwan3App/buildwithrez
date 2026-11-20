@@ -1,19 +1,23 @@
 import { Switch, Route, Redirect, useLocation } from "wouter";
 import { lazy, Suspense, useEffect, useRef } from "react";
-import { motion, MotionConfig } from "framer-motion";
+import { MotionConfig } from "framer-motion";
 import { SiteNav, MobileTabBar } from "@/components/navigation";
 import { Cursor } from "@/components/cursor";
+import { ScrollReveal } from "@/components/scroll-reveal";
 import { EXPO } from "@/lib/motion";
 import { track } from "@/lib/db";
 import { RESUME_URL } from "@/lib/site";
 import Home from "@/pages/home";
 
-const Experience = lazy(() => import("@/pages/experience"));
-const Education = lazy(() => import("@/pages/education"));
-const ProductManagement = lazy(() => import("@/pages/product-management"));
-const MBA = lazy(() => import("@/pages/mba"));
+import Experience from "@/pages/experience";
+import Education from "@/pages/education";
+import ProductManagement from "@/pages/product-management";
+import MBA from "@/pages/mba";
+import NotFound from "@/pages/not-found";
+
+// The public pages load up front so switching tabs never shows a blank frame.
+// Only the private stats dashboard (and its chart library) loads on demand.
 const Stats = lazy(() => import("@/pages/stats"));
-const NotFound = lazy(() => import("@/pages/not-found"));
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -69,16 +73,11 @@ function Analytics() {
 
 function Router() {
   const [location] = useLocation();
-  // The prerendered page shows at once. Only moves between pages fade in.
-  const firstPage = useRef(location);
 
+  // No page fade: a fading wrapper flashes the paper through and switches off
+  // the frosted blur on the bands inside it until the fade ends.
   return (
-    <motion.div
-      key={location}
-      initial={location === firstPage.current ? false : { opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.2, ease: EXPO }}
-    >
+    <div>
       <Suspense fallback={null}>
       <Switch location={location}>
         <Route path="/" component={Home} />
@@ -92,7 +91,7 @@ function Router() {
         <Route component={NotFound} />
       </Switch>
       </Suspense>
-    </motion.div>
+    </div>
   );
 }
 
@@ -107,6 +106,7 @@ function App() {
       </a>
       <ScrollToTop />
       <Analytics />
+      <ScrollReveal />
       <Cursor />
       <SiteNav />
       <main id="main" tabIndex={-1} className="flex-1 min-w-0 outline-none">

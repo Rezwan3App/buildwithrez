@@ -379,7 +379,7 @@ export default function Stats() {
 
   return (
     <div className="min-h-screen">
-      <header className="band-ink blueprint">
+      <header className="band-ink band-glow">
         <div className="wrap py-8 sm:py-14 flex items-end justify-between gap-4">
           <h1>Stats</h1>
           {session && (

@@ -7,7 +7,7 @@ const line = "btn-line !px-3 sm:!px-6";
 export default function NotFound() {
   usePageTitle("Page not found");
   return (
-    <header className="band-ink blueprint flex min-h-[calc(100svh-61px)] sm:min-h-[calc(100svh-69px)] flex-col justify-center pb-[calc(58px+env(safe-area-inset-bottom))] sm:pb-0">
+    <header className="band-ink band-glow flex min-h-[100svh] flex-col justify-center pb-[calc(58px+env(safe-area-inset-bottom))] sm:pb-0">
       <div className="wrap py-8 sm:py-14">
         <h1>That page is not here.</h1>
         <p className="mt-4 text-[1.0625rem] sm:text-lg leading-relaxed">

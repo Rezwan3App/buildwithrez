@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { EXPO } from "@/lib/motion";
 
-const LINE = "From mechanical systems to digital products.";
+const LINE = "Engineer by trade. Product manager by choice.";
 
 // Fixed offsets (not Math.random) so the prerendered HTML and the client agree.
 const scatter = (i: number) => ({ x: ((i * 37) % 7) - 3, y: ((i * 53) % 7) - 3 });
