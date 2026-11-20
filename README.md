@@ -4,15 +4,18 @@ My portfolio site: product internships, projects and education, with my resume o
 
 **Live:** [www.buildwithrez.com](https://www.buildwithrez.com)
 
-**Contents:** [Run it locally](#run-it-locally) · [Architecture](#architecture) · [How a page gets built](#how-a-page-gets-built) · [Database](#database) · [Editing content](#editing-content) · [Analytics](#analytics) · [Deploying](#deploying) · [Project layout](#project-layout)
+**Contents:** [Run it locally](#run-it-locally) · [Hero arrange mode](#hero-arrange-mode) · [Architecture](#architecture) · [How a page gets built](#how-a-page-gets-built) · [Database](#database) · [Editing content](#editing-content) · [Analytics](#analytics) · [Deploying](#deploying) · [Project layout](#project-layout)
 
 ## What it does
 
 - **Five pages.** Home, Experience, Projects, Education, and MBA projects.
-- **Resume first.** The main button downloads my resume PDF.
-- **Contact form.** Visitors can leave a note, which is saved to the database. Email and LinkedIn links sit next to it.
+- **Hero scene.** A centred photo with faint frosted cards of my real work floating around it, placed with an in-browser arrange mode.
+- **Shipped work.** The home page lists only work that launched, each row linking to the details.
+- **Resume first.** The one red button on the site downloads my resume PDF. Education also offers a redacted unofficial transcript.
+- **Contact.** Email, LinkedIn and resume up front; a note form opens one click away and saves to the database.
 - **Visit analytics.** Page views and key clicks (resume, Snag, email, LinkedIn) are counted, with no cookies and no personal data.
 - **Content from a database.** Experience roles live in a Supabase table and are pulled in at build time.
+- **Private stats page.** `/stats` is unlisted and sign-in only. It charts visits, ranks pages, shows the latest resume downloads, and compares day by day.
 
 ## Run it locally
 
@@ -25,9 +28,13 @@ npm run dev
 
 Open http://localhost:5000. Analytics are off in dev, so local testing never shows up in the numbers.
 
+## Hero arrange mode
+
+Open any copy of the site with `?arrange` (for example http://localhost:5000/?arrange) to drag the hero background cards and tick or untick each one. The layout saves in that browser and can be copied as JSON. Paste it into `client/src/components/hero-layout.ts` and push to publish it. Visitors never see the arrange panel.
+
 ## Architecture
 
-The site is static. GitHub Pages serves prerendered HTML, and React takes over in the browser. The only backend is Supabase, which the browser calls directly for two writes (notes and events) and the build calls once for content.
+The site is static. GitHub Pages serves prerendered HTML, and React takes over in the browser. The only backend is Supabase. Visitors' browsers write notes and events, the build reads roles once, and the private `/stats` page reads events and notes after I sign in.
 
 ```mermaid
 flowchart TB
@@ -40,12 +47,14 @@ flowchart TB
     Events[("events")]
     Roles[("roles")]
   end
+  Owner["Me on /stats<br/>email sign-in link"]
   Actions["GitHub Actions<br/>deploy on push, daily keep-awake ping"]
 
   Visitor -.->|"wake-up ping<br/>on /projects"| Snag
   Visitor -->|"load pages"| Pages
   Visitor -->|"send note"| Messages
   Visitor -->|"log view or click"| Events
+  Owner -->|"read events and notes"| Events
   Actions -->|"read roles"| Roles
   Actions -->|"deploy dist/public"| Pages
 ```
@@ -53,10 +62,11 @@ flowchart TB
 ### Design decisions
 
 - **Static over a server.** Nothing on the site changes per visitor, so there is no server to run, pay for, or wake up.
-- **No Supabase SDK.** Two `fetch` calls in `client/src/lib/db.ts` cover everything the site needs.
-- **Public key, locked tables.** The publishable key ships in the page on purpose. Row-level security lets visitors insert notes and events and read published roles, and nothing else.
+- **No SDK on public pages.** Two `fetch` calls in `client/src/lib/db.ts` cover what visitors need. The Supabase SDK and Recharts load only with the `/stats` chunk.
+- **Public key, locked tables.** The publishable key ships in the page on purpose. Row-level security lets visitors insert notes and events and read published roles. Only my signed-in email can read events and notes, and public sign-ups are off.
 - **Content at build time.** Roles are fetched during the build, not on page load, so pages stay fast and still work if Supabase is down.
-- **Reduced motion respected.** Animations turn off when the visitor's system asks for less motion.
+- **Restrained motion.** Hovers are 150ms colour fades, and content below the fold fades in once as it scrolls into view. Everything turns off when the visitor's system asks for less motion.
+- **Type.** Raleway for headings, Manrope for body text, JetBrains Mono for small labels such as dates and tool lists. All three are self-hosted.
 
 ## How a page gets built
 
@@ -97,12 +107,9 @@ Everything else (projects, education, home) is still written directly in the pag
 
 ## Analytics
 
-Open the Supabase Table Editor:
+The easiest view is **www.buildwithrez.com/stats**: enter my email, click the link it sends, and the dashboard shows today vs yesterday, the latest resume downloads, pages ranked by views, a day-by-day table and the latest 25 events. Times there are New York time.
 
-- `event_summary` for totals.
-- `events` for each visit, newest first when sorted by `created_at`.
-
-Times are stored in UTC. Event types are `page_view`, `resume_download`, `snag_open`, `email_click`, `linkedin_click` and `contact_sent`.
+The raw data is also in the Supabase Table Editor: `event_summary` for totals and `events` for each visit. Times are stored in UTC. Event types are `page_view`, `resume_download`, `snag_open`, `email_click`, `linkedin_click` and `contact_sent`.
 
 ## Deploying
 
@@ -117,14 +124,18 @@ client/
   index.html             HTML entry
   public/                Favicons, fonts, sitemap, PDFs and screenshots (served as is)
   src/
-    App.tsx              Routes, page transitions, analytics listener
+    App.tsx              Routes, page transitions, analytics listener, scroll reveal
     entry-server.tsx     Server render used by the prerender step
     main.tsx             Browser entry
     index.css            Design tokens and shared styles
-    components/          Nav, hero, contact form, cursor and other sections
+    components/          Nav, hero, contact form and other sections
+      hero-backdrop.tsx  Hero background cards and arrange mode
+      hero-layout.ts     Where each hero card sits (edit via arrange mode)
     pages/               One file per route
     data/roles.json      Roles pulled from Supabase (committed as a fallback)
     lib/db.ts            Supabase calls: send a note, log an event
+    lib/supabase.ts      Supabase client, used only by /stats
+    pages/stats.tsx      Private analytics dashboard
     lib/site.ts          Email and resume path
 scripts/
   pull-content.mjs       Fetches roles before the build
@@ -139,4 +150,4 @@ PRODUCT.md               Product and design brief for the site
 
 ## Stack
 
-React 18, TypeScript, Vite 5, Tailwind CSS 3, wouter for routing, framer-motion for motion, lucide icons, and Supabase for data.
+React 18, TypeScript, Vite 5, Tailwind CSS 3, wouter for routing, framer-motion for motion, lucide icons, Recharts for the stats charts, and Supabase for data and sign-in.

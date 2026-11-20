@@ -18,7 +18,7 @@ const ROUTES = [
   {
     path: "/projects",
     title: "Projects | Rezwan Islam",
-    description: "Product projects by Rezwan Islam, including Snag and RageParser.",
+    description: "Product projects by Rezwan Islam, including Snag, usage-meter for Claude Code, and RageParser.",
   },
   {
     path: "/education",

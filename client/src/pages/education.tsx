@@ -137,8 +137,7 @@ export default function Education() {
           ))}
         </ul>
 
-        <p className={`mt-6 text-slate-700 ${body}`}>I led every team class project.</p>
-        <Link href="/projects/mba" className={link}>
+        <Link href="/projects/mba" className={`mt-4 ${link}`}>
           See the MBA projects
         </Link>
       </School>
