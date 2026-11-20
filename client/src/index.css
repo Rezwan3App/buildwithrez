@@ -524,7 +524,66 @@ a:hover > .u-wipe, a:focus-visible > .u-wipe { text-decoration-color: var(--red)
 }
 .gl-tag { width: 1rem; height: 1rem; color: #e34a5a; }
 
+/* Rocket + Plaid: bank connected into the mortgage flow (still) */
+.gl-plaid { display: flex; align-items: center; gap: 0.35rem; padding: 0.7rem 0.8rem; }
+.gl-link { width: 3.4rem; height: 0.8rem; stroke: rgba(198, 214, 255, 0.6); stroke-width: 1.2; }
+.gl-packet { fill: #e34a5a; stroke: none; opacity: 0.75; }
+.gl-check {
+  position: absolute; top: -0.45rem; right: -0.45rem; display: grid; place-items: center;
+  width: 1.1rem; height: 1.1rem; border-radius: 50%; background: rgba(46, 160, 110, 0.8); color: #fff;
+}
+.gl-check svg { width: 0.65rem; height: 0.65rem; }
+
+/* Haptic navigation: arrow with soft pulses */
+.gl-haptic { display: grid; place-items: center; width: 4.25rem; height: 4.25rem; border-radius: 50%; }
+.gl-nav-icon { width: 1.4rem; height: 1.4rem; position: relative; }
+.gl-ring { position: absolute; inset: 0.9rem; border-radius: 50%; border: 1px solid rgba(198, 214, 255, 0.35); animation: gl-ring 4.5s ease-out infinite; }
+.gl-ring-2 { animation-delay: 2.25s; }
+@keyframes gl-ring { from { transform: scale(0.75); opacity: 0.7; } to { transform: scale(1.45); opacity: 0; } }
+
+/* Lunch guide: web app window with a map pin (still) */
+.gl-web { width: 9rem; overflow: hidden; }
+.gl-chrome { display: flex; gap: 0.25rem; padding: 0.4rem 0.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+.gl-chrome i { width: 0.35rem; height: 0.35rem; border-radius: 50%; background: rgba(255, 255, 255, 0.25); }
+.gl-map-lines { display: block; width: 100%; height: 4.5rem; }
+.gl-pin { position: absolute; left: 46%; top: 38%; width: 1.5rem; height: 1.5rem; color: #e34a5a; }
+.gl-fork { position: absolute; right: 0.5rem; bottom: 0.45rem; width: 0.9rem; height: 0.9rem; opacity: 0.7; }
+
+/* Awayz: Amplitude event line (still) */
+.gl-icon-sm { width: 1.1rem; height: 1.1rem; }
+.gl-events { display: flex; align-items: flex-end; gap: 0.4rem; width: 8.5rem; padding: 0.6rem 0.7rem; }
+.gl-events .gl-trace-svg { flex: 1; height: 2.4rem; stroke: rgba(143, 176, 255, 0.85); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Small bar chart (still) */
+.gl-chart { display: flex; align-items: flex-end; gap: 0.35rem; width: 4.5rem; height: 4.5rem; padding: 0.7rem; }
+.gl-chart span { flex: 1; border-radius: var(--r-sm); background: rgba(143, 176, 255, 0.6); }
+
+/* MBA: SWOT grid and supply/demand (still) */
+.gl-swot-card { padding: 0.55rem; }
+.gl-swot { display: grid; grid-template-columns: repeat(2, 1.3rem); gap: 2px; }
+.gl-swot span {
+  display: grid; place-items: center; height: 1.3rem; border-radius: var(--r-sm);
+  font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.6rem; color: rgba(220, 230, 255, 0.85);
+  background: rgba(255, 255, 255, 0.07);
+}
+.gl-mba { padding: 0.55rem; }
+.gl-sd { width: 2.7rem; height: 2.7rem; stroke: rgba(198, 214, 255, 0.8); stroke-width: 1.5; stroke-linecap: round; }
+.gl-eq { fill: #e34a5a; stroke: none; }
+
+/* Company names: plain type, very faint */
+.gl-name {
+  position: absolute; white-space: nowrap;
+  font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 0.72rem;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(198, 214, 255, 0.55);
+}
+
 /* Phones: Odynn flight booking and EatTrack scan */
+/* The flight booking phone is the one to notice: a size up, plane clearly drawn */
+.gl-booking .gl-phone { width: 7rem; height: 14rem; gap: 0.7rem; padding-top: 2rem; }
+.gl-booking .gl-icon { width: 2.25rem; height: 2.25rem; }
+.gl-booking .gl-arc { width: 4.4rem; height: 2.1rem; }
+
 .gl-phone {
   position: relative;
   display: flex;
@@ -553,22 +612,43 @@ a:hover > .u-wipe, a:focus-visible > .u-wipe { text-decoration-color: var(--red)
 }
 @keyframes gl-scan { 0%, 100% { transform: translateY(-0.6rem); } 50% { transform: translateY(0.6rem); } }
 
-/* Haptic navigation: arrow with soft pulses */
-.gl-haptic { display: grid; place-items: center; width: 4.25rem; height: 4.25rem; border-radius: 50%; }
-.gl-nav-icon { width: 1.4rem; height: 1.4rem; position: relative; }
-.gl-ring { position: absolute; inset: 0.9rem; border-radius: 50%; border: 1px solid rgba(198, 214, 255, 0.35); animation: gl-ring 4.5s ease-out infinite; }
-.gl-ring-2 { animation-delay: 2.25s; }
-@keyframes gl-ring { from { transform: scale(0.75); opacity: 0.7; } to { transform: scale(1.45); opacity: 0; } }
 
-
-/* Only show what fits: the outer right column needs about 1280px */
+/* Only show what fits (arrange mode always shows everything) */
 @media (max-width: 1279px) {
-  .gl-wide { display: none; }
+  .hero-scene:not(.is-arranging) :is(.gl-item-scan, .gl-item-blueprint, .gl-item-lunch, .gl-item-swot, .gl-item-supplyDemand, .gl-item-nameOdynn) { display: none; }
 }
 @media (min-width: 1024px) and (max-width: 1279px) {
-  /* The text column runs wider here, so the left cards would sit on the words */
-  .gl-left { display: none; }
+  /* Narrower laptops: the text column runs wider and the room right of the photo
+     is about one card wide. Left cards tuck further behind the photo's left
+     edge (still peeking), and only the streaming card sits on the right. */
+  .hero-scene:not(.is-arranging) .gl-item-booking { left: calc(50% + 55px) !important; }
+  .hero-scene:not(.is-arranging) .gl-item-plaid { left: calc(50% + 45px) !important; }
+  .hero-scene:not(.is-arranging) .gl-item-snag { left: calc(50% + 35px) !important; }
+  .hero-scene:not(.is-arranging) .gl-item-stream { left: calc(50% + 388px) !important; }
+  .hero-scene:not(.is-arranging) .gl-item-compare { display: none; }
 }
+
+/* Arrange mode (?arrange): everything on top, draggable, outlined */
+.hero-scene.is-arranging { z-index: 4; opacity: 0.95; pointer-events: auto; }
+.is-arranging .gl-card, .is-arranging .gl-name {
+  cursor: grab; animation: none !important; touch-action: none; user-select: none;
+  outline: 1px dashed rgba(143, 176, 255, 0.7); outline-offset: 3px;
+}
+.is-arranging .gl-card:active, .is-arranging .gl-name:active { cursor: grabbing; }
+.is-arranging .gl-off { opacity: 0.2 !important; outline-color: rgba(227, 74, 90, 0.8); }
+.arrange-panel {
+  position: fixed; left: 1rem; bottom: 1rem; z-index: 60; width: 17rem; max-height: 70vh; overflow: auto;
+  padding: 0.9rem 1rem; border-radius: var(--r-md); background: #fff; color: var(--ink);
+  border: 1px solid #d5dce8; box-shadow: 0 16px 40px -16px rgba(11, 18, 32, 0.5); font-size: 0.85rem;
+}
+.arrange-title { font-weight: 700; font-size: 0.95rem; cursor: pointer; }
+.arrange-hint { margin-top: 0.15rem; color: #52617f; }
+.arrange-panel ul { margin-top: 0.6rem; display: grid; gap: 0.2rem; }
+.arrange-panel label { display: flex; align-items: center; gap: 0.5rem; cursor: pointer; }
+.arrange-actions { margin-top: 0.75rem; display: flex; gap: 0.5rem; }
+.arrange-actions button { flex: 1; min-height: 2.25rem; border-radius: var(--r-sm); border: 1px solid var(--ink); font-weight: 600; }
+.arrange-actions button:first-child { background: var(--ink); color: var(--on-ink); }
+
 @media (max-width: 1023px) {
   /* Stacked layout: the text spans the width, so the hero stays clean */
   .hero-scene { display: none; }
