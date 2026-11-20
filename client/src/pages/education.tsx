@@ -7,7 +7,8 @@ import { body, logoBox } from "@/lib/ui";
 
 const tracks = [
   {
-    name: "Analytics",
+    name: "Analytics and data",
+    summary: "Statistics, Python, SQL databases, data visualization, data mining and business analytics.",
     courses: [
       "STA 9708 Managerial Statistics",
       "CIS 9650 Programming for Analytics",
@@ -19,7 +20,8 @@ const tracks = [
     ],
   },
   {
-    name: "Business",
+    name: "Strategy and finance",
+    summary: "Financial reporting, corporate finance, data-driven marketing, competitive strategy, leadership and business communication.",
     courses: [
       "ACC 9110 Financial Reporting",
       "FIN 9770 Corporate Finance",
@@ -112,20 +114,28 @@ export default function Education() {
           Download transcript (unofficial)
         </a>
         <h3 className="mt-6 text-[1.1875rem] sm:mt-8 sm:text-xl font-bold">Coursework</h3>
-        <div className="mt-3 grid gap-x-12 gap-y-6 sm:grid-cols-2">
+        <ul className="mt-3 border-t-2 border-ink">
           {tracks.map((t) => (
-            <div key={t.name} data-reveal="">
-              <h4 className="border-b-2 border-ink pb-2 text-base font-bold">{t.name}</h4>
-              <ul>
+            <li key={t.name} data-reveal="" className="grid gap-y-1 border-b border-slate-300 py-4 lg:grid-cols-[minmax(0,2fr)_3fr] lg:gap-x-12">
+              <h4 className="text-base font-bold">{t.name}</h4>
+              <p className={`text-slate-700 ${body}`}>{t.summary}</p>
+            </li>
+          ))}
+        </ul>
+        <details className="mt-3">
+          <summary className="inline-flex min-h-[44px] cursor-pointer items-center font-semibold text-blue-900">
+            See all {tracks.reduce((n, t) => n + t.courses.length, 0)} courses
+          </summary>
+          <div className="mt-2 grid gap-x-12 gap-y-4 sm:grid-cols-2">
+            {tracks.map((t) => (
+              <ul key={t.name}>
                 {t.courses.map((c) => (
-                  <li key={c} className={`border-b border-slate-300 py-2 text-slate-700 ${body}`}>
-                    {c}
-                  </li>
+                  <li key={c} className="border-b border-slate-300 py-2 text-[15px] text-slate-700">{c}</li>
                 ))}
               </ul>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </details>
 
         <h3 className="mt-8 text-[1.1875rem] sm:text-xl font-bold">Involvement</h3>
         <ul className="mt-3 border-t-2 border-ink">
