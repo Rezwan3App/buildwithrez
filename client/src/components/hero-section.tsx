@@ -1,8 +1,11 @@
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, Download, Github, Linkedin } from "lucide-react";
 import { Link } from "wouter";
 import { HeroHeadline } from "@/components/hero-headline";
 import { HeroBackdrop } from "@/components/hero-backdrop";
 import { RESUME_URL } from "@/lib/site";
+
+const social =
+  "inline-flex min-h-[44px] items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-4 font-semibold text-[var(--on-ink)] shadow-[0_8px_24px_-8px_rgba(0,0,0,0.6),inset_0_1px_0_rgba(255,255,255,0.12)] backdrop-blur-md transition-colors duration-150 ease-out hover:border-white/30 hover:bg-white/[0.12]";
 
 export function HeroSection() {
   return (
@@ -55,6 +58,16 @@ export function HeroSection() {
             <p className="flex items-center gap-2.5 label text-[var(--on-ink-2)]">
               <span className="status-light" aria-hidden="true" />
               Open to APM/PM roles &middot; New York
+            </p>
+            <p className="flex flex-wrap items-center gap-3">
+              <a href="https://www.linkedin.com/in/rezwan-islam33" target="_blank" rel="noopener noreferrer" className={social}>
+                <Linkedin className="h-[18px] w-[18px]" aria-hidden="true" />
+                LinkedIn
+              </a>
+              <a href="https://github.com/Rezwan3App" target="_blank" rel="noopener noreferrer" className={social}>
+                <Github className="h-[18px] w-[18px]" aria-hidden="true" />
+                GitHub
+              </a>
             </p>
           </div>
         </div>
